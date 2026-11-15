@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="doc_title">Hampy Craft | Indonesian Handcrafted Lighting — Sleman, Yogyakarta</title>
+  <meta name="description" data-i18n-content="doc_desc" content="Lampu gantung arsitektural anyaman bambu dan rotan alam dari Sleman, Yogyakarta. Dirancang khusus untuk hotel butik, villa mewah, restoran, dan ekspor internasional.">
+  <meta name="keywords" content="Hampy Craft, lampu anyaman bambu, rotan alam, handcrafted lighting, Sleman Yogyakarta, pendant lamps, hotel lighting, export packaging, knock-down">
+  
+  <!-- Open Graph / Meta Sosial -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hampy Craft | Indonesian Handcrafted Lighting">
+  <meta property="og:description" content="Handwoven bamboo and rattan pendant lighting from Sleman, Yogyakarta. Exporting worldwide with signature knock-down packaging.">
+  <meta property="og:image" content="images/logo.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-wrap">
+      <span data-i18n="announcement_text">🌏 Pengiriman Ekspor ke Seluruh Dunia dari Workshop Sleman, Yogyakarta • Siap Menerima Pesanan Grosir & Proyek Hospitality</span>
+      <div class="announcement-links">
+        <a href="#estimator" data-i18n="announcement_link_est">Estimator CBM</a>
+        <a href="#packaging" data-i18n="announcement_link_pkg">Kemasan Ekspor</a>
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" data-i18n="announcement_link_wa">WhatsApp Sales</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Luxury Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-wrap">
+      <a class="brand-link" href="#top" aria-label="Hampy Craft — Indonesian Handcrafted Lighting">
+        <img class="brand-logo-img" src="images/logo.jpg" alt="Hampy Craft — Indonesian Handcrafted Lighting" height="46">
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <a href="#about" data-i18n="nav_about">Tentang Kami</a>
+        <a href="#studio" data-i18n="nav_studio">Simulasi Cahaya</a>
+        <a href="#gallery" data-i18n="nav_gallery">Galeri Aplikasi</a>
+        <a href="#packaging" data-i18n="nav_packaging">Kemasan Ekspor</a>
+        <a href="#estimator" data-i18n="nav_estimator">Estimator Kargo</a>
+        <a href="#reviews" data-i18n="nav_reviews">Ulasan Buyer</a>
+        <a href="#contact" data-i18n="nav_contact">Kontak / RFQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher (Desktop) -->
+        <div class="lang-switch-group" role="group" aria-label="Pilih Bahasa / Language Selector">
+          <button type="button" class="lang-btn active" data-lang="id" title="Bahasa Indonesia">ID</button>
+          <span class="lang-sep">/</span>
+          <button type="button" class="lang-btn" data-lang="en" title="English">EN</button>
+        </div>
+
+        <a class="quote-pill-btn" href="#contact" aria-label="Lihat item RFQ terpilih">
+          <span data-i18n="quote_basket_btn">Quote Basket</span>
+          <span class="quote-badge-count" id="headerQuoteCount">0</span>
+        </a>
+        <button class="menu-toggle" id="menuToggleBtn" aria-label="Buka Menu Navigasi" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Drawer -->
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Menu Navigasi Mobile">
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <img src="images/logo.jpg" alt="Hampy Craft" style="height: 34px; width: auto; object-fit: contain;">
+        <button id="drawerCloseBtn" type="button" aria-label="Tutup Menu" style="font-size: 24px; padding: 4px;">&times;</button>
+      </div>
+
+      <!-- Language Selector (Mobile Drawer) -->
+      <div class="drawer-lang-selector">
+        <span data-i18n="drawer_lang_label">Bahasa / Language:</span>
+        <div class="lang-switch-group" role="group" aria-label="Pilih Bahasa / Language Selector">
+          <button type="button" class="lang-btn active" data-lang="id">ID</button>
+          <span class="lang-sep">/</span>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <ul class="drawer-links">
+        <li><a href="#about" data-i18n="nav_about">Tentang Kami</a></li>
+        <li><a href="#studio" data-i18n="nav_studio">Simulasi Pencahayaan</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Galeri Aplikasi & Fixtur</a></li>
+        <li><a href="#packaging" data-i18n="nav_packaging">Kemasan Ekspor Knock-Down</a></li>
+        <li><a href="#estimator" data-i18n="nav_estimator">Estimator Volume CBM</a></li>
+        <li><a href="#reviews" data-i18n="nav_reviews">Ulasan Buyer & Arsitek</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Formulir Inquiry Proyek</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-light); padding-top: 20px;">
+      <a class="btn btn-wa" style="width: 100%; text-align: center;" href="https://wa.me/6281234567890" target="_blank" rel="noopener" data-i18n="drawer_wa_btn">
+        Chat WhatsApp Trade
+      </a>
+    </div>
+  </aside>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="badge badge-amber">
+              <img src="images/logo-icon.jpg" alt="" width="22" height="22" style="border-radius: 50%;">
+              <span data-i18n="hero_badge_text">Sleman, Yogyakarta • Handwoven Lighting</span>
+            </div>
+            
+            <h1 id="heroHeadline" data-i18n="hero_h1">Handwoven bamboo and rattan lamps, made in Sleman, Yogyakarta.</h1>
+            <p class="lead" id="heroLead" data-i18n="hero_lead">
+              Architectural pendant lighting untuk hotel butik internasional, villa mewah, restoran, dan importir lampu. Dianyam dengan ketelitian tangan di Sleman, Yogyakarta dan dikirim ke seluruh dunia.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn" href="#gallery" data-i18n="hero_btn_gallery">Lihat Galeri Aplikasi</a>
+              <a class="btn btn-secondary" href="#studio" data-i18n="hero_btn_studio">Coba Simulasi Cahaya</a>
+              <a class="btn btn-ghost" href="#packaging" data-i18n="hero_btn_pkg">Standar Ekspor</a>
+            </div>
+
+            <div class="hero-trust-badges">
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 2L15 8L22 9L17 14L18 21L12 17.5L6 21L7 14L2 9L9 8L12 2Z"/></svg>
+                <span data-i18n="trust_kiln">Bambu Kering Oven (Kiln-Dried)</span>
+              </div>
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 16L6 12L7.41 10.59L10 13.17L16.59 6.58L18 8L10 16Z"/></svg>
+                <span data-i18n="trust_breakage">0% Kerusakan Kargo (Knock-Down)</span>
+              </div>
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"/></svg>
+                <span data-i18n="trust_cert">Sertifikasi CE / UL / SAA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Slider Card -->
+          <div class="hero-slider-card">
+            <div class="slider-container" id="heroSliderWrap">
+              <!-- Dynamically populated by app.js -->
+            </div>
+            <div class="slider-nav-bar">
+              <div class="slider-dots" id="sliderDots"></div>
+              <div class="slider-arrows">
+                <button class="arrow-btn" id="sliderPrev" aria-label="Slide sebelumnya" type="button">‹</button>
+                <button class="arrow-btn" id="sliderNext" aria-label="Slide berikutnya" type="button">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Lighting Atmosphere Studio -->
+    <section class="lighting-studio" id="studio">
+      <div class="container">
+        <div class="section-head center">
+          <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="studio_badge">Studio Eksperimen Interaktif</div>
+          <h2 data-i18n="studio_h2">Simulasi Pendaran Cahaya & Suasana Ruangan</h2>
+          <p class="lead" data-i18n="studio_lead">Uji bagaimana anyaman kisi bambu dan rotan Hampy Craft memancarkan bayangan hangat pada berbagai temperatur warna dan intensitas cahaya dimmer.</p>
+        </div>
+
+        <div class="studio-card">
+          <!-- Left: 3D/Atmospheric Interior Stage -->
+          <div class="studio-stage" id="studioStage">
+            <div class="stage-room-bg" id="stageRoomBg"></div>
+            <div class="stage-light-aura" id="stageLightAura"></div>
+
+            <div class="stage-lamp-fixture">
+              <div class="fixture-cord"></div>
+              <div class="fixture-dome">
+                <!-- Vector Handcrafted Bamboo Pendant Lamp -->
+                <svg viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Canopy / Socket -->
+                  <rect x="74" y="0" width="12" height="12" rx="2" fill="#B38B52"/>
+                  <!-- Woven Dome Shape -->
+                  <path d="M70 12C36 24 16 65 24 105C26 115 36 122 80 122C124 122 134 115 136 105C144 65 124 24 90 12Z" fill="#1A3F2A" stroke="#E5C79E" stroke-width="2.5"/>
+                  <!-- Longitudinal Ribs -->
+                  <path d="M80 12Q38 65 42 118" stroke="#D9C39E" stroke-width="1.8"/>
+                  <path d="M80 12Q60 65 62 121" stroke="#D9C39E" stroke-width="1.5"/>
+                  <path d="M80 12Q100 65 98 121" stroke="#D9C39E" stroke-width="1.5"/>
+                  <path d="M80 12Q122 65 118 118" stroke="#D9C39E" stroke-width="1.8"/>
+                  <!-- Cross Weave Bands -->
+                  <ellipse cx="80" cy="38" rx="26" ry="6" stroke="#D9C39E" stroke-width="1.4" stroke-dasharray="3,3"/>
+                  <ellipse cx="80" cy="68" rx="44" ry="8" stroke="#D9C39E" stroke-width="1.6" stroke-dasharray="4,3"/>
+                  <ellipse cx="80" cy="98" rx="53" ry="10" stroke="#D9C39E" stroke-width="1.8" stroke-dasharray="4,4"/>
+                  <!-- Lower Bamboo Ring -->
+                  <ellipse cx="80" cy="118" rx="51" ry="10" stroke="#F3DCAC" stroke-width="3.5" fill="none"/>
+                  <!-- Inner Filament Bulb -->
+                  <circle cx="80" cy="74" r="14" fill="#FFEBB0" opacity="0.95"/>
+                  <path d="M77 70Q80 64 83 70Q80 76 77 70" stroke="#E67E22" stroke-width="2" fill="none"/>
+                </svg>
+                <div class="fixture-glow-bloom" id="fixtureGlowBloom"></div>
+              </div>
+            </div>
+
+            <div class="stage-indicator-pill">
+              <span class="indicator-dot"></span>
+              <span id="indicatorText">2700K Warm Sunset • 85% Dimmer</span>
+            </div>
+          </div>
+
+          <!-- Right: Control Sliders & Temperature Buttons -->
+          <div class="studio-controls">
+            <div>
+              <div class="studio-controls-header">
+                <span data-i18n="studio_controls_tag">Lighting Controls</span>
+                <h3 data-i18n="studio_controls_title">Atur Karakteristik Lampu</h3>
+                <p style="font-size: 14.5px; color: var(--ink-muted);" data-i18n="studio_controls_desc">Pilih spektrum kelvin atau sesuaikan peredup (dimmer) untuk melihat adaptasi ruang.</p>
+              </div>
+
+              <!-- Kelvin Presets -->
+              <div class="control-group">
+                <div class="control-label">
+                  <span data-i18n="studio_temp_title">Temperatur Warna (Kelvin)</span>
+                </div>
+                <div class="temp-buttons">
+                  <button class="temp-btn" data-temp="amber" type="button">
+                    <span data-i18n="temp_amber_name">2200K Golden Amber</span>
+                    <small data-i18n="temp_amber_desc">Intimate Dining / Cafe Bar</small>
+                  </button>
+                  <button class="temp-btn active" data-temp="warm" type="button">
+                    <span data-i18n="temp_warm_name">2700K Warm Sunset</span>
+                    <small data-i18n="temp_warm_desc">Boutique Resort / Suite</small>
+                  </button>
+                  <button class="temp-btn" data-temp="soft" type="button">
+                    <span data-i18n="temp_soft_name">3000K Soft White</span>
+                    <small data-i18n="temp_soft_desc">Lounge / Living Corner</small>
+                  </button>
+                  <button class="temp-btn" data-temp="daylight" type="button">
+                    <span data-i18n="temp_daylight_name">4000K Clean White</span>
+                    <small data-i18n="temp_daylight_desc">Inspeksi Detail Arsitektur</small>
+                  </button>
+                  <button class="temp-btn" data-temp="off" type="button" style="grid-column: span 2;">
+                    <span data-i18n="temp_off_name">Lampu Padam (Off)</span>
+                    <small data-i18n="temp_off_desc">Tampilan anyaman alami di siang hari</small>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dimmer Slider -->
+              <div class="control-group">
+                <div class="control-label">
+                  <span data-i18n="studio_dimmer_title">Intensitas Cahaya (Dimmer)</span>
+                  <span id="dimmerVal" style="color: var(--amber);">85%</span>
+                </div>
+                <input class="dimmer-slider" id="dimmerSlider" type="range" min="0" max="100" value="85" aria-label="Atur intensitas cahaya">
+              </div>
+            </div>
+
+            <div class="studio-callout" data-i18n-html="studio_callout_html">
+              <strong>💡 Catatan Arsitektural:</strong> Seluruh kap lampu Hampy Craft kompatibel dengan dimmer Trailing-Edge / Triac 220V–240V dan 110V (pasar US/Japan).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <div class="badge" style="margin-bottom: 14px;" data-i18n="about_badge">Workshop Sleman, Yogyakarta</div>
+            <h2 data-i18n="about_h2">Kami menganyam kap lampu, Anda menentukan skala & atmosfer ruang.</h2>
+            <p data-i18n="about_p1">
+              Hampy Craft lahir dari tradisi kriya luhur Sleman, Daerah Istimewa Yogyakarta. Kami memproduksi kap lampu gantung arsitektural dari belahan bambu apus pilihan dan rotan alami berkualitas tinggi.
+            </p>
+            <p style="margin-top: 16px;" data-i18n="about_p2">
+              Arsitek interior, tim pengadaan hotel butik, dan distributor internasional mempercayakan pesanan skala proyek maupun pesanan kontainer penuh kepada kami karena setiap kap dianyam di atas rangka melingkar struktural yang menjamin stabilitas bentuk di iklim tropis berkelembapan tinggi maupun ruang ber-AC.
+            </p>
+
+            <div class="stats-grid">
+              <div class="stat-item">
+                <h3>100%</h3>
+                <p data-i18n="stat_1_lbl">Bambu & Rotan Alami Terbarukan</p>
+              </div>
+              <div class="stat-item">
+                <h3>0%</h3>
+                <p data-i18n="stat_2_lbl">Risiko Kerusakan Kargo (Knock-down)</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-i18n="stat_3_val">15+ Hari</h3>
+                <p data-i18n="stat_3_lbl">Pengeringan Oven & Anti-Bubuk</p>
+              </div>
+              <div class="stat-item">
+                <h3>24+</h3>
+                <p data-i18n="stat_4_lbl">Kota & Negara Tujuan Ekspor</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+              <a class="btn btn-secondary" href="#contact" data-i18n="about_btn">Diskusikan Kebutuhan Proyek Anda</a>
+            </div>
+          </div>
+
+          <div class="about-photo-card">
+            <div class="about-img-wrap">
+              <img src="images/artisan-craft.jpg" alt="Master pengrajin Hampy Craft menganyam kap lampu bambu secara tradisional di workshop Sleman Yogyakarta" loading="lazy">
+            </div>
+            <div class="about-stamp-pill">
+              <img src="images/logo-icon.jpg" alt="Hampy Craft Emblem">
+              <div class="about-stamp-text">
+                <strong data-i18n="stamp_title">Hampy Craft Sleman</strong>
+                <span data-i18n="stamp_subtitle">Autentik Handcrafted Yogyakarta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values / 3 Export Pillars -->
+    <section class="values" id="values">
+      <div class="container">
+        <div class="section-head center">
+          <div class="badge badge-amber" style="margin-bottom: 12px; color: #F3DCAC; border-color: #A88752; background: rgba(217, 195, 158, 0.15);" data-i18n="values_badge">Standar Manufaktur Ekspor</div>
+          <h2 data-i18n="values_h2">Spesifikasi Ketat untuk Pengiriman Internasional</h2>
+          <p class="lead" data-i18n="values_lead">Protokol produksi terstandarisasi yang dirancang khusus untuk mematuhi regulasi kargo laut dan keselamatan instalasi komersial.</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon-box">🎋</div>
+            <h3 data-i18n="val1_title">Perlakuan Bambu Anti-Bubuk & Oven Kering</h3>
+            <p data-i18n="val1_desc">Bambu dipanen selektif, direndam larutan ramah lingkungan anti-borer (hama bubuk), dan dikeringkan hingga ambang kadar air stabil (kiln-dried) agar tidak melengkung atau retak saat menghadapi musim dingin di negara tujuan.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon-box">📦</div>
+            <h3 data-i18n="val2_title">Kotak Komponen Elektrikal Terpisah</h3>
+            <p data-i18n="val2_desc">Fitting keramik E27, kabel gantung vintage berbalut kain, dan bohlam filamen Edison dikemas dalam kotak sub-internal khusus untuk menghilangkan risiko gesekan terhadap kubah anyaman selama pelayaran kontainer.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon-box">📐</div>
+            <h3 data-i18n="val3_title">Efisiensi Kargo Sistem Knock-Down</h3>
+            <p data-i18n="val3_desc">Selubung kertas kraft bertekstur, bantalan busa berkontur pada tepi anyaman, dan karton bergelombang 5-ply memaksimalkan kepadatan muatan kontainer 20ft & 40ft HC tanpa mengorbankan keamanan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applications Gallery Section -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="gallery_badge">Portofolio & Fixtur</div>
+          <h2 data-i18n="gallery_h2">Galeri Aplikasi Ruang & Koleksi Model</h2>
+          <p class="lead" data-i18n="gallery_lead">Lihat bagaimana lampu anyaman bambu dan rotan Hampy Craft dipasang pada hotel butik, resort tepi pantai, villa privat, dan restoran ternama.</p>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="gallery-toolbar">
+          <div class="filter-group" role="group" aria-label="Kategori Ruangan">
+            <button class="filter-btn active" data-filter="all" type="button" data-i18n="filter_all">Semua Ruangan</button>
+            <button class="filter-btn" data-filter="hotel" type="button" data-i18n="filter_hotel">Hotels & Resorts</button>
+            <button class="filter-btn" data-filter="residence" type="button" data-i18n="filter_residence">Luxury Residences</button>
+            <button class="filter-btn" data-filter="dining" type="button" data-i18n="filter_dining">Restaurants & Cafes</button>
+          </div>
+
+          <div class="gallery-search-wrap">
+            <input class="search-input" id="gallerySearch" type="search" placeholder="Cari model atau material..." data-i18n-placeholder="search_placeholder" aria-label="Cari fixtur lampu">
+            <button class="unit-switch-btn" id="unitSwitchBtn" type="button">Metric (cm/kg)</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Product Cards Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Packaging & Product Identity Section (Hampy Lumina) -->
+    <section class="packaging" id="packaging">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge" style="margin-bottom: 12px;" data-i18n="pkg_badge">Hampy Lumina Architecture</div>
+          <h2 data-i18n="pkg_h2">Kemasan dan Identitas Produk: Hampy Lumina</h2>
+          <p class="lead" data-i18n="pkg_lead">
+            Dirancang khusus untuk keamanan pengiriman ekspor jarak jauh sekaligus menghadirkan pengalaman unboxing premium beridentitas hijau tua, putih, dan logo resmi Hampy Craft.
+          </p>
+        </div>
+
+        <div class="packaging-hero-banner">
+          <div class="pkg-banner-top">
+            <h3 data-i18n="pkg_banner_title">Arsitektur Kemasan Eksklusif & Pengalaman Unboxing</h3>
+            <span class="pkg-banner-badge">
+              <img src="images/logo-icon.jpg" alt="Hampy Craft Emblem">
+              <span>HAMPY CRAFT • HAMPY LUMINA</span>
+            </span>
+          </div>
+
+          <!-- Hero Vector Packaging Diagram -->
+          <div class="packaging-main-photo-wrap">
+            <figure>
+              <img src="images/hampy-lumina-packaging.svg" alt="Diagram Visualisasi Resmi Kemasan Hampy Lumina" loading="lazy">
+              <figcaption>
+                <span data-i18n-html="pkg_fig_cap"><strong>Visualisasi Resmi Kemasan Hampy Lumina:</strong> Proteksi internal berlapis & kotak ritel/ekspor beridentitas hijau tua & putih.</span>
+                <span class="tabular-nums" data-i18n="pkg_fig_dim">Dimensi Kubah: Ø35 cm × T 40 cm • 4 pcs / Master Karton</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Interactive Unboxing Stepper Tabs -->
+          <div class="unboxing-stepper-wrap">
+            <h4 style="font-size: 20px; color: var(--primary); margin-bottom: 14px;" data-i18n="unbox_title">Momen Unboxing Interaktif (Langkah Demi Langkah):</h4>
+            <div class="unboxing-tabs" role="tablist">
+              <button class="unbox-tab-btn active" data-target="unboxStep1" type="button" data-i18n="unbox_tab1">1. Buka Kotak Ekspor</button>
+              <button class="unbox-tab-btn" data-target="unboxStep2" type="button" data-i18n="unbox_tab2">2. Busa Pelindung & Rangka</button>
+              <button class="unbox-tab-btn" data-target="unboxStep3" type="button" data-i18n="unbox_tab3">3. Pasang Fitting & Gantung</button>
+            </div>
+
+            <div class="unbox-tab-content active" id="unboxStep1">
+              <div class="unbox-text-box">
+                <h4 data-i18n="unbox_s1_h4">Langkah 1: Segel Luar & Identitas Merek</h4>
+                <p data-i18n="unbox_s1_p">Karton tebal 5-ply beridentitas hijau tua & putih dengan marka internasional (This Way Up, Fragile, Keep Dry). Segel anti-rusak menjaga integritas isi paket selama perjalanan lintas benua.</p>
+                <ul>
+                  <li data-i18n="unbox_s1_li1">Karton kraft tahan beban tumpuk kontainer</li>
+                  <li data-i18n="unbox_s1_li2">Label batch produksi dan nomor seri terdaftar</li>
+                  <li data-i18n="unbox_s1_li3">Pita segel pengaman merek Hampy Craft</li>
+                </ul>
+              </div>
+              <div class="unbox-svg-stage">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <polygon points="40,30 120,10 200,30 120,50" fill="#FCFAF5" stroke="#153B27" stroke-width="2"/>
+                  <polygon points="40,30 120,50 120,130 40,110" fill="#153B27"/>
+                  <polygon points="120,50 200,30 200,110 120,130" fill="#245A3D"/>
+                  <text x="80" y="85" fill="#FFFFFF" font-size="10" font-weight="700">HAMPY LUMINA</text>
+                  <text x="80" y="98" fill="#B8CEBA" font-size="8">MADE IN INDONESIA</text>
+                </svg>
+              </div>
+            </div>
+
+            <div class="unbox-tab-content" id="unboxStep2">
+              <div class="unbox-text-box">
+                <h4 data-i18n="unbox_s2_h4">Langkah 2: Angkat Busa & Ambil Kotak Listrik</h4>
+                <p data-i18n="unbox_s2_p">Busa pelindung atas (top foam cushion) berkontur khusus menahan kap lampu agar tidak berguncang. Di bagian atas, kotak komponen elektrikal terpisah dapat diangkat dengan mudah.</p>
+                <ul>
+                  <li data-i18n="unbox_s2_li1">Kabel kain vintage & fitting keramik E27 terlindung rapat</li>
+                  <li data-i18n="unbox_s2_li2">Bohlam filamen Edison dalam wadah anti-pecah</li>
+                  <li data-i18n="unbox_s2_li3">Kertas kraft pembungkus bambu dibuka tanpa meninggalkan bekas</li>
+                </ul>
+              </div>
+              <div class="unbox-svg-stage">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <rect x="50" y="20" width="140" height="40" rx="4" fill="#EAE5D8" stroke="#B8A88E" stroke-width="2"/>
+                  <text x="120" y="44" fill="#153B27" font-size="11" font-weight="700" text-anchor="middle">Top Foam Cushion</text>
+                  <rect x="80" y="80" width="80" height="45" rx="3" fill="#153B27"/>
+                  <text x="120" y="105" fill="#FFE79A" font-size="10" font-weight="600" text-anchor="middle">Kotak Listrik E27</text>
+                </svg>
+              </div>
+            </div>
+
+            <div class="unbox-tab-content" id="unboxStep3">
+              <div class="unbox-text-box">
+                <h4 data-i18n="unbox_s3_h4">Langkah 3: Sambungkan Fitting & Lampu Siap Menyala</h4>
+                <p data-i18n="unbox_s3_p">Pasang cincin penahan fitting kuningan ke rangka kubah bambu. Gantung pada kanopi plafon dan nikmati pendaran bayangan kisi bambu yang anggun.</p>
+                <ul>
+                  <li data-i18n="unbox_s3_li1">Pemasangan cepat tanpa alat bantu rumit (< 5 menit per lampu)</li>
+                  <li data-i18n="unbox_s3_li2">Cincin bambu struktural menjaga kelengkungan simetris</li>
+                  <li data-i18n="unbox_s3_li3">Pancaran cahaya 2700K langsung menghidupkan suasana ruang</li>
+                </ul>
+              </div>
+              <div class="unbox-svg-stage">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <line x1="120" y1="10" x2="120" y2="40" stroke="#333" stroke-width="2"/>
+                  <path d="M120 40C85 50 65 90 70 125C90 135 150 135 170 125C175 90 155 50 120 40Z" fill="#1B4730" stroke="#D9C39E" stroke-width="2"/>
+                  <circle cx="120" cy="95" r="12" fill="#FFEAA7"/>
+                  <circle cx="120" cy="95" r="30" fill="url(#lampGlow)" opacity="0.6"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Knock-Down Summary Bar -->
+          <div class="knockdown-bar-wrap">
+            <div>
+              <h4 style="font-size: 19px; color: var(--primary); margin-bottom: 6px;" data-i18n="kd_bar_h4">Pemberlakuan Prinsip Knock-Down</h4>
+              <p style="font-size: 14px; color: var(--ink-secondary);" data-i18n="kd_bar_p">Efisiensi ruang kargo kontainer, kemudahan perakitan di lokasi proyek hotel, dan minim risiko kerusakan pada bagian rentan.</p>
+            </div>
+
+            <div class="kd-steps-grid">
+              <div class="kd-step-card">
+                <strong data-i18n="kd_s1_title">1. Buka Kemasan</strong>
+                <span data-i18n="kd_s1_desc">Keluarkan kotak komponen listrik & angkat busa pelindung atas.</span>
+              </div>
+              <div class="kd-step-card">
+                <strong data-i18n="kd_s2_title">2. Pasang Fitting</strong>
+                <span data-i18n="kd_s2_desc">Sambungkan kabel gantung kain, rangka melingkar, dan bohlam Edison.</span>
+              </div>
+              <div class="kd-step-card">
+                <strong data-i18n="kd_s3_title">3. Siap Digantung</strong>
+                <span data-i18n="kd_s3_desc">Kap lampu bambu terpasang dengan pendaran cahaya hangat sempurna.</span>
+              </div>
+            </div>
+
+            <img class="brand-seal-large" src="images/logo-icon.jpg" alt="Hampy Craft Seal" width="96" height="96">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Container CBM and Carton Estimator -->
+    <section class="estimator" id="estimator">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="est_badge">Kalkulator Logistik Ekspor</div>
+          <h2 data-i18n="est_h2">Estimator Volume Kargo CBM & Master Karton</h2>
+          <p class="lead" data-i18n="est_lead">Hitung estimasi volume kubikasi kargo (CBM), jumlah master box, berat kotor, serta estimasi keterisian kontainer 20ft / 40ft untuk pesanan proyek Anda.</p>
+        </div>
+
+        <div class="estimator-box">
+          <!-- Input Form -->
+          <div class="estimator-inputs">
+            <div class="form-field">
+              <label for="estModelSelect" data-i18n="est_label_model">Pilih Model Fixtur Lampu</label>
+              <select id="estModelSelect">
+                <!-- Dynamically populated or rendered with i18n -->
+                <option value="hc-lumina">Hampy Lumina Dome — Knock-Down (Ø35 × H40 cm)</option>
+                <option value="hc-02">Ombak Wide-Brim Rattan — Luxury Villa (Ø85 × H26 cm)</option>
+                <option value="hc-03">Jala Ribbed Dome — Fine Dining (Ø50 × H42 cm)</option>
+                <option value="hc-04">Lumbung Lantern — Resort Suite (Ø48 × H64 cm)</option>
+                <option value="hc-05">Tirtayasa Chandelier — Penthouse (Ø70 × H55 cm)</option>
+                <option value="hc-06">Serayu Wave Cluster — Sunset Bar (Ø95 × H32 cm)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="estQtyInput" data-i18n="est_label_qty">Jumlah Pesanan (Pcs)</label>
+              <input type="number" id="estQtyInput" value="50" min="1" step="1">
+            </div>
+
+            <button class="btn btn-amber" id="estCalcBtn" type="button" style="width: 100%;" data-i18n="est_btn_calc">
+              Hitung Estimasi Kargo
+            </button>
+
+            <p style="font-size: 13px; color: var(--ink-muted); margin-top: 14px;" data-i18n="est_note">
+              *Estimasi didasarkan pada packing density standar ekspor Hampy Craft. Packing list final akan disesuaikan saat finalisasi order.
+            </p>
+          </div>
+
+          <!-- Results & Container Gauge -->
+          <div class="estimator-results-card">
+            <div>
+              <h4 style="font-size: 20px; color: var(--primary); margin-bottom: 16px;" data-i18n="est_res_title">Hasil Kalkulasi Kargo</h4>
+              <table class="metrics-table">
+                <tr>
+                  <td data-i18n="est_res_row_cartons">Estimasi Master Karton</td>
+                  <td id="resCartons">13 Master Karton</td>
+                </tr>
+                <tr>
+                  <td data-i18n="est_res_row_cbm">Total Kubikasi (CBM)</td>
+                  <td id="resCbm">1.82 CBM</td>
+                </tr>
+                <tr>
+                  <td data-i18n="est_res_row_weight">Estimasi Berat Kotor (Gross Weight)</td>
+                  <td id="resWeight">88.4 kg</td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- Visual Progress Gauge for Containers -->
+            <div class="container-gauge-wrap">
+              <div style="margin-bottom: 16px;">
+                <div class="gauge-header">
+                  <span data-i18n="gauge_20_title">Keterisian Kontainer 20ft FCL</span>
+                  <span id="gaugeText20">7% terisi (~28 CBM kap.)</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="gaugeFill20" style="width: 7%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="gauge-header">
+                  <span data-i18n="gauge_40_title">Keterisian Kontainer 40ft High Cube FCL</span>
+                  <span id="gaugeText40">3% terisi (~68 CBM kap.)</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="gaugeFill40" style="width: 3%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commercial Terms -->
+    <section class="terms" id="terms">
+      <div class="container">
+        <div style="margin-bottom: 16px;">
+          <h2 data-i18n="terms_h2">Ketentuan Perdagangan & Pengadaan (Trading Terms)</h2>
+          <p data-i18n="terms_lead">Panduan standar untuk pemesanan grosir, proyek arsitektur, dan ekspor kontainer.</p>
+        </div>
+
+        <div class="terms-grid">
+          <div class="term-card">
+            <h4 data-i18n="term1_title">Minimum Order Quantity (MOQ)</h4>
+            <p data-i18n="term1_desc">10 pcs per model / 30 pcs kombinasi untuk pesanan ekspor. Pesanan custom arsitektur tersedia berdasarkan kesepakatan.</p>
+          </div>
+          <div class="term-card">
+            <h4 data-i18n="term2_title">Waktu Produksi (Lead Time)</h4>
+            <p data-i18n="term2_desc">3–5 minggu untuk batch 100–300 pcs. 6–8 minggu untuk 1x20ft / 40ft kontainer penuh.</p>
+          </div>
+          <div class="term-card">
+            <h4 data-i18n="term3_title">Ketentuan Pembayaran</h4>
+            <p data-i18n="term3_desc">T/T Deposit 50% pada konfirmasi pesanan, pelunasan 50% terhadap salinan Bill of Lading (B/L) atau L/C at sight.</p>
+          </div>
+          <div class="term-card">
+            <h4 data-i18n="term4_title">Pelabuhan Muat & Incoterms</h4>
+            <p data-i18n="term4_desc">Semarang (Pelabuhan Tanjung Mas) atau Surabaya (Tanjung Perak) • FOB, CIF, atau EXW Workshop Sleman.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buyer & Specifier Reviews -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head center">
+          <div class="badge" style="margin-bottom: 12px;" data-i18n="reviews_badge">Testimoni Internasional</div>
+          <h2 data-i18n="reviews_h2">Ulasan Pembeli & Arsitek Pengadaan</h2>
+          <p class="lead" data-i18n="reviews_lead">Kesan dari direktur procurement perhotelan, arsitek resort mewah, dan distributor lampu global.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div>
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-quote" data-i18n="rev1_quote">
+                “Kemasan knock-down Hampy Lumina dengan kotak elektrikal terpisah dan bantalan busa terbukti menghasilkan zero breakage pada pengiriman 120 kap lampu ke resort kami.”
+              </blockquote>
+            </div>
+            <div class="review-author">
+              <strong>Marcus Van Der Berg</strong>
+              <span data-i18n="rev1_role">Procurement Director, Eco-Resort Bali & Lombok</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div>
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-quote" data-i18n="rev2_quote">
+                “Kami menentukan model Ombak dan Jala untuk enam villa mewah di Canggu. Anyaman bambu alami dan pendaran Edison hangat berpadu sempurna dengan dinding batu hijau kami.”
+              </blockquote>
+            </div>
+            <div class="review-author">
+              <strong>Citra Wardhana, IAI</strong>
+              <span data-i18n="rev2_role">Principal Interior Architect, Studio Kriya Tropis</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div>
+              <div class="review-stars">★★★★★</div>
+              <blockquote class="review-quote" data-i18n="rev3_quote">
+                “Kotak ritel hijau tua dengan logo emblem Hampy Craft memberikan impresi unboxing yang sangat berkelas di showroom kami di Australia. Sangat direkomendasikan.”
+              </blockquote>
+            </div>
+            <div class="review-author">
+              <strong>Liam O'Connor</strong>
+              <span data-i18n="rev3_role">Head of Purchasing, Melbourne Home & Lighting Importers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Quotation Builder Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: Contact Details & Fast WhatsApp -->
+          <div class="contact-info">
+            <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="contact_badge">Inquiry & Penawaran</div>
+            <h2 data-i18n="contact_h2">Kirimkan Rencana Proyek Anda</h2>
+            <p class="lead" data-i18n="contact_lead">
+              Sampaikan kebutuhan fixtur, estimasi kuantitas, serta pelabuhan tujuan kargo. Tim kami di Sleman akan menyusun penawaran resmi, jadwal produksi, dan rincian kubikasi kargo.
+            </p>
+
+            <address>
+              <strong data-i18n="contact_ws_title">Workshop Hampy Craft:</strong><br>
+              <span data-i18n-html="contact_address_html">Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia</span><br><br>
+              <strong data-i18n="contact_hours_title">Jam Layanan Dagang:</strong><br>
+              <span data-i18n="contact_hours_val">Senin – Sabtu, 08:00 – 17:00 WIB (UTC+7)</span><br><br>
+              <span data-i18n="contact_email_lbl">Email Dagang:</span> <a href="mailto:trade@hampycraft.com">trade@hampycraft.com</a><br>
+              <span data-i18n="contact_wa_lbl">WhatsApp Ekspor:</span> <a href="https://wa.me/6281234567890">+62 812-3456-7890</a>
+            </address>
+
+            <div class="contact-quick-wa-card">
+              <h4 data-i18n="quick_wa_title">💬 Respon Cepat via WhatsApp</h4>
+              <p data-i18n="quick_wa_desc">Klik tombol di bawah untuk langsung terhubung dengan tim pengadaan dan kalkulasi penawaran via WhatsApp.</p>
+              <button class="btn btn-wa" id="directWaInquiryBtn" type="button" style="width: 100%;" data-i18n="quick_wa_btn">
+                Buka WhatsApp dengan Item Terpilih
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Formal Inquiry Form -->
+          <div class="inquiry-form-card">
+            <!-- Selected Items Basket Container -->
+            <div class="quote-basket-box" id="quoteBasketBox">
+              <div class="quote-basket-header">
+                <span data-i18n="basket_header">Fixtur yang Anda Pilih untuk Penawaran:</span>
+              </div>
+              <div class="quote-basket-items" id="quoteBasketItems"></div>
+            </div>
+
+            <form id="inquiryForm" action="https://formspree.io/f/sample" method="POST">
+              <input type="hidden" name="selected_models" id="hiddenQuoteInput" value="">
+
+              <div class="form-row-two">
+                <div class="form-field">
+                  <label for="inqName" data-i18n="form_name_lbl">Nama Lengkap *</label>
+                  <input type="text" id="inqName" name="name" required placeholder="Nama Anda" data-i18n-placeholder="form_name_ph">
+                </div>
+                <div class="form-field">
+                  <label for="inqCompany" data-i18n="form_company_lbl">Perusahaan / Studio *</label>
+                  <input type="text" id="inqCompany" name="company" required placeholder="PT / CV / Studio Desain" data-i18n-placeholder="form_company_ph">
+                </div>
+              </div>
+
+              <div class="form-row-two">
+                <div class="form-field">
+                  <label for="inqEmail" data-i18n="form_email_lbl">Alamat Email *</label>
+                  <input type="email" id="inqEmail" name="email" required placeholder="nama@email.com" data-i18n-placeholder="form_email_ph">
+                </div>
+                <div class="form-field">
+                  <label for="inqPhone" data-i18n="form_phone_lbl">Nomor WhatsApp / Telp</label>
+                  <input type="tel" id="inqPhone" name="phone" placeholder="+62 812..." data-i18n-placeholder="form_phone_ph">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="inqPort" data-i18n="form_port_lbl">Kota / Pelabuhan Tujuan Pengiriman (Opsional)</label>
+                <input type="text" id="inqPort" name="destination_port" placeholder="Contoh: Jakarta / Port of Rotterdam / Sydney" data-i18n-placeholder="form_port_ph">
+              </div>
+
+              <div class="form-field">
+                <label for="inqMsg" data-i18n="form_msg_lbl">Rincian Proyek & Kebutuhan Kuantitas</label>
+                <textarea id="inqMsg" name="message" rows="4" placeholder="Jelaskan kebutuhan hotel, villa, atau pesanan grosir, target waktu instalasi, dll." data-i18n-placeholder="form_msg_ph"></textarea>
+              </div>
+
+              <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <button class="btn" type="submit" style="flex: 1;" data-i18n="form_submit_btn">Kirim Inquiry Resmi</button>
+                <button class="btn btn-wa" id="waSubmitInquiryBtn" type="button" data-i18n="form_wa_btn">Chat WA Langsung</button>
+              </div>
+
+              <div class="form-alert" id="formAlertBox"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div style="margin-bottom: 16px;">
+            <img src="images/logo.jpg" alt="Hampy Craft Official Logo" style="height: 48px; width: auto; background: #FFFFFF; padding: 6px 14px; border-radius: 6px; object-fit: contain; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+          </div>
+          <p data-i18n="footer_brand_desc">
+            Manufaktur kap lampu arsitektural anyaman bambu & rotan berbasis di Sleman, Yogyakarta. Diciptakan dengan keaslian kriya tangan nusantara untuk ruang berkelas dunia.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_nav">Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="#about" data-i18n="nav_about">Tentang Kami</a></li>
+            <li><a href="#studio" data-i18n="nav_studio">Simulasi Cahaya</a></li>
+            <li><a href="#gallery" data-i18n="nav_gallery">Galeri Aplikasi</a></li>
+            <li><a href="#packaging" data-i18n="nav_packaging">Kemasan Ekspor</a></li>
+            <li><a href="#estimator" data-i18n="nav_estimator">Estimator Kargo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_coll">Koleksi Fixtur</h4>
+          <ul class="footer-links">
+            <li><a href="#gallery">Hampy Lumina Dome</a></li>
+            <li><a href="#gallery">Ombak Wide-Brim</a></li>
+            <li><a href="#gallery">Jala Ribbed Dome</a></li>
+            <li><a href="#gallery">Lumbung Lantern</a></li>
+            <li><a href="#gallery">Tirtayasa Chandelier</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_ws">Workshop Sleman</h4>
+          <p style="font-size: 13.5px; color: #8BA093; line-height: 1.7;" data-i18n-html="footer_address_html">
+            Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia<br>
+            Email: <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>
+            WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer_copyright">&copy; 2026 Hampy Craft. Seluruh hak cipta dilindungi. Handcrafted in Sleman, Yogyakarta.</span>
+        <span data-i18n="footer_standards">Standar Ekspor ISO/CE • Knock-Down Packaging Architecture</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Specification Modal Dialog -->
+  <div class="modal-overlay" id="specModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup jendela spesifikasi" type="button">&times;</button>
+      
+      <span class="badge badge-amber" id="modalTag" data-i18n="modal_tag">Application Spec</span>
+      <h3 id="modalTitle" style="margin-top: 10px;">Model Specification</h3>
+      <p id="modalDesc" style="margin-top: 8px; font-size: 15px; color: var(--ink-secondary);"></p>
+
+      <table class="spec-modal-table" id="modalSpecsTable"></table>
+
+      <div class="modal-packaging-callout">
+        <img src="images/logo-icon.jpg" alt="Hampy Craft Emblem">
+        <div>
+          <strong style="color: var(--primary); display: block; font-size: 15px;" data-i18n="modal_pkg_title">Standar Proteksi Ekspor Hampy Lumina:</strong>
+          <p style="font-size: 13.5px; color: var(--ink-secondary); margin-top: 4px;" data-i18n="modal_pkg_desc">
+            Kap lampu dibungkus kertas kraft bertekstur, cincin pelindung tepi anyaman, busa atas (top foam cushion), serta kotak terpisah untuk fitting dan bohlam Edison.
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn" id="modalAddQuoteBtn" type="button" data-i18n="modal_btn_quote">+ Tambahkan ke Request Quote</button>
+        <button class="btn btn-secondary" id="modalExplorePackagingBtn" type="button" data-i18n="modal_btn_pkg">Pelajari Arsitektur Kemasan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas" type="button">↑</button>
+
+  <!-- Application Script -->
+  <script src="js/app.js" defer></script>
+</body>
+</html>

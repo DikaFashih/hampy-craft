@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="logoBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1B432C"/>
+      <stop offset="85%" stop-color="#102B1D"/>
+      <stop offset="100%" stop-color="#091A11"/>
+    </radialGradient>
+    
+    <!-- Warm Glow -->
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE79A" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#F5B942" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#C88A36" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3DCAC"/>
+      <stop offset="50%" stop-color="#D9C39E"/>
+      <stop offset="100%" stop-color="#A88752"/>
+    </linearGradient>
+
+    <!-- Curved Text Paths -->
+    <path id="textCircleTop" d="M 30,120 A 90,90 0 1,1 210,120" fill="none"/>
+    <path id="textCircleBottom" d="M 210,120 A 90,90 0 0,1 30,120" fill="none"/>
+  </defs>
+
+  <!-- Outer Solid Ring -->
+  <circle cx="120" cy="120" r="116" fill="url(#logoBg)" stroke="url(#goldGrad)" stroke-width="3"/>
+  <circle cx="120" cy="120" r="110" fill="none" stroke="#D9C39E" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+
+  <!-- Inner Enclosure -->
+  <circle cx="120" cy="120" r="82" fill="#0C2015" stroke="url(#goldGrad)" stroke-width="1.8"/>
+
+  <!-- Warm Lamp Light Radiance -->
+  <circle cx="120" cy="120" r="42" fill="url(#lampGlow)"/>
+
+  <!-- Stylized Handwoven Bamboo Pendant Lamp Centerpiece -->
+  <g id="lampIllustration" transform="translate(120, 116) scale(0.85)">
+    <!-- Suspension Cord -->
+    <line x1="0" y1="-56" x2="0" y2="-26" stroke="#D9C39E" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Ceiling Canopy / Top Ring -->
+    <ellipse cx="0" cy="-26" rx="8" ry="3" fill="#D9C39E" stroke="#A88752" stroke-width="1"/>
+
+    <!-- Lamp Dome Shape (Bamboo Lattice) -->
+    <path d="M -8,-25 C -28,-18 -42,8 -38,30 C -36,36 -28,40 0,40 C 28,40 36,36 38,30 C 42,8 28,-18 8,-25 Z" 
+          fill="#1C402B" stroke="url(#goldGrad)" stroke-width="2.2"/>
+    
+    <!-- Weave Ribs (Longitudinal) -->
+    <path d="M 0,-25 Q -22,10 -22,38" fill="none" stroke="#D9C39E" stroke-width="1.4" opacity="0.85"/>
+    <path d="M 0,-25 Q -10,10 -10,40" fill="none" stroke="#D9C39E" stroke-width="1.2" opacity="0.85"/>
+    <path d="M 0,-25 Q 10,10 10,40" fill="none" stroke="#D9C39E" stroke-width="1.2" opacity="0.85"/>
+    <path d="M 0,-25 Q 22,10 22,38" fill="none" stroke="#D9C39E" stroke-width="1.4" opacity="0.85"/>
+
+    <!-- Cross Weave Bands (Latitudinal) -->
+    <ellipse cx="0" cy="-10" rx="20" ry="4" fill="none" stroke="#D9C39E" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <ellipse cx="0" cy="8" rx="32" ry="5.5" fill="none" stroke="#D9C39E" stroke-width="1.3" stroke-dasharray="3,2"/>
+    <ellipse cx="0" cy="24" rx="37" ry="6" fill="none" stroke="#D9C39E" stroke-width="1.5" stroke-dasharray="3,2.5"/>
+
+    <!-- Lower Structural Bamboo Ring -->
+    <ellipse cx="0" cy="38" rx="36" ry="6.5" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+
+    <!-- Edison Bulb Filament Inside (Warm Center Glow) -->
+    <ellipse cx="0" cy="14" rx="7" ry="11" fill="#FFF2BD" opacity="0.9"/>
+    <path d="M -2,12 Q 0,8 2,12 Q 0,16 -2,12" fill="none" stroke="#E68523" stroke-width="1.5"/>
+
+    <!-- Radiant Ambient Light Rays from bottom of lamp -->
+    <path d="M -22,46 L -32,60 M -10,48 L -14,64 M 0,49 L 0,66 M 10,48 L 14,64 M 22,46 L 32,60" 
+          stroke="#F3DCAC" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <!-- Circular Text (Top: HAMPY CRAFT) -->
+  <text fill="#FBF9F5" font-family="'Cinzel', 'Newsreader', Georgia, serif" font-size="14.5" font-weight="700" letter-spacing="4.5">
+    <textPath href="#textCircleTop" startOffset="50%" text-anchor="middle">
+      HAMPY CRAFT
+    </textPath>
+  </text>
+
+  <!-- Decorative Stars on sides -->
+  <polygon points="34,120 37,122 36,126 33,123 30,125 32,121 30,118 33,119 35,116 35,120" fill="#D9C39E"/>
+  <polygon points="206,120 209,122 208,126 205,123 202,125 204,121 202,118 205,119 207,116 207,120" fill="#D9C39E"/>
+
+  <!-- Circular Text (Bottom: INDONESIAN HANDCRAFTED LIGHTING) -->
+  <text fill="#D9C39E" font-family="'Hanken Grotesk', system-ui, sans-serif" font-size="8.8" font-weight="600" letter-spacing="1.8">
+    <textPath href="#textCircleBottom" startOffset="50%" text-anchor="middle">
+      INDONESIAN HANDCRAFTED LIGHTING • BANTUL
+    </textPath>
+  </text>
+</svg>
