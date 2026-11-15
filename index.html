@@ -166,41 +166,39 @@
     </section>
 
     <!-- Interactive Lighting Atmosphere Studio -->
+        <!-- Interactive Lighting Atmosphere Studio (Aligned with Report) -->
     <section class="lighting-studio" id="studio">
       <div class="container">
         <div class="section-head center">
-          <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="studio_badge">Studio Eksperimen Interaktif</div>
-          <h2 data-i18n="studio_h2">Simulasi Pendaran Cahaya & Suasana Ruangan</h2>
-          <p class="lead" data-i18n="studio_lead">Uji bagaimana anyaman kisi bambu dan rotan Hampy Craft memancarkan bayangan hangat pada berbagai temperatur warna dan intensitas cahaya dimmer.</p>
+          <div class="badge badge-amber" style="margin-bottom: 12px;" data-i18n="studio_badge">Studio Simulasi Pencahayaan Laporan</div>
+          <h2 data-i18n="studio_h2">Simulasi Efek Cahaya & Pantulan Bayangan Geometris</h2>
+          <p class="lead" data-i18n="studio_lead">
+            Sesuai dokumentasi Bab 2.4 Laporan Resmi Ekspor: uji bagaimana pendaran cahaya bohlam menembus celah anyaman bambu apus, menciptakan pantulan bayangan geometris pada dinding, serta menghidupkan ruang makan hunian dan resor komersial.
+          </p>
         </div>
 
         <div class="studio-card">
           <!-- Left: 3D/Atmospheric Interior Stage -->
           <div class="studio-stage" id="studioStage">
             <div class="stage-room-bg" id="stageRoomBg"></div>
+            <div class="stage-shadow-overlay" id="stageShadowOverlay"></div>
             <div class="stage-light-aura" id="stageLightAura"></div>
 
-            <div class="stage-lamp-fixture">
+            <div class="stage-lamp-fixture" id="stageLampFixture">
               <div class="fixture-cord"></div>
               <div class="fixture-dome">
                 <!-- Vector Handcrafted Bamboo Pendant Lamp -->
                 <svg viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Canopy / Socket -->
                   <rect x="74" y="0" width="12" height="12" rx="2" fill="#B38B52"/>
-                  <!-- Woven Dome Shape -->
                   <path d="M70 12C36 24 16 65 24 105C26 115 36 122 80 122C124 122 134 115 136 105C144 65 124 24 90 12Z" fill="#1A3F2A" stroke="#E5C79E" stroke-width="2.5"/>
-                  <!-- Longitudinal Ribs -->
                   <path d="M80 12Q38 65 42 118" stroke="#D9C39E" stroke-width="1.8"/>
                   <path d="M80 12Q60 65 62 121" stroke="#D9C39E" stroke-width="1.5"/>
                   <path d="M80 12Q100 65 98 121" stroke="#D9C39E" stroke-width="1.5"/>
                   <path d="M80 12Q122 65 118 118" stroke="#D9C39E" stroke-width="1.8"/>
-                  <!-- Cross Weave Bands -->
                   <ellipse cx="80" cy="38" rx="26" ry="6" stroke="#D9C39E" stroke-width="1.4" stroke-dasharray="3,3"/>
                   <ellipse cx="80" cy="68" rx="44" ry="8" stroke="#D9C39E" stroke-width="1.6" stroke-dasharray="4,3"/>
                   <ellipse cx="80" cy="98" rx="53" ry="10" stroke="#D9C39E" stroke-width="1.8" stroke-dasharray="4,4"/>
-                  <!-- Lower Bamboo Ring -->
                   <ellipse cx="80" cy="118" rx="51" ry="10" stroke="#F3DCAC" stroke-width="3.5" fill="none"/>
-                  <!-- Inner Filament Bulb -->
                   <circle cx="80" cy="74" r="14" fill="#FFEBB0" opacity="0.95"/>
                   <path d="M77 70Q80 64 83 70Q80 76 77 70" stroke="#E67E22" stroke-width="2" fill="none"/>
                 </svg>
@@ -218,53 +216,157 @@
           <div class="studio-controls">
             <div>
               <div class="studio-controls-header">
-                <span data-i18n="studio_controls_tag">Lighting Controls</span>
-                <h3 data-i18n="studio_controls_title">Atur Karakteristik Lampu</h3>
-                <p style="font-size: 14.5px; color: var(--ink-muted);" data-i18n="studio_controls_desc">Pilih spektrum kelvin atau sesuaikan peredup (dimmer) untuk melihat adaptasi ruang.</p>
+                <span data-i18n="studio_controls_tag">Studio Kontrol Pencahayaan</span>
+                <h3 data-i18n="studio_controls_title">Simulasi Suasana Laporan</h3>
+                <p style="font-size: 14px; color: var(--ink-muted);" data-i18n="studio_controls_desc">Pilih skenario ruang laporan, ubah temperatur warna kelvin, atau sesuaikan peredup (dimmer).</p>
               </div>
 
-              <!-- Kelvin Presets -->
+              <!-- 1. Skenario Ruang Laporan -->
               <div class="control-group">
                 <div class="control-label">
-                  <span data-i18n="studio_temp_title">Temperatur Warna (Kelvin)</span>
+                  <span data-i18n="studio_scene_title">1. Pilih Skenario Ruang (Laporan Meifadhilah)</span>
                 </div>
-                <div class="temp-buttons">
+                <div class="scene-buttons" role="group" aria-label="Pilih Skenario Ruang">
+                  <button class="scene-btn active" data-scene="shadow" type="button">
+                    <span data-i18n="scene_shadow_name">🌟 Efek Bayangan Dinding</span>
+                    <small data-i18n="scene_shadow_sub">Gambar 2.2 Laporan</small>
+                  </button>
+                  <button class="scene-btn" data-scene="residential" type="button">
+                    <span data-i18n="scene_res_name">🏡 Area Hunian (Dining)</span>
+                    <small data-i18n="scene_res_sub">Gambar 2.3 Laporan</small>
+                  </button>
+                  <button class="scene-btn" data-scene="commercial" type="button">
+                    <span data-i18n="scene_comm_name">☕ Area Komersial (Kafe)</span>
+                    <small data-i18n="scene_comm_sub">Gambar 2.3 Laporan</small>
+                  </button>
+                  <button class="scene-btn" data-scene="fixture" type="button">
+                    <span data-i18n="scene_fix_name">🎋 Struktur Kap Kubah</span>
+                    <small data-i18n="scene_fix_sub">Gambar 2.1 Sketsa</small>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Kelvin Presets -->
+              <div class="control-group">
+                <div class="control-label">
+                  <span data-i18n="studio_temp_title">2. Karakteristik Warna Cahaya (Kelvin)</span>
+                </div>
+                <div class="temp-buttons" role="group" aria-label="Temperatur Warna">
                   <button class="temp-btn" data-temp="amber" type="button">
                     <span data-i18n="temp_amber_name">2200K Golden Amber</span>
                     <small data-i18n="temp_amber_desc">Intimate Dining / Cafe Bar</small>
                   </button>
                   <button class="temp-btn active" data-temp="warm" type="button">
-                    <span data-i18n="temp_warm_name">2700K Warm Sunset</span>
-                    <small data-i18n="temp_warm_desc">Boutique Resort / Suite</small>
+                    <span data-i18n="temp_warm_name">2700K Warm White (Edison)</span>
+                    <small data-i18n="temp_warm_desc">Standar Rekomendasi Laporan</small>
                   </button>
                   <button class="temp-btn" data-temp="soft" type="button">
                     <span data-i18n="temp_soft_name">3000K Soft White</span>
-                    <small data-i18n="temp_soft_desc">Lounge / Living Corner</small>
+                    <small data-i18n="temp_soft_desc">Japandi & Scandinavian</small>
                   </button>
-                  <button class="temp-btn" data-temp="daylight" type="button">
-                    <span data-i18n="temp_daylight_name">4000K Clean White</span>
-                    <small data-i18n="temp_daylight_desc">Inspeksi Detail Arsitektur</small>
-                  </button>
-                  <button class="temp-btn" data-temp="off" type="button" style="grid-column: span 2;">
-                    <span data-i18n="temp_off_name">Lampu Padam (Off)</span>
-                    <small data-i18n="temp_off_desc">Tampilan anyaman alami di siang hari</small>
+                  <button class="temp-btn" data-temp="off" type="button">
+                    <span data-i18n="temp_off_name">Lampu Padam (Daylight)</span>
+                    <small data-i18n="temp_off_desc">Tekstur Bambu Alami Siang</small>
                   </button>
                 </div>
               </div>
 
-              <!-- Dimmer Slider -->
+              <!-- 3. Dimmer Slider -->
               <div class="control-group">
                 <div class="control-label">
-                  <span data-i18n="studio_dimmer_title">Intensitas Cahaya (Dimmer)</span>
-                  <span id="dimmerVal" style="color: var(--amber);">85%</span>
+                  <span data-i18n="studio_dimmer_title">3. Intensitas Dimmer & Kontras Bayangan</span>
+                  <span id="dimmerVal" style="color: var(--amber); font-weight: 700;">85%</span>
                 </div>
                 <input class="dimmer-slider" id="dimmerSlider" type="range" min="0" max="100" value="85" aria-label="Atur intensitas cahaya">
               </div>
             </div>
 
             <div class="studio-callout" data-i18n-html="studio_callout_html">
-              <strong>💡 Catatan Arsitektural:</strong> Seluruh kap lampu Hampy Craft kompatibel dengan dimmer Trailing-Edge / Triac 220V–240V dan 110V (pasar US/Japan).
+              <strong>💡 Catatan Bab 2.4 Laporan:</strong> <em>"Cahaya bohlam menembus celah anyaman bambu dan menciptakan pantulan bayangan bermotif geometris pada dinding di sekitarnya. Efek pencahayaan ini menjadi ciri khas estetika produk Hampy Lumina."</em>
             </div>
+          </div>
+        </div>
+
+        <!-- Visual Report Evidence Showcase (4 Cards directly from the Report) -->
+        <div class="studio-showcase-wrap">
+          <div class="studio-showcase-head">
+            <div>
+              <div class="badge badge-amber" style="margin-bottom: 8px;" data-i18n="showcase_badge">Dokumentasi Visual Laporan Resmi</div>
+              <h3 style="font-size: 24px; color: var(--primary);" data-i18n="showcase_h3">Dokumentasi Foto Pengujian & Penempatan Laporan</h3>
+              <p style="font-size: 14px; color: var(--ink-secondary); margin-top: 4px;" data-i18n="showcase_desc">
+                Koleksi foto otentik implementasi, pengujian bayangan dinding, dan aplikasi ruang nyata dari laporan penelitian produk Hampy Lumina.
+              </p>
+            </div>
+          </div>
+
+          <div class="studio-showcase-grid">
+            <!-- Card 1: Shadow Wall -->
+            <article class="showcase-card" data-scene-trigger="shadow">
+              <div class="showcase-card-img-wrap">
+                <img src="images/shadow-wall.jpg" alt="Efek Pencahayaan Bayangan Dinding Geometris Hampy Lumina" loading="lazy">
+                <span class="showcase-card-badge" data-i18n="sc1_badge">Gambar 2.2 Laporan</span>
+              </div>
+              <div class="showcase-card-body">
+                <div>
+                  <h4 class="showcase-card-title" data-i18n="sc1_title">Efek Pencahayaan Dinding</h4>
+                  <p class="showcase-card-desc" data-i18n="sc1_desc">
+                    Cahaya bohlam menembus celah anyaman bambu apus dan menciptakan pantulan bayangan bermotif geometris pada dinding temaram.
+                  </p>
+                </div>
+                <button class="showcase-card-btn" type="button" data-i18n="sc1_btn">✨ Uji di Simulator</button>
+              </div>
+            </article>
+
+            <!-- Card 2: Residential -->
+            <article class="showcase-card" data-scene-trigger="residential">
+              <div class="showcase-card-img-wrap">
+                <img src="images/residential-dining.jpg" alt="Ilustrasi Penempatan Area Hunian Ruang Makan Keluarga" loading="lazy">
+                <span class="showcase-card-badge" data-i18n="sc2_badge">Gambar 2.3 Laporan</span>
+              </div>
+              <div class="showcase-card-body">
+                <div>
+                  <h4 class="showcase-card-title" data-i18n="sc2_title">Penempatan Area Hunian</h4>
+                  <p class="showcase-card-desc" data-i18n="sc2_desc">
+                    Menggantung di atas meja makan kayu keluarga, menghadirkan suasana hangat, akrab, dan membahagiakan saat makan malam bersama.
+                  </p>
+                </div>
+                <button class="showcase-card-btn" type="button" data-i18n="sc2_btn">🏡 Uji di Simulator</button>
+              </div>
+            </article>
+
+            <!-- Card 3: Commercial -->
+            <article class="showcase-card" data-scene-trigger="commercial">
+              <div class="showcase-card-img-wrap">
+                <img src="images/commercial-cafe.jpg" alt="Ilustrasi Penempatan Area Komersial Kafe dan Resor Bertingkat" loading="lazy">
+                <span class="showcase-card-badge" data-i18n="sc3_badge">Gambar 2.3 Laporan</span>
+              </div>
+              <div class="showcase-card-body">
+                <div>
+                  <h4 class="showcase-card-title" data-i18n="sc3_title">Penempatan Area Komersial</h4>
+                  <p class="showcase-card-desc" data-i18n="sc3_desc">
+                    Diaplikasikan bertingkat pada interior kafe dan resor bertema eco-green bergaya Japandi, Scandinavian, dan Tropical Boho.
+                  </p>
+                </div>
+                <button class="showcase-card-btn" type="button" data-i18n="sc3_btn">☕ Uji di Simulator</button>
+              </div>
+            </article>
+
+            <!-- Card 4: Sketch -->
+            <article class="showcase-card" data-scene-trigger="fixture">
+              <div class="showcase-card-img-wrap">
+                <img src="images/sketch-hampy.jpg" alt="Sketsa Tampilan Produk Asli Hampy Lumina" loading="lazy">
+                <span class="showcase-card-badge" data-i18n="sc4_badge">Gambar 2.1 Laporan</span>
+              </div>
+              <div class="showcase-card-body">
+                <div>
+                  <h4 class="showcase-card-title" data-i18n="sc4_title">Sketsa Rancangan Asli</h4>
+                  <p class="showcase-card-desc" data-i18n="sc4_desc">
+                    Sketsa tangan otentik "by mei": kubah anyaman simetris Ø35 cm × T 40 cm, cincin bambu pengunci bawah, dan fitting keramik E27.
+                  </p>
+                </div>
+                <button class="showcase-card-btn" type="button" data-i18n="sc4_btn">🎋 Uji di Simulator</button>
+              </div>
+            </article>
           </div>
         </div>
       </div>

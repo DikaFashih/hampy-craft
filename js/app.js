@@ -233,6 +233,52 @@
       contact_ig_lbl: 'Instagram Resmi:',
       contact_ref_title: 'Rujukan Pesanan Ekspor Aktif:',
       contact_ref_desc: 'Nordic Home Living B.V., Keizersgracht 241, Amsterdam, Belanda • PO-2026-HC-1000 (1.000 Unit Hampy Lumina FOB Tanjung Priok).'
+    ,
+      studio_badge: 'Studio Simulasi Pencahayaan Laporan',
+      studio_h2: 'Simulasi Efek Cahaya & Pantulan Bayangan Geometris',
+      studio_lead: 'Sesuai dokumentasi Bab 2.4 Laporan Resmi Ekspor: uji bagaimana pendaran cahaya bohlam menembus celah anyaman bambu apus, menciptakan pantulan bayangan geometris pada dinding, serta menghidupkan ruang makan hunian dan resor komersial.',
+      studio_controls_tag: 'Studio Kontrol Pencahayaan',
+      studio_controls_title: 'Simulasi Suasana Laporan',
+      studio_controls_desc: 'Pilih skenario ruang laporan, ubah temperatur warna kelvin, atau sesuaikan peredup (dimmer).',
+      studio_scene_title: '1. Pilih Skenario Ruang (Laporan Meifadhilah)',
+      scene_shadow_name: '🌟 Efek Bayangan Dinding',
+      scene_shadow_sub: 'Gambar 2.2 Laporan',
+      scene_res_name: '🏡 Area Hunian (Dining)',
+      scene_res_sub: 'Gambar 2.3 Laporan',
+      scene_comm_name: '☕ Area Komersial (Kafe)',
+      scene_comm_sub: 'Gambar 2.3 Laporan',
+      scene_fix_name: '🎋 Struktur Kap Kubah',
+      scene_fix_sub: 'Gambar 2.1 Sketsa',
+      studio_temp_title: '2. Karakteristik Warna Cahaya (Kelvin)',
+      temp_amber_name: '2200K Golden Amber',
+      temp_amber_desc: 'Intimate Dining / Cafe Bar',
+      temp_warm_name: '2700K Warm White (Edison)',
+      temp_warm_desc: 'Standar Rekomendasi Laporan',
+      temp_soft_name: '3000K Soft White',
+      temp_soft_desc: 'Japandi & Scandinavian',
+      temp_off_name: 'Lampu Padam (Daylight)',
+      temp_off_desc: 'Tekstur Bambu Alami Siang',
+      studio_dimmer_title: '3. Intensitas Dimmer & Kontras Bayangan',
+      studio_callout_html: '<strong>💡 Catatan Bab 2.4 Laporan:</strong> <em>"Cahaya bohlam menembus celah anyaman bambu dan menciptakan pantulan bayangan bermotif geometris pada dinding di sekitarnya. Efek pencahayaan ini menjadi ciri khas estetika produk Hampy Lumina."</em>',
+      showcase_badge: 'Dokumentasi Visual Laporan Resmi',
+      showcase_h3: 'Dokumentasi Foto Pengujian & Penempatan Laporan',
+      showcase_desc: 'Koleksi foto otentik implementasi, pengujian bayangan dinding, dan aplikasi ruang nyata dari laporan penelitian produk Hampy Lumina.',
+      sc1_badge: 'Gambar 2.2 Laporan',
+      sc1_title: 'Efek Pencahayaan Dinding',
+      sc1_desc: 'Cahaya bohlam menembus celah anyaman bambu apus dan menciptakan pantulan bayangan bermotif geometris pada dinding temaram.',
+      sc1_btn: '✨ Uji di Simulator',
+      sc2_badge: 'Gambar 2.3 Laporan',
+      sc2_title: 'Penempatan Area Hunian',
+      sc2_desc: 'Menggantung di atas meja makan kayu keluarga, menghadirkan suasana hangat, akrab, dan membahagiakan saat makan malam bersama.',
+      sc2_btn: '🏡 Uji di Simulator',
+      sc3_badge: 'Gambar 2.3 Laporan',
+      sc3_title: 'Penempatan Area Komersial',
+      sc3_desc: 'Diaplikasikan bertingkat pada interior kafe dan resor bertema eco-green bergaya Japandi, Scandinavian, dan Tropical Boho.',
+      sc3_btn: '☕ Uji di Simulator',
+      sc4_badge: 'Gambar 2.1 Laporan',
+      sc4_title: 'Sketsa Rancangan Asli',
+      sc4_desc: 'Sketsa tangan otentik "by mei": kubah anyaman simetris Ø35 cm × T 40 cm, cincin bambu pengunci bawah, dan fitting keramik E27.',
+      sc4_btn: '🎋 Uji di Simulator'
     },
     en: {
       // Document
@@ -457,7 +503,53 @@
       contact_ref_title: 'Active Export Reference Order:',
       contact_ref_desc: 'Nordic Home Living B.V., Keizersgracht 241, Amsterdam, Netherlands • PO-2026-HC-1000 (1,000 Hampy Lumina Units FOB Tanjung Priok).'
     }
-  };
+  ,
+      studio_badge: 'Report Lighting Simulation Studio',
+      studio_h2: 'Lighting Effect & Geometric Shadow Simulation',
+      studio_lead: 'Accredited from Section 2.4 of the Official Export Report: test how light filters through the Apus bamboo weave, projecting geometric shadow patterns across walls, and enriching residential dining and commercial resort spaces.',
+      studio_controls_tag: 'Lighting Controls Studio',
+      studio_controls_title: 'Report Ambiance Simulation',
+      studio_controls_desc: 'Select a report spatial scenario, adjust color kelvin temperature, or fine-tune dimmer intensity.',
+      studio_scene_title: '1. Select Spatial Scenario (Meifadhilah Report)',
+      scene_shadow_name: '🌟 Wall Shadow Effect',
+      scene_shadow_sub: 'Report Figure 2.2',
+      scene_res_name: '🏡 Residential Area (Dining)',
+      scene_res_sub: 'Report Figure 2.3',
+      scene_comm_name: '☕ Commercial Area (Cafe)',
+      scene_comm_sub: 'Report Figure 2.3',
+      scene_fix_name: '🎋 Dome Canopy Fixture',
+      scene_fix_sub: 'Report Figure 2.1 Sketch',
+      studio_temp_title: '2. Light Color Temperature (Kelvin)',
+      temp_amber_name: '2200K Golden Amber',
+      temp_amber_desc: 'Intimate Dining / Cafe Bar',
+      temp_warm_name: '2700K Warm White (Edison)',
+      temp_warm_desc: 'Report Recommended Standard',
+      temp_soft_name: '3000K Soft White',
+      temp_soft_desc: 'Japandi & Scandinavian',
+      temp_off_name: 'Lights Off (Daylight)',
+      temp_off_desc: 'Natural Bamboo Daylight Texture',
+      studio_dimmer_title: '3. Dimmer Intensity & Shadow Contrast',
+      studio_callout_html: '<strong>💡 Report Section 2.4 Note:</strong> <em>"Bulb light penetrates the gaps of the handwoven bamboo lattice, casting geometric shadow rays across surrounding walls. This lighting effect is the hallmark aesthetic of Hampy Lumina."</em>',
+      showcase_badge: 'Official Report Visual Evidence',
+      showcase_h3: 'Report Testing & Real Placement Photo Gallery',
+      showcase_desc: 'Authentic photo documentation of lighting tests, wall shadow reflections, and real spatial applications from the Hampy Lumina research report.',
+      sc1_badge: 'Report Figure 2.2',
+      sc1_title: 'Wall Lighting & Shadow Effect',
+      sc1_desc: 'Bulb illumination penetrates woven Apus bamboo slits, casting radiant geometric shadow patterns across dim room walls.',
+      sc1_btn: '✨ Test in Simulator',
+      sc2_badge: 'Report Figure 2.3',
+      sc2_title: 'Residential Dining Placement',
+      sc2_desc: 'Suspended above the wooden family dining table, creating an intimate, cozy, and joyful ambiance for shared dinners.',
+      sc2_btn: '🏡 Test in Simulator',
+      sc3_badge: 'Report Figure 2.3',
+      sc3_title: 'Commercial Hospitality Placement',
+      sc3_desc: 'Arranged in cascading heights across cafe and resort interiors with Japandi, Scandinavian, and Tropical Boho themes.',
+      sc3_btn: '☕ Test in Simulator',
+      sc4_badge: 'Report Figure 2.1',
+      sc4_title: 'Original Design Sketch',
+      sc4_desc: 'Authentic hand-drawn sketch "by mei": symmetrical woven dome Ø35 cm × H 40 cm, bottom locking ring, and ceramic E27 socket.',
+      sc4_btn: '🎋 Test in Simulator'
+    };
 
   // ==========================================================================
   // Gallery Applications Data (Bilingual ID / EN)
@@ -660,6 +752,44 @@
   // ==========================================================================
   // Lighting Atmosphere Presets (Bilingual ID / EN)
   // ==========================================================================
+  // ==========================================================================
+  // Report Scene Simulations Data (Figures 2.1 - 2.3)
+  // ==========================================================================
+  const SCENES_DATA = {
+    shadow: {
+      bg: 'images/shadow-wall.jpg',
+      showVectorFixture: false,
+      label_id: 'Efek Bayangan Dinding (Gambar 2.2)',
+      label_en: 'Wall Shadow Effect (Figure 2.2)',
+      baseBrightness: 0.35,
+      maxBrightness: 1.15
+    },
+    residential: {
+      bg: 'images/residential-dining.jpg',
+      showVectorFixture: false,
+      label_id: 'Area Hunian Dining (Gambar 2.3)',
+      label_en: 'Residential Dining (Figure 2.3)',
+      baseBrightness: 0.40,
+      maxBrightness: 1.10
+    },
+    commercial: {
+      bg: 'images/commercial-cafe.jpg',
+      showVectorFixture: false,
+      label_id: 'Area Komersial Kafe (Gambar 2.3)',
+      label_en: 'Commercial Cafe (Figure 2.3)',
+      baseBrightness: 0.40,
+      maxBrightness: 1.15
+    },
+    fixture: {
+      bg: 'images/japandi-dining.jpg',
+      showVectorFixture: true,
+      label_id: 'Struktur Kap Kubah (Gambar 2.1)',
+      label_en: 'Dome Canopy Fixture (Figure 2.1)',
+      baseBrightness: 0.25,
+      maxBrightness: 1.00
+    }
+  };
+
   const LIGHTING_PRESETS = {
     amber: {
       glow: 'rgba(255, 158, 44, 0.75)',
@@ -757,6 +887,7 @@
   let activeSlide = 0;
   let slideTimer = null;
   let activeStudioPreset = 'warm';
+  let activeStudioScene = 'shadow';
   let activeStudioDimmer = 85;
   let activeModalProduct = null;
 
@@ -836,30 +967,64 @@
   // 1. Interactive Lighting Atmosphere Studio
   // ==========================================================================
   function applyLighting() {
+    const scene = SCENES_DATA[activeStudioScene] || SCENES_DATA.shadow;
     const preset = LIGHTING_PRESETS[activeStudioPreset];
     if (!preset) return;
 
     const aura = $('stageLightAura');
     const bloom = $('fixtureGlowBloom');
     const roomBg = $('stageRoomBg');
+    const vectorFixture = $('stageLampFixture');
+    const shadowOverlay = $('stageShadowOverlay');
 
     const factor = activeStudioDimmer / 100;
-    const opacity = activeStudioPreset === 'off' ? 0 : factor * 0.9;
+    const isOff = activeStudioPreset === 'off' || activeStudioDimmer === 0;
+    const opacity = isOff ? 0 : factor * 0.9;
 
-    if (aura) {
-      aura.style.background = `radial-gradient(circle at 50% 45%, ${preset.glow} 0%, transparent 70%)`;
-      aura.style.opacity = opacity;
+    // 1. Scene background image and brightness filter
+    if (roomBg) {
+      roomBg.style.backgroundImage = `url('${scene.bg}')`;
+      if (isOff) {
+        roomBg.style.filter = 'brightness(0.35) contrast(0.9) grayscale(0.25)';
+        roomBg.style.opacity = '0.55';
+      } else {
+        const brightness = scene.baseBrightness + (scene.maxBrightness - scene.baseBrightness) * factor;
+        roomBg.style.filter = `brightness(${brightness.toFixed(2)}) contrast(${(1 + factor * 0.12).toFixed(2)})`;
+        roomBg.style.opacity = '1';
+      }
     }
 
-    if (bloom) {
+    // 2. Toggle vector fixture visibility (only in fixture sketch mode)
+    if (vectorFixture) {
+      vectorFixture.style.display = scene.showVectorFixture ? 'flex' : 'none';
+    }
+
+    // 3. Ambient lighting aura
+    if (aura) {
+      if (scene.showVectorFixture) {
+        aura.style.background = `radial-gradient(circle at 50% 45%, ${preset.glow} 0%, transparent 70%)`;
+        aura.style.opacity = opacity;
+      } else {
+        aura.style.background = `radial-gradient(circle at 50% 40%, ${preset.glow} 0%, transparent 75%)`;
+        aura.style.opacity = isOff ? 0 : opacity * 0.75;
+      }
+    }
+
+    // 4. Bloom glow for fixture
+    if (bloom && scene.showVectorFixture) {
       bloom.style.background = preset.core;
       bloom.style.opacity = opacity;
       bloom.style.filter = `blur(${12 + factor * 14}px)`;
       bloom.style.transform = `translateX(-50%) scale(${0.7 + factor * 0.5})`;
     }
 
-    if (roomBg) {
-      roomBg.style.opacity = Math.max(0.12, preset.roomBg * (0.4 + factor * 0.6));
+    // 5. Geometric shadow rays overlay (active in shadow scene)
+    if (shadowOverlay) {
+      if (activeStudioScene === 'shadow' && !isOff) {
+        shadowOverlay.style.opacity = (factor * 0.65).toFixed(2);
+      } else {
+        shadowOverlay.style.opacity = '0';
+      }
     }
 
     updateLightingStudioText();
@@ -869,11 +1034,14 @@
     const indicatorText = $('indicatorText');
     const dimmerVal = $('dimmerVal');
     const preset = LIGHTING_PRESETS[activeStudioPreset];
+    const scene = SCENES_DATA[activeStudioScene] || SCENES_DATA.shadow;
     if (!preset) return;
 
     const label = currentLang === 'en' ? preset.label_en : preset.label_id;
+    const sceneLabel = currentLang === 'en' ? scene.label_en : scene.label_id;
+
     if (indicatorText) {
-      indicatorText.textContent = `${label} (${activeStudioDimmer}%)`;
+      indicatorText.textContent = `${sceneLabel} • ${label} (${activeStudioDimmer}%)`;
     }
     if (dimmerVal) {
       dimmerVal.textContent = `${activeStudioDimmer}%`;
@@ -883,16 +1051,38 @@
   function initLightingStudio() {
     const dimmer = $('dimmerSlider');
     const tempBtns = document.querySelectorAll('.temp-btn');
+    const sceneBtns = document.querySelectorAll('.scene-btn');
+    const showcaseCards = document.querySelectorAll('[data-scene-trigger]');
 
+    // Temperature buttons
     tempBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         tempBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeStudioPreset = btn.getAttribute('data-temp') || 'warm';
         applyLighting();
+  });
+    });
+
+    // Showcase cards click to activate scene in studio
+    showcaseCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const targetScene = card.getAttribute('data-scene-trigger');
+        if (targetScene && SCENES_DATA[targetScene]) {
+          activeStudioScene = targetScene;
+          sceneBtns.forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-scene') === targetScene);
+          });
+          applyLighting();
+          const studioSec = $('studio');
+          if (studioSec) {
+            studioSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       });
     });
 
+    // Dimmer range slider
     if (dimmer) {
       dimmer.addEventListener('input', e => {
         activeStudioDimmer = parseInt(e.target.value, 10) || 0;
@@ -902,6 +1092,7 @@
 
     applyLighting();
   }
+
 
   // ==========================================================================
   // 2. Dynamic Hero Slider
