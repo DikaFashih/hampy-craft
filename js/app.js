@@ -1081,6 +1081,7 @@
           </div>
 
           <div class="card-body">
+            <span class="card-lamp-name">${lampUsed}</span>
             <h3 class="card-title">${title}</h3>
             <p class="card-desc">${desc}</p>
 
