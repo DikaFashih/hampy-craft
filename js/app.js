@@ -1069,40 +1069,32 @@
       const title = currentLang === 'en' ? p.title_en : p.title_id;
       const settingLabel = currentLang === 'en' ? p.settingLabel_en : p.settingLabel_id;
       const lampUsed = currentLang === 'en' ? p.lampUsed_en : p.lampUsed_id;
-      const desc = currentLang === 'en' ? p.d_en : p.d_id;
 
       const btnQuoteText = isSelected ? dict.card_btn_added : dict.card_btn_quote;
+      const hintText = currentLang === 'en' ? 'Click for Details' : 'Klik untuk Detail';
 
       return `
-        <article class="gallery-card ${p.spanClass}" id="${p.anchor}" data-id="${p.id}">
-          <div class="card-img-wrap">
+        <article class="gallery-card" id="${p.anchor}" data-id="${p.id}">
+          <div class="card-img-wrap" title="${currentLang === 'en' ? 'Click to view full details' : 'Klik untuk melihat detail lengkap'}">
             <img src="${p.img}" alt="${title}" loading="lazy" onerror="this.src='images/dining-pendant.jpg'">
             <span class="card-tag">${settingLabel}</span>
+            <div class="card-img-overlay-hint">
+              <span>🔍 ${hintText}</span>
+            </div>
           </div>
 
           <div class="card-body">
             <span class="card-lamp-name">${lampUsed}</span>
             <h3 class="card-title">${title}</h3>
-            <p class="card-desc">${desc}</p>
 
-            <table class="card-specs-table">
-              <tr>
-                <td>${dict.modal_lbl_dims}</td>
-                <td>${dim}</td>
-              </tr>
-              <tr>
-                <td>${dict.modal_lbl_unit_wt}</td>
-                <td>${wtUnit} (${wtCarton} / box)</td>
-              </tr>
-              <tr>
-                <td>${dict.modal_lbl_carton_qty}</td>
-                <td>${p.cartonQty} • ${p.cbm}</td>
-              </tr>
-            </table>
+            <div class="card-quick-meta">
+              <span class="meta-pill">📏 ${dim}</span>
+              <span class="meta-pill">📦 ${p.cartonQty}</span>
+            </div>
 
             <div class="card-actions">
               <button class="btn btn-secondary card-spec-btn" data-id="${p.id}" type="button">
-                ${dict.card_btn_spec}
+                🔍 ${dict.card_btn_spec}
               </button>
               <button class="btn card-quote-btn ${isSelected ? 'btn-active' : ''}" data-id="${p.id}" type="button">
                 ${btnQuoteText}
@@ -1114,15 +1106,30 @@
     }).join('');
 
     // Attach Event Listeners
+    // 1. Click image to open detail modal
+    grid.querySelectorAll('.card-img-wrap').forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const card = wrap.closest('.gallery-card');
+        if (card) {
+          const id = card.getAttribute('data-id');
+          openSpecModal(id);
+        }
+      });
+    });
+
+    // 2. Click spec button to open detail modal
     grid.querySelectorAll('.card-spec-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const id = btn.getAttribute('data-id');
         openSpecModal(id);
       });
     });
 
+    // 3. Click quote button
     grid.querySelectorAll('.card-quote-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const id = btn.getAttribute('data-id');
         toggleQuoteItem(id);
       });
@@ -1387,7 +1394,7 @@
     if (!overlay) return;
 
     updateModalContent();
-    overlay.classList.add('active');
+    overlay.classList.add('active'); overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
@@ -1395,7 +1402,7 @@
   function closeSpecModal() {
     const overlay = $('specModalOverlay');
     if (!overlay) return;
-    overlay.classList.remove('active');
+    overlay.classList.remove('active'); overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
@@ -1416,6 +1423,11 @@
     const wtUnit = isMetric ? prod.weightUnitCm : prod.weightUnitIn;
     const wtCarton = isMetric ? prod.weightCartonCm : prod.weightCartonIn;
 
+    const modalImg = $('modalImg');
+    if (modalImg) {
+      modalImg.src = prod.img;
+      modalImg.alt = title;
+    }
     if ($('modalTitle')) $('modalTitle').textContent = `${lampUsed} — ${title}`;
     if ($('modalDesc')) $('modalDesc').textContent = desc;
 
