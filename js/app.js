@@ -29,7 +29,6 @@
       nav_gallery: 'Galeri Aplikasi',
       nav_packaging: 'Kemasan Ekspor',
       nav_estimator: 'Estimator Kargo',
-      nav_reviews: 'Ulasan Buyer',
       nav_contact: 'Kontak / RFQ',
       quote_basket_btn: 'Quote Basket',
 
@@ -70,15 +69,15 @@
       studio_callout_html: '<strong>💡 Catatan Arsitektural:</strong> Seluruh kap lampu Hampy Craft kompatibel dengan dimmer Trailing-Edge / Triac 220V–240V dan 110V (pasar US/Japan).',
 
       // About Section
-      about_badge: 'Workshop Sleman, Yogyakarta',
-      about_h2: 'Kami menganyam kap lampu, Anda menentukan skala & atmosfer ruang.',
-      about_p1: 'Hampy Craft lahir dari tradisi kriya luhur Sleman, Daerah Istimewa Yogyakarta. Kami memproduksi kap lampu gantung arsitektural dari belahan bambu apus pilihan dan rotan alami berkualitas tinggi.',
-      about_p2: 'Arsitek interior, tim pengadaan hotel butik, dan distributor internasional mempercayakan pesanan skala proyek maupun pesanan kontainer penuh kepada kami karena setiap kap dianyam di atas rangka melingkar struktural yang menjamin stabilitas bentuk di iklim tropis berkelembapan tinggi maupun ruang ber-AC.',
-      stat_1_lbl: 'Bambu & Rotan Alami Terbarukan',
-      stat_2_lbl: 'Risiko Kerusakan Kargo (Knock-down)',
-      stat_3_val: '15+ Hari',
-      stat_3_lbl: 'Pengeringan Oven & Anti-Bubuk',
-      stat_4_lbl: 'Kota & Negara Tujuan Ekspor',
+      about_badge: 'Workshop Sleman, D.I. Yogyakarta',
+      about_h2: 'Kami Menganyam Kap Lampu, Anda Menentukan Skala & Atmosfer Ruang.',
+      about_p1: 'Hampy Craft lahir dari tradisi kriya luhur Sleman, Daerah Istimewa Yogyakarta. Berakar dari dua pilar filosofi "Handmade & Happy" serta "Hangat & Happy", kami memadukan dedikasi ketelitian tangan para empu pengrajin lokal dengan pendaran cahaya temaram yang membawa kebahagiaan dan ketenangan ruang.',
+      about_p2: 'Setiap fixtur kap lampu diproduksi dari bambu apus (Gigantochloa apus) pilihan—Hasil Hutan Bukan Kayu (HHBK) terbarukan dengan jejak karbon rendah. Melewati proses pengeringan oven (kiln-dried) anti-bubuk serta pelapisan pernis berbasis air (water-based clear matte coating) yang ramah lingkungan, tidak berbau, dan tahan terhadap fluktuasi kelembapan maupun musim dingin ekstrem negara tujuan ekspor.',
+      stat_1_lbl: 'Bambu Apus Alami Terbarukan (HHBK Rendah Karbon)',
+      stat_2_lbl: 'Kerusakan Kargo Laut (Sistem Knock-Down Teruji)',
+      stat_3_val: 'CE / 110–240V',
+      stat_3_lbl: 'Standar Elektrikal Universal & Fitting Keramik E27',
+      stat_4_lbl: 'Kode HS Resmi Ekspor Anyaman Bambu',
       about_btn: 'Diskusikan Kebutuhan Proyek Anda',
       stamp_title: 'Hampy Craft Sleman',
       stamp_subtitle: 'Autentik Handcrafted Yogyakarta',
@@ -86,13 +85,13 @@
       // Values / Export Standards
       values_badge: 'Standar Manufaktur Ekspor',
       values_h2: 'Spesifikasi Ketat untuk Pengiriman Internasional',
-      values_lead: 'Protokol produksi terstandarisasi yang dirancang khusus untuk mematuhi regulasi kargo laut dan keselamatan instalasi komersial.',
-      val1_title: 'Perlakuan Bambu Anti-Bubuk & Oven Kering',
-      val1_desc: 'Bambu dipanen selektif, direndam larutan ramah lingkungan anti-borer (hama bubuk), dan dikeringkan hingga ambang kadar air stabil (kiln-dried) agar tidak melengkung atau retak saat menghadapi musim dingin di negara tujuan.',
-      val2_title: 'Kotak Komponen Elektrikal Terpisah',
-      val2_desc: 'Fitting keramik E27, kabel gantung vintage berbalut kain, dan bohlam filamen Edison dikemas dalam kotak sub-internal khusus untuk menghilangkan risiko gesekan terhadap kubah anyaman selama pelayaran kontainer.',
-      val3_title: 'Efisiensi Kargo Sistem Knock-Down',
-      val3_desc: 'Selubung kertas kraft bertekstur, bantalan busa berkontur pada tepi anyaman, dan karton bergelombang 5-ply memaksimalkan kepadatan muatan kontainer 20ft & 40ft HC tanpa mengorbankan keamanan.',
+      values_lead: 'Protokol produksi terstandarisasi yang dirancang khusus untuk mematuhi regulasi kargo laut dan keselamatan instalasi arsitektur komersial.',
+      val1_title: 'Perlakuan Bambu Oven Kering & Kiln-Dried Anti-Bubuk',
+      val1_desc: 'Bambu apus dipanen selektif, direndam larutan ramah lingkungan anti-borer (bubuk kayu), dan dikeringkan oven terkontrol hingga kadar air stabil agar tidak melengkung, retak, atau berjamur saat tiba di pelabuhan tujuan.',
+      val2_title: 'Sub-Box Komponen Elektrikal Terpisah (Knock-Down)',
+      val2_desc: 'Fitting keramik E27 standar CE tahan panas, kabel serat kain (fabric-braided cord) 1,5 meter, dan kanopi plafon dikemas dalam kotak internal tersendiri untuk menghilangkan risiko gesekan terhadap kubah anyaman saat pelayaran laut.',
+      val3_title: 'Multi-Layer & Zero-Plastic Packaging System',
+      val3_desc: 'Kombinasi Cotton Dust Bag katun alami, bantalan Honeycomb Paper Wrap peredam getaran, sekat partisi karton kaku, dan master box 5-ply (50×50×45 cm). 100% bebas plastik sekali pakai dan bersertifikat Fumigasi & Fitosanitari resmi.',
 
       // Applications Gallery
       gallery_badge: 'Portofolio & Fixtur',
@@ -112,29 +111,29 @@
       // Packaging Section (Hampy Lumina)
       pkg_badge: 'Hampy Lumina Architecture',
       pkg_h2: 'Kemasan dan Identitas Produk: Hampy Lumina',
-      pkg_lead: 'Dirancang khusus untuk keamanan pengiriman ekspor jarak jauh sekaligus menghadirkan pengalaman unboxing premium beridentitas hijau tua, putih, dan logo resmi Hampy Craft.',
+      pkg_lead: 'Dirancang khusus untuk keselamatan pengiriman ekspor jarak jauh lintas samudera sekaligus menghadirkan pengalaman unboxing mewah beridentitas hijau tua & putih resmi Hampy Craft.',
       pkg_banner_title: 'Arsitektur Kemasan Eksklusif & Pengalaman Unboxing',
       pkg_fig_cap: '<strong>Visualisasi Resmi Kemasan Hampy Lumina:</strong> Proteksi internal berlapis & kotak ritel/ekspor beridentitas hijau tua & putih.',
-      pkg_fig_dim: 'Dimensi Kubah: Ø35 cm × T 40 cm • 4 pcs / Master Karton',
+      pkg_fig_dim: 'Dimensi Kubah: Ø35 cm × T 40 cm • 10 pcs / Master Karton (50 × 50 × 45 cm • 0.1125 CBM)',
       unbox_title: 'Momen Unboxing Interaktif (Langkah Demi Langkah):',
-      unbox_tab1: '1. Buka Kotak Ekspor',
-      unbox_tab2: '2. Busa Pelindung & Rangka',
+      unbox_tab1: '1. Buka Master Box 5-Ply',
+      unbox_tab2: '2. Honeycomb Wrap & Divider',
       unbox_tab3: '3. Pasang Fitting & Gantung',
-      unbox_s1_h4: 'Langkah 1: Segel Luar & Identitas Merek',
-      unbox_s1_p: 'Karton tebal 5-ply beridentitas hijau tua & putih dengan marka internasional (This Way Up, Fragile, Keep Dry). Segel anti-rusak menjaga integritas isi paket selama perjalanan lintas benua.',
-      unbox_s1_li1: 'Karton kraft tahan beban tumpuk kontainer',
-      unbox_s1_li2: 'Label batch produksi dan nomor seri terdaftar',
-      unbox_s1_li3: 'Pita segel pengaman merek Hampy Craft',
-      unbox_s2_h4: 'Langkah 2: Angkat Busa & Ambil Kotak Listrik',
-      unbox_s2_p: 'Busa pelindung atas (top foam cushion) berkontur khusus menahan kap lampu agar tidak berguncang. Di bagian atas, kotak komponen elektrikal terpisah dapat diangkat dengan mudah.',
-      unbox_s2_li1: 'Kabel kain vintage & fitting keramik E27 terlindung rapat',
-      unbox_s2_li2: 'Bohlam filamen Edison dalam wadah anti-pecah',
-      unbox_s2_li3: 'Kertas kraft pembungkus bambu dibuka tanpa meninggalkan bekas',
-      unbox_s3_h4: 'Langkah 3: Sambungkan Fitting & Lampu Siap Menyala',
-      unbox_s3_p: 'Pasang cincin penahan fitting kuningan ke rangka kubah bambu. Gantung pada kanopi plafon dan nikmati pendaran bayangan kisi bambu yang anggun.',
-      unbox_s3_li1: 'Pemasangan cepat tanpa alat bantu rumit (< 5 menit per lampu)',
-      unbox_s3_li2: 'Cincin bambu struktural menjaga kelengkungan simetris',
-      unbox_s3_li3: 'Pancaran cahaya 2700K langsung menghidupkan suasana ruang',
+      unbox_s1_h4: 'Langkah 1: Segel Luar, Master Karton 5-Ply & Marka Ekspor',
+      unbox_s1_p: 'Master karton Double Wall Corrugated Board (50 × 50 × 45 cm, 0.1125 CBM) beridentitas hijau tua & putih resmi. Dilengkapi marka internasional (This Way Up, Fragile, Keep Dry) serta sertifikasi fumigasi & fitosanitari.',
+      unbox_s1_li1: 'Karton 5-ply tahan beban tumpuk kontainer (high bursting strength)',
+      unbox_s1_li2: '100% Zero-Plastic ramah lingkungan sesuai regulasi Uni Eropa',
+      unbox_s1_li3: 'Sertifikat Fumigasi & Fitosanitari karantina ekspor resmi',
+      unbox_s2_h4: 'Langkah 2: Honeycomb Paper Wrap, Cotton Dust Bag & Divider Insert',
+      unbox_s2_p: 'Buka segel master box untuk menemukan 10 unit Hampy Lumina yang terlindungi aman. Setiap kubah anyaman dibungkus Cotton Dust Bag kain katun halus dan lapisan peredam Honeycomb Paper Wrap anti-guncangan.',
+      unbox_s2_li1: 'Cotton Dust Bag katun lembut bebas gesekan mikro dan debu pelabuhan',
+      unbox_s2_li2: 'Honeycomb paper wrap heksagonal penyerap getaran benturan kapal',
+      unbox_s2_li3: 'Corrugated divider insert memisahkan sub-box elektrikal & kubah lampu',
+      unbox_s3_h4: 'Langkah 3: Pemasangan Fitting Keramik E27 & Gantung Sempurna',
+      unbox_s3_p: 'Ambil komponen fitting keramik E27 dari sub-box, pasang cincin penahan ke kubah bambu, hubungkan kabel kain vintage ke kanopi plafon, dan pasang bohlam. Siap memancarkan kehangatan ruang dalam hitungan menit.',
+      unbox_s3_li1: 'Pemasangan cepat tanpa alat bantu rumit (< 5 menit per unit)',
+      unbox_s3_li2: 'Fitting keramik E27 tahan panas standar CE (universal 110V–240V)',
+      unbox_s3_li3: 'Pancaran cahaya hangat 2200K–2700K langsung menghidupkan suasana ruang',
       kd_bar_h4: 'Pemberlakuan Prinsip Knock-Down',
       kd_bar_p: 'Efisiensi ruang kargo kontainer, kemudahan perakitan di lokasi proyek hotel, dan minim risiko kerusakan pada bagian rentan.',
       kd_s1_title: '1. Buka Kemasan',
@@ -147,17 +146,17 @@
       // Container & Cargo Estimator
       est_badge: 'Kalkulator Logistik Ekspor',
       est_h2: 'Estimator Volume Kargo CBM & Master Karton',
-      est_lead: 'Hitung estimasi volume kubikasi kargo (CBM), jumlah master box, berat kotor, serta estimasi keterisian kontainer 20ft / 40ft untuk pesanan proyek Anda.',
+      est_lead: 'Hitung estimasi volume kubikasi kargo (CBM), jumlah master box karton, berat kotor, serta estimasi keterisian kontainer 20ft / 40ft berdasarkan parameter resmi ekspor Hampy Lumina.',
       est_label_model: 'Pilih Model Fixtur Lampu',
       est_label_qty: 'Jumlah Pesanan (Pcs)',
       est_btn_calc: 'Hitung Estimasi Kargo',
-      est_note: '*Estimasi didasarkan pada packing density standar ekspor Hampy Craft. Packing list final akan disesuaikan saat finalisasi order.',
+      est_note: '*Perhitungan mengacu pada standar master box ekspor Hampy Lumina (50 × 50 × 45 cm, 10 pcs/box, 14.75 kg gross). Acuan 1.000 pcs = 100 box = 11.25 CBM = 7 palet ekspor.',
       est_res_title: 'Hasil Kalkulasi Kargo',
       est_res_row_cartons: 'Estimasi Master Karton',
       est_res_row_cbm: 'Total Kubikasi (CBM)',
       est_res_row_weight: 'Estimasi Berat Kotor (Gross Weight)',
-      gauge_20_title: 'Keterisian Kontainer 20ft FCL',
-      gauge_40_title: 'Keterisian Kontainer 40ft High Cube FCL',
+      gauge_20_title: 'Keterisian Kontainer 20ft FCL (~33 CBM kap.)',
+      gauge_40_title: 'Keterisian Kontainer 40ft High Cube FCL (~68 CBM kap.)',
 
       // Commercial Terms
       terms_h2: 'Ketentuan Perdagangan & Pengadaan (Trading Terms)',
@@ -168,29 +167,20 @@
       term2_desc: '3–5 minggu untuk batch 100–300 pcs. 6–8 minggu untuk 1x20ft / 40ft kontainer penuh.',
       term3_title: 'Ketentuan Pembayaran',
       term3_desc: 'T/T Deposit 50% pada konfirmasi pesanan, pelunasan 50% terhadap salinan Bill of Lading (B/L) atau L/C at sight.',
-      term4_title: 'Pelabuhan Muat & Incoterms',
-      term4_desc: 'Semarang (Pelabuhan Tanjung Mas) atau Surabaya (Tanjung Perak) • FOB, CIF, atau EXW Workshop Sleman.',
+      term4_title: 'Pelabuhan Muat, Rute & Incoterms',
+      term4_desc: 'FOB Pelabuhan Tanjung Priok (Jakarta) / Tanjung Emas (Semarang) → Port of Rotterdam (Belanda) → Gudang Amsterdam (Nordic Home Living B.V.).',
 
       // Reviews
-      reviews_badge: 'Testimoni Internasional',
-      reviews_h2: 'Ulasan Pembeli & Arsitek Pengadaan',
-      reviews_lead: 'Kesan dari direktur procurement perhotelan, arsitek resort mewah, dan distributor lampu global.',
-      rev1_quote: '“Kemasan knock-down Hampy Lumina dengan kotak elektrikal terpisah dan bantalan busa terbukti menghasilkan zero breakage pada pengiriman 120 kap lampu ke resort kami.”',
-      rev1_role: 'Procurement Director, Eco-Resort Bali & Lombok',
-      rev2_quote: '“Kami menentukan model Ombak dan Jala untuk enam villa mewah di Canggu. Anyaman bambu alami dan pendaran Edison hangat berpadu sempurna dengan dinding batu hijau kami.”',
-      rev2_role: 'Principal Interior Architect, Studio Kriya Tropis',
-      rev3_quote: '“Kotak ritel hijau tua dengan logo emblem Hampy Craft memberikan impresi unboxing yang sangat berkelas di showroom kami di Australia. Sangat direkomendasikan.”',
-      rev3_role: 'Head of Purchasing, Melbourne Home & Lighting Importers',
 
       // Contact & Quotation
       contact_badge: 'Inquiry & Penawaran',
       contact_h2: 'Kirimkan Rencana Proyek Anda',
       contact_lead: 'Sampaikan kebutuhan fixtur, estimasi kuantitas, serta pelabuhan tujuan kargo. Tim kami di Sleman akan menyusun penawaran resmi, jadwal produksi, dan rincian kubikasi kargo.',
       contact_ws_title: 'Workshop Hampy Craft:',
-      contact_address_html: 'Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia',
+      contact_address_html: 'Sentra Kerajinan Bambu Sleman, Daerah Istimewa Yogyakarta 55581, Indonesia',
       contact_hours_title: 'Jam Layanan Dagang:',
       contact_hours_val: 'Senin – Sabtu, 08:00 – 17:00 WIB (UTC+7)',
-      contact_email_lbl: 'Email Dagang:',
+      contact_email_lbl: 'Email Layanan & Dagang:',
       contact_wa_lbl: 'WhatsApp Ekspor:',
       quick_wa_title: '💬 Respon Cepat via WhatsApp',
       quick_wa_desc: 'Klik tombol di bawah untuk langsung terhubung dengan tim pengadaan dan kalkulasi penawaran via WhatsApp.',
@@ -219,7 +209,7 @@
       footer_col_nav: 'Navigasi',
       footer_col_coll: 'Koleksi Fixtur',
       footer_col_ws: 'Workshop Sleman',
-      footer_address_html: 'Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia<br>Email: <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>',
+      footer_address_html: 'Sentra Kerajinan Bambu Sleman, D.I. Yogyakarta 55581, Indonesia<br>Email: <a href="mailto:customercare@hampycraft.com" style="color: var(--kraft);">customercare@hampycraft.com</a> / <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>Instagram: <a href="https://www.instagram.com/hampycraft.id" target="_blank" rel="noopener" style="color: var(--kraft);">@hampycraft.id</a><br>WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>',
       footer_copyright: '© 2026 Hampy Craft. Seluruh hak cipta dilindungi. Handcrafted in Sleman, Yogyakarta.',
       footer_standards: 'Standar Ekspor ISO/CE • Knock-Down Packaging Architecture',
 
@@ -236,9 +226,14 @@
       modal_lbl_carton_wt: 'Berat Kotor / Master Box',
       modal_lbl_carton_qty: 'Isi per Master Karton',
       modal_lbl_cbm: 'Volume Kubikasi Kargo',
-      modal_lbl_app: 'Aplikasi Ruang Ideal'
+      modal_lbl_app: 'Aplikasi Ruang Ideal',
+      stat_4_val: '9405.99.20',
+      est_res_row_pallets: 'Konfigurasi Palet Ekspor',
+      est_res_row_route: 'Rute & Pelabuhan Tujuan',
+      contact_ig_lbl: 'Instagram Resmi:',
+      contact_ref_title: 'Rujukan Pesanan Ekspor Aktif:',
+      contact_ref_desc: 'Nordic Home Living B.V., Keizersgracht 241, Amsterdam, Belanda • PO-2026-HC-1000 (1.000 Unit Hampy Lumina FOB Tanjung Priok).'
     },
-
     en: {
       // Document
       doc_title: 'Hampy Craft | Indonesian Handcrafted Lighting — Sleman, Yogyakarta',
@@ -254,10 +249,9 @@
       brand_tagline: 'Indonesian Handcrafted Lighting',
       nav_about: 'About Us',
       nav_studio: 'Light Studio',
-      nav_gallery: 'Applications Gallery',
+      nav_gallery: 'Application Gallery',
       nav_packaging: 'Export Packaging',
-      nav_estimator: 'Freight Estimator',
-      nav_reviews: 'Buyer Reviews',
+      nav_estimator: 'Cargo Estimator',
       nav_contact: 'Contact / RFQ',
       quote_basket_btn: 'Quote Basket',
 
@@ -298,29 +292,29 @@
       studio_callout_html: '<strong>💡 Architectural Note:</strong> All Hampy Craft pendant fixtures are fully compatible with Trailing-Edge / Triac dimmers for 220V–240V and 110V (US/Japan markets).',
 
       // About Section
-      about_badge: 'Workshop Sleman, Yogyakarta',
-      about_h2: 'We weave the lampshades; you define the scale & spatial atmosphere.',
-      about_p1: 'Hampy Craft stems from the rich artisan craftsmanship of Sleman, Yogyakarta, Indonesia. We manufacture architectural pendant fixtures woven from hand-selected Apus bamboo and high-grade natural rattan.',
-      about_p2: 'Interior architects, boutique hotel procurement teams, and global lighting distributors trust us with bespoke project batches and full container loads. Each shade is formed over reinforced structural rings ensuring geometric stability in both tropical humidity and air-conditioned interiors.',
-      stat_1_lbl: 'Renewable Natural Bamboo & Rattan',
-      stat_2_lbl: 'Cargo Damage Rate (Knock-Down)',
-      stat_3_val: '15+ Days',
-      stat_3_lbl: 'Kiln-Drying & Anti-Borer Treatment',
-      stat_4_lbl: 'Global Export Destination Markets',
+      about_badge: 'Sleman Workshop, D.I. Yogyakarta',
+      about_h2: 'We Weave the Shades, You Define the Scale & Atmosphere.',
+      about_p1: 'Hampy Craft was born from the revered craftsmanship traditions of Sleman, Special Region of Yogyakarta. Rooted in our twin philosophies "Handmade & Happy" and "Warm & Happy", we combine the meticulous dedication of local master artisans with warm ambient illumination that brings serenity and joy to any interior.',
+      about_p2: 'Every fixture is crafted from selected Apus bamboo (Gigantochloa apus)—a rapidly renewable Non-Timber Forest Product (NTFP) with minimal carbon footprint. Processed with kiln-dried oven anti-borer treatment and eco-friendly water-based clear matte coating, completely odorless, non-toxic, and resistant to European winter and seasonal humidity.',
+      stat_1_lbl: 'Renewable Natural Apus Bamboo (Low-Carbon NTFP)',
+      stat_2_lbl: 'Ocean Cargo Breakage Rate (Tested Knock-Down System)',
+      stat_3_val: 'CE / 110–240V',
+      stat_3_lbl: 'Universal Electrical Standard & Heat-Resistant Ceramic E27',
+      stat_4_lbl: 'Official Export Harmonized Tariff Code (HS Code)',
       about_btn: 'Discuss Your Project Requirements',
       stamp_title: 'Hampy Craft Sleman',
       stamp_subtitle: 'Authentic Handcrafted Yogyakarta',
 
       // Values / Export Standards
       values_badge: 'Export Manufacturing Standards',
-      values_h2: 'Rigorous Specifications for Global Shipping',
-      values_lead: 'Standardized production protocols designed specifically to comply with ocean freight regulations and commercial installation safety.',
-      val1_title: 'Anti-Borer Treatment & Kiln-Drying',
-      val1_desc: 'Bamboo is harvested sustainably, treated with non-toxic anti-borer solutions, and kiln-dried to equilibrium moisture content to prevent warping or splitting in cold destination climates.',
-      val2_title: 'Independent Electrical Component Box',
-      val2_desc: 'Ceramic E27 sockets, vintage fabric-braided suspension cords, and Edison filament bulbs are packed inside dedicated internal boxes, eliminating rubbing against the woven dome during ocean transit.',
-      val3_title: 'Knock-Down Space Efficiency',
-      val3_desc: 'Textured kraft paper wrapping, contoured rim foam cushioning, and heavy-duty 5-ply corrugated export cartons maximize loading density in 20ft & 40ft HC containers without sacrificing safety.',
+      values_h2: 'Rigorous Specifications for International Freight',
+      values_lead: 'Standardized production protocols engineered specifically to comply with ocean container regulations and commercial hospitality installations.',
+      val1_title: 'Kiln-Dried Oven Anti-Borer Bamboo Treatment',
+      val1_desc: 'Apus bamboo is selectively harvested, immersed in eco-friendly anti-borer solutions, and kiln-dried under controlled conditions to stabilize moisture content, preventing warping, cracking, or mold upon arrival at discharge ports.',
+      val2_title: 'Separated Electrical Sub-Box (Knock-Down)',
+      val2_desc: 'CE-certified heat-resistant ceramic E27 sockets, 1.5m fabric-braided cords, and ceiling canopies are isolated inside internal sub-cartons to completely eliminate friction against woven domes during ocean transit.',
+      val3_title: 'Multi-Layer & Zero-Plastic Packaging System',
+      val3_desc: 'Combining soft natural Cotton Dust Bags, shock-absorbing Honeycomb Paper Wrap, rigid corrugated dividers, and 5-ply master cartons (50×50×45 cm). 100% single-use plastic free with official Fumigation & Phytosanitary certifications.',
 
       // Applications Gallery
       gallery_badge: 'Portfolio & Fixtures',
@@ -339,30 +333,30 @@
 
       // Packaging Section (Hampy Lumina)
       pkg_badge: 'Hampy Lumina Architecture',
-      pkg_h2: 'Packaging Architecture & Product Identity: Hampy Lumina',
-      pkg_lead: 'Engineered specifically for safe long-haul ocean freight while delivering a premium unboxing experience featuring deep green, white, and the official Hampy Craft emblem.',
+      pkg_h2: 'Packaging & Product Identity: Hampy Lumina',
+      pkg_lead: 'Engineered specifically for maritime export container safety while delivering an upscale unboxing experience wrapped in signature forest green & white Hampy Craft branding.',
       pkg_banner_title: 'Exclusive Packaging Architecture & Unboxing Experience',
       pkg_fig_cap: '<strong>Official Hampy Lumina Packaging Visualization:</strong> Multi-tier internal protection & signature deep forest green and white export cartons.',
-      pkg_fig_dim: 'Dome Dimensions: Ø35 cm × H 40 cm • 4 pcs / Master Carton',
-      unbox_title: 'Interactive Unboxing Journey (Step by Step):',
-      unbox_tab1: '1. Open Export Carton',
-      unbox_tab2: '2. Protective Foam & Ring',
-      unbox_tab3: '3. Connect Fitting & Hang',
-      unbox_s1_h4: 'Step 1: Outer Seal & Brand Identity',
-      unbox_s1_p: 'Heavy-duty 5-ply corrugated carton in signature deep green & white with international handling marks (This Way Up, Fragile, Keep Dry). Tamper-evident seals preserve cargo integrity across continents.',
-      unbox_s1_li1: 'Kraft carton withstands high container stacking pressure',
-      unbox_s1_li2: 'Registered production batch and serial tracking label',
-      unbox_s1_li3: 'Official Hampy Craft security seal tape',
-      unbox_s2_h4: 'Step 2: Lift Foam & Remove Electrical Box',
-      unbox_s2_p: 'Custom contoured top foam cushion secures the woven dome in place. Directly above, the independent electrical component box is lifted effortlessly.',
-      unbox_s2_li1: 'Vintage fabric cord & ceramic E27 socket shielded securely',
-      unbox_s2_li2: 'Edison filament bulb encased in anti-shatter packaging',
-      unbox_s2_li3: 'Textured kraft paper reveals bamboo weaving residue-free',
-      unbox_s3_h4: 'Step 3: Secure Socket & Hang Fixture',
-      unbox_s3_p: 'Fasten the brass socket retainer ring to the dome frame. Mount to the ceiling canopy and immerse in delicate ambient bamboo lattice shadows.',
-      unbox_s3_li1: 'Fast installation without complex tools (< 5 mins per shade)',
-      unbox_s3_li2: 'Structural bamboo ring maintains symmetrical curvature',
-      unbox_s3_li3: 'Warm 2700K glow immediately enlivens the spatial ambience',
+      pkg_fig_dim: 'Dome Dimensions: Ø35 cm × H 40 cm • 10 pcs / Master Carton (50 × 50 × 45 cm • 0.1125 CBM)',
+      unbox_title: 'Interactive Unboxing Experience (Step-by-Step):',
+      unbox_tab1: '1. Open 5-Ply Master Box',
+      unbox_tab2: '2. Honeycomb Wrap & Divider',
+      unbox_tab3: '3. Attach Socket & Suspend',
+      unbox_s1_h4: 'Step 1: Outer Seal, 5-Ply Master Carton & Export Markings',
+      unbox_s1_p: 'Heavy-duty 5-ply Double Wall Corrugated master box (50 × 50 × 45 cm, 0.1125 CBM) bearing official dark green & ivory white branding. Features international ISO handling marks (This Way Up, Fragile, Keep Dry) and quarantine compliance stamps.',
+      unbox_s1_li1: '5-ply corrugated board with high stacking strength (bursting-resistant)',
+      unbox_s1_li2: '100% Zero-Plastic packaging compliant with EU waste directives',
+      unbox_s1_li3: 'Official Fumigation and Phytosanitary quarantine certificates',
+      unbox_s2_h4: 'Step 2: Honeycomb Paper Wrap, Cotton Dust Bag & Divider Insert',
+      unbox_s2_p: 'Open the master box to reveal 10 secure Hampy Lumina units. Each woven dome is encased in a soft Cotton Dust Bag and wrapped in flexible hexagonal Honeycomb Paper Wrap for optimal shock absorption.',
+      unbox_s2_li1: 'Soft natural Cotton Dust Bag protects against micro-scratches & port dust',
+      unbox_s2_li2: 'Hexagonal honeycomb paper wrap absorbs transit vibration and impacts',
+      unbox_s2_li3: 'Corrugated divider inserts lock the electrical sub-box and shades firmly',
+      unbox_s3_h4: 'Step 3: Ceramic E27 Assembly & Instant Illumination',
+      unbox_s3_p: 'Retrieve the ceramic E27 socket assembly from its sub-box, lock the retaining ring to the bamboo dome, connect the vintage fabric cord to the ceiling canopy, and install bulb. Illuminates your space with cozy warmth in minutes.',
+      unbox_s3_li1: 'Effortless tool-free assembly completed in under 5 minutes per unit',
+      unbox_s3_li2: 'CE-certified heat-resistant ceramic E27 socket (universal 110V–240V)',
+      unbox_s3_li3: 'Warm 2200K–2700K glow immediately enlivens upscale architectural interiors',
       kd_bar_h4: 'Knock-Down Architecture Implementation',
       kd_bar_p: 'Container space efficiency, effortless on-site assembly for hotel projects, and near-zero damage to fragile components.',
       kd_s1_title: '1. Open Carton',
@@ -374,18 +368,18 @@
 
       // Container & Cargo Estimator
       est_badge: 'Export Logistics Calculator',
-      est_h2: 'CBM Cargo Volume & Master Carton Estimator',
-      est_lead: 'Calculate estimated cubic meter volume (CBM), master carton count, gross weight, and 20ft / 40ft HC container fill rates for your project order.',
+      est_h2: 'CBM Volume & Master Carton Cargo Estimator',
+      est_lead: 'Calculate cubic volume (CBM), total master cartons, gross weight, and container occupancy for 20ft / 40ft ocean shipments based on official Hampy Lumina export parameters.',
       est_label_model: 'Select Fixture Model',
       est_label_qty: 'Order Quantity (Pcs)',
       est_btn_calc: 'Calculate Freight Estimate',
-      est_note: '*Estimates based on Hampy Craft standard export packing density. Final packing list confirmed upon order placement.',
+      est_note: '*Calculations based on standard Hampy Lumina export cartons (50 × 50 × 45 cm, 10 pcs/box, 14.75 kg gross). Benchmark 1,000 pcs = 100 boxes = 11.25 CBM = 7 export pallets.',
       est_res_title: 'Cargo Calculation Results',
       est_res_row_cartons: 'Estimated Master Cartons',
       est_res_row_cbm: 'Total Volume (CBM)',
       est_res_row_weight: 'Estimated Gross Weight',
-      gauge_20_title: '20ft FCL Container Utilization',
-      gauge_40_title: '40ft High Cube FCL Utilization',
+      gauge_20_title: '20ft FCL Container Utilization (~33 CBM cap.)',
+      gauge_40_title: '40ft High Cube FCL Container Utilization (~68 CBM cap.)',
 
       // Commercial Terms
       terms_h2: 'Commercial Trading Terms & Ordering Guide',
@@ -396,29 +390,20 @@
       term2_desc: '3–5 weeks for batches of 100–300 pcs. 6–8 weeks for 1x20ft or 40ft full container loads (FCL).',
       term3_title: 'Payment Terms',
       term3_desc: 'T/T 50% deposit upon order confirmation, balance 50% upon presentation of Bill of Lading (B/L) copy or confirmed L/C at sight.',
-      term4_title: 'Port of Loading & Incoterms',
-      term4_desc: 'Semarang (Tanjung Mas Port) or Surabaya (Tanjung Perak Port) • FOB, CIF, or EXW Sleman Workshop.',
+      term4_title: 'Loading Ports, Route & Incoterms',
+      term4_desc: 'FOB Tanjung Priok Port (Jakarta) / Tanjung Emas (Semarang) → Port of Rotterdam (Netherlands) → Amsterdam Warehouse (Nordic Home Living B.V.).',
 
       // Reviews
-      reviews_badge: 'International Testimonials',
-      reviews_h2: 'Buyer Reviews & Specifier Endorsements',
-      reviews_lead: 'Feedback from hospitality procurement directors, luxury resort architects, and global lighting distributors.',
-      rev1_quote: '“Hampy Lumina’s knock-down packaging with independent electrical boxes and custom foam achieved zero breakage across 120 pendant shades shipped to our resort.”',
-      rev1_role: 'Procurement Director, Eco-Resort Bali & Lombok',
-      rev2_quote: '“We specified the Ombak and Jala models for six luxury villas in Canggu. The organic bamboo weave and warm Edison filaments pair effortlessly with our natural green stone walls.”',
-      rev2_role: 'Principal Interior Architect, Studio Kriya Tropis',
-      rev3_quote: '“The forest green retail packaging with the Hampy Craft circular seal delivers an upscale unboxing impression in our Australian showrooms. Highly recommended.”',
-      rev3_role: 'Head of Purchasing, Melbourne Home & Lighting Importers',
 
       // Contact & Quotation
       contact_badge: 'Inquiry & Quotations',
       contact_h2: 'Submit Your Project Specifications',
       contact_lead: 'Share your fixture requirements, estimated quantities, and destination port. Our team in Sleman will prepare a formal quote, production schedule, and cargo volume breakdown.',
       contact_ws_title: 'Hampy Craft Workshop:',
-      contact_address_html: 'Sleman Artisan Quarter, D.I. Yogyakarta 55581, Indonesia',
+      contact_address_html: 'Sleman Bamboo Craft Center, Special Region of Yogyakarta 55581, Indonesia',
       contact_hours_title: 'Trade Service Hours:',
       contact_hours_val: 'Monday – Saturday, 08:00 – 17:00 WIB (UTC+7)',
-      contact_email_lbl: 'Trade Email:',
+      contact_email_lbl: 'Trade & Inquiries Email:',
       contact_wa_lbl: 'Export WhatsApp:',
       quick_wa_title: '💬 Instant WhatsApp Inquiry',
       quick_wa_desc: 'Click below to connect directly with our export procurement specialists with your selected items preloaded.',
@@ -447,7 +432,7 @@
       footer_col_nav: 'Navigation',
       footer_col_coll: 'Fixture Collections',
       footer_col_ws: 'Sleman Workshop',
-      footer_address_html: 'Sleman Artisan Quarter, D.I. Yogyakarta 55581, Indonesia<br>Email: <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>',
+      footer_address_html: 'Sleman Bamboo Craft Center, D.I. Yogyakarta 55581, Indonesia<br>Email: <a href="mailto:customercare@hampycraft.com" style="color: var(--kraft);">customercare@hampycraft.com</a> / <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>Instagram: <a href="https://www.instagram.com/hampycraft.id" target="_blank" rel="noopener" style="color: var(--kraft);">@hampycraft.id</a><br>WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>',
       footer_copyright: '© 2026 Hampy Craft. All rights reserved. Handcrafted in Sleman, Yogyakarta.',
       footer_standards: 'Export Standards ISO/CE • Knock-Down Packaging Architecture',
 
@@ -464,7 +449,13 @@
       modal_lbl_carton_wt: 'Gross Weight / Master Box',
       modal_lbl_carton_qty: 'Master Box Capacity',
       modal_lbl_cbm: 'Cubic Freight Volume',
-      modal_lbl_app: 'Ideal Spatial Application'
+      modal_lbl_app: 'Ideal Spatial Application',
+      stat_4_val: '9405.99.20',
+      est_res_row_pallets: 'Export Pallet Configuration',
+      est_res_row_route: 'Freight Route & Discharge Port',
+      contact_ig_lbl: 'Official Instagram:',
+      contact_ref_title: 'Active Export Reference Order:',
+      contact_ref_desc: 'Nordic Home Living B.V., Keizersgracht 241, Amsterdam, Netherlands • PO-2026-HC-1000 (1,000 Hampy Lumina Units FOB Tanjung Priok).'
     }
   };
 
@@ -485,12 +476,12 @@
       lampUsed_en: 'Hampy Lumina Woven Bamboo Dome',
       dimCm: 'Ø35 × H40 cm',
       dimIn: 'Ø13.8 × H15.7 in',
-      weightUnitCm: '1.4 kg',
-      weightUnitIn: '3.1 lbs',
-      weightCartonCm: '6.8 kg',
-      weightCartonIn: '15.0 lbs',
-      cartonQty: '4 pcs (Knock-down)',
-      cbm: '0.14 CBM',
+      weightUnitCm: '1.2 kg',
+      weightUnitIn: '2.6 lbs',
+      weightCartonCm: '14.75 kg',
+      weightCartonIn: '32.5 lbs',
+      cartonQty: '10 pcs (Knock-down)',
+      cbm: '0.1125 CBM',
       img: 'images/dining-pendant.jpg',
       d_id: 'Signature Hampy Lumina dome dengan anyaman kisi bambu silang (cross-woven), cincin dasar bambu kokoh, kabel gantung kain bertekstur, dan bohlam filamen Edison hangat. Dikemas dalam kotak ekspor knock-down eksklusif hijau tua & putih.',
       d_en: 'Signature Hampy Lumina dome featuring cross-woven natural bamboo lattice, reinforced structural bamboo base ring, textured fabric cord, and warm Edison filament glow. Encased in proprietary knock-down export cartons.',
@@ -712,11 +703,11 @@
   // ==========================================================================
   const ESTIMATOR_DATA = {
     'hc-lumina': {
-      name_id: 'Hampy Lumina Dome — Knock-Down (Ø35 × H40 cm)',
-      name_en: 'Hampy Lumina Dome — Knock-Down (Ø35 × H40 cm)',
-      pcsPerCarton: 4,
-      cbmPerCarton: 0.14,
-      kgPerCarton: 6.8
+      name_id: 'Hampy Lumina Dome — Export Edition (Ø35 × H40 cm)',
+      name_en: 'Hampy Lumina Dome — Export Edition (Ø35 × H40 cm)',
+      pcsPerCarton: 10,
+      cbmPerCarton: 0.1125,
+      kgPerCarton: 14.75
     },
     'hc-02': {
       name_id: 'Ombak Wide-Brim Rattan — Luxury Villa (Ø85 × H26 cm)',
@@ -1214,21 +1205,33 @@
     const totalCbm = (cartons * data.cbmPerCarton).toFixed(2);
     const totalWeightKg = (cartons * data.kgPerCarton).toFixed(1);
 
-    const cbm20Cap = 28.0;
-    const cbm40Cap = 68.0;
+    const cbm20Cap = 33.0; // Kapasitas kontainer 20ft standar
+    const cbm40Cap = 68.0; // Kapasitas kontainer 40ft HC
 
     const fill20 = Math.min(100, Math.round((totalCbm / cbm20Cap) * 100));
     const fill40 = Math.min(100, Math.round((totalCbm / cbm40Cap) * 100));
+    const pallets = Math.ceil(cartons / 16);
 
-    if ($('resCartons')) $('resCartons').textContent = `${cartons} Master Karton`;
+    if ($('resCartons')) {
+      $('resCartons').textContent = currentLang === 'en' ? `${cartons} Master Cartons` : `${cartons} Master Karton`;
+    }
     if ($('resCbm')) $('resCbm').textContent = `${totalCbm} CBM`;
-    if ($('resWeight')) $('resWeight').textContent = `${totalWeightKg} kg`;
+    if ($('resWeight')) {
+      const formattedWt = Number(totalWeightKg).toLocaleString(currentLang === 'en' ? 'en-US' : 'id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      $('resWeight').textContent = `${formattedWt} kg`;
+    }
+    if ($('resPallets')) {
+      $('resPallets').textContent = currentLang === 'en' ? `${pallets} Export Pallets (100 × 120 cm)` : `${pallets} Palet (100 × 120 cm)`;
+    }
+    if ($('resRoute')) {
+      $('resRoute').textContent = 'Sleman → Tanjung Priok → Port of Rotterdam';
+    }
 
     if ($('gaugeFill20')) $('gaugeFill20').style.width = `${fill20}%`;
     if ($('gaugeText20')) {
       $('gaugeText20').textContent = currentLang === 'en'
-        ? `${fill20}% filled (~28 CBM cap.)`
-        : `${fill20}% terisi (~28 CBM kap.)`;
+        ? `${fill20}% filled (~33 CBM cap.)`
+        : `${fill20}% terisi (~33 CBM kap.)`;
     }
 
     if ($('gaugeFill40')) $('gaugeFill40').style.width = `${fill40}%`;

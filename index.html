@@ -52,7 +52,6 @@
         <a href="#gallery" data-i18n="nav_gallery">Galeri Aplikasi</a>
         <a href="#packaging" data-i18n="nav_packaging">Kemasan Ekspor</a>
         <a href="#estimator" data-i18n="nav_estimator">Estimator Kargo</a>
-        <a href="#reviews" data-i18n="nav_reviews">Ulasan Buyer</a>
         <a href="#contact" data-i18n="nav_contact">Kontak / RFQ</a>
       </nav>
 
@@ -101,7 +100,6 @@
         <li><a href="#gallery" data-i18n="nav_gallery">Galeri Aplikasi & Fixtur</a></li>
         <li><a href="#packaging" data-i18n="nav_packaging">Kemasan Ekspor Knock-Down</a></li>
         <li><a href="#estimator" data-i18n="nav_estimator">Estimator Volume CBM</a></li>
-        <li><a href="#reviews" data-i18n="nav_reviews">Ulasan Buyer & Arsitek</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Formulir Inquiry Proyek</a></li>
       </ul>
     </div>
@@ -296,12 +294,12 @@
                 <p data-i18n="stat_2_lbl">Risiko Kerusakan Kargo (Knock-down)</p>
               </div>
               <div class="stat-item">
-                <h3 data-i18n="stat_3_val">15+ Hari</h3>
-                <p data-i18n="stat_3_lbl">Pengeringan Oven & Anti-Bubuk</p>
+                <h3 data-i18n="stat_3_val">CE / 110–240V</h3>
+                <p data-i18n="stat_3_lbl">Standar Elektrikal Universal & Fitting Keramik E27</p>
               </div>
               <div class="stat-item">
-                <h3>24+</h3>
-                <p data-i18n="stat_4_lbl">Kota & Negara Tujuan Ekspor</p>
+                <h3 data-i18n="stat_4_val">9405.99.20</h3>
+                <p data-i18n="stat_4_lbl">Kode HS Resmi Ekspor Anyaman Bambu</p>
               </div>
             </div>
 
@@ -414,7 +412,7 @@
               <img src="images/hampy-lumina-packaging.svg" alt="Diagram Visualisasi Resmi Kemasan Hampy Lumina" loading="lazy">
               <figcaption>
                 <span data-i18n-html="pkg_fig_cap"><strong>Visualisasi Resmi Kemasan Hampy Lumina:</strong> Proteksi internal berlapis & kotak ritel/ekspor beridentitas hijau tua & putih.</span>
-                <span class="tabular-nums" data-i18n="pkg_fig_dim">Dimensi Kubah: Ø35 cm × T 40 cm • 4 pcs / Master Karton</span>
+                <span class="tabular-nums" data-i18n="pkg_fig_dim">Dimensi Kubah: Ø35 cm × T 40 cm • 10 pcs / Master Karton (50 × 50 × 45 cm • 0.1125 CBM)</span>
               </figcaption>
             </figure>
           </div>
@@ -545,7 +543,7 @@
 
             <div class="form-field">
               <label for="estQtyInput" data-i18n="est_label_qty">Jumlah Pesanan (Pcs)</label>
-              <input type="number" id="estQtyInput" value="50" min="1" step="1">
+              <input type="number" id="estQtyInput" value="1000" min="1" step="1">
             </div>
 
             <button class="btn btn-amber" id="estCalcBtn" type="button" style="width: 100%;" data-i18n="est_btn_calc">
@@ -564,15 +562,23 @@
               <table class="metrics-table">
                 <tr>
                   <td data-i18n="est_res_row_cartons">Estimasi Master Karton</td>
-                  <td id="resCartons">13 Master Karton</td>
+                  <td id="resCartons">100 Master Karton</td>
                 </tr>
                 <tr>
                   <td data-i18n="est_res_row_cbm">Total Kubikasi (CBM)</td>
-                  <td id="resCbm">1.82 CBM</td>
+                  <td id="resCbm">11.25 CBM</td>
                 </tr>
                 <tr>
                   <td data-i18n="est_res_row_weight">Estimasi Berat Kotor (Gross Weight)</td>
-                  <td id="resWeight">88.4 kg</td>
+                  <td id="resWeight">1,475.0 kg</td>
+                </tr>
+                <tr>
+                  <td data-i18n="est_res_row_pallets">Konfigurasi Palet Ekspor</td>
+                  <td id="resPallets">7 Palet (100 × 120 cm)</td>
+                </tr>
+                <tr>
+                  <td data-i18n="est_res_row_route">Rute & Pelabuhan Tujuan</td>
+                  <td id="resRoute">Sleman → Tanjung Priok → Port of Rotterdam</td>
                 </tr>
               </table>
             </div>
@@ -582,10 +588,10 @@
               <div style="margin-bottom: 16px;">
                 <div class="gauge-header">
                   <span data-i18n="gauge_20_title">Keterisian Kontainer 20ft FCL</span>
-                  <span id="gaugeText20">7% terisi (~28 CBM kap.)</span>
+                  <span id="gaugeText20">34% terisi (~33 CBM kap.)</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" id="gaugeFill20" style="width: 7%;"></div>
+                  <div class="progress-fill" id="gaugeFill20" style="width: 34%;"></div>
                 </div>
               </div>
 
@@ -633,58 +639,6 @@
       </div>
     </section>
 
-    <!-- Buyer & Specifier Reviews -->
-    <section class="reviews" id="reviews">
-      <div class="container">
-        <div class="section-head center">
-          <div class="badge" style="margin-bottom: 12px;" data-i18n="reviews_badge">Testimoni Internasional</div>
-          <h2 data-i18n="reviews_h2">Ulasan Pembeli & Arsitek Pengadaan</h2>
-          <p class="lead" data-i18n="reviews_lead">Kesan dari direktur procurement perhotelan, arsitek resort mewah, dan distributor lampu global.</p>
-        </div>
-
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div>
-              <div class="review-stars">★★★★★</div>
-              <blockquote class="review-quote" data-i18n="rev1_quote">
-                “Kemasan knock-down Hampy Lumina dengan kotak elektrikal terpisah dan bantalan busa terbukti menghasilkan zero breakage pada pengiriman 120 kap lampu ke resort kami.”
-              </blockquote>
-            </div>
-            <div class="review-author">
-              <strong>Marcus Van Der Berg</strong>
-              <span data-i18n="rev1_role">Procurement Director, Eco-Resort Bali & Lombok</span>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div>
-              <div class="review-stars">★★★★★</div>
-              <blockquote class="review-quote" data-i18n="rev2_quote">
-                “Kami menentukan model Ombak dan Jala untuk enam villa mewah di Canggu. Anyaman bambu alami dan pendaran Edison hangat berpadu sempurna dengan dinding batu hijau kami.”
-              </blockquote>
-            </div>
-            <div class="review-author">
-              <strong>Citra Wardhana, IAI</strong>
-              <span data-i18n="rev2_role">Principal Interior Architect, Studio Kriya Tropis</span>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div>
-              <div class="review-stars">★★★★★</div>
-              <blockquote class="review-quote" data-i18n="rev3_quote">
-                “Kotak ritel hijau tua dengan logo emblem Hampy Craft memberikan impresi unboxing yang sangat berkelas di showroom kami di Australia. Sangat direkomendasikan.”
-              </blockquote>
-            </div>
-            <div class="review-author">
-              <strong>Liam O'Connor</strong>
-              <span data-i18n="rev3_role">Head of Purchasing, Melbourne Home & Lighting Importers</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact & Quotation Builder Section -->
     <section class="contact" id="contact">
       <div class="container">
@@ -699,12 +653,17 @@
 
             <address>
               <strong data-i18n="contact_ws_title">Workshop Hampy Craft:</strong><br>
-              <span data-i18n-html="contact_address_html">Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia</span><br><br>
+              <span data-i18n-html="contact_address_html">Sentra Kerajinan Bambu Sleman, Daerah Istimewa Yogyakarta 55581, Indonesia</span><br><br>
               <strong data-i18n="contact_hours_title">Jam Layanan Dagang:</strong><br>
               <span data-i18n="contact_hours_val">Senin – Sabtu, 08:00 – 17:00 WIB (UTC+7)</span><br><br>
-              <span data-i18n="contact_email_lbl">Email Dagang:</span> <a href="mailto:trade@hampycraft.com">trade@hampycraft.com</a><br>
+              <span data-i18n="contact_email_lbl">Email Layanan & Dagang:</span> <a href="mailto:customercare@hampycraft.com">customercare@hampycraft.com</a> / <a href="mailto:trade@hampycraft.com">trade@hampycraft.com</a><br>
+              <span data-i18n="contact_ig_lbl">Instagram Resmi:</span> <a href="https://www.instagram.com/hampycraft.id" target="_blank" rel="noopener">@hampycraft.id</a><br>
               <span data-i18n="contact_wa_lbl">WhatsApp Ekspor:</span> <a href="https://wa.me/6281234567890">+62 812-3456-7890</a>
             </address>
+            <div style="margin-top: 18px; padding: 14px 18px; background: rgba(217, 195, 158, 0.15); border: 1px solid var(--border-gold); border-radius: 8px;">
+              <strong style="color: var(--primary); font-size: 13.5px; display: block; margin-bottom: 4px;" data-i18n="contact_ref_title">Rujukan Pesanan Ekspor Aktif:</strong>
+              <span style="font-size: 13px; color: var(--ink-secondary); line-height: 1.5;" data-i18n="contact_ref_desc">Nordic Home Living B.V., Keizersgracht 241, Amsterdam, Belanda • PO-2026-HC-1000 (1.000 Unit Hampy Lumina FOB Tanjung Priok).</span>
+            </div>
 
             <div class="contact-quick-wa-card">
               <h4 data-i18n="quick_wa_title">💬 Respon Cepat via WhatsApp</h4>
@@ -811,8 +770,9 @@
         <div class="footer-col">
           <h4 data-i18n="footer_col_ws">Workshop Sleman</h4>
           <p style="font-size: 13.5px; color: #8BA093; line-height: 1.7;" data-i18n-html="footer_address_html">
-            Kawasan Kerajinan Sleman, D.I. Yogyakarta 55581, Indonesia<br>
-            Email: <a href="mailto:trade@hampycraft.com" style="color: var(--kraft);">trade@hampycraft.com</a><br>
+            Sentra Kerajinan Bambu Sleman, D.I. Yogyakarta 55581, Indonesia<br>
+            Email: <a href="mailto:customercare@hampycraft.com" style="color: var(--kraft);">customercare@hampycraft.com</a><br>
+            Instagram: <a href="https://www.instagram.com/hampycraft.id" target="_blank" rel="noopener" style="color: var(--kraft);">@hampycraft.id</a><br>
             WA: <a href="https://wa.me/6281234567890" style="color: var(--kraft);">+62 812-3456-7890</a>
           </p>
         </div>
