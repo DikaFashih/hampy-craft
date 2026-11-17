@@ -767,7 +767,7 @@
       weightCartonIn: '32.5 lbs',
       cartonQty: '10 pcs (Knock-down)',
       cbm: '0.1125 CBM',
-      img: 'images/sketch-hampy.jpg',
+      img: 'images/blueprint.png',
       d_id: 'Dokumentasi rancang bangun teknis: perhitungan kurvatur lengkung elips, kerapatan anyaman kisi bambu apus, diameter cincin kerangka bambu petung, dan sistem penyangga fitting knock-down.',
       d_en: 'Design blueprint: mathematical curve calculation of the elliptical dome, bamboo lattice density, Petung bamboo structural ring diameter, and knock-down socket mount.',
       mat_id: 'Kerangka bambu petung, bilah anyaman bambu apus pilihan',
