@@ -2084,7 +2084,8 @@ footer.site-footer {
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mobile-nav-drawer.open {
+.mobile-nav-drawer.open,
+.mobile-nav-drawer.active {
   right: 0;
 }
 
@@ -3043,5 +3044,688 @@ footer.site-footer {
   }
   .studio-3d-toolbar {
     padding: 10px 16px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE UI/UX OPTIMIZATION & RESPONSIVE MASTER SUITE
+   Specifically engineered for smartphones (iOS Safari, Android Chrome)
+   ========================================================================== */
+
+/* Prevent accidental horizontal page wobble / overflow on all mobile devices */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Mobile Nav Drawer Backdrop Overlay */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 28, 20, 0.65);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 890;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-backdrop.active,
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-drawer {
+  z-index: 900 !important;
+  max-width: 85vw !important;
+  height: 100dvh !important;
+  padding: 24px 20px !important;
+}
+
+.mobile-nav-drawer.active,
+.mobile-nav-drawer.open {
+  right: 0 !important;
+}
+
+/* Mobile Floating WhatsApp Action Button (FAB) */
+.mobile-fab-wa {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Global Container Padding */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  section {
+    padding: 42px 0 !important;
+  }
+
+  .section-head {
+    margin-bottom: 26px !important;
+  }
+
+  .section-head h2 {
+    font-size: clamp(21px, 5.6vw, 27px) !important;
+    line-height: 1.28 !important;
+  }
+
+  .section-head p.lead {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Sticky Header on Mobile */
+  header.site-header {
+    height: 62px !important;
+  }
+
+  .header-wrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 8px !important;
+  }
+
+  .brand-link {
+    margin-right: 0 !important;
+  }
+
+  .brand-logo-img {
+    height: 32px !important;
+    max-width: 140px !important;
+  }
+
+  .header-actions {
+    gap: 8px !important;
+  }
+
+  .lang-switch-group {
+    padding: 2px 5px !important;
+    gap: 2px !important;
+  }
+
+  .lang-btn {
+    font-size: 11px !important;
+    padding: 3px 6px !important;
+  }
+
+  .quote-pill-btn {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    gap: 5px !important;
+    border-radius: 999px !important;
+  }
+
+  .quote-pill-btn span:first-child {
+    display: none !important; /* Hide long 'Quote Basket' text to prevent wrap */
+  }
+
+  .quote-pill-btn::before {
+    content: "🛒";
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .quote-badge-count {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+  }
+
+  .menu-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero Section Mobile */
+  .hero {
+    padding: 24px 0 36px !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .hero-content .badge {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(23px, 6.4vw, 30px) !important;
+    line-height: 1.24 !important;
+    letter-spacing: -0.015em !important;
+    margin: 8px 0 12px !important;
+  }
+
+  .hero p.lead {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+  }
+
+  .hero-trust-badges {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    border-top: 1px dashed var(--border-strong) !important;
+  }
+
+  .trust-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 12px !important;
+    background: rgba(246, 250, 245, 0.85) !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-light) !important;
+    width: 100% !important;
+  }
+
+  .trust-item svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+    fill: var(--primary) !important;
+  }
+
+  .hero-slider-card {
+    padding: 8px !important;
+    border-radius: 12px !important;
+    margin-top: 8px !important;
+  }
+
+  .slider-container {
+    height: 250px !important;
+  }
+
+  /* 3D Studio Card & Fullscreen Button on Mobile */
+  .studio-3d-card {
+    border-radius: 12px !important;
+    margin-top: 16px !important;
+    box-shadow: 0 8px 24px rgba(17, 30, 22, 0.08) !important;
+  }
+
+  .studio-3d-toolbar {
+    padding: 12px 14px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .studio-3d-title {
+    font-size: 12.5px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .studio-badge-3d {
+    font-size: 10px !important;
+    padding: 2px 7px !important;
+  }
+
+  .studio-3d-actions {
+    width: 100% !important;
+  }
+
+  .studio-fullscreen-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 11px 16px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+    background: var(--amber) !important;
+    color: #111E16 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(200, 138, 75, 0.25) !important;
+  }
+
+  .studio-3d-viewport-wrap {
+    height: 560px !important;
+  }
+
+  .mobile-3d-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #111E16;
+    color: #D9C39E;
+    font-size: 11px;
+    border-top: 1px solid rgba(217, 195, 158, 0.2);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Showcase Gallery Cards on Mobile */
+  .studio-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .showcase-card {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 14px rgba(16, 40, 27, 0.05) !important;
+  }
+
+  .showcase-card-img-wrap {
+    height: 200px !important;
+  }
+
+  .showcase-card-body {
+    padding: 16px !important;
+  }
+
+  .showcase-card-title {
+    font-size: 16px !important;
+  }
+
+  .showcase-card-desc {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .showcase-card-btn {
+    width: 100% !important;
+    padding: 11px !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+  }
+
+  /* About Section on Mobile */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .about-img-wrap {
+    border-radius: 12px !important;
+    overflow: hidden;
+    max-height: 280px !important;
+  }
+
+  .about-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .about-content p {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+
+  .about-stat-item {
+    padding: 14px 10px !important;
+    background: var(--bg-card) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-light) !important;
+    text-align: center !important;
+  }
+
+  .about-stat-num {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+  }
+
+  .about-stat-label {
+    font-size: 11px !important;
+    color: var(--ink-muted) !important;
+    margin-top: 4px !important;
+  }
+
+  /* Values Section on Mobile */
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .value-card {
+    padding: 18px 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .value-card h3 {
+    font-size: 16px !important;
+    margin: 8px 0 6px !important;
+  }
+
+  .value-card p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Packaging & Logistics on Mobile */
+  .packaging-section {
+    padding: 38px 0 !important;
+  }
+
+  .knockdown-bar {
+    padding: 18px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .knockdown-bar h3 {
+    font-size: 17px !important;
+  }
+
+  .knockdown-bar p {
+    font-size: 13px !important;
+  }
+
+  .knockdown-metrics-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+  }
+
+  .kd-metric-chip {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .kd-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
+  }
+
+  .unbox-step-card {
+    padding: 16px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .unbox-step-card h4 {
+    font-size: 15px !important;
+  }
+
+  .unbox-step-card p,
+  .unbox-step-card li {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .packaging-diagram-card {
+    margin-top: 18px !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .packaging-diagram-card img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* CBM Cargo Estimator Box on Mobile */
+  .estimator-box {
+    padding: 18px 14px !important;
+    border-radius: 12px !important;
+    margin-top: 18px !important;
+  }
+
+  .estimator-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .est-presets-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .est-preset-btn {
+    padding: 8px 4px !important;
+    font-size: 11.5px !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+    min-height: 38px !important;
+  }
+
+  .estimator-results-card {
+    padding: 16px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .est-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .est-metric-tile {
+    padding: 12px 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .est-metric-val {
+    font-size: 18px !important;
+  }
+
+  .est-metric-lbl {
+    font-size: 10.5px !important;
+  }
+
+  .estimator-note {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    margin-top: 12px !important;
+  }
+
+  /* Input fields: 16px font-size to prevent iOS Safari auto-zoom! */
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea,
+  .estimator-form input,
+  .estimator-form select {
+    font-size: 16px !important;
+    min-height: 48px !important;
+    padding: 11px 14px !important;
+    border-radius: 8px !important;
+  }
+
+  .contact-form textarea {
+    min-height: 100px !important;
+  }
+
+  .contact-form label,
+  .estimator-form label {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* Terms of Trade on Mobile */
+  .terms-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .term-card {
+    padding: 16px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .term-card h4 {
+    font-size: 14.5px !important;
+  }
+
+  .term-val {
+    font-size: 15.5px !important;
+    margin: 4px 0 6px !important;
+  }
+
+  .term-card p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Contact & RFQ on Mobile */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .contact-form-wrap {
+    padding: 18px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .btn-submit-rfq {
+    width: 100% !important;
+    min-height: 50px !important;
+    padding: 14px !important;
+    font-size: 15px !important;
+    border-radius: 8px !important;
+  }
+
+  .contact-info-card {
+    padding: 18px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .contact-info-item {
+    margin-bottom: 14px !important;
+  }
+
+  /* Footer on Mobile */
+  .site-footer {
+    padding: 36px 0 20px !important;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .footer-col h4 {
+    font-size: 14.5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-links {
+    gap: 8px !important;
+  }
+
+  .footer-links a {
+    font-size: 12.5px !important;
+    padding: 3px 0 !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center !important;
+    padding-top: 18px !important;
+    font-size: 11px !important;
+  }
+
+  /* Specification Modal on Mobile */
+  .modal-overlay {
+    padding: 12px !important;
+  }
+
+  .modal-window {
+    padding: 18px 14px !important;
+    border-radius: 12px !important;
+    max-height: 92vh !important;
+  }
+
+  .modal-img-banner {
+    height: 170px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .modal-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .modal-actions .btn {
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
+  }
+
+  /* Mobile Floating Action Button (FAB WhatsApp) */
+  .mobile-fab-wa {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    position: fixed !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
+    background: #25D366 !important;
+    color: #FFFFFF !important;
+    padding: 10px 16px !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45) !important;
+    z-index: 100 !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .mobile-fab-wa:active {
+    transform: scale(0.95) !important;
+  }
+
+  .mobile-fab-wa .fab-wa-icon {
+    font-size: 16px !important;
+  }
+
+  /* Shift Back-to-Top Button above FAB on Mobile */
+  .back-to-top {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 17px !important;
   }
 }
