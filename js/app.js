@@ -307,6 +307,23 @@
       modal_tag: "Spesifikasi Fixtur",
       modal_btn_quote: "+ Tambahkan ke Permintaan Penawaran",
       modal_btn_pkg: "Pelajari Arsitektur Kemasan",
+            studio_player_title: '4. Pemutar Simulasi Animasi Suasana',
+      player_status_manual: 'Mode Manual',
+      player_status_auto: '▶ Memutar Suasana (Siklus Berjalan)',
+      player_status_paused: '⏸ Dijeda',
+      studio_play_start: 'Putar Animasi Suasana',
+      studio_play_pause: 'Jeda Animasi',
+      studio_switch_on: 'Lampu: MENYALA',
+      studio_switch_off: 'Lampu: PADAM',
+      stage_drag_hint: '👆 Sentuh & Ayunkan Lampu',
+      phase_morning: 'Pagi',
+      phase_noon: 'Siang',
+      phase_sunset: 'Senja',
+      phase_evening: 'Malam (2700K)',
+      phase_night: 'Larut (2200K)',
+      fx_sway_label: 'Ayunan Angin',
+      fx_particles_label: 'Partikel Debu',
+      fx_pulse_label: 'Pendar Alami',
       modal_pkg_desc: 'Kap lampu dibungkus kantong katun alami (cotton dust bag), bantalan kertas sarang lebah (honeycomb paper wrap), sekat karton gelombang ganda, serta sub-box terpisah untuk fitting E27 dan bohlam LED Warm White.'
     },
 
@@ -606,6 +623,23 @@
       modal_tag: "Fixture Specifications",
       modal_btn_quote: "+ Add to Quotation Request",
       modal_btn_pkg: "Explore Packaging Architecture",
+            studio_player_title: '4. Interactive Ambiance Simulation Player',
+      player_status_manual: 'Manual Mode',
+      player_status_auto: '▶ Playing Atmospheric Cycle',
+      player_status_paused: '⏸ Paused',
+      studio_play_start: 'Play Ambiance Simulation',
+      studio_play_pause: 'Pause Simulation',
+      studio_switch_on: 'Lamp: ON',
+      studio_switch_off: 'Lamp: OFF',
+      stage_drag_hint: '👆 Drag & Swing Lampshade',
+      phase_morning: 'Morning',
+      phase_noon: 'Noon',
+      phase_sunset: 'Sunset',
+      phase_evening: 'Evening (2700K)',
+      phase_night: 'Night (2200K)',
+      fx_sway_label: 'Breeze Sway',
+      fx_particles_label: 'Light Dust',
+      fx_pulse_label: 'Organic Breathing',
       modal_pkg_desc: 'Lampshade protected in a natural cotton dust bag, honeycomb paper cushioning, double-wall corrugated partitions, and a dedicated sub-box for E27 fitting and Warm White LED bulb.'
     }
   };
@@ -989,67 +1023,150 @@ const SCENES_DATA = {
   }
 
   // ==========================================================================
-  // 1. Interactive Lighting Atmosphere Studio
+  // 1. Interactive Lighting Studio Engine (Physics, Animation, & Ambiance Player)
   // ==========================================================================
+
+  // Interactive Lighting Studio State
+  let isLampPowered = true;
+  let isPlayingAmbiance = false;
+  let ambianceProgress = 0.75; // 75% = Evening 2700K 85% dimmer standard
+  let ambianceAnimFrame = null;
+  let lastFrameTime = performance.now();
+
+  // FX Toggles
+  let fxSwayEnabled = true;
+  let fxParticlesEnabled = true;
+  let fxBreathingEnabled = true;
+
+  // Pendulum Swing Physics
+  let lampAngle = 0;
+  let lampVelocity = 0;
+  let isDraggingLamp = false;
+  let dragStartX = 0;
+  let dragStartAngle = 0;
+
+  // Particle System
+  let particleCanvas = null;
+  let particleCtx = null;
+  let particles = [];
+  const PARTICLE_COUNT = 36;
+
+  // Audio Context Synthesizer for Tactile Click
+  let audioCtx = null;
+  function playRelayClickSound() {
+    try {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(isLampPowered ? 240 : 160, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.045);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.045);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    } catch (e) {
+      // Audio autoplay restrictions or unsupported
+    }
+  }
+
+  // Time-of-Day Keyframes Definition
+  const AMBIANCE_KEYFRAMES = [
+    { p: 0.00, phase: 'morning', temp: 'daylight', dimmer: 30, scene: 'residential', lux: 180, label_id: 'Pagi (08:00) • Cahaya Alami Netral', label_en: 'Morning (08:00) • Neutral Ambient Daylight' },
+    { p: 0.25, phase: 'noon',    temp: 'daylight', dimmer: 15, scene: 'commercial',  lux: 110, label_id: 'Siang (12:00) • Pendar Tropis Terang', label_en: 'Noon (12:00) • Bright Tropical Ambience' },
+    { p: 0.50, phase: 'sunset',  temp: 'warm',     dimmer: 65, scene: 'commercial',  lux: 260, label_id: 'Senja (17:30) • Pendar Emas Kehangatan', label_en: 'Sunset (17:30) • Golden Sunset Glow' },
+    { p: 0.75, phase: 'evening', temp: 'warm',     dimmer: 85, scene: 'shadow',      lux: 320, label_id: 'Malam (20:00) • Standar Ekspor 2700K', label_en: 'Evening (20:00) • Export Standard 2700K' },
+    { p: 1.00, phase: 'night',   temp: 'amber',    dimmer: 95, scene: 'shadow',      lux: 380, label_id: 'Larut (23:00) • Intimate Deep Amber', label_en: 'Late Night (23:00) • Intimate Deep Amber' }
+  ];
+
   function applyLighting() {
     const scene = SCENES_DATA[activeStudioScene] || SCENES_DATA.shadow;
-    const preset = LIGHTING_PRESETS[activeStudioPreset];
-    if (!preset) return;
+    const preset = LIGHTING_PRESETS[activeStudioPreset] || LIGHTING_PRESETS.warm;
 
     const aura = $('stageLightAura');
     const bloom = $('fixtureGlowBloom');
     const roomBg = $('stageRoomBg');
-    const vectorFixture = $('stageLampFixture');
     const shadowOverlay = $('stageShadowOverlay');
+    const beam = $('stageLightBeam');
+    const bulbCircle = $('bulbGlowCircle');
+    const filament = $('filamentPath');
+    const pwrSwitch = $('stagePowerSwitch');
+    const switchText = $('switchStatusText');
 
     const factor = activeStudioDimmer / 100;
-    const isOff = activeStudioPreset === 'off' || activeStudioDimmer === 0;
-    const opacity = isOff ? 0 : factor * 0.9;
+    const isOff = !isLampPowered || activeStudioPreset === 'off' || activeStudioDimmer === 0;
+    const opacity = isOff ? 0 : factor * 0.92;
 
-    // 1. Scene background image and brightness filter
+    // 1. Room Background Image and Lighting Response
     if (roomBg) {
-      roomBg.style.backgroundImage = `url('${scene.bg}')`;
+      roomBg.style.backgroundImage = "url('" + scene.bg + "')";
       if (isOff) {
-        roomBg.style.filter = 'brightness(0.35) contrast(0.9) grayscale(0.25)';
-        roomBg.style.opacity = '0.55';
+        roomBg.style.filter = 'brightness(0.28) contrast(0.85) grayscale(0.35)';
+        roomBg.style.opacity = '0.5';
       } else {
         const brightness = scene.baseBrightness + (scene.maxBrightness - scene.baseBrightness) * factor;
-        roomBg.style.filter = `brightness(${brightness.toFixed(2)}) contrast(${(1 + factor * 0.12).toFixed(2)})`;
+        roomBg.style.filter = 'brightness(' + brightness.toFixed(2) + ') contrast(' + (1 + factor * 0.14).toFixed(2) + ')';
         roomBg.style.opacity = '1';
       }
     }
 
-    // 2. Toggle vector fixture visibility (only in fixture sketch mode)
-    if (vectorFixture) {
-      vectorFixture.style.display = scene.showVectorFixture ? 'flex' : 'none';
-    }
-
-    // 3. Ambient lighting aura
+    // 2. Ambient Lighting Aura
     if (aura) {
-      if (scene.showVectorFixture) {
-        aura.style.background = `radial-gradient(circle at 50% 45%, ${preset.glow} 0%, transparent 70%)`;
-        aura.style.opacity = opacity;
-      } else {
-        aura.style.background = `radial-gradient(circle at 50% 40%, ${preset.glow} 0%, transparent 75%)`;
-        aura.style.opacity = isOff ? 0 : opacity * 0.75;
-      }
+      aura.style.background = 'radial-gradient(circle at 50% 45%, ' + preset.glow + ' 0%, transparent 72%)';
+      aura.style.opacity = isOff ? 0 : opacity * 0.85;
     }
 
-    // 4. Bloom glow for fixture
-    if (bloom && scene.showVectorFixture) {
+    // 3. Volumetric Downward Light Beam
+    if (beam) {
+      beam.style.setProperty('--sim-glow-color', preset.glow);
+      beam.style.opacity = isOff ? 0 : (factor * 0.75).toFixed(2);
+      beam.style.filter = 'blur(' + (8 + (1 - factor) * 8) + 'px)';
+    }
+
+    // 4. Bulb Glow & Filament Response in Vector Dome
+    if (bulbCircle) {
+      bulbCircle.setAttribute('fill', isOff ? '#554A3B' : preset.core);
+      bulbCircle.setAttribute('opacity', isOff ? '0.3' : (0.7 + factor * 0.3).toFixed(2));
+    }
+    if (filament) {
+      filament.setAttribute('stroke', isOff ? '#382B1C' : '#FF6B00');
+      filament.setAttribute('stroke-width', isOff ? '1' : (1.5 + factor * 1.5).toFixed(1));
+    }
+
+    // 5. Fixture Core Bloom
+    if (bloom) {
       bloom.style.background = preset.core;
       bloom.style.opacity = opacity;
-      bloom.style.filter = `blur(${12 + factor * 14}px)`;
-      bloom.style.transform = `translateX(-50%) scale(${0.7 + factor * 0.5})`;
+      bloom.style.filter = 'blur(' + (10 + factor * 18) + 'px)';
+      bloom.style.transform = 'translateX(-50%) scale(' + (0.6 + factor * 0.55) + ')';
     }
 
-    // 5. Geometric shadow rays overlay (active in shadow scene)
+    // 6. Geometric Shadow Overlay (Figure 2.1 Study)
     if (shadowOverlay) {
       if (activeStudioScene === 'shadow' && !isOff) {
-        shadowOverlay.style.opacity = (factor * 0.65).toFixed(2);
+        shadowOverlay.style.opacity = (factor * 0.75).toFixed(2);
+      } else if (!isOff) {
+        shadowOverlay.style.opacity = (factor * 0.35).toFixed(2);
       } else {
         shadowOverlay.style.opacity = '0';
       }
+    }
+
+    // 7. Power Switch UI update
+    if (pwrSwitch && switchText) {
+      pwrSwitch.classList.toggle('active', isLampPowered && !isOff);
+      pwrSwitch.classList.toggle('off', isOff);
+      const dict = I18N[currentLang];
+      switchText.textContent = isOff ? dict.studio_switch_off : dict.studio_switch_on;
     }
 
     updateLightingStudioText();
@@ -1057,43 +1174,485 @@ const SCENES_DATA = {
 
   function updateLightingStudioText() {
     const indicatorText = $('indicatorText');
+    const indicatorDot = $('indicatorDot');
     const dimmerVal = $('dimmerVal');
-    const preset = LIGHTING_PRESETS[activeStudioPreset];
-    const scene = SCENES_DATA[activeStudioScene] || SCENES_DATA.shadow;
-    if (!preset) return;
+    const metricLux = $('metricLux');
+    const metricContrast = $('metricContrast');
+    const preset = LIGHTING_PRESETS[activeStudioPreset] || LIGHTING_PRESETS.warm;
 
-    const label = currentLang === 'en' ? preset.label_en : preset.label_id;
-    const sceneLabel = currentLang === 'en' ? scene.label_en : scene.label_id;
+    if (dimmerVal) dimmerVal.textContent = activeStudioDimmer + '%';
+
+    const isOff = !isLampPowered || activeStudioPreset === 'off' || activeStudioDimmer === 0;
+
+    // Estimate Lux based on 2700K bulb inverted square law at 80cm suspension height
+    const baseLux = activeStudioPreset === 'daylight' ? 420 : activeStudioPreset === 'amber' ? 290 : 360;
+    const estimatedLux = isOff ? 20 : Math.round(baseLux * (activeStudioDimmer / 100));
+
+    // Contrast ratio of geometric shadows
+    const contrastPct = isOff ? 0 : Math.round(Math.min(95, 30 + (activeStudioDimmer / 100) * 55));
+
+    if (metricLux) metricLux.textContent = '💡 ~' + estimatedLux + ' Lux';
+    if (metricContrast) metricContrast.textContent = 'Kontras: ' + contrastPct + '%';
 
     if (indicatorText) {
-      indicatorText.textContent = `${sceneLabel} • ${label} (${activeStudioDimmer}%)`;
+      if (isOff) {
+        indicatorText.textContent = currentLang === 'en' ? 'Fixture Turned Off • Natural Daylight' : 'Lampu Padam • Cahaya Alami Siang';
+      } else {
+        const kelvinName = activeStudioPreset === 'amber' ? '2200K Amber' : activeStudioPreset === 'daylight' ? '4000K Daylight' : '2700K Warm Sunset';
+        indicatorText.textContent = kelvinName + ' • ' + activeStudioDimmer + '% Dimmer';
+      }
     }
-    if (dimmerVal) {
-      dimmerVal.textContent = `${activeStudioDimmer}%`;
+
+    if (indicatorDot) {
+      indicatorDot.style.background = isOff ? '#8E8E93' : preset.core;
+      indicatorDot.style.boxShadow = isOff ? 'none' : '0 0 10px ' + preset.core;
     }
   }
 
+  // ==========================================================================
+  // Particle System (Warm Dust Motes Drifting in Light Beam)
+  // ==========================================================================
+  function initParticleSystem() {
+    particleCanvas = $('stageParticleCanvas');
+    if (!particleCanvas) return;
+    particleCtx = particleCanvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = particleCanvas.getBoundingClientRect();
+      if (rect.width && rect.height) {
+        particleCanvas.width = rect.width;
+        particleCanvas.height = rect.height;
+      }
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    particles = [];
+    const w = particleCanvas.width || 500;
+    const h = particleCanvas.height || 440;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: w * 0.3 + Math.random() * (w * 0.4),
+        y: h * 0.2 + Math.random() * (h * 0.75),
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: -0.15 - Math.random() * 0.35,
+        radius: 0.8 + Math.random() * 2.2,
+        baseAlpha: 0.2 + Math.random() * 0.6,
+        pulseSpeed: 0.002 + Math.random() * 0.003,
+        pulseOffset: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function renderParticles(time) {
+    if (!particleCanvas || !particleCtx) return;
+    const w = particleCanvas.width;
+    const h = particleCanvas.height;
+
+    particleCtx.clearRect(0, 0, w, h);
+
+    if (!fxParticlesEnabled || !isLampPowered || activeStudioPreset === 'off' || activeStudioDimmer === 0) {
+      return;
+    }
+
+    const factor = activeStudioDimmer / 100;
+    const preset = LIGHTING_PRESETS[activeStudioPreset] || LIGHTING_PRESETS.warm;
+
+    // Light cone center coordinates
+    const centerX = w * 0.5 + (lampAngle * 2.5);
+    const topY = h * 0.32;
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around
+      if (p.y < topY) {
+        p.y = h * 0.95;
+        p.x = centerX + (Math.random() - 0.5) * (w * 0.45);
+      }
+      if (p.x < w * 0.15 || p.x > w * 0.85) {
+        p.vx *= -1;
+      }
+
+      // Distance from center of light cone modulates visibility
+      const distFromCenter = Math.abs(p.x - centerX);
+      const maxSpread = ((p.y - topY) / (h * 0.68)) * (w * 0.38) + 30;
+      const coneFactor = Math.max(0, 1 - (distFromCenter / maxSpread));
+
+      const alpha = p.baseAlpha * factor * coneFactor * (0.7 + 0.3 * Math.sin(time * p.pulseSpeed + p.pulseOffset));
+
+      if (alpha > 0.02) {
+        particleCtx.beginPath();
+        particleCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        particleCtx.fillStyle = preset.core;
+        particleCtx.globalAlpha = alpha;
+        particleCtx.shadowBlur = 6;
+        particleCtx.shadowColor = preset.core;
+        particleCtx.fill();
+      }
+    });
+
+    particleCtx.globalAlpha = 1.0;
+  }
+
+  // ==========================================================================
+  // Physical Lamp Pendulum & Interactive Drag Engine
+  // ==========================================================================
+  function initLampDragPhysics() {
+    const fixture = $('stageLampFixture');
+    const stage = $('studioStage');
+    if (!fixture || !stage) return;
+
+    function getPointerX(e) {
+      return e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+    }
+
+    function onPointerDown(e) {
+      isDraggingLamp = true;
+      dragStartX = getPointerX(e);
+      dragStartAngle = lampAngle;
+      lampVelocity = 0;
+      fixture.style.transition = 'none';
+
+      // Hide drag hint on first touch
+      const hint = $('stageDragHint');
+      if (hint) hint.style.opacity = '0';
+    }
+
+    function onPointerMove(e) {
+      if (!isDraggingLamp) return;
+      const currentX = getPointerX(e);
+      const deltaX = currentX - dragStartX;
+      lampAngle = Math.max(-28, Math.min(28, dragStartAngle + deltaX * 0.28));
+      updateLampTransforms(lampAngle);
+    }
+
+    function onPointerUp() {
+      if (!isDraggingLamp) return;
+      isDraggingLamp = false;
+      fixture.style.transition = '';
+    }
+
+    // Attach mouse & touch listeners
+    fixture.addEventListener('mousedown', onPointerDown);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerUp);
+
+    fixture.addEventListener('touchstart', onPointerDown, { passive: true });
+    window.addEventListener('touchmove', onPointerMove, { passive: true });
+    window.addEventListener('touchend', onPointerUp, { passive: true });
+  }
+
+  function updateLampTransforms(angle) {
+    const cord = $('fixtureCord');
+    const dome = $('fixtureDome');
+    const beam = $('stageLightBeam');
+    const shadowOverlay = $('stageShadowOverlay');
+
+    if (cord) cord.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+    if (dome) dome.style.transform = 'rotate(' + (angle * 0.95).toFixed(2) + 'deg)';
+    if (beam) beam.style.transform = 'translateX(-50%) rotate(' + (angle * 0.7).toFixed(2) + 'deg)';
+
+    // Projected bamboo shadows shift in opposite perspective parallax
+    if (shadowOverlay) {
+      const offsetX = (-angle * 2.8).toFixed(1);
+      shadowOverlay.style.transform = 'translateX(' + offsetX + 'px) rotate(' + (-angle * 0.35).toFixed(2) + 'deg)';
+    }
+  }
+
+  // ==========================================================================
+  // Ambiance Day-Night Sequencer & Timeline Player
+  // ==========================================================================
+  function interpolateAmbiance(progress) {
+    const kfs = AMBIANCE_KEYFRAMES;
+    let idx = 0;
+    for (let i = 0; i < kfs.length - 1; i++) {
+      if (progress >= kfs[i].p && progress <= kfs[i + 1].p) {
+        idx = i;
+        break;
+      }
+    }
+
+    const k1 = kfs[idx];
+    const k2 = kfs[idx + 1] || kfs[idx];
+    const range = (k2.p - k1.p) || 1;
+    const localT = (progress - k1.p) / range;
+
+    const currentDimmer = Math.round(k1.dimmer + (k2.dimmer - k1.dimmer) * localT);
+    activeStudioDimmer = currentDimmer;
+
+    const activeK = localT < 0.5 ? k1 : k2;
+    activeStudioPreset = activeK.temp;
+    activeStudioScene = activeK.scene;
+
+    const dimmerSlider = $('dimmerSlider');
+    if (dimmerSlider) dimmerSlider.value = activeStudioDimmer;
+
+    const tempBtns = document.querySelectorAll('.temp-btn');
+    tempBtns.forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-temp') === activeStudioPreset);
+    });
+
+    const sceneBtns = document.querySelectorAll('.scene-btn');
+    sceneBtns.forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-scene') === activeStudioScene);
+    });
+
+    const milestones = document.querySelectorAll('.timeline-step');
+    milestones.forEach(m => {
+      m.classList.toggle('active', m.getAttribute('data-phase') === activeK.phase);
+    });
+
+    const progressEl = $('timelineProgress');
+    if (progressEl) {
+      progressEl.style.width = (progress * 100).toFixed(1) + '%';
+    }
+
+    applyLighting();
+  }
+
+  function startAmbiancePlayer() {
+    isPlayingAmbiance = true;
+    const playBtn = $('studioPlayBtn');
+    const playIcon = $('playBtnIcon');
+    const playText = $('playBtnText');
+    const statusBadge = $('playerStatusBadge');
+    const dict = I18N[currentLang];
+
+    if (playBtn) playBtn.classList.add('playing');
+    if (playIcon) playIcon.textContent = '⏸';
+    if (playText) playText.textContent = dict.studio_play_pause;
+    if (statusBadge) statusBadge.textContent = dict.player_status_auto;
+
+    if (!isLampPowered) {
+      isLampPowered = true;
+    }
+  }
+
+  function pauseAmbiancePlayer() {
+    isPlayingAmbiance = false;
+    const playBtn = $('studioPlayBtn');
+    const playIcon = $('playBtnIcon');
+    const playText = $('playBtnText');
+    const statusBadge = $('playerStatusBadge');
+    const dict = I18N[currentLang];
+
+    if (playBtn) playBtn.classList.remove('playing');
+    if (playIcon) playIcon.textContent = '▶';
+    if (playText) playText.textContent = dict.studio_play_start;
+    if (statusBadge) statusBadge.textContent = dict.player_status_paused;
+  }
+
+  function toggleAmbiancePlayer() {
+    if (isPlayingAmbiance) {
+      pauseAmbiancePlayer();
+    } else {
+      startAmbiancePlayer();
+    }
+  }
+
+  // ==========================================================================
+  // Main Animation Loop (60 FPS Physics & Particles)
+  // ==========================================================================
+  function lightingStudioAnimationLoop(time) {
+    const dt = Math.min(32, time - lastFrameTime);
+    lastFrameTime = time;
+
+    // 1. Advance auto-player timeline
+    if (isPlayingAmbiance) {
+      ambianceProgress += (dt / 24000);
+      if (ambianceProgress > 1.0) {
+        ambianceProgress = 0.0;
+      }
+      interpolateAmbiance(ambianceProgress);
+    }
+
+    // 2. Pendulum Physics Simulation
+    if (!isDraggingLamp) {
+      const gravity = 0.0035;
+      const damping = 0.985;
+      const acceleration = -gravity * Math.sin(lampAngle * Math.PI / 180) * 180 / Math.PI;
+
+      lampVelocity = (lampVelocity + acceleration) * damping;
+      lampAngle += lampVelocity;
+
+      let effectiveAngle = lampAngle;
+      if (fxSwayEnabled) {
+        const breeze = Math.sin(time * 0.0016) * 3.2;
+        effectiveAngle += breeze;
+      }
+
+      updateLampTransforms(effectiveAngle);
+    }
+
+    // 3. Ambient Breathing Effect (Subtle Organic Light Pulse)
+    if (fxBreathingEnabled && isLampPowered && activeStudioPreset !== 'off' && activeStudioDimmer > 0) {
+      const aura = $('stageLightAura');
+      const bloom = $('fixtureGlowBloom');
+      const breath = 1 + Math.sin(time * 0.0028) * 0.035;
+
+      if (aura) {
+        const baseOpacity = (activeStudioDimmer / 100) * 0.85;
+        aura.style.opacity = (baseOpacity * breath).toFixed(3);
+      }
+      if (bloom) {
+        const baseScale = 0.6 + (activeStudioDimmer / 100) * 0.55;
+        bloom.style.transform = 'translateX(-50%) scale(' + (baseScale * breath).toFixed(3) + ')';
+      }
+    }
+
+    // 4. Render Canvas Light Particles
+    renderParticles(time);
+
+    ambianceAnimFrame = requestAnimationFrame(lightingStudioAnimationLoop);
+  }
+
+  // ==========================================================================
+  // Initialization of Controls and Listeners
+  // ==========================================================================
   function initLightingStudio() {
     const dimmer = $('dimmerSlider');
     const tempBtns = document.querySelectorAll('.temp-btn');
     const sceneBtns = document.querySelectorAll('.scene-btn');
     const showcaseCards = document.querySelectorAll('[data-scene-trigger]');
+    const playBtn = $('studioPlayBtn');
+    const resetBtn = $('studioResetBtn');
+    const pwrSwitch = $('stagePowerSwitch');
+    const timelineTrack = $('timelineTrack');
+    const milestoneBtns = document.querySelectorAll('.timeline-step');
 
-    // Temperature buttons
+    const fxSway = $('fxSwayToggle');
+    const fxParticles = $('fxParticlesToggle');
+    const fxBreathing = $('fxBreathingToggle');
+
+    // 1. Power Switch Listener
+    if (pwrSwitch) {
+      pwrSwitch.addEventListener('click', () => {
+        isLampPowered = !isLampPowered;
+        playRelayClickSound();
+        applyLighting();
+      });
+    }
+
+    // 2. Play / Pause Ambiance Button
+    if (playBtn) {
+      playBtn.addEventListener('click', toggleAmbiancePlayer);
+    }
+
+    // 3. Reset Button (Back to Export Standard: 2700K 85% Dimmer)
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        pauseAmbiancePlayer();
+        isLampPowered = true;
+        activeStudioPreset = 'warm';
+        activeStudioScene = 'shadow';
+        activeStudioDimmer = 85;
+        ambianceProgress = 0.75;
+        if (dimmer) dimmer.value = 85;
+
+        tempBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-temp') === 'warm'));
+        sceneBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-scene') === 'shadow'));
+        milestoneBtns.forEach(m => m.classList.toggle('active', m.getAttribute('data-phase') === 'evening'));
+
+        const progressEl = $('timelineProgress');
+        if (progressEl) progressEl.style.width = '75%';
+
+        const statusBadge = $('playerStatusBadge');
+        if (statusBadge) statusBadge.textContent = I18N[currentLang].player_status_manual;
+
+        applyLighting();
+      });
+    }
+
+    // 4. Timeline Track Click Seeking
+    if (timelineTrack) {
+      timelineTrack.addEventListener('click', e => {
+        const rect = timelineTrack.getBoundingClientRect();
+        const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        ambianceProgress = clickRatio;
+        interpolateAmbiance(ambianceProgress);
+      });
+    }
+
+    // 5. Timeline Milestone Steps Click
+    milestoneBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const phaseName = btn.getAttribute('data-phase');
+        const kf = AMBIANCE_KEYFRAMES.find(k => k.phase === phaseName);
+        if (kf) {
+          ambianceProgress = kf.p;
+          interpolateAmbiance(ambianceProgress);
+        }
+      });
+    });
+
+    // 6. FX Toggles
+    if (fxSway) {
+      fxSway.addEventListener('change', e => {
+        fxSwayEnabled = e.target.checked;
+        if (!fxSwayEnabled) {
+          lampAngle = 0;
+          updateLampTransforms(0);
+        }
+      });
+    }
+    if (fxParticles) {
+      fxParticles.addEventListener('change', e => {
+        fxParticlesEnabled = e.target.checked;
+      });
+    }
+    if (fxBreathing) {
+      fxBreathing.addEventListener('change', e => {
+        fxBreathingEnabled = e.target.checked;
+      });
+    }
+
+    // 7. Temperature Presets (Manual Override)
     tempBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        pauseAmbiancePlayer();
         tempBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeStudioPreset = btn.getAttribute('data-temp') || 'warm';
+        if (activeStudioPreset === 'off') {
+          isLampPowered = false;
+        } else {
+          isLampPowered = true;
+        }
         applyLighting();
-  });
+      });
     });
 
-    // Showcase cards click to activate scene in studio
+    // 8. Scene Selection (Manual Override)
+    sceneBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pauseAmbiancePlayer();
+        sceneBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeStudioScene = btn.getAttribute('data-scene') || 'shadow';
+        applyLighting();
+      });
+    });
+
+    // 9. Dimmer Range Slider (Manual Override)
+    if (dimmer) {
+      dimmer.addEventListener('input', e => {
+        pauseAmbiancePlayer();
+        isLampPowered = true;
+        activeStudioDimmer = parseInt(e.target.value, 10) || 0;
+        applyLighting();
+      });
+    }
+
+    // 10. Showcase Cards Click Trigger
     showcaseCards.forEach(card => {
       card.addEventListener('click', () => {
         const targetScene = card.getAttribute('data-scene-trigger');
         if (targetScene && SCENES_DATA[targetScene]) {
+          pauseAmbiancePlayer();
           activeStudioScene = targetScene;
           sceneBtns.forEach(b => {
             b.classList.toggle('active', b.getAttribute('data-scene') === targetScene);
@@ -1107,17 +1666,17 @@ const SCENES_DATA = {
       });
     });
 
-    // Dimmer range slider
-    if (dimmer) {
-      dimmer.addEventListener('input', e => {
-        activeStudioDimmer = parseInt(e.target.value, 10) || 0;
-        applyLighting();
-      });
-    }
-
+    // 11. Initialize sub-engines
+    initParticleSystem();
+    initLampDragPhysics();
     applyLighting();
-  }
 
+    // 12. Start Animation Loop
+    if (!ambianceAnimFrame) {
+      lastFrameTime = performance.now();
+      ambianceAnimFrame = requestAnimationFrame(lightingStudioAnimationLoop);
+    }
+  }
 
   // ==========================================================================
   // 2. Dynamic Hero Slider
