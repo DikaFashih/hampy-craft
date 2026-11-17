@@ -1004,7 +1004,6 @@ const SCENES_DATA = {
     // Refresh dynamic components
     updateHeroSlideTexts();
     renderGallery();
-    updateLightingStudioText();
     updateEstimatorSelectOptions();
     calculateEstimator();
     renderQuoteBasket();
