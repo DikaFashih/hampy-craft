@@ -62,7 +62,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 88px;
+  -webkit-overflow-scrolling: touch;
   font-size-adjust: from-font;
   text-size-adjust: 100%;
 }
@@ -3774,4 +3776,38 @@ html, body {
     gap: 6px !important;
   }
 
+}
+
+
+/* ==========================================================================
+   Smooth Scrolling & Anchor Header Offsets
+   ========================================================================== */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 88px;
+}
+
+section[id],
+div[id].studio-3d-card,
+article[id] {
+  scroll-margin-top: 88px;
+}
+
+body,
+.mobile-nav-drawer,
+.modal-window,
+.slider-container,
+.studio-3d-viewport-wrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 72px !important;
+  }
+  section[id],
+  div[id].studio-3d-card,
+  article[id] {
+    scroll-margin-top: 72px !important;
+  }
 }

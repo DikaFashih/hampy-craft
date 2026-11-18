@@ -1727,6 +1727,42 @@ const SCENES_DATA = {
       });
     }
   }
+  // ==========================================================================
+  // 9. Premium Smooth Scroll Engine
+  // ==========================================================================
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+
+        if (href === '#top') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (history.pushState) history.pushState(null, '', '#top');
+          return;
+        }
+
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const header = document.getElementById('siteHeader');
+          const headerHeight = (header ? header.offsetHeight : 70) + 16;
+          const targetY = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: 'smooth'
+          });
+
+          if (history.pushState) {
+            history.pushState(null, '', href);
+          }
+        }
+      });
+    });
+  }
 
   // ==========================================================================
   // Application Bootstrap
@@ -1741,5 +1777,6 @@ const SCENES_DATA = {
     initContactAndWa();
     initModal();
     initNavAndDrawer();
+    initSmoothScroll();
   });
 })();
