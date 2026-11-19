@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, ShieldCheck, Sparkles, Check } from 'lucide-react';
+import { Sparkles, Check } from 'lucide-react';
 
 export default function UnboxingSteps({ lang }) {
   const isEn = lang === 'en';
@@ -42,8 +42,8 @@ export default function UnboxingSteps({ lang }) {
           </h3>
           <p className="text-neutral-600 text-sm mt-2">
             {isEn
-              ? 'Engineered for smooth unpacking by hotel contractors or retail staff with zero plastic disposal waste.'
-              : 'Dirancang agar mudah dibuka oleh kontraktor hotel atau tim ritel furnitur tanpa menghasilkan sampah plastik.'}
+              ? 'Engineered for smooth unpacking by hotel contractors or retail staff with zero plastic disposal waste in the packaging.'
+              : 'Dirancang agar mudah dibuka oleh kontraktor hotel atau tim ritel furnitur dengan kemasan yang sepenuhnya bebas plastik.'}
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function UnboxingSteps({ lang }) {
 
               <div className="mt-5 pt-3 border-t border-sand/70 flex items-center gap-2 text-[11px] font-bold text-forest">
                 <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span>100% Zero-Plastic Waste</span>
+                <span>{isEn ? 'Plastic-Free Packaging' : 'Kemasan Bebas Plastik'}</span>
               </div>
             </div>
           ))}

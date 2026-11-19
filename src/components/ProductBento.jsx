@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ruler, Package, Shield, Zap, Check, ArrowUpRight } from 'lucide-react';
+import { Ruler, Package, Shield, Zap, Check } from 'lucide-react';
 import { SPECS } from '../data/specs';
 
 export default function ProductBento({ lang }) {
@@ -25,7 +25,7 @@ export default function ProductBento({ lang }) {
           </p>
         </div>
 
-        {/* Bento Grid (Dribbble 16pixel Bento Box Layout) */}
+        {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* CARD 1: BLUEPRINT SKETCH & PROPORTIONS (Span 7) */}
@@ -40,7 +40,7 @@ export default function ProductBento({ lang }) {
                     <h3 className="font-extrabold text-forest text-base sm:text-lg">
                       {isEn ? 'Design Engineering Blueprint' : 'Sketsa Teknik & Proporsi Kubah'}
                     </h3>
-                    <p className="text-[11px] text-neutral-500">PRK-01 • Skala Proporsional Kerajinan</p>
+                    <p className="text-[11px] text-neutral-500">PRK-01 • Indonesian Handcrafted Lighting</p>
                   </div>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-sand/60 text-forest text-xs font-bold">
@@ -78,7 +78,7 @@ export default function ProductBento({ lang }) {
             <p className="text-xs text-neutral-600 mt-5 pt-4 border-t border-sand leading-relaxed">
               {isEn
                 ? 'Structured with a lower circular bamboo ring frame, dense neck collar weave, and universal E27 ceramic fixture mount.'
-                : 'Struktur anyaman simetris diperkuat rangka bambu melingkar di bagian bawah, collar leher anyam rapat, dan dudukan fitting E27.'}
+                : 'Struktur anyaman simetris diperkuat rangka bambu melingkar di bagian bawah, collar leher anyam rapat, dan dudukan fitting keramik E27.'}
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export default function ProductBento({ lang }) {
                   </div>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-bold">
-                  81,4% Hemat Ruang
+                  84,4% Hemat Ruang
                 </span>
               </div>
 
@@ -124,13 +124,22 @@ export default function ProductBento({ lang }) {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>100% Bebas Plastik & Stereofoam</span>
+                  <span>Kemasan 100% Bebas Plastik (Eco-Friendly Cushioning)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Hemat 84,4% Ruang (11,25 CBM vs ±72 CBM bila dikirim utuh)</span>
                 </li>
               </ul>
             </div>
 
-            <div className="mt-5 p-3 rounded-xl bg-forest/5 text-[11px] text-forest font-semibold">
-              Berat Kotor: 14,75 kg per karton (100 karton = 1.475 kg total)
+            <div className="mt-5 space-y-2">
+              <div className="p-3 rounded-xl bg-forest/5 text-[11px] text-forest font-semibold">
+                Berat: 13,5 kg netto per box (estimasi 14,75 kg kargo berpalet; total 1.475 kg / 100 box)
+              </div>
+              <p className="text-[10px] text-neutral-500 italic">
+                *Asumsi nesting knock-down, validasi pengujian fisik (drop test) disyaratkan pada sampel pertama sebelum produksi massal.
+              </p>
             </div>
           </div>
 
@@ -152,20 +161,20 @@ export default function ProductBento({ lang }) {
               <div className="mt-4 space-y-3 text-xs text-neutral-600 leading-relaxed">
                 <p>
                   {isEn
-                    ? 'Harvested at optimum maturity (3–4 years), carbonized/cured with target moisture content <12% to prevent mold growth during long sea transit.'
-                    : 'Bambu dipanen pada usia optimal (3–4 tahun) dengan target kadar air di bawah 12% guna mencegah risiko timbulnya jamur saat pelayaran laut 30 hari.'}
+                    ? 'Selected premium bamboo cured with target moisture content <12% to prevent mold growth during 30–40 days of ocean transit.'
+                    : 'Bambu Petung & Apus pilihan terkurasi dikeringkan dengan target kadar air di bawah 12% guna mencegah risiko timbulnya jamur saat pelayaran laut 30–40 hari.'}
                 </p>
                 <p>
                   {isEn
-                    ? 'Immersion treatment uses eco-friendly non-arsenic and non-creosote solutions, maintaining safety for commercial indoor environments.'
-                    : 'Perendaman menggunakan formula pengawet ramah lingkungan bebas arsenik dan kreosot, aman untuk pemasangan interior komersial.'}
+                    ? 'Immersion treatment uses eco-friendly solutions without arsenic or creosote, safe for indoor hospitality spaces.'
+                    : 'Perendaman menggunakan formula larutan ramah lingkungan bebas arsenik dan bebas kreosot, aman untuk estetika interior komersial.'}
                 </p>
               </div>
             </div>
 
             <div className="mt-4 pt-3 border-t border-sand flex items-center justify-between text-xs font-bold text-forest">
               <span>Target Kadar Air: &lt;12%</span>
-              <span className="text-amberBamboo">Bebas Bahan Kimia Berbahaya</span>
+              <span className="text-amberBamboo font-semibold">Bebas Arsenik & Kreosot</span>
             </div>
           </div>
 
@@ -199,8 +208,8 @@ export default function ProductBento({ lang }) {
             </div>
 
             <div className="mt-4 pt-3 border-t border-sand flex items-center justify-between text-xs font-bold text-forest">
-              <span>Fitting: Keramik E27 Universal</span>
-              <span className="text-amberBamboo">LED Warm White 2700K</span>
+              <span>Bohlam: LED Warm White 2700K</span>
+              <span className="text-amberBamboo font-semibold">Acuan Keselamatan UE</span>
             </div>
           </div>
 

@@ -14,20 +14,17 @@ export default function Footer({ lang }) {
           
           {/* Col 1: Brand & Origin (Span 4) */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-forest flex items-center justify-center text-cream border border-white/10">
-                <svg className="w-5 h-5 text-cream" viewBox="0 0 32 32" fill="currentColor">
-                  <rect x="9" y="10" width="3.2" height="18" rx="1"/>
-                  <rect x="15" y="4" width="3.5" height="24" rx="1"/>
-                  <path d="M9 17c-3.5-1-5.5-3.5-6-6 3 0 5.5 1.8 6 6z"/>
-                  <path d="M18.5 12c3.5-1.5 6-4.5 6.5-7.5-3.2.5-5.8 2.8-6.5 7.5z"/>
-                  <path d="M18.5 20c3.2-1 5.2-3.2 5.8-5.8-2.8.4-5 2.2-5.8 5.8z"/>
-                </svg>
+            <div className="flex flex-col items-start gap-2">
+              <div className="bg-white px-3.5 py-1.5 rounded-xl border border-white/20 shadow-sm inline-block">
+                <img
+                  src="images/logo.jpg"
+                  alt="Hampy Craft — Indonesian Handcrafted Lighting"
+                  className="h-8 w-auto object-contain"
+                />
               </div>
-              <div>
-                <span className="font-extrabold text-cream text-base tracking-wider block">HAMPY CRAFT</span>
-                <span className="text-[10px] text-sand/70 tracking-widest uppercase">Hampy Lumina (PRK-01)</span>
-              </div>
+              <span className="text-[11px] text-sand/70 tracking-widest uppercase font-mono">
+                Hampy Lumina (PRK-01)
+              </span>
             </div>
 
             <p className="mt-4 text-xs text-sand/80 leading-relaxed max-w-sm">
@@ -54,6 +51,7 @@ export default function Footer({ lang }) {
               <li>• Waktu Produksi: 30–45 Hari</li>
               <li>• Pembayaran: T/T (30% DP, 70% Salinan B/L)</li>
               <li>• Incoterms: FOB Pelabuhan Tanjung Priok</li>
+              <li>• Waktu Pelayaran: 30–40 Hari Laut</li>
               <li>• Standar: Mengacu Keselamatan UE (CE Proses)</li>
             </ul>
           </div>
@@ -67,10 +65,10 @@ export default function Footer({ lang }) {
               <li>• 10 Kap / Master Karton</li>
               <li>• Box: 50 × 50 × 45 cm</li>
               <li>• Volume: 0,1125 CBM / box</li>
-              <li>• Berat: 14,75 kg / box</li>
-              <li>• 1.000 Unit = 11,25 CBM</li>
+              <li>• Berat: 13,5 kg / box (14,75 kg kargo berpalet)</li>
+              <li>• 1.000 Unit = 11,25 CBM (1.475 kg)</li>
               <li>• Muatan: 34% Kontainer 20ft</li>
-              <li>• 100% Bebas Plastik</li>
+              <li>• Kemasan Bebas Plastik</li>
             </ul>
           </div>
 
@@ -82,7 +80,7 @@ export default function Footer({ lang }) {
             <div className="space-y-3 text-xs text-sand/80">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amberBamboo shrink-0 mt-0.5" />
-                <span>Kecamatan Sleman, Kabupaten Sleman, D.I. Yogyakarta 55511, Indonesia</span>
+                <span>Kecamatan Sleman, Kabupaten Sleman, D.I. Yogyakarta 55581, Indonesia</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amberBamboo shrink-0" />
@@ -106,10 +104,10 @@ export default function Footer({ lang }) {
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-amberBamboo shrink-0" />
             <span>
-              <strong>Transparansi Akademis:</strong> Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01 Hampy Lumina) yang diselaraskan secara akurat dengan laporan teknis pengujian kemasan dan rencana kargo Tanjung Priok – Rotterdam.
+              <strong>Transparansi Akademis:</strong> Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01 Hampy Lumina) yang diselaraskan secara akurat dengan rencana kemasan dan rencana kargo Tanjung Priok – Rotterdam.
             </span>
           </div>
-          <span className="shrink-0 font-mono text-[11px] text-sand/50">PRK-01 • UAD</span>
+          <span className="shrink-0 font-mono text-[11px] text-sand/50">PRK-01</span>
         </div>
 
         {/* Bottom Copyright */}

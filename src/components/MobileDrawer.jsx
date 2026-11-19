@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Ship, ShoppingBag, Globe, Phone, Mail, ArrowRight } from 'lucide-react';
+import { X, Ship, ShoppingBag, Globe, ArrowRight } from 'lucide-react';
 
 export default function MobileDrawer({ isOpen, onClose, lang, setLang, cartCount, onOpenQuote }) {
   if (!isOpen) return null;
@@ -24,16 +24,11 @@ export default function MobileDrawer({ isOpen, onClose, lang, setLang, cartCount
         {/* Drawer Header */}
         <div className="flex items-center justify-between pb-5 border-b border-sand">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-forest flex items-center justify-center text-cream">
-              <svg className="w-4 h-4 text-cream" viewBox="0 0 32 32" fill="currentColor">
-                <rect x="9" y="10" width="3.2" height="18" rx="1"/>
-                <rect x="15" y="4" width="3.5" height="24" rx="1"/>
-                <path d="M9 17c-3.5-1-5.5-3.5-6-6 3 0 5.5 1.8 6 6z"/>
-                <path d="M18.5 12c3.5-1.5 6-4.5 6.5-7.5-3.2.5-5.8 2.8-6.5 7.5z"/>
-                <path d="M18.5 20c3.2-1 5.2-3.2 5.8-5.8-2.8.4-5 2.2-5.8 5.8z"/>
-              </svg>
-            </div>
-            <span className="font-extrabold text-forest text-sm tracking-wider">HAMPY CRAFT</span>
+            <img
+              src="images/logo.jpg"
+              alt="Hampy Craft"
+              className="h-8 w-auto object-contain rounded-md"
+            />
           </div>
 
           <button 

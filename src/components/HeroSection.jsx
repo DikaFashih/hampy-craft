@@ -10,12 +10,15 @@ export default function HeroSection({ lang, onOpenQuote }) {
   const [quantity, setQuantity] = useState(1000); // default standard 1000 pcs (100 cartons)
 
   const cartons = Math.ceil(quantity / 10);
-  const totalCbm = parseFloat((cartons * SPECS.packaging.cartonCbm).toFixed(3));
-  const totalWeight = Math.round(cartons * SPECS.packaging.cartonGrossWeightKg);
+  const rawCbm = (cartons * SPECS.packaging.cartonCbm).toFixed(3);
+  const totalCbmDisplay = isEn ? rawCbm : rawCbm.replace('.', ',');
+  const totalNetWeight = Math.round(cartons * (SPECS.packaging.cartonNetWeightKg || 13.5));
+  const totalGrossWeight = Math.round(cartons * SPECS.packaging.cartonGrossWeightKg);
 
   // Container capacity calculation
   const containerMaxCbm = containerType === '20ft' ? 33 : (containerType === '40ft' ? 68 : 15);
-  const utilizationPercent = Math.min(100, parseFloat(((totalCbm / containerMaxCbm) * 100).toFixed(1)));
+  const utilizationPercent = Math.min(100, parseFloat(((parseFloat(rawCbm) / containerMaxCbm) * 100).toFixed(1)));
+  const utilizationDisplay = isEn ? `${utilizationPercent}%` : `${utilizationPercent.toString().replace('.', ',')}%`;
 
   return (
     <section id="top" className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-radial from-sand/30 via-cream to-cream">
@@ -48,9 +51,9 @@ export default function HeroSection({ lang, onOpenQuote }) {
             {/* Description */}
             <p className="mt-5 text-neutral-600 text-base sm:text-lg leading-relaxed max-w-2xl">
               {isEn ? (
-                'Artisanal knock-down bamboo pendant lamps crafted from Sleman Petung & Apus bamboo. Engineered for ocean freight cubic optimization (10 lamps per carton), 100% plastic-free, ready for Rotterdam Port delivery.'
+                'Artisanal knock-down bamboo pendant lamps crafted from Sleman Petung & Apus bamboo. Engineered for ocean freight cubic optimization (10 lamps per carton), plastic-free packaging, ready for Rotterdam Port delivery.'
               ) : (
-                'Kap lampu gantung knock-down artisanal dari bambu Petung & Apus Sleman. Dirancang hemat kubikasi logistik laut (10 kap per karton), 100% bebas plastik, siap kirim ke Pelabuhan Rotterdam.'
+                'Kap lampu gantung knock-down artisanal dari bambu Petung & Apus Sleman. Dirancang hemat kubikasi logistik laut (10 kap per karton), kemasan bebas plastik, siap kirim ke Pelabuhan Rotterdam.'
               )}
             </p>
 
@@ -58,7 +61,7 @@ export default function HeroSection({ lang, onOpenQuote }) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-8 w-full max-w-xl">
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/80 border border-sand shadow-xs">
                 <MapPin className="w-4 h-4 text-amberBamboo shrink-0" />
-                <span className="text-xs font-bold text-forest">{isEn ? 'Sleman, YGY' : 'Sleman, DIY'}</span>
+                <span className="text-xs font-bold text-forest">{isEn ? 'Sleman, DIY' : 'Sleman, DIY'}</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/80 border border-sand shadow-xs">
                 <Box className="w-4 h-4 text-amberBamboo shrink-0" />
@@ -70,62 +73,75 @@ export default function HeroSection({ lang, onOpenQuote }) {
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/80 border border-sand shadow-xs">
                 <ShieldCheck className="w-4 h-4 text-amberBamboo shrink-0" />
-                <span className="text-xs font-bold text-forest">{isEn ? 'EU Standard' : 'Acuan UE'}</span>
+                <span className="text-xs font-bold text-forest">{isEn ? 'Acuan UE (CE)' : 'Acuan UE (CE)'}</span>
               </div>
             </div>
 
             {/* Main Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mt-8 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-4 mt-9">
               <a
                 href="#studio"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-forest text-cream font-bold text-sm shadow-md hover:bg-forestDark transition-all group"
+                className="px-6 py-3.5 rounded-full bg-forest text-cream font-bold text-sm hover:bg-forestDark transition-all shadow-md flex items-center gap-2.5 group"
               >
                 <Sparkles className="w-4 h-4 text-amberBamboo group-hover:rotate-12 transition-transform" />
-                <span>{isEn ? 'Open 3D Prototype' : 'Buka Prototipe 3D'}</span>
+                <span>{isEn ? 'Explore 3D Prototype' : 'Buka Prototipe 3D'}</span>
               </a>
+
               <a
-                href="#logistics"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white border border-forest/20 text-forest font-bold text-sm hover:bg-sand/50 transition-all shadow-xs"
+                href="#specs"
+                className="px-6 py-3.5 rounded-full bg-white border border-sand font-bold text-sm text-neutral-800 hover:bg-sand/40 hover:text-forest transition-colors flex items-center gap-2"
               >
-                <span>{isEn ? 'View Logistics Flow' : 'Pelajari Rantai Pasok'}</span>
-                <ArrowRight className="w-4 h-4 text-amberBamboo" />
+                <span>{isEn ? 'Technical Specifications' : 'Spesifikasi Teknis'}</span>
+                <ArrowRight className="w-4 h-4 text-neutral-400" />
               </a>
+            </div>
+
+            {/* Academic Simulation Notice */}
+            <div className="mt-7 flex items-center gap-2 text-xs text-neutral-500 font-medium">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>
+                {isEn
+                  ? 'Academic Coursework Project (PRK-01): Specifications verified against export feasibility report.'
+                  : 'Dokumen Simulasi Praktikum Ekspor (PRK-01): Data diselaraskan dengan laporan perencanaan ekspor.'}
+              </span>
             </div>
 
           </div>
 
-          {/* RIGHT COLUMN: DRIBBBLE 16PIXEL FREIGHT & CARGO ESTIMATOR CARD */}
+          {/* RIGHT COLUMN: DRIBBLE 16PIXEL FREIGHT & CBM ESTIMATOR CARD */}
           <div className="lg:col-span-5">
-            <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-xl border border-sand/80 relative">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sand/80 relative">
               
-              {/* Card Header & Badge */}
-              <div className="flex items-start justify-between pb-4 border-b border-sand">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-forest">
-                      {isEn ? 'Instant Freight Simulator' : 'Simulasi Kargo Instan'}
-                    </span>
+              {/* Card Header & Route Tag */}
+              <div className="flex items-center justify-between pb-4 border-b border-sand">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                    <Ship className="w-5 h-5 text-amberBamboo" />
                   </div>
-                  <h3 className="text-lg font-extrabold text-forest mt-0.5">
-                    {isEn ? 'Container Load Estimator' : 'Estimator Muatan Ekspor'}
-                  </h3>
+                  <div>
+                    <h3 className="font-extrabold text-forest text-base">
+                      {isEn ? 'Cargo & Container Estimator' : 'Kalkulator Muatan Kargo'}
+                    </h3>
+                    <p className="text-[11px] text-neutral-500">
+                      Tanjung Priok (ID) ➔ Rotterdam (NL)
+                    </p>
+                  </div>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-[11px] font-bold text-forest flex items-center gap-1.5">
-                  <Ship className="w-3.5 h-3.5 text-amberBamboo" />
-                  <span>IDTPP ➔ NLRTM</span>
-                </div>
+
+                <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-forest text-cream">
+                  FOB Priok
+                </span>
               </div>
 
               {/* Container Selector Tabs */}
               <div className="mt-5">
-                <label className="text-xs font-bold text-neutral-500 block mb-2">
-                  {isEn ? 'Select Container Type:' : 'Pilih Jenis Kontainer:'}
+                <label className="text-xs font-bold text-neutral-700 block mb-2">
+                  {isEn ? 'Container Mode:' : 'Pilihan Kontainer:'}
                 </label>
-                <div className="grid grid-cols-3 gap-1.5 p-1 bg-sand/60 rounded-xl">
+                <div className="grid grid-cols-3 gap-1.5 p-1 bg-sand/40 rounded-xl border border-sand">
                   <button
                     onClick={() => setContainerType('20ft')}
-                    className={`py-2 px-1 text-xs font-bold rounded-lg transition-all ${
+                    className={`py-2 px-1 text-center text-xs font-extrabold rounded-lg transition-all ${
                       containerType === '20ft' 
                         ? 'bg-forest text-cream shadow-xs' 
                         : 'text-neutral-600 hover:text-forest'
@@ -135,7 +151,7 @@ export default function HeroSection({ lang, onOpenQuote }) {
                   </button>
                   <button
                     onClick={() => setContainerType('40ft')}
-                    className={`py-2 px-1 text-xs font-bold rounded-lg transition-all ${
+                    className={`py-2 px-1 text-center text-xs font-extrabold rounded-lg transition-all ${
                       containerType === '40ft' 
                         ? 'bg-forest text-cream shadow-xs' 
                         : 'text-neutral-600 hover:text-forest'
@@ -145,22 +161,24 @@ export default function HeroSection({ lang, onOpenQuote }) {
                   </button>
                   <button
                     onClick={() => setContainerType('lcl')}
-                    className={`py-2 px-1 text-xs font-bold rounded-lg transition-all ${
+                    className={`py-2 px-1 text-center text-xs font-extrabold rounded-lg transition-all ${
                       containerType === 'lcl' 
                         ? 'bg-forest text-cream shadow-xs' 
                         : 'text-neutral-600 hover:text-forest'
                     }`}
                   >
-                    LCL Consol
+                    LCL Kargo
                   </button>
                 </div>
               </div>
 
-              {/* Quantity Stepper & Slider */}
+              {/* Quantity Slider */}
               <div className="mt-5">
                 <div className="flex items-center justify-between text-xs font-bold mb-2">
                   <span className="text-neutral-700">{isEn ? 'Order Quantity:' : 'Jumlah Kap Lampu:'}</span>
-                  <span className="text-forest text-sm font-extrabold">{quantity.toLocaleString()} {isEn ? 'Pcs' : 'Unit'}</span>
+                  <span className="text-forest text-sm font-extrabold">
+                    {quantity.toLocaleString(isEn ? 'en-US' : 'id-ID')} {isEn ? 'Pcs' : 'Unit'}
+                  </span>
                 </div>
 
                 <input
@@ -200,7 +218,7 @@ export default function HeroSection({ lang, onOpenQuote }) {
                   <strong className="text-base font-extrabold text-forest mt-0.5 block">
                     {cartons} {isEn ? 'Boxes' : 'Karton'}
                   </strong>
-                  <span className="text-[10px] text-neutral-500">10 kap / box (50×50×45cm)</span>
+                  <span className="text-[10px] text-neutral-500">10 kap / box (50×50×45 cm)</span>
                 </div>
 
                 <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-sand">
@@ -208,9 +226,11 @@ export default function HeroSection({ lang, onOpenQuote }) {
                     {isEn ? 'Cargo Volume' : 'Total Kubikasi'}
                   </span>
                   <strong className="text-base font-extrabold text-amberBamboo mt-0.5 block">
-                    {totalCbm} CBM
+                    {totalCbmDisplay} CBM
                   </strong>
-                  <span className="text-[10px] text-neutral-500">Gross: {totalWeight.toLocaleString()} kg</span>
+                  <span className="text-[10px] text-neutral-500">
+                    {totalNetWeight.toLocaleString(isEn ? 'en-US' : 'id-ID')} kg (Gross: {totalGrossWeight.toLocaleString(isEn ? 'en-US' : 'id-ID')} kg)
+                  </span>
                 </div>
               </div>
 
@@ -220,7 +240,7 @@ export default function HeroSection({ lang, onOpenQuote }) {
                   <span className="text-forest">
                     {isEn ? 'Container Space Occupied:' : 'Kapasitas Kontainer Terisi:'}
                   </span>
-                  <span className="text-amberBamboo font-extrabold">{utilizationPercent}%</span>
+                  <span className="text-amberBamboo font-extrabold">{utilizationDisplay}</span>
                 </div>
                 
                 {/* Progress Bar */}
@@ -233,16 +253,16 @@ export default function HeroSection({ lang, onOpenQuote }) {
                 
                 <p className="text-[10px] text-neutral-600 mt-2 leading-tight">
                   {containerType === '20ft' && quantity === 1000 ? (
-                    isEn ? '★ Exact export report benchmark: 100 cartons fill 34.09% of a 20ft container.' : '★ Sesuai data laporan: 100 karton mengisi 34,09% kontainer 20 kaki.'
+                    isEn ? '★ Benchmark laporan ekspor: 100 karton mengisi 34,09% kontainer 20 kaki (hemat 84,4% ruang dibanding pengiriman utuh).' : '★ Benchmark laporan ekspor: 100 karton mengisi 34,09% kontainer 20 kaki (hemat 84,4% ruang dibanding pengiriman utuh).'
                   ) : (
-                    isEn ? `Occupies ${totalCbm} of ${containerMaxCbm} CBM total capacity.` : `Mengisi ${totalCbm} dari total ${containerMaxCbm} CBM kapasitas kontainer.`
+                    isEn ? `Occupies ${totalCbmDisplay} of ${containerMaxCbm} CBM total capacity.` : `Mengisi ${totalCbmDisplay} dari total ${containerMaxCbm} CBM kapasitas kontainer.`
                   )}
                 </p>
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Button — carries exact slider quantity */}
               <button
-                onClick={onOpenQuote}
+                onClick={() => onOpenQuote(quantity)}
                 className="w-full mt-5 py-3.5 px-4 rounded-2xl bg-amberBamboo text-cream font-extrabold text-xs uppercase tracking-wider hover:bg-amber-600 transition-all shadow-md flex items-center justify-center gap-2"
               >
                 <span>{isEn ? 'Request Official FOB Quote' : 'Minta Penawaran FOB Resmi'}</span>

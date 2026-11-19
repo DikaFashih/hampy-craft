@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { X, ShoppingBag, Send, Mail, CheckCircle2, AlertCircle, Ship } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ShoppingBag, Send, Mail, AlertCircle } from 'lucide-react';
 import { SPECS } from '../data/specs';
 
-export default function QuoteModal({ isOpen, onClose, lang }) {
+export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 1000 }) {
   if (!isOpen) return null;
 
   const isEn = lang === 'en';
 
-  const [qty, setQty] = useState(100);
+  const [qty, setQty] = useState(initialQuantity);
   const [incoterm, setIncoterm] = useState('FOB Tanjung Priok');
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
@@ -15,9 +15,18 @@ export default function QuoteModal({ isOpen, onClose, lang }) {
   const [dest, setDest] = useState('Port of Rotterdam, Netherlands');
   const [notes, setNotes] = useState('');
 
+  // Update qty when initialQuantity changes
+  useEffect(() => {
+    if (initialQuantity) {
+      setQty(initialQuantity);
+    }
+  }, [initialQuantity, isOpen]);
+
   const cartons = Math.ceil(qty / 10);
-  const totalCbm = parseFloat((cartons * SPECS.packaging.cartonCbm).toFixed(3));
-  const totalWeight = Math.round(cartons * SPECS.packaging.cartonGrossWeightKg);
+  const rawCbm = (cartons * SPECS.packaging.cartonCbm).toFixed(3);
+  const totalCbmDisplay = isEn ? rawCbm : rawCbm.replace('.', ',');
+  const totalNetWeight = Math.round(cartons * (SPECS.packaging.cartonNetWeightKg || 13.5));
+  const totalGrossWeight = Math.round(cartons * SPECS.packaging.cartonGrossWeightKg);
 
   const handleSendWhatsApp = (e) => {
     e.preventDefault();
@@ -26,8 +35,8 @@ export default function QuoteModal({ isOpen, onClose, lang }) {
       `----------------------------------------\n` +
       `*Model:* Hampy Lumina PRK-01 (Ø35 x 40 cm)\n` +
       `*Jumlah:* ${qty} unit (${cartons} Master Karton)\n` +
-      `*Total Kubikasi:* ${totalCbm} CBM\n` +
-      `*Berat Kotor:* ${totalWeight} kg\n` +
+      `*Total Kubikasi:* ${totalCbmDisplay} CBM\n` +
+      `*Berat Bersih:* ${totalNetWeight} kg (Kotor: ${totalGrossWeight} kg)\n` +
       `*Incoterms:* ${incoterm}\n` +
       `*Pelabuhan Tujuan:* ${dest}\n` +
       `----------------------------------------\n` +
@@ -49,7 +58,7 @@ export default function QuoteModal({ isOpen, onClose, lang }) {
       `Saya ingin meminta penawaran harga resmi (Quotation) untuk produk Hampy Lumina:\n\n` +
       `- Model: Hampy Lumina PRK-01 (Ø35 x 40 cm)\n` +
       `- Jumlah: ${qty} Unit (${cartons} Master Karton)\n` +
-      `- Estimasi Volume: ${totalCbm} CBM (Berat Kotor: ${totalWeight} kg)\n` +
+      `- Estimasi Volume: ${totalCbmDisplay} CBM (Berat Kotor: ${totalGrossWeight} kg)\n` +
       `- Incoterms: ${incoterm}\n` +
       `- Pelabuhan Tujuan: ${dest}\n\n` +
       `Informasi Kontak:\n` +
@@ -111,43 +120,43 @@ export default function QuoteModal({ isOpen, onClose, lang }) {
               <strong className="text-forest font-extrabold text-sm">{cartons} Box</strong>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Volume Total</span>
-              <strong className="text-amberBamboo font-extrabold text-sm">{totalCbm} CBM</strong>
+              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Total Kubikasi</span>
+              <strong className="text-amberBamboo font-extrabold text-sm">{totalCbmDisplay} CBM</strong>
             </div>
             <div>
               <span className="text-[10px] uppercase font-bold text-neutral-500 block">Berat Kotor</span>
-              <strong className="text-forest font-extrabold text-sm">{totalWeight} kg</strong>
+              <strong className="text-forest font-extrabold text-sm">{totalGrossWeight.toLocaleString(isEn ? 'en-US' : 'id-ID')} kg</strong>
             </div>
           </div>
 
+          {/* Form Fields */}
           <form className="space-y-4">
             
-            {/* Quantity & Incoterms */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-xs font-bold text-neutral-700 block mb-1">
-                  {isEn ? 'Quantity (Min. 50 units):' : 'Jumlah Pesanan (Min. 50 unit):'}
+                  {isEn ? 'Order Quantity (Units):' : 'Jumlah Pesanan (Unit, Min. 50):'}
                 </label>
                 <input
                   type="number"
                   min="50"
                   step="10"
                   value={qty}
-                  onChange={(e) => setQty(Math.max(50, parseInt(e.target.value) || 50))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-sand bg-[#FAF8F5] text-sm font-bold text-forest focus:outline-forest"
+                  onChange={(e) => setQty(parseInt(e.target.value) || 0)}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-sand bg-[#FAF8F5] text-sm text-neutral-800 focus:outline-forest font-bold"
                 />
               </div>
 
               <div>
                 <label className="text-xs font-bold text-neutral-700 block mb-1">
-                  Incoterms Pilihan:
+                  Incoterms:
                 </label>
                 <select
                   value={incoterm}
                   onChange={(e) => setIncoterm(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-sand bg-[#FAF8F5] text-sm font-semibold text-neutral-800 focus:outline-forest"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-sand bg-[#FAF8F5] text-sm text-neutral-800 focus:outline-forest font-medium"
                 >
-                  <option value="FOB Tanjung Priok">FOB Tanjung Priok (Jakarta)</option>
+                  <option value="FOB Tanjung Priok">FOB Pelabuhan Tanjung Priok (Standar)</option>
                   <option value="CFR Port of Rotterdam">CFR Port of Rotterdam</option>
                   <option value="CIF Port of Rotterdam">CIF Port of Rotterdam</option>
                   <option value="EXW Sleman Facility">EXW Sleman Workshop</option>

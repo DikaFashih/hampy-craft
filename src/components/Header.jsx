@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Ship, ShoppingBag, Globe, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Ship, ShoppingBag, Globe, Menu } from 'lucide-react';
 
 export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMobileMenu }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,23 +23,15 @@ export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMo
           
           {/* Brand Logo & Route Tag */}
           <div className="flex items-center gap-3 shrink-0">
-            <a href="#top" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-forest flex items-center justify-center text-cream shadow-sm group-hover:scale-105 transition-transform">
-                <svg className="w-5 h-5 text-cream" viewBox="0 0 32 32" fill="currentColor">
-                  <rect x="9" y="10" width="3.2" height="18" rx="1"/>
-                  <rect x="15" y="4" width="3.5" height="24" rx="1"/>
-                  <path d="M9 17c-3.5-1-5.5-3.5-6-6 3 0 5.5 1.8 6 6z"/>
-                  <path d="M18.5 12c3.5-1.5 6-4.5 6.5-7.5-3.2.5-5.8 2.8-6.5 7.5z"/>
-                  <path d="M18.5 20c3.2-1 5.2-3.2 5.8-5.8-2.8.4-5 2.2-5.8 5.8z"/>
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold tracking-wider text-forest text-base leading-none">HAMPY CRAFT</span>
-                <span className="text-[10px] text-neutral-500 font-medium tracking-widest uppercase mt-0.5">Indonesian Lighting</span>
-              </div>
+            <a href="#top" className="flex items-center group">
+              <img
+                src="images/logo.jpg"
+                alt="Hampy Craft — Indonesian Handcrafted Lighting"
+                className="h-9 sm:h-10 w-auto object-contain rounded-lg group-hover:opacity-90 transition-opacity"
+              />
             </a>
 
-            {/* Dribbble-style Live Export Route Pill Badge */}
+            {/* Live Export Route Pill Badge */}
             <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-forest text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-amberBamboo animate-pulse"></span>
               <Ship className="w-3.5 h-3.5 text-amberBamboo" />
@@ -78,7 +70,7 @@ export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMo
               <span>{isEn ? 'EN' : 'ID'}</span>
             </button>
 
-            {/* Request Quote Button (Dribbble 16pixel High Contrast) */}
+            {/* Request Quote Button */}
             <button
               onClick={onOpenQuote}
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-forest text-cream hover:bg-forestDark text-xs font-bold transition-all shadow-sm hover:shadow group"

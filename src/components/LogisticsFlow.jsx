@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hammer, PackageCheck, Truck, Ship, Store, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
+import { Hammer, PackageCheck, Truck, Ship, Store, ArrowRight, MapPin } from 'lucide-react';
 import { SPECS } from '../data/specs';
 
 export default function LogisticsFlow({ lang }) {
@@ -13,7 +13,7 @@ export default function LogisticsFlow({ lang }) {
       loc: 'Sleman, DI Yogyakarta',
       desc: isEn 
         ? 'Selected Petung & Apus bamboo treated in eco-friendly anti-borer bath (non-arsenic) and handwoven into symmetrical Ø35×40 cm domes.'
-        : 'Bambu Petung & Apus pilihan direndam larutan anti-bubuk ramah lingkungan (tanpa arsenik) dan dianyam tangan menjadi kubah Ø35×40 cm.',
+        : 'Bambu Petung & Apus pilihan direndam larutan ramah lingkungan bebas arsenik & kreosot, dianyam tangan menjadi kubah Ø35×40 cm.',
       tag: 'Kadar Air < 12%'
     },
     {
@@ -22,9 +22,9 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'Knock-Down 10-Pack Packing' : 'Kemasan Knock-Down 10-Pack',
       loc: 'Packaging Facility Sleman',
       desc: isEn
-        ? '10 lampshades nested safely with honeycomb paper shock absorption & cotton bags. 5-Ply double wall carton (50×50×45 cm, 14.75 kg).'
-        : '10 kap lampu ditumpuk bersusun dengan bantalan honeycomb paper dan kantong katun. Karton 5-ply (50×50×45 cm, 14,75 kg).',
-      tag: '0% Plastik'
+        ? '10 lampshades nested safely with honeycomb paper shock absorption & cotton bags. 5-Ply carton (50×50×45 cm, 13.5 kg netto / 14.75 kg palletized).'
+        : '10 kap lampu ditumpuk bersusun dengan bantalan honeycomb paper dan kantong katun. Karton 5-ply (50×50×45 cm, 13,5 kg netto / 14,75 kg kargo berpalet).',
+      tag: 'Bebas Plastik'
     },
     {
       num: '03',
@@ -42,9 +42,9 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'Ocean Freight to Rotterdam' : 'Pelayaran Samudra ke Rotterdam',
       loc: 'Port of Rotterdam (NLRTM)',
       desc: isEn
-        ? 'Container ocean transit route Tanjung Priok to Rotterdam spanning ±8,500 nautical miles with 24–30 days transit duration.'
-        : 'Pelayaran kontainer via jalur laut Tanjung Priok ke Rotterdam menempuh ±8.500 mil laut dengan durasi 24–30 hari pelayaran.',
-      tag: '24–30 Hari Laut'
+        ? 'Container ocean transit route Tanjung Priok to Rotterdam (±8,500 nautical miles) with 30–40 sea transit days (total 36–50 days to warehouse).'
+        : 'Pelayaran kontainer via jalur laut Tanjung Priok ke Rotterdam menempuh ±8.500 mil laut dengan estimasi 30–40 hari laut (total 36–50 hari sampai gudang Eropa).',
+      tag: '30–40 Hari Laut'
     },
     {
       num: '05',
@@ -52,9 +52,9 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'European Distribution' : 'Distribusi Pasar Eropa',
       loc: 'Rotterdam, Netherlands & EU',
       desc: isEn
-        ? 'Unloaded at Port of Rotterdam for door-to-door distribution to boutique hotels, design studios, and retail chains across Western Europe.'
-        : 'Bongkar kargo di Rotterdam untuk distribusi door-to-door ke importir furnitur, hotel butik, dan proyek komersial di Belanda & Eropa.',
-      tag: 'Segmen €60–€250'
+        ? 'Unloaded at Port of Rotterdam for inland European distribution managed by the buyer/importer (FOB responsibility ends at Tanjung Priok).'
+        : 'Bongkar kargo di Rotterdam untuk distribusi darat di Eropa oleh pihak importir/pembeli (tanggung jawab FOB berakhir di Pelabuhan Tanjung Priok).',
+      tag: 'Oleh Importir'
     }
   ];
 
@@ -82,12 +82,12 @@ export default function LogisticsFlow({ lang }) {
           <div className="mt-6 md:mt-0 flex items-center gap-3">
             <div className="px-4 py-2.5 rounded-2xl bg-white border border-sand shadow-xs text-xs font-bold text-forest flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-              <span>{isEn ? 'Incoterms: FOB Tanjung Priok' : 'Incoterms: FOB Tanjung Priok'}</span>
+              <span>Incoterms: FOB Tanjung Priok</span>
             </div>
           </div>
         </div>
 
-        {/* 5-Step Visual Timeline Card Grid (Dribbble 16pixel Transport Style) */}
+        {/* 5-Step Visual Timeline Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {steps.map((step, idx) => {
             const Icon = step.icon;
@@ -149,8 +149,8 @@ export default function LogisticsFlow({ lang }) {
               </h4>
               <p className="text-xs text-sand/80 mt-0.5">
                 {isEn 
-                  ? 'FCL 20ft (34% capacity) or 40ft HC (17% capacity) with verified bill of lading & phytosanitary certificates.'
-                  : 'Pilihan FCL 20ft (34% muatan) atau 40ft HC (17% muatan) dilengkapi sertifikat fumigasi, phytosanitary, dan B/L.'}
+                  ? 'FCL 20ft (34.09% capacity) or 40ft HC with verified bill of lading & phytosanitary certificates.'
+                  : 'Pilihan FCL 20ft (34,09% muatan kargo) atau 40ft HC dilengkapi sertifikat fumigasi, phytosanitary, dan B/L.'}
               </p>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function MetricsBar({ lang }) {
       icon: Container,
       value: '34,09%',
       label: isEn ? '20ft Container Utilization' : 'Utilisasi Kontainer 20 Kaki',
-      desc: isEn ? 'Optimal knock-down nesting' : 'Efisiensi tumpuk sistem knock-down'
+      desc: isEn ? 'Optimal knock-down nesting (84.4% space saved)' : 'Efisiensi tumpuk knock-down (hemat 84,4% ruang)'
     },
     {
       icon: Calendar,
@@ -26,7 +26,7 @@ export default function MetricsBar({ lang }) {
     },
     {
       icon: Leaf,
-      value: '100% Eco',
+      value: 'Bebas Plastik',
       label: isEn ? 'Plastic-Free Packaging' : 'Kemasan Bebas Plastik',
       desc: isEn ? '5-Ply carton & honeycomb paper' : 'Karton gelombang & honeycomb paper'
     }
