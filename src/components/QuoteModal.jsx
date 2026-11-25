@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { X, ShoppingBag, Send, Mail, AlertCircle } from 'lucide-react';
-import { SPECS } from '../data/specs';
+import { SPECS, calculateShipmentMetrics } from '../data/specs';
 
 export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 1000 }) {
   if (!isOpen) return null;
 
   const isEn = lang === 'en';
+  const locale = isEn ? 'en-US' : 'id-ID';
 
   const [qty, setQty] = useState(initialQuantity);
   const [incoterm, setIncoterm] = useState('FOB Tanjung Priok');
@@ -22,11 +23,14 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
     }
   }, [initialQuantity, isOpen]);
 
-  const cartons = Math.ceil(qty / 10);
-  const rawCbm = (cartons * SPECS.packaging.cartonCbm).toFixed(3);
-  const totalCbmDisplay = isEn ? rawCbm : rawCbm.replace('.', ',');
-  const totalNetWeight = Math.round(cartons * (SPECS.packaging.cartonNetWeightKg || 13.5));
-  const totalGrossWeight = Math.round(cartons * SPECS.packaging.cartonGrossWeightKg);
+  const {
+    cartons,
+    pallets,
+    cbmFormatted,
+    totalNetWeightKg,
+    totalCartonGrossWeightKg,
+    totalShipmentGrossWeightKg
+  } = calculateShipmentMetrics(qty, isEn);
 
   const handleSendWhatsApp = (e) => {
     e.preventDefault();
@@ -34,10 +38,12 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
       `*PERMINTAAN PENAWARAN EKSPOR (RFQ) — HAMPY LUMINA*\n` +
       `----------------------------------------\n` +
       `*Model:* Hampy Lumina PRK-01 (Ø35 x 40 cm)\n` +
-      `*Jumlah:* ${qty} unit (${cartons} Master Karton)\n` +
-      `*Total Kubikasi:* ${totalCbmDisplay} CBM\n` +
-      `*Berat Bersih:* ${totalNetWeight} kg (Kotor: ${totalGrossWeight} kg)\n` +
+      `*Jumlah:* ${qty} unit (${cartons} Master Karton / ${pallets} Palet)\n` +
+      `*Total Kubikasi:* ${cbmFormatted} CBM\n` +
+      `*Berat Bersih Produk:* ${totalNetWeightKg.toLocaleString(locale)} kg\n` +
+      `*Berat Kotor Karton:* ${totalCartonGrossWeightKg.toLocaleString(locale)} kg (Total Muatan + Palet: ${totalShipmentGrossWeightKg.toLocaleString(locale)} kg)\n` +
       `*Incoterms:* ${incoterm}\n` +
+      `*Pembayaran Standar:* T/T 30% DP, 70% sebelum pemuatan (opsi salinan B/L atau L/C)\n` +
       `*Pelabuhan Tujuan:* ${dest}\n` +
       `----------------------------------------\n` +
       `*Nama PIC:* ${name || '-'}\n` +
@@ -57,9 +63,12 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
       `Halo Tim Ekspor Hampy Craft,\n\n` +
       `Saya ingin meminta penawaran harga resmi (Quotation) untuk produk Hampy Lumina:\n\n` +
       `- Model: Hampy Lumina PRK-01 (Ø35 x 40 cm)\n` +
-      `- Jumlah: ${qty} Unit (${cartons} Master Karton)\n` +
-      `- Estimasi Volume: ${totalCbmDisplay} CBM (Berat Kotor: ${totalGrossWeight} kg)\n` +
+      `- Jumlah: ${qty} Unit (${cartons} Master Karton / ${pallets} Palet)\n` +
+      `- Estimasi Volume: ${cbmFormatted} CBM\n` +
+      `- Berat Bersih Produk: ${totalNetWeightKg.toLocaleString(locale)} kg\n` +
+      `- Berat Kotor Karton: ${totalCartonGrossWeightKg.toLocaleString(locale)} kg (Muatan + Palet: ${totalShipmentGrossWeightKg.toLocaleString(locale)} kg)\n` +
       `- Incoterms: ${incoterm}\n` +
+      `- Pembayaran: T/T 30% DP, 70% sebelum pemuatan (opsi salinan B/L atau L/C)\n` +
       `- Pelabuhan Tujuan: ${dest}\n\n` +
       `Informasi Kontak:\n` +
       `- Nama: ${name}\n` +
@@ -112,20 +121,39 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
           {/* Order Summary Pill */}
           <div className="p-4 rounded-2xl bg-forest/5 border border-forest/15 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Jumlah Kap</span>
-              <strong className="text-forest font-extrabold text-sm">{qty} Unit</strong>
+              <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                {isEn ? 'Quantity' : 'Jumlah Kap'}
+              </span>
+              <strong className="text-forest font-extrabold text-sm">
+                {qty.toLocaleString(locale)} Unit
+              </strong>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Master Karton</span>
-              <strong className="text-forest font-extrabold text-sm">{cartons} Box</strong>
+              <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                {isEn ? 'Cartons / Pallets' : 'Karton / Palet'}
+              </span>
+              <strong className="text-forest font-extrabold text-sm">
+                {cartons} Box / {pallets} Plt
+              </strong>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Total Kubikasi</span>
-              <strong className="text-amberBamboo font-extrabold text-sm">{totalCbmDisplay} CBM</strong>
+              <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                {isEn ? 'Volume' : 'Total Kubikasi'}
+              </span>
+              <strong className="text-amberBamboo font-extrabold text-sm">
+                {cbmFormatted} CBM
+              </strong>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 block">Berat Kotor</span>
-              <strong className="text-forest font-extrabold text-sm">{totalGrossWeight.toLocaleString(isEn ? 'en-US' : 'id-ID')} kg</strong>
+              <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                {isEn ? 'Shipment Gross' : 'Berat Kotor Muatan'}
+              </span>
+              <strong className="text-forest font-extrabold text-sm">
+                {totalShipmentGrossWeightKg.toLocaleString(locale)} kg
+              </strong>
+              <span className="block text-[9px] text-neutral-500">
+                ({isEn ? 'Net' : 'Bersih'}: {totalNetWeightKg.toLocaleString(locale)} kg)
+              </span>
             </div>
           </div>
 
@@ -228,18 +256,18 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
                 rows="2"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                placeholder="Spesifikasi kabel, voltase khusus, atau jadwal proyek..."
+                placeholder="Spesifikasi kabel, private label, atau jadwal proyek..."
                 className="w-full px-3.5 py-2.5 rounded-xl border border-sand bg-[#FAF8F5] text-sm text-neutral-800 focus:outline-forest"
               />
             </div>
 
           </form>
 
-          {/* Academic Transparency Note */}
+          {/* Academic Transparency & Payment Note */}
           <div className="p-3.5 rounded-2xl bg-amberBamboo/10 border border-amberBamboo/20 text-[11px] text-amber-900 leading-relaxed flex items-start gap-2.5">
             <AlertCircle className="w-4 h-4 text-amberBamboo shrink-0 mt-0.5" />
             <div>
-              <strong>Simulasi Praktikum Ekspor Mandiri:</strong> Seluruh rujukan pesanan dan data logistik diselaraskan dengan Laporan Praktikum PRK-01 (Kapasitas pengrajin Sleman, waktu produksi 30–45 hari, rute Tanjung Priok ke Rotterdam).
+              <strong>Simulasi Praktikum Ekspor Mandiri:</strong> Pembayaran utama T/T 30% DP dan 70% sebelum pemuatan setelah laporan inspeksi akhir (alternatif: salinan B/L atau L/C at sight). Data logistik diselaraskan dengan Laporan Export Business Plan PRK-01.
             </div>
           </div>
 
@@ -249,7 +277,7 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
         <div className="p-5 sm:p-6 bg-[#FAF8F5] border-t border-sand flex flex-col sm:flex-row gap-3">
           <button
             onClick={handleSendWhatsApp}
-            className="flex-1 py-3 px-4 rounded-xl bg-forest text-cream font-bold text-xs uppercase tracking-wider hover:bg-forestDark transition-all shadow-md flex items-center justify-center gap-2"
+            className="flex-1 py-3 px-4 rounded-xl bg-forest text-cream font-bold text-xs uppercase tracking-wider hover:bg-forestDark transition-colors shadow-md flex items-center justify-center gap-2"
           >
             <Send className="w-4 h-4 text-amberBamboo" />
             <span>Kirim via WhatsApp (+62 888-899-988)</span>
@@ -257,7 +285,7 @@ export default function QuoteModal({ isOpen, onClose, lang, initialQuantity = 10
           
           <button
             onClick={handleSendEmail}
-            className="sm:w-44 py-3 px-4 rounded-xl bg-white border border-sand font-bold text-xs text-forest hover:bg-sand/40 transition-all flex items-center justify-center gap-2"
+            className="sm:w-44 py-3 px-4 rounded-xl bg-white border border-sand font-bold text-xs text-forest hover:bg-sand/40 transition-colors flex items-center justify-center gap-2"
           >
             <Mail className="w-4 h-4 text-neutral-500" />
             <span>Kirim Email</span>

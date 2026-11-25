@@ -18,7 +18,7 @@ export default function Footer({ lang }) {
               <div className="bg-white px-3.5 py-1.5 rounded-xl border border-white/20 shadow-sm inline-block">
                 <img
                   src="images/logo.jpg"
-                  alt="Hampy Craft — Indonesian Handcrafted Lighting"
+                  alt="Hampy Craft, Indonesian Handcrafted Lighting"
                   className="h-8 w-auto object-contain"
                 />
               </div>
@@ -29,53 +29,54 @@ export default function Footer({ lang }) {
 
             <p className="mt-4 text-xs text-sand/80 leading-relaxed max-w-sm">
               {isEn
-                ? 'Artisanal Indonesian bamboo lighting manufacturer in Sleman, Yogyakarta. Focused on sustainable, space-saving knock-down exports to the European hospitality and design market.'
-                : 'Pusat produksi kap lampu bambu artisanal asal Sleman, D.I. Yogyakarta. Fokus pada pencahayaan berkelanjutan bersistem knock-down hemat ruang untuk pasar ekspor Eropa.'}
+                ? 'Handcrafted Indonesian bamboo pendant lighting workshop in Sleman, Yogyakarta. Focused on knock-down export packaging for European importers, wholesalers, and hospitality projects.'
+                : 'Usaha kriya lampu gantung anyaman bambu buatan tangan asal Sleman, D.I. Yogyakarta. Fokus pada sistem kemasan knock-down untuk importir, grosir, dan proyek hospitality di pasar Eropa.'}
             </p>
 
             <div className="mt-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-sand/90">
               <Ship className="w-3.5 h-3.5 text-amberBamboo" />
-              <span>Rute Kargo: Tanjung Priok ➔ Rotterdam</span>
+              <span>{isEn ? 'Cargo Route: Tanjung Priok ➔ Rotterdam' : 'Rute Kargo: Tanjung Priok ➔ Rotterdam'}</span>
             </div>
           </div>
 
           {/* Col 2: Export Terms & Specs (Span 3) */}
           <div className="lg:col-span-3">
             <h4 className="font-bold text-sm text-cream uppercase tracking-wider mb-4">
-              Ketentuan Ekspor Resmi
+              {isEn ? 'Export Trade Terms' : 'Ketentuan Ekspor Resmi'}
             </h4>
             <ul className="space-y-2 text-xs text-sand/80">
               <li>• Model: Hampy Lumina (Ø35 × 40 cm)</li>
-              <li>• Model lain: Dalam Pengembangan</li>
+              <li>• {isEn ? 'Other variants: In Development' : 'Model lain: Dalam Pengembangan'}</li>
               <li>• MOQ: 50 Unit</li>
-              <li>• Waktu Produksi: 30–45 Hari</li>
-              <li>• Pembayaran: T/T (30% DP, 70% Salinan B/L)</li>
+              <li>• {isEn ? 'Production: 30–45 Days' : 'Waktu Produksi: 30–45 Hari'}</li>
+              <li>• {isEn ? 'Payment: T/T 30% Deposit, 70% Pre-Loading (B/L copy / L/C option)' : 'Pembayaran: T/T 30% DP, 70% Sebelum Muat (opsi salinan B/L / L/C)'}</li>
               <li>• Incoterms: FOB Pelabuhan Tanjung Priok</li>
-              <li>• Waktu Pelayaran: 30–40 Hari Laut</li>
-              <li>• Standar: Mengacu Keselamatan UE (CE Proses)</li>
+              <li>• {isEn ? 'Sea Transit: 30–40 Days' : 'Waktu Pelayaran: 30–40 Hari Laut'}</li>
+              <li>• {isEn ? 'Compliance: EU Safety Alignment (CE in progress)' : 'Standar: Mengacu Keselamatan UE (CE Proses)'}</li>
             </ul>
           </div>
 
           {/* Col 3: Packaging & CBM (Span 2) */}
           <div className="lg:col-span-2">
             <h4 className="font-bold text-sm text-cream uppercase tracking-wider mb-4">
-              Arsitektur Kargo
+              {isEn ? 'Cargo Architecture' : 'Arsitektur Kargo'}
             </h4>
             <ul className="space-y-2 text-xs text-sand/80">
               <li>• 10 Kap / Master Karton</li>
               <li>• Box: 50 × 50 × 45 cm</li>
-              <li>• Volume: 0,1125 CBM / box</li>
-              <li>• Berat: 13,5 kg / box (14,75 kg kargo berpalet)</li>
-              <li>• 1.000 Unit = 11,25 CBM (1.475 kg)</li>
-              <li>• Muatan: 34% Kontainer 20ft</li>
-              <li>• Kemasan Bebas Plastik</li>
+              <li>• Volume: {isEn ? '0.1125' : '0,1125'} CBM / box</li>
+              <li>• {isEn ? 'Net: 12 kg / box (10 shades)' : 'Bersih: 12 kg / box (10 kap)'}</li>
+              <li>• {isEn ? 'Carton Gross: 13.5 kg / box' : 'Kotor Karton: 13,5 kg / box'}</li>
+              <li>• {isEn ? '1,000 Units = 11.25 CBM (1,475 kg w/ 7 pallets)' : '1.000 Unit = 11,25 CBM (1.475 kg dgn 7 palet)'}</li>
+              <li>• {isEn ? 'Load: 34% of 20ft FCL' : 'Muatan: 34% Kontainer 20ft'}</li>
+              <li>• {isEn ? 'Paper Pack, No Single-Use Plastic' : 'Kemasan Kertas Tanpa Plastik'}</li>
             </ul>
           </div>
 
           {/* Col 4: Official Contact (Span 3) */}
           <div className="lg:col-span-3">
             <h4 className="font-bold text-sm text-cream uppercase tracking-wider mb-4">
-              Kontak & Fasilitas Sleman
+              {isEn ? 'Contact & Sleman Workshop' : 'Kontak & Fasilitas Sleman'}
             </h4>
             <div className="space-y-3 text-xs text-sand/80">
               <div className="flex items-start gap-2.5">
@@ -104,7 +105,10 @@ export default function Footer({ lang }) {
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-amberBamboo shrink-0" />
             <span>
-              <strong>Transparansi Akademis:</strong> Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01 Hampy Lumina) yang diselaraskan secara akurat dengan rencana kemasan dan rencana kargo Tanjung Priok – Rotterdam.
+              <strong>{isEn ? 'Academic Transparency:' : 'Transparansi Akademis:'}</strong>{' '}
+              {isEn
+                ? 'This website serves as an Export Business Plan practical simulation (PRK-01 Hampy Lumina) aligned with the packaging and Tanjung Priok to Rotterdam cargo plan.'
+                : 'Website ini merupakan dokumen simulasi Praktikum Export Business Plan (PRK-01 Hampy Lumina) yang diselaraskan secara akurat dengan rencana kemasan dan kargo Tanjung Priok – Rotterdam.'}
             </span>
           </div>
           <span className="shrink-0 font-mono text-[11px] text-sand/50">PRK-01</span>
@@ -112,8 +116,12 @@ export default function Footer({ lang }) {
 
         {/* Bottom Copyright */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-sand/60 gap-3">
-          <p>© 2026 Hampy Craft. Seluruh Hak Dilindungi.</p>
-          <p className="text-amberBamboo/80">Diproduksi dengan bangga di Sleman, D.I. Yogyakarta, Indonesia.</p>
+          <p>© 2026 Hampy Craft. {isEn ? 'All Rights Reserved.' : 'Seluruh Hak Dilindungi.'}</p>
+          <p className="text-amberBamboo/80">
+            {isEn
+              ? 'Handcrafted in Sleman, D.I. Yogyakarta, Indonesia.'
+              : 'Diproduksi dengan tangan di Sleman, D.I. Yogyakarta, Indonesia.'}
+          </p>
         </div>
 
       </div>

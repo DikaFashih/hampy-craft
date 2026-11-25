@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Container, Calendar, Leaf } from 'lucide-react';
-import { SPECS } from '../data/specs';
+import { Box, Container, Calendar, PackageCheck } from 'lucide-react';
 
 export default function MetricsBar({ lang }) {
   const isEn = lang === 'en';
@@ -8,27 +7,27 @@ export default function MetricsBar({ lang }) {
   const metrics = [
     {
       icon: Box,
-      value: '11,25 CBM',
+      value: isEn ? '11.25 CBM' : '11,25 CBM',
       label: isEn ? 'Total Volume (1,000 Units)' : 'Total Volume Kargo (1.000 Unit)',
       desc: isEn ? '100 Master Cartons • 0.1125 CBM/box' : '100 Master Karton • 0,1125 CBM/box'
     },
     {
       icon: Container,
-      value: '34,09%',
+      value: isEn ? '34.1%' : '34,1%',
       label: isEn ? '20ft Container Utilization' : 'Utilisasi Kontainer 20 Kaki',
-      desc: isEn ? 'Optimal knock-down nesting (84.4% space saved)' : 'Efisiensi tumpuk knock-down (hemat 84,4% ruang)'
+      desc: isEn ? '7 ISPM 15 pallets (1,475 kg gross)' : '7 palet ISPM 15 (1.475 kg berat kotor)'
     },
     {
       icon: Calendar,
-      value: '30–45 Hari',
+      value: isEn ? '30–45 Days' : '30–45 Hari',
       label: isEn ? 'Standard Lead Time' : 'Waktu Produksi Standar',
-      desc: isEn ? 'Handcrafted by Sleman artisans' : 'Kapasitas pengrajin lokal Sleman'
+      desc: isEn ? 'Handcrafted by Sleman artisans' : 'Dianyam tangan pengrajin lokal Sleman'
     },
     {
-      icon: Leaf,
-      value: 'Bebas Plastik',
-      label: isEn ? 'Plastic-Free Packaging' : 'Kemasan Bebas Plastik',
-      desc: isEn ? '5-Ply carton & honeycomb paper' : 'Karton gelombang & honeycomb paper'
+      icon: PackageCheck,
+      value: isEn ? 'Paper Pack' : 'Berbasis Kertas',
+      label: isEn ? 'No Single-Use Plastic' : 'Tanpa Plastik Sekali Pakai',
+      desc: isEn ? '5-Ply carton, honeycomb & cotton bag' : 'Karton 5-ply, honeycomb & kantong katun'
     }
   ];
 

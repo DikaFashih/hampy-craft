@@ -1,12 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="1000" height="620">
   <defs>
-    <!-- Background Texture -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F7F5EE"/>
       <stop offset="100%" stop-color="#EBE6D8"/>
     </linearGradient>
 
-    <!-- Card Fill -->
     <linearGradient id="boxFront" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1B4730"/>
       <stop offset="100%" stop-color="#102E1E"/>
@@ -20,119 +18,134 @@
       <stop offset="100%" stop-color="#EFE9DA"/>
     </linearGradient>
 
-    <!-- Kraft Paper Gradient -->
     <linearGradient id="kraftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#E8D5B8"/>
       <stop offset="50%" stop-color="#D9C39E"/>
       <stop offset="100%" stop-color="#BC9E6E"/>
     </linearGradient>
 
-    <filter id="cardShadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#10281B" flood-opacity="0.12"/>
+    <filter id="cardShadow" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#10281B" flood-opacity="0.11"/>
     </filter>
   </defs>
 
   <!-- Canvas Background -->
-  <rect width="1000" height="620" rx="12" fill="url(#bgGrad)"/>
-  <rect x="16" y="16" width="968" height="588" rx="8" fill="none" stroke="#D5CBBA" stroke-width="2"/>
+  <rect width="1000" height="620" rx="14" fill="url(#bgGrad)"/>
+  <rect x="16" y="16" width="968" height="588" rx="10" fill="none" stroke="#D5CBBA" stroke-width="2"/>
 
-  <!-- Top Banner / Title Header -->
-  <g transform="translate(48, 52)">
-    <rect x="0" y="0" width="904" height="64" rx="6" fill="#153B27"/>
-    <text x="24" y="38" fill="#FBF9F5" font-family="'Newsreader', Georgia, serif" font-size="22" font-weight="500">
-      Hampy Lumina — Exclusive Knock-Down Export Packaging Architecture
+  <!-- Top Banner Header -->
+  <g transform="translate(44, 42)">
+    <rect x="0" y="0" width="912" height="64" rx="8" fill="#153B27"/>
+    <text x="24" y="39" fill="#FBF9F5" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="600">
+      Hampy Lumina: Arsitektur Kemasan Knock-Down Ekspor
     </text>
-    <rect x="660" y="16" width="220" height="32" rx="16" fill="#245A3D" stroke="#D9C39E" stroke-width="1"/>
-    <text x="770" y="37" fill="#F3DCAC" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">
+    <rect x="682" y="16" width="210" height="32" rx="16" fill="#245A3D" stroke="#D9C39E" stroke-width="1"/>
+    <text x="787" y="36" fill="#F3DCAC" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.8">
       STANDAR KEMASAN EKSPOR
     </text>
   </g>
 
-  <!-- Left: 3D Visualization of the Master Box & Cushioning System -->
-  <g transform="translate(60, 160)" filter="url(#cardShadow)">
-    <!-- Floor Shadow -->
-    <ellipse cx="230" cy="380" rx="180" ry="24" fill="#10281B" opacity="0.15"/>
+  <!-- Left: 3D Visualization of the Master Box -->
+  <g transform="translate(36, 152)" filter="url(#cardShadow)">
+    <ellipse cx="195" cy="382" rx="155" ry="22" fill="#10281B" opacity="0.14"/>
 
-    <!-- 3D Export Carton Exterior (Green & White Identity) -->
     <!-- Top Flap -->
-    <polygon points="120,80 250,30 370,80 240,130" fill="url(#boxTop)" stroke="#D5CBBA" stroke-width="2"/>
-    <!-- Left Side -->
-    <polygon points="120,80 240,130 240,350 120,290" fill="url(#boxFront)" stroke="#0E2418" stroke-width="2"/>
-    <!-- Right Side -->
-    <polygon points="240,130 370,80 370,290 240,350" fill="url(#boxSide)" stroke="#0E2418" stroke-width="2"/>
+    <polygon points="75,78 205,28 335,78 205,128" fill="url(#boxTop)" stroke="#D5CBBA" stroke-width="2"/>
+    <!-- Left Face -->
+    <polygon points="75,78 205,128 205,352 75,292" fill="url(#boxFront)" stroke="#0E2418" stroke-width="2"/>
+    <!-- Right Face -->
+    <polygon points="205,128 335,78 335,292 205,352" fill="url(#boxSide)" stroke="#0E2418" stroke-width="2"/>
 
-    <!-- Top White Accent Band on Left Face -->
-    <polygon points="120,80 240,130 240,165 120,115" fill="#FAF7F0"/>
-    <text x="175" y="132" fill="#10281B" font-family="'Newsreader', serif" font-size="14" font-weight="700">HAMPY CRAFT</text>
-    <text x="175" y="146" fill="#355241" font-family="system-ui, sans-serif" font-size="9" font-weight="600">SLEMAN • YOGYAKARTA</text>
-
-    <!-- Big Model Name on Left Face -->
-    <text x="136" y="210" fill="#FAF7F0" font-family="'Newsreader', serif" font-size="20" font-weight="600">Hampy Lumina</text>
-    <text x="136" y="230" fill="#B8CEBA" font-family="system-ui, sans-serif" font-size="10" letter-spacing="1">ARCHITECTURAL PENDANT</text>
-    <text x="136" y="275" fill="#D9C39E" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Ø 35 cm × H 40 cm • 10 PCS</text>
-
-    <!-- Export Markings (Right Face) -->
-    <g transform="translate(260, 150)" stroke="#D9C39E" stroke-width="1.6" fill="none">
-      <!-- Wineglass (Fragile) -->
-      <path d="M12,8 Q12,24 24,24 Q36,24 36,8 Z M24,24 L24,36 M16,36 L32,36" stroke-linecap="round"/>
-      <!-- Arrows (This Way Up) -->
-      <path d="M52,36 L52,14 M44,22 L52,14 L60,22 M68,36 L68,14 M60,22 L68,14 L76,22"/>
-      <!-- Umbrella (Keep Dry) -->
-      <path d="M86,22 C86,10 106,10 106,22 Z M96,22 L96,32 C96,36 92,36 92,32"/>
+    <!-- Top White Accent Band on Left Face (slope: dy=50 over dx=130 => angle atan(50/130)=21.04 deg) -->
+    <polygon points="75,78 205,128 205,172 75,122" fill="#FAF7F0"/>
+    <g transform="translate(140, 125) skewY(21.04)">
+      <text x="0" y="-4" fill="#10281B" font-family="Georgia, serif" font-size="12" font-weight="700" text-anchor="middle">HAMPY CRAFT</text>
+      <text x="0" y="10" fill="#355241" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">SLEMAN • YOGYAKARTA</text>
     </g>
-    <text x="305" y="210" fill="#E8D5B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">5-PLY CORRUGATED / 50×50×45</text>
-    <text x="305" y="325" fill="#FAF7F0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">MADE IN INDONESIA</text>
+
+    <!-- Model Info on Left Face (isometric aligned) -->
+    <g transform="translate(140, 224) skewY(21.04)">
+      <text x="0" y="-8" fill="#FAF7F0" font-family="Georgia, serif" font-size="15.5" font-weight="600" text-anchor="middle">Hampy Lumina</text>
+      <text x="0" y="10" fill="#B8CEBA" font-family="system-ui, sans-serif" font-size="8" letter-spacing="0.6" text-anchor="middle">BAMBOO PENDANT LAMP</text>
+      <text x="0" y="46" fill="#D9C39E" font-family="system-ui, sans-serif" font-size="9.2" font-weight="700" text-anchor="middle">Ø 35 × T 40 cm • 10 PCS</text>
+    </g>
+
+    <!-- Export Markings & Text on Right Face (slope: dy=-50 over dx=130 => -21.04 deg) -->
+    <g transform="translate(270, 215) skewY(-21.04)">
+      <g transform="translate(-58, -62)" stroke="#D9C39E" stroke-width="1.6" fill="none">
+        <path d="M12,8 Q12,24 24,24 Q36,24 36,8 Z M24,24 L24,36 M16,36 L32,36" stroke-linecap="round"/>
+        <path d="M52,36 L52,14 M44,22 L52,14 L60,22 M68,36 L68,14 M60,22 L68,14 L76,22"/>
+        <path d="M86,22 C86,10 106,10 106,22 Z M96,22 L96,32 C96,36 92,36 92,32"/>
+      </g>
+      <text x="0" y="-2" fill="#E8D5B8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">5-PLY • 50×50×45 CM</text>
+      <text x="0" y="14" fill="#B8CEBA" font-family="system-ui, sans-serif" font-size="7.8" font-weight="600" text-anchor="middle">NET 12 KG / GROSS 13,5 KG</text>
+      <text x="0" y="74" fill="#FAF7F0" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">MADE IN INDONESIA</text>
+    </g>
   </g>
 
-  <!-- Right: Internal Knock-down Packaging Layers Diagram -->
-  <g transform="translate(480, 140)">
-    <!-- Background Card -->
-    <rect x="0" y="0" width="470" height="425" rx="8" fill="#FFFDF8" stroke="#D5CBBA" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <!-- Right: Internal Knock-down Packaging Layers Card (Wide & Properly Wrapped) -->
+  <g transform="translate(424, 130)">
+    <rect x="0" y="0" width="532" height="450" rx="10" fill="#FFFDF8" stroke="#D5CBBA" stroke-width="1.5" filter="url(#cardShadow)"/>
 
-    <text x="24" y="36" fill="#10281B" font-family="'Newsreader', Georgia, serif" font-size="19" font-weight="600">
+    <text x="24" y="36" fill="#10281B" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="600">
       Anatomi Perlindungan Berlapis &amp; Knock-Down
     </text>
-    <line x1="24" y1="48" x2="446" y2="48" stroke="#E6E0D2" stroke-width="1"/>
+    <line x1="24" y1="50" x2="508" y2="50" stroke="#E6E0D2" stroke-width="1.2"/>
 
     <!-- Layer 1: Honeycomb & Corrugated Pad -->
-    <g transform="translate(24, 65)">
-      <rect x="0" y="0" width="70" height="60" rx="4" fill="#EAE5D8" stroke="#B8A88E" stroke-width="1.5"/>
-      <ellipse cx="35" cy="30" rx="22" ry="14" fill="#D5CBBA"/>
-      <text x="86" y="24" fill="#153B27" font-family="system-ui, sans-serif" font-size="14" font-weight="700">1. Honeycomb Paper Wrap &amp; Sekat Karton Ganda</text>
-      <text x="86" y="44" fill="#4A554C" font-family="system-ui, sans-serif" font-size="12">Bantalan kertas sarang lebah peredam getaran dan sekat karton gelombang ganda bebas plastik.</text>
+    <g transform="translate(24, 66)">
+      <rect x="0" y="0" width="66" height="58" rx="6" fill="#EAE5D8" stroke="#B8A88E" stroke-width="1.5"/>
+      <ellipse cx="33" cy="29" rx="20" ry="13" fill="#D5CBBA"/>
+      <text x="82" y="18" fill="#153B27" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="700">1. Honeycomb Paper &amp; Sekat Karton Ganda</text>
+      <text x="82" y="36" fill="#4A554C" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+        <tspan x="82" dy="0">Kertas sarang lebah peredam guncangan dan sekat</tspan>
+        <tspan x="82" dy="16">karton gelombang ganda 5-ply bebas plastik sekali pakai.</tspan>
+      </text>
     </g>
 
     <!-- Layer 2: Cotton Dust Bag -->
-    <g transform="translate(24, 145)">
-      <rect x="0" y="0" width="70" height="65" rx="4" fill="url(#kraftGrad)" stroke="#A6895B" stroke-width="1.5"/>
-      <ellipse cx="35" cy="18" rx="20" ry="6" fill="#BC9E6E"/>
-      <path d="M15,18 L12,48 Q35,58 58,48 L55,18 Z" fill="#D9C39E" stroke="#8C6E3D" stroke-width="1"/>
-      <text x="86" y="24" fill="#153B27" font-family="system-ui, sans-serif" font-size="14" font-weight="700">2. Cotton Dust Bag &amp; Pelindung Gesekan</text>
-      <text x="86" y="44" fill="#4A554C" font-family="system-ui, sans-serif" font-size="12">Setiap kap dibungkus kain katun alami berlogo untuk menjaga kerapian serat anyaman bambu.</text>
+    <g transform="translate(24, 144)">
+      <rect x="0" y="0" width="66" height="58" rx="6" fill="url(#kraftGrad)" stroke="#A6895B" stroke-width="1.5"/>
+      <ellipse cx="33" cy="17" rx="18" ry="5.5" fill="#BC9E6E"/>
+      <path d="M15,17 L13,44 Q33,53 53,44 L51,17 Z" fill="#D9C39E" stroke="#8C6E3D" stroke-width="1"/>
+      <text x="82" y="18" fill="#153B27" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="700">2. Kantong Katun Alami (Pelindung Gesekan)</text>
+      <text x="82" y="36" fill="#4A554C" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+        <tspan x="82" dy="0">Setiap kap dibungkus kantong kain katun alami untuk</tspan>
+        <tspan x="82" dy="16">menjaga tepi dan serat anyaman bambu tetap rapi.</tspan>
+      </text>
     </g>
 
     <!-- Layer 3: Separated Electrical Sub-Box -->
-    <g transform="translate(24, 230)">
-      <polygon points="8,16 35,4 62,16 35,28" fill="#F7F4EB" stroke="#153B27" stroke-width="1.5"/>
-      <polygon points="8,16 35,28 35,52 8,40" fill="#153B27"/>
-      <polygon points="35,28 62,16 62,40 35,52" fill="#245A3D"/>
-      <circle cx="35" cy="22" r="4" fill="#FFE79A"/>
-      <text x="86" y="24" fill="#153B27" font-family="system-ui, sans-serif" font-size="14" font-weight="700">3. Kotak Terpisah (Komponen Listrik)</text>
-      <text x="86" y="44" fill="#4A554C" font-family="system-ui, sans-serif" font-size="12">Kabel tekstil kain, dudukan fitting E27, dan bohlam LED dikemas terpisah di bagian atas karton.</text>
+    <g transform="translate(24, 222)">
+      <polygon points="8,16 33,4 58,16 33,28" fill="#F7F4EB" stroke="#153B27" stroke-width="1.5"/>
+      <polygon points="8,16 33,28 33,52 8,40" fill="#153B27"/>
+      <polygon points="33,28 58,16 58,40 33,52" fill="#245A3D"/>
+      <circle cx="33" cy="22" r="4" fill="#FFE79A"/>
+      <text x="82" y="18" fill="#153B27" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="700">3. Komponen Listrik Dikemas Terpisah</text>
+      <text x="82" y="36" fill="#4A554C" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+        <tspan x="82" dy="0">Kabel kain 1,5 m, fitting E27, dan bohlam LED warm</tspan>
+        <tspan x="82" dy="16">white masuk sekat terpisah (termasuk dalam paket).</tspan>
+      </text>
     </g>
 
     <!-- Layer 4: Structural Circular Bamboo Frame -->
-    <g transform="translate(24, 315)">
-      <circle cx="35" cy="30" r="26" fill="none" stroke="#C88A36" stroke-width="4"/>
-      <circle cx="35" cy="30" r="21" fill="none" stroke="#8C6E3D" stroke-width="1.5" stroke-dasharray="2,2"/>
-      <text x="86" y="24" fill="#153B27" font-family="system-ui, sans-serif" font-size="14" font-weight="700">4. Rangka Bambu Melingkar Pengunci Bawah</text>
-      <text x="86" y="44" fill="#4A554C" font-family="system-ui, sans-serif" font-size="12">Cincin bambu kokoh menjaga geometri kubah tetap presisi saat penumpukan knock-down.</text>
+    <g transform="translate(24, 300)">
+      <circle cx="33" cy="29" r="24" fill="none" stroke="#C88A36" stroke-width="4"/>
+      <circle cx="33" cy="29" r="19" fill="none" stroke="#8C6E3D" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <text x="82" y="18" fill="#153B27" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="700">4. Rangka Bambu Melingkar Pengunci Bawah</text>
+      <text x="82" y="36" fill="#4A554C" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+        <tspan x="82" dy="0">Cincin bambu laminasi menjaga geometri kubah tetap</tspan>
+        <tspan x="82" dy="16">presisi (Ø35 × 40 cm) saat penumpukan knock-down.</tspan>
+      </text>
     </g>
 
-    <!-- Bottom summary pill -->
-    <rect x="24" y="385" width="422" height="28" rx="4" fill="#EAE2CE"/>
-    <text x="235" y="403" fill="#10281B" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">
-      Efisiensi Kargo: 10 kap per karton (50×50×45 cm) • 0.1125 CBM • Berat Kotor 14,75 kg
+    <!-- Bottom summary bar -->
+    <rect x="24" y="382" width="484" height="48" rx="6" fill="#EAE2CE"/>
+    <text x="266" y="402" fill="#10281B" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+      10 kap / karton (50×50×45 cm) • 0,1125 CBM per karton
+    </text>
+    <text x="266" y="420" fill="#355241" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">
+      Berat bersih produk: 12 kg (10 × 1,2 kg) • Berat kotor karton: 13,5 kg
     </text>
   </g>
 </svg>

@@ -34,12 +34,13 @@ console.log('Deploying dist artifacts to root for GitHub Pages compatibility...'
 const distIndex = fs.readFileSync(path.join(rootDir, 'dist', 'index.html'), 'utf8');
 fs.writeFileSync(path.join(rootDir, 'index.html'), distIndex, 'utf8');
 
-// Copy assets folder
+// Clean and copy assets folder
 const distAssetsDir = path.join(rootDir, 'dist', 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
-if (!fs.existsSync(rootAssetsDir)) {
-  fs.mkdirSync(rootAssetsDir, { recursive: true });
+if (fs.existsSync(rootAssetsDir)) {
+  fs.rmSync(rootAssetsDir, { recursive: true, force: true });
 }
+fs.mkdirSync(rootAssetsDir, { recursive: true });
 const assetFiles = fs.readdirSync(distAssetsDir);
 for (const file of assetFiles) {
   fs.copyFileSync(path.join(distAssetsDir, file), path.join(rootAssetsDir, file));

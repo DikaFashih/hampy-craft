@@ -32,7 +32,7 @@ export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMo
             </a>
 
             {/* Live Export Route Pill Badge */}
-            <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-forest text-xs font-semibold">
+            <div className="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-forest text-xs font-semibold whitespace-nowrap">
               <span className="w-2 h-2 rounded-full bg-amberBamboo animate-pulse"></span>
               <Ship className="w-3.5 h-3.5 text-amberBamboo" />
               <span>{isEn ? 'Export Route: Tanjung Priok ➔ Rotterdam' : 'Rute Ekspor: Tanjung Priok ➔ Rotterdam'}</span>
@@ -40,30 +40,30 @@ export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMo
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/70 border border-sand/80 px-2 py-1.5 rounded-full shadow-xs">
-            <a href="#about" className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-all">
+          <nav className="hidden lg:flex items-center gap-0.5 bg-white/70 border border-sand/80 px-2 py-1.5 rounded-full shadow-xs shrink-0">
+            <a href="#about" className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-colors whitespace-nowrap">
               {isEn ? 'About Us' : 'Tentang Kami'}
             </a>
-            <a href="#studio" className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-all">
+            <a href="#studio" className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-colors whitespace-nowrap">
               {isEn ? 'Lighting Studio' : 'Simulasi Cahaya'}
             </a>
-            <a href="#logistics" className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-all">
+            <a href="#logistics" className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-colors whitespace-nowrap">
               {isEn ? 'Logistics Route' : 'Logistik Ekspor'}
             </a>
-            <a href="#specs" className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-all">
+            <a href="#specs" className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-colors whitespace-nowrap">
               {isEn ? 'Specifications' : 'Spesifikasi'}
             </a>
-            <a href="#contact" className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-all">
+            <a href="#contact" className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-700 hover:text-forest hover:bg-forest/5 transition-colors whitespace-nowrap">
               {isEn ? 'Contact' : 'Kontak'}
             </a>
           </nav>
 
           {/* Header Action Controls */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Language Switcher */}
             <button
               onClick={() => setLang(isEn ? 'id' : 'en')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-sand text-xs font-bold text-neutral-700 hover:border-forest/40 hover:text-forest transition-colors bg-white/80"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-sand text-xs font-bold text-neutral-700 hover:border-forest/40 hover:text-forest transition-colors bg-white/80 whitespace-nowrap"
               title="Ganti Bahasa / Switch Language"
             >
               <Globe className="w-3.5 h-3.5 text-neutral-500" />
@@ -73,7 +73,7 @@ export default function Header({ lang, setLang, cartCount, onOpenQuote, onOpenMo
             {/* Request Quote Button */}
             <button
               onClick={onOpenQuote}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-forest text-cream hover:bg-forestDark text-xs font-bold transition-all shadow-sm hover:shadow group"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-forest text-cream hover:bg-forestDark text-xs font-bold transition-colors shadow-sm hover:shadow group whitespace-nowrap"
             >
               <ShoppingBag className="w-3.5 h-3.5 text-amberBamboo group-hover:scale-110 transition-transform" />
               <span>{isEn ? 'Quotation Basket' : 'Keranjang Penawaran'}</span>

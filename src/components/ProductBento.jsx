@@ -1,6 +1,5 @@
 import React from 'react';
 import { Ruler, Package, Shield, Zap, Check } from 'lucide-react';
-import { SPECS } from '../data/specs';
 
 export default function ProductBento({ lang }) {
   const isEn = lang === 'en';
@@ -20,8 +19,8 @@ export default function ProductBento({ lang }) {
           </h2>
           <p className="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
             {isEn
-              ? 'Every dimension, joinery curve, and packaging layer is designed to withstand sea cargo humidity and reduce freight costs.'
-              : 'Setiap dimensi, kurva anyaman, dan struktur kemasan dirancang untuk menahan kelembapan kargo laut dan menekan biaya logistik.'}
+              ? 'Every dimension, structural ring, and packaging layer is designed for sea cargo transit and container volume efficiency.'
+              : 'Setiap dimensi, cincin penguat bambu, dan lapisan kemasan dirancang untuk ketahanan pengiriman laut dan efisiensi kubikasi kontainer.'}
           </p>
         </div>
 
@@ -52,7 +51,7 @@ export default function ProductBento({ lang }) {
               <div className="mt-6 rounded-2xl bg-[#FAF8F5] border border-sand p-3 sm:p-4 flex items-center justify-center overflow-hidden">
                 <img
                   src="images/blueprint.png"
-                  alt="Sketsa Rancangan Teknik Hampy Lumina"
+                  alt="Sketsa Rancangan Teknik Hampy Lumina (Ø35 × 40 cm, Kabel 1,5 m)"
                   className="max-h-72 w-auto object-contain rounded-xl"
                   loading="lazy"
                 />
@@ -61,15 +60,21 @@ export default function ProductBento({ lang }) {
               {/* Technical Annotations */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 text-xs">
                 <div className="p-3 rounded-xl bg-sand/30 border border-sand/60">
-                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">Diameter Kubah</span>
+                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                    {isEn ? 'Dome Diameter' : 'Diameter Kubah'}
+                  </span>
                   <strong className="text-forest font-bold text-sm">Ø 35 cm</strong>
                 </div>
                 <div className="p-3 rounded-xl bg-sand/30 border border-sand/60">
-                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">Tinggi Kap</span>
+                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                    {isEn ? 'Shade Height' : 'Tinggi Kap'}
+                  </span>
                   <strong className="text-forest font-bold text-sm">40 cm</strong>
                 </div>
                 <div className="p-3 rounded-xl bg-sand/30 border border-sand/60 col-span-2 sm:col-span-1">
-                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">Kabel Gantung</span>
+                  <span className="text-[10px] uppercase font-bold text-neutral-500 block">
+                    {isEn ? 'Suspension Cord' : 'Kabel Gantung'}
+                  </span>
                   <strong className="text-forest font-bold text-sm">1,5 m (Fabric)</strong>
                 </div>
               </div>
@@ -77,37 +82,37 @@ export default function ProductBento({ lang }) {
 
             <p className="text-xs text-neutral-600 mt-5 pt-4 border-t border-sand leading-relaxed">
               {isEn
-                ? 'Structured with a lower circular bamboo ring frame, dense neck collar weave, and universal E27 ceramic fixture mount.'
-                : 'Struktur anyaman simetris diperkuat rangka bambu melingkar di bagian bawah, collar leher anyam rapat, dan dudukan fitting keramik E27.'}
+                ? 'Symmetrical handwoven dome reinforced with a lower laminated bamboo ring, woven neck collar, and E27 fitting with 1.5 m fabric cord (net weight ~1.2 kg/unit).'
+                : 'Struktur anyaman simetris diperkuat cincin bambu laminasi di bagian bawah, leher anyam rapat, dan dudukan fitting E27 dengan kabel kain 1,5 m (berat bersih ±1,2 kg/unit).'}
             </p>
           </div>
 
           {/* CARD 2: PACKAGING ARCHITECTURE (Span 5) */}
           <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-sand/80 shadow-xs flex flex-col justify-between card-hover">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-sand">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-forest/10 flex items-center justify-center text-forest">
+              <div className="flex items-center justify-between pb-4 border-b border-sand gap-2">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-forest/10 flex items-center justify-center text-forest shrink-0">
                     <Package className="w-4 h-4 text-amberBamboo" />
                   </div>
-                  <div>
-                    <h3 className="font-extrabold text-forest text-base sm:text-lg">
+                  <div className="min-w-0">
+                    <h3 className="font-extrabold text-forest text-base sm:text-lg leading-tight">
                       {isEn ? '10-Pack Knock-Down' : 'Arsitektur Kemasan 10-Pack'}
                     </h3>
                     <p className="text-[11px] text-neutral-500">50 × 50 × 45 cm • 0,1125 CBM</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-bold">
-                  84,4% Hemat Ruang
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-bold shrink-0">
+                  {isEn ? '84.4% Space Saved' : '84,4% Hemat Ruang'}
                 </span>
               </div>
 
               {/* Packaging Diagram */}
-              <div className="mt-6 rounded-2xl bg-[#FAF8F5] border border-sand p-4 flex items-center justify-center">
+              <div className="mt-6 rounded-2xl bg-[#FAF8F5] border border-sand p-3 flex items-center justify-center overflow-hidden">
                 <img
                   src="images/hampy-lumina-packaging.svg"
                   alt="Diagram Kemasan Knock-Down 10 Kap Lampu"
-                  className="max-h-56 w-full object-contain"
+                  className="w-full h-auto max-h-60 object-contain"
                   loading="lazy"
                 />
               </div>
@@ -116,29 +121,33 @@ export default function ProductBento({ lang }) {
               <ul className="space-y-2 mt-5 text-xs text-neutral-700">
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Karton Gelombang Ganda 5-Ply (K200/M150/K200)</span>
+                  <span>{isEn ? '5-Ply Double Wall Corrugated Carton (50×50×45 cm)' : 'Karton Gelombang Ganda 5-Ply (50×50×45 cm)'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Bantalan Honeycomb Paper & Kantong Katun Unbleached</span>
+                  <span>{isEn ? 'Honeycomb Paper Cushioning & Natural Cotton Bags' : 'Bantalan Honeycomb Paper & Kantong Katun Alami'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Kemasan 100% Bebas Plastik (Eco-Friendly Cushioning)</span>
+                  <span>{isEn ? 'Paper-based packaging without single-use plastic' : 'Kemasan berbasis kertas tanpa plastik sekali pakai'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Hemat 84,4% Ruang (11,25 CBM vs ±72 CBM bila dikirim utuh)</span>
+                  <span>{isEn ? 'Saves 84.4% volume (11.25 CBM vs ~72 CBM for 1-pack)' : 'Hemat 84,4% ruang (11,25 CBM vs ±72 CBM bila 1 kap/box)'}</span>
                 </li>
               </ul>
             </div>
 
             <div className="mt-5 space-y-2">
-              <div className="p-3 rounded-xl bg-forest/5 text-[11px] text-forest font-semibold">
-                Berat: 13,5 kg netto per box (estimasi 14,75 kg kargo berpalet; total 1.475 kg / 100 box)
+              <div className="p-3 rounded-xl bg-forest/5 text-[11px] text-forest font-semibold leading-relaxed">
+                {isEn
+                  ? 'Weight per carton: 12 kg net (10 shades) • 13.5 kg carton gross. 100 cartons (1,350 kg) + 7 pallets (125 kg) = 1,475 kg shipment gross.'
+                  : 'Berat per karton: 12 kg bersih (10 kap) • 13,5 kg berat kotor karton. 100 karton (1.350 kg) + 7 palet (125 kg) = 1.475 kg berat kotor muatan.'}
               </div>
               <p className="text-[10px] text-neutral-500 italic">
-                *Asumsi nesting knock-down, validasi pengujian fisik (drop test) disyaratkan pada sampel pertama sebelum produksi massal.
+                {isEn
+                  ? '*Assumes 10-shade knock-down nesting; physical stack & drop testing on the first sample is required prior to mass production.'
+                  : '*Asumsi 10 kap per karton (knock-down); validasi pengujian fisik (drop test & uji tumpuk) disyaratkan pada sampel pertama.'}
               </p>
             </div>
           </div>
@@ -154,27 +163,27 @@ export default function ProductBento({ lang }) {
                   <h4 className="font-extrabold text-forest text-base">
                     {isEn ? 'Bamboo Quality & Preservation' : 'Kualitas Bambu & Pengawetan'}
                   </h4>
-                  <p className="text-[11px] text-neutral-500">Bambu Petung & Apus asal Sleman, Yogyakarta</p>
+                  <p className="text-[11px] text-neutral-500">Bambu Petung &amp; Apus asal Sleman, Yogyakarta</p>
                 </div>
               </div>
 
               <div className="mt-4 space-y-3 text-xs text-neutral-600 leading-relaxed">
                 <p>
                   {isEn
-                    ? 'Selected premium bamboo cured with target moisture content <12% to prevent mold growth during 30–40 days of ocean transit.'
-                    : 'Bambu Petung & Apus pilihan terkurasi dikeringkan dengan target kadar air di bawah 12% guna mencegah risiko timbulnya jamur saat pelayaran laut 30–40 hari.'}
+                    ? 'Selected bamboo is inspected for target moisture content below 12% prior to weaving to limit moisture and mold risks during 30–40 days of sea transit.'
+                    : 'Bambu pilihan diperiksa kadar airnya (target di bawah 12%) sebelum dianyam guna menekan risiko lembap dan jamur selama pelayaran laut 30–40 hari.'}
                 </p>
                 <p>
                   {isEn
-                    ? 'Immersion treatment uses eco-friendly solutions without arsenic or creosote, safe for indoor hospitality spaces.'
-                    : 'Perendaman menggunakan formula larutan ramah lingkungan bebas arsenik dan bebas kreosot, aman untuk estetika interior komersial.'}
+                    ? 'Preserved without arsenic or creosote and finished with water-based clear matte coating accompanied by material safety data sheets (REACH alignment).'
+                    : 'Diawetkan tanpa arsenik dan kreosot serta dilapisi pernis berbasis air (water-based clear matte coating) dengan lembar data keselamatan sesuai ketentuan REACH.'}
                 </p>
               </div>
             </div>
 
             <div className="mt-4 pt-3 border-t border-sand flex items-center justify-between text-xs font-bold text-forest">
-              <span>Target Kadar Air: &lt;12%</span>
-              <span className="text-amberBamboo font-semibold">Bebas Arsenik & Kreosot</span>
+              <span>{isEn ? 'Target Moisture: <12%' : 'Target Kadar Air: <12%'}</span>
+              <span className="text-amberBamboo font-semibold">{isEn ? 'Arsenic & Creosote Free' : 'Bebas Arsenik & Kreosot'}</span>
             </div>
           </div>
 
@@ -189,27 +198,27 @@ export default function ProductBento({ lang }) {
                   <h4 className="font-extrabold text-forest text-base">
                     {isEn ? 'Universal Electrical Fixture' : 'Standar Kelistrikan Universal'}
                   </h4>
-                  <p className="text-[11px] text-neutral-500">Universal E27 Socket • 110–240 V AC</p>
+                  <p className="text-[11px] text-neutral-500">Fitting E27 • 110–240 V AC • Kabel Kain 1,5 m</p>
                 </div>
               </div>
 
               <div className="mt-4 space-y-3 text-xs text-neutral-600 leading-relaxed">
                 <p>
                   {isEn
-                    ? 'Equipped with heavy-duty E27 ceramic base compatible with 110V–240V grids. Engineered in reference to European safety guidelines (CE preparation).'
-                    : 'Dilengkapi fitting keramik E27 universal yang mendukung tegangan 110V–240V. Dirancang mengacu pada ketentuan keselamatan UE (CE sedang dipersiapkan).'}
+                    ? 'Equipped with a universal E27 fitting supporting 110–240 V and a warm white LED bulb included in the package. Designed to align with EU electrical directives (CE in preparation with importer).'
+                    : 'Dilengkapi fitting E27 universal (110–240 V) dan bohlam LED warm white yang sudah termasuk dalam paket. Dirancang mengacu pada ketentuan keselamatan UE (CE sedang dipersiapkan bersama importir).'}
                 </p>
                 <p>
                   {isEn
-                    ? 'Features double insulated fabric-braided suspension cable (1.5 meters) with adjustable brass cord grip and ceiling rose.'
-                    : 'Menggunakan kabel gantung kepang kain berinsulasi ganda sepanjang 1,5 meter dengan cincin pengunci kokoh untuk memudahkan instalasi plafon.'}
+                    ? 'Supplied with a 1.5-meter fabric-braided suspension cord packed separately inside the knock-down partition box to prevent damage during shipping.'
+                    : 'Menggunakan kabel kepang kain sepanjang 1,5 meter yang dikemas terpisah di dalam sekat karton knock-down untuk menjaga komponen selama pengiriman.'}
                 </p>
               </div>
             </div>
 
             <div className="mt-4 pt-3 border-t border-sand flex items-center justify-between text-xs font-bold text-forest">
-              <span>Bohlam: LED Warm White 2700K</span>
-              <span className="text-amberBamboo font-semibold">Acuan Keselamatan UE</span>
+              <span>{isEn ? 'Bulb: Warm White LED (Included)' : 'Bohlam: LED Warm White (Termasuk)'}</span>
+              <span className="text-amberBamboo font-semibold">{isEn ? 'CE Preparation (EN 60598)' : 'Persiapan CE (EN 60598)'}</span>
             </div>
           </div>
 

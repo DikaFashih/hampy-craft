@@ -12,9 +12,9 @@ export const I18N = {
       switchLang: 'EN'
     },
     hero: {
-      tag: 'PRK-01 • EKSPOR B2B KERANGKA BAMBU SLEMAN',
-      title: 'Pencahayaan Bambu Ramah Lingkungan untuk Pasar Ekspor Eropa',
-      description: 'Kap lampu gantung knock-down artisanal dari bambu Petung & Apus Sleman. Dirancang hemat kubikasi logistik laut, kemasan bebas plastik, siap kirim ke Pelabuhan Rotterdam.',
+      tag: 'PRK-01 • EKSPOR B2B KERAJINAN BAMBU SLEMAN',
+      title: 'Pencahayaan Bambu Buatan Tangan untuk Pasar Ekspor Eropa',
+      description: 'Kap lampu gantung knock-down buatan tangan dari bambu Sleman. Dirancang hemat kubikasi logistik laut (10 kap per karton) dengan kemasan berbasis kertas tanpa plastik sekali pakai, siap kirim ke Pelabuhan Rotterdam.',
       explore3d: 'Buka Prototipe 3D',
       calculateCargo: 'Hitung Muatan Kargo',
       badgeOrigin: 'Produksi Sleman, Yogyakarta',
@@ -33,7 +33,7 @@ export const I18N = {
       units: 'Unit',
       cartonsCount: 'Master Karton (10 kap/box)',
       totalVolume: 'Total Kubikasi (CBM)',
-      grossWeight: 'Total Berat Kotor',
+      grossWeight: 'Berat Kotor Muatan',
       containerCapacity: 'Kapasitas Kontainer Terisi',
       optimalNotice: 'Sistem knock-down 10-pack menghemat 84,4% volume kontainer dibanding pengiriman utuh!',
       ctaQuote: 'Minta Penawaran FOB Resmi'
@@ -45,17 +45,17 @@ export const I18N = {
       utilDesc: '34,09% dari total 33 CBM ruang',
       leadLabel: 'Waktu Produksi Standar',
       leadDesc: '30–45 hari',
-      ecoLabel: 'Kemasan Bebas Plastik',
-      ecoDesc: 'Kertas honeycomb & karton 5-ply'
+      ecoLabel: 'Kemasan Berbasis Kertas',
+      ecoDesc: 'Karton 5-ply & honeycomb paper tanpa plastik sekali pakai'
     },
     logistics: {
       tag: 'SUPPLY CHAIN & EXPORT ROUTE',
       title: 'Rantai Pasok & Rute Transportasi Ekspor',
       subtitle: 'Alur logistik terstandarisasi dari sentra bambu Sleman hingga dermaga Pelabuhan Rotterdam.',
       step1Title: '1. Produksi & Pengrajin Sleman',
-      step1Desc: 'Bambu Petung & Apus dipotong presisi, direndam larutan ramah lingkungan bebas arsenik & kreosot, dan dianyam tangan oleh pengrajin lokal Sleman.',
+      step1Desc: 'Bambu pilihan dipotong presisi, diawetkan tanpa arsenik dan kreosot, dilapisi pernis berbasis air, dan dianyam tangan oleh pengrajin lokal Sleman.',
       step2Title: '2. Kemasan Knock-Down 10-Pack',
-      step2Desc: '10 kap lampu ditumpuk efisien dengan bantalan honeycomb paper dan tas katun. Kemasan bebas plastik, dimensi 50×50×45 cm.',
+      step2Desc: '10 kap lampu dikemas efisien dengan bantalan honeycomb paper dan kantong katun alami. Kemasan kertas tanpa plastik sekali pakai (50×50×45 cm, bersih 12 kg / kotor karton 13,5 kg).',
       step3Title: '3. Angkutan Darat & FOB Priok',
       step3Desc: 'Pengangkutan darat (trucking) dari Sleman ke Pelabuhan Tanjung Priok (Jakarta), proses PPJK/Bea Cukai, dan penerbitan Bill of Lading.',
       step4Title: '4. Pelayaran Samudra ke Rotterdam',
@@ -66,40 +66,40 @@ export const I18N = {
     studio3d: {
       tag: 'WEBGL 3D INTERACTIVE STUDIO',
       title: 'Simulasi Pencahayaan & Inspeksi 3D',
-      subtitle: 'Uji suhu warna bohlam, intensitas dimmer, dan amati struktur anyaman kubah secara interaktif.',
+      subtitle: 'Uji suhu warna bohlam, intensitas dimmer, simulasi kemasan knock-down, dan amati struktur anyaman kubah secara interaktif.',
       power: 'Saklar Lampu Utama',
-      powerOn: 'Menyala • Bohlam LED Edison Aktif',
+      powerOn: 'Menyala • Bohlam LED Warm White Aktif',
       powerOff: 'Padam • Bohlam Non-Aktif',
       dimmer: 'Intensitas Cahaya (Dimmer)',
       dimmerRec: 'Rekomendasi Kenyamanan: 85%',
       cct: 'Temperatur Warna Cahaya',
       cct2200: '2200K (Amber Hangat)',
-      cct2700: '2700K (Soft Warm)',
-      cct4000: '4000K (Neutral Day)',
+      cct2700: '2700K (Putih Hangat)',
+      cct4000: '4000K (Hangat Netral)',
       finish: 'Material / Finishing Bambu',
       finishNatural: 'Alami Petung',
-      finishAmber: 'Warm Caramel',
-      finishDark: 'Walnut Gelap',
-      hotspotTitle: 'Titik Inspeksi Detail:',
+      finishAmber: 'Karamel Pengasapan',
+      finishDark: 'Dark Walnut Stain',
+      hotspotTitle: 'Titik Detail Produk:',
       hs1: 'Anyaman Silang Geometris',
       hs2: 'Leher Collar Anyam Rapat',
       hs3: 'Fitting Universal E27',
-      hs4: 'Kabel Gantung Kepang Kain 1.5m',
-      blueprintBtn: 'Mode Blueprint / Dimensi',
-      fullscreenBtn: 'Layar Penuh'
+      hs4: 'Kabel Gantung Kepang Kain 1,5 m',
+      blueprintBtn: 'Mode Dimensi',
+      fullscreenBtn: 'Buka di Google Sites'
     },
     bento: {
       tag: 'ENGINEERING & PACKAGING ARCHITECTURE',
       title: 'Arsitektur Produk & Keteknikan',
       subtitle: 'Perancangan berbasis data teknis laporan ekspor untuk keamanan logistik kargo.',
-      card1Title: 'Blueprint Gambar Teknik',
-      card1Desc: 'Dimensi kubah simetris Ø35 cm × T 40 cm, ring bawah bambu penguat, dan dudukan fitting E27 keramik.',
+      card1Title: 'Sketsa Teknik & Proporsi Kubah',
+      card1Desc: 'Dimensi kubah simetris Ø35 cm × T 40 cm, cincin bambu laminasi bagian bawah, dan dudukan fitting E27 dengan kabel kain 1,5 m.',
       card2Title: 'Kemasan Knock-Down 10-Pack',
-      card2Desc: 'Menghemat kebutuhan kargo dari 2 kontainer 20ft penuh (jika dikirim utuh) menjadi hanya 34,09% dari 1 kontainer 20ft (hemat 84,4%).',
+      card2Desc: 'Menghemat kebutuhan kargo dari 3 kontainer 20ft (jika dikirim 1 kap per karton, ±72 CBM) menjadi hanya 34% dari 1 kontainer 20ft (11,25 CBM, hemat 84,4%).',
       card3Title: 'Ketahanan & Pengendalian Jamur',
-      card3Desc: 'Bambu Petung & Apus diawetkan dengan rendaman ramah lingkungan (bebas arsenik & kreosot), target kadar air <12% aman saat pelayaran 30–40 hari.',
+      card3Desc: 'Bambu pilihan diawetkan tanpa arsenik dan kreosot dengan target kadar air <12% serta pernis berbasis air untuk pelayaran laut 30–40 hari.',
       card4Title: 'Standarisasi Sistem Elektrikal',
-      card4Desc: 'Fitting keramik E27 universal (110–240 V), insulasi ganda kabel kain, dirancang mengacu pada standar keselamatan Uni Eropa (CE).'
+      card4Desc: 'Fitting E27 universal (110–240 V), kabel kain 1,5 m, dan bohlam LED warm white, dirancang mengacu pada ketentuan keselamatan UE (CE sedang dipersiapkan).'
     },
     unboxing: {
       tag: 'PENGALAMAN UNBOXING',
@@ -107,9 +107,9 @@ export const I18N = {
       step1: '1. Buka Master Karton 5-Ply',
       step1d: 'Segel pita kertas kraft dibuka untuk mengakses 10 kap lampu yang tersusun rapi dengan bantalan honeycomb paper.',
       step2: '2. Buka Kantong Katun Alami',
-      step2d: 'Setiap kap dilindungi kantong katun unbleached untuk mencegah gesekan dan lecet antar anyaman.',
+      step2d: 'Setiap kap dilindungi kantong katun alami untuk mencegah gesekan dan lecet antar anyaman.',
       step3: '3. Pasang Fitting & Kabel Gantung',
-      step3d: 'Fitting keramik E27 dan kabel kain 1,5 meter terpasang kokoh ke leher collar dengan cincin pengunci dalam hitungan menit.'
+      step3d: 'Fitting E27, kabel kain 1,5 meter, dan bohlam LED warm white dipasang pada leher kubah tanpa peralatan khusus.'
     },
     quote: {
       title: 'Permintaan Penawaran Resmi (RFQ)',
@@ -124,7 +124,7 @@ export const I18N = {
       notesLabel: 'Kebutuhan Kustomisasi / Catatan:',
       btnWa: 'Kirim via WhatsApp Resmi',
       btnEmail: 'Kirim via Email Ekspor',
-      disclaimer: 'Catatan: Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01). Penawaran dan jadwal produksi diselaraskan dengan kapasitas pengrajin Sleman.'
+      disclaimer: 'Catatan: Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01). Penawaran, pembayaran T/T (30% DP, 70% sebelum muat; opsi salinan B/L), dan jadwal produksi diselaraskan dengan laporan.'
     },
     footer: {
       academicNotice: 'Website ini merupakan dokumen simulasi praktikum ekspor mandiri (PRK-01 Hampy Lumina) yang diselaraskan secara akurat dengan rencana kemasan dan rencana kargo Tanjung Priok – Rotterdam.',
@@ -145,9 +145,9 @@ export const I18N = {
       switchLang: 'ID'
     },
     hero: {
-      tag: 'PRK-01 • SLEMAN ARTISANAL BAMBOO B2B EXPORT',
-      title: 'Sustainable Handcrafted Lighting for European Global Export',
-      description: 'Artisanal knock-down bamboo pendant lamps crafted from Sleman Petung & Apus bamboo. Engineered for ocean freight cubic optimization, plastic-free packaging, ready for Rotterdam Port delivery.',
+      tag: 'PRK-01 • SLEMAN HANDCRAFTED BAMBOO B2B EXPORT',
+      title: 'Handcrafted Bamboo Lighting for European Export Markets',
+      description: 'Handcrafted knock-down bamboo pendant lamps made in Sleman. Designed for ocean freight cubic efficiency (10 shades per carton) with paper-based packaging free of single-use plastic, ready for Rotterdam Port delivery.',
       explore3d: 'Explore 3D Prototype',
       calculateCargo: 'Calculate Freight Load',
       badgeOrigin: 'Crafted in Sleman, Yogyakarta',
@@ -166,9 +166,9 @@ export const I18N = {
       units: 'Units',
       cartonsCount: 'Master Cartons (10 units/box)',
       totalVolume: 'Total Volume (CBM)',
-      grossWeight: 'Gross Cargo Weight',
+      grossWeight: 'Shipment Gross Weight',
       containerCapacity: 'Container Space Occupied',
-      optimalNotice: 'The 10-pack knock-down system saves 84.4% container volume compared to shipping fully assembled!',
+      optimalNotice: 'The 10-pack knock-down system saves 84.4% container volume compared to 1-pack shipping!',
       ctaQuote: 'Request Official FOB Quote'
     },
     metrics: {
@@ -178,17 +178,17 @@ export const I18N = {
       utilDesc: '34.09% of 33 CBM space (84.4% saved)',
       leadLabel: 'Standard Production Lead Time',
       leadDesc: '30–45 calendar days',
-      ecoLabel: 'Plastic-Free Packaging',
-      ecoDesc: '5-Ply carton & honeycomb paper'
+      ecoLabel: 'Paper-Based Packaging',
+      ecoDesc: '5-Ply carton & honeycomb paper, no single-use plastic'
     },
     logistics: {
       tag: 'SUPPLY CHAIN & EXPORT ROUTE',
       title: 'Export Supply Chain & Transportation Route',
       subtitle: 'Standardized logistics path from Sleman bamboo artisanal cluster to Rotterdam Port terminal.',
       step1Title: '1. Sleman Workshop Crafting',
-      step1Desc: 'Selected Petung & Apus bamboo is precision cut, treated in non-arsenic eco-friendly solution, and handwoven by Sleman artisans.',
+      step1Desc: 'Selected bamboo is precision cut, preserved without arsenic or creosote, finished with water-based coating, and handwoven by Sleman artisans.',
       step2Title: '2. Knock-Down 10-Pack Packaging',
-      step2Desc: '10 lampshades nested safely with protective honeycomb paper and unbleached cotton bags. Plastic-free packaging, 50×50×45 cm.',
+      step2Desc: '10 lampshades packed with honeycomb paper and cotton bags. Paper-based packaging free of single-use plastic (50×50×45 cm, 12 kg net / 13.5 kg carton gross).',
       step3Title: '3. Inland Haulage & FOB Tanjung Priok',
       step3Desc: 'Overland trucking from Sleman to Tanjung Priok Port (Jakarta), customs clearance (PPJK), and Bill of Lading issuance.',
       step4Title: '4. Ocean Freight to Rotterdam',
@@ -199,50 +199,50 @@ export const I18N = {
     studio3d: {
       tag: 'WEBGL 3D INTERACTIVE STUDIO',
       title: 'Lighting Simulation & 3D Inspection',
-      subtitle: 'Test bulb color temperature, dimmer intensity, and inspect the dome weave structure in real-time 3D.',
+      subtitle: 'Test bulb color temperature, dimmer intensity, knock-down packaging simulation, and inspect the dome weave in real-time 3D.',
       power: 'Master Power Switch',
-      powerOn: 'On • Edison LED Filament Active',
+      powerOn: 'On • Warm White LED Active',
       powerOff: 'Off • Bulb Switched Off',
       dimmer: 'Dimmer Intensity',
       dimmerRec: 'Comfort Setting: 85%',
       cct: 'Color Temperature',
       cct2200: '2200K (Warm Amber)',
       cct2700: '2700K (Soft Warm)',
-      cct4000: '4000K (Neutral Day)',
+      cct4000: '4000K (Neutral Warm)',
       finish: 'Bamboo Finish / Color',
-      finishNatural: 'Natural Petung',
-      finishAmber: 'Warm Caramel',
-      finishDark: 'Dark Walnut',
-      hotspotTitle: 'Detail Inspection Points:',
+      finishNatural: 'Natural Bamboo',
+      finishAmber: 'Smoked Caramel',
+      finishDark: 'Dark Walnut Stain',
+      hotspotTitle: 'Product Detail Points:',
       hs1: 'Geometrical Lattice Weave',
       hs2: 'Dense Collar Bamboo Neck',
       hs3: 'Universal E27 Socket Fitting',
-      hs4: '1.5m Fabric-Braided Cord',
-      blueprintBtn: 'Blueprint / Dimension Mode',
-      fullscreenBtn: 'Fullscreen'
+      hs4: '1.5 m Fabric-Braided Cord',
+      blueprintBtn: 'Dimension Mode',
+      fullscreenBtn: 'Open on Google Sites'
     },
     bento: {
       tag: 'ENGINEERING & PACKAGING ARCHITECTURE',
       title: 'Product Architecture & Engineering',
-      subtitle: 'Data-driven structural design for optimal container packing and sea cargo durability.',
+      subtitle: 'Data-driven structural design for container packing efficiency and sea cargo durability.',
       card1Title: 'Design Engineering Blueprint',
-      card1Desc: 'Symmetrical dome dimensions Ø35 cm × H 40 cm, lower reinforced bamboo ring, and ceramic E27 socket holder.',
+      card1Desc: 'Symmetrical dome dimensions Ø35 cm × H 40 cm, lower laminated bamboo ring, and universal E27 fitting with 1.5 m fabric cord.',
       card2Title: '10-Pack Knock-Down Packaging',
-      card2Desc: 'Reduces shipping needs from 2 full 20ft containers (for 1-pack assembled boxes) to only 34.09% of a single 20ft container (saves 84.4%).',
+      card2Desc: 'Reduces shipping needs from three 20ft containers (at 1 shade/carton, ~72 CBM) to 34% of a single 20ft container (11.25 CBM, 84.4% volume saved).',
       card3Title: 'Durability & Moisture Control',
-      card3Desc: 'Petung bamboo treated in eco-friendly non-arsenic baths with a target moisture content <12% to prevent mold during 30–40 days of sea voyage.',
+      card3Desc: 'Selected bamboo preserved without arsenic or creosote, target moisture <12%, and water-based coating for 30–40 days of sea transit.',
       card4Title: 'Standardized Electrical System',
-      card4Desc: 'Universal E27 socket (110–240 V), safe grounding, engineered in accordance with European Union electrical safety guidelines.'
+      card4Desc: 'Universal E27 socket (110–240 V), 1.5 m fabric cord, and warm white LED bulb, designed to follow European Union safety requirements (CE in progress).'
     },
     unboxing: {
       tag: 'UNBOXING EXPERIENCE',
       title: 'Unboxing Steps & Quick Assembly',
       step1: '1. Open 5-Ply Master Carton',
-      step1d: 'Kraft paper tape unsealed to reveal 10 lampshades nested safely with honeycomb paper shock absorption.',
-      step2: '2. Remove Reusable Cotton Bags',
-      step2d: 'Each shade is sleeved inside an unbleached cotton bag that prevents abrasive friction between bamboo strips.',
+      step1d: 'Kraft paper tape unsealed to reveal 10 lampshades packed safely with honeycomb paper cushioning.',
+      step2: '2. Remove Natural Cotton Bags',
+      step2d: 'Each shade is sleeved inside a natural cotton bag that prevents abrasive friction between bamboo strips.',
       step3: '3. Attach Electrical Cord & Fitting',
-      step3d: 'The E27 socket and 1.5m fabric cord mount easily into the top neck collar with a heavy-duty locking ring in minutes.'
+      step3d: 'The E27 fitting, 1.5 m fabric cord, and warm white LED bulb assemble into the dome collar without special tools.'
     },
     quote: {
       title: 'Request for Quotation (RFQ)',
@@ -257,12 +257,12 @@ export const I18N = {
       notesLabel: 'Custom Requirements / Notes:',
       btnWa: 'Send via Official WhatsApp',
       btnEmail: 'Send via Export Email',
-      disclaimer: 'Note: This website serves as a practical academic export simulation project (PRK-01). Quotations and delivery schedules are aligned with Sleman artisan production capacity.'
+      disclaimer: 'Note: This website serves as an academic export simulation project (PRK-01). Payment terms T/T (30% deposit, 70% pre-loading; B/L copy option) and lead times align with the report.'
     },
     footer: {
-      academicNotice: 'This website is part of an academic export simulation project (PRK-01 Hampy Lumina). All purchase order references and cargo figures are aligned with the coursework packaging and cargo plans.',
+      academicNotice: 'This website is part of an academic export simulation project (PRK-01 Hampy Lumina). All specifications and cargo figures align with the coursework packaging and logistics plans.',
       rights: '© 2026 Hampy Craft. All Rights Reserved.',
-      slemanTag: 'Proudly hand-crafted in Sleman, D.I. Yogyakarta, Indonesia.'
+      slemanTag: 'Proudly handcrafted in Sleman, D.I. Yogyakarta, Indonesia.'
     }
   }
 };

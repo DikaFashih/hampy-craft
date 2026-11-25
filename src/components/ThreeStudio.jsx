@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Sparkles, Maximize2, Lightbulb, Sun, Layers, Ruler, RotateCw, ExternalLink } from 'lucide-react';
+import React from 'react';
+import { Sparkles, Maximize2, Sun, Layers, Ruler, RotateCw, ExternalLink, Package } from 'lucide-react';
+import { SPECS } from '../data/specs';
 
 export default function ThreeStudio({ lang }) {
   const isEn = lang === 'en';
+  const externalUrl = SPECS.links.prototype3dExternal;
 
   return (
     <section id="studio" className="py-20 bg-white border-t border-sand">
@@ -20,26 +22,26 @@ export default function ThreeStudio({ lang }) {
             </h2>
             <p className="mt-2 text-neutral-600 text-sm sm:text-base max-w-2xl">
               {isEn
-                ? 'Experience realistic light diffusion, dimmer control, and color temperatures (2200K / 2700K / 4000K) on procedural bamboo weave.'
-                : 'Uji difusi cahaya lampu, kendali dimmer, dan simulasi suhu warna (2200K / 2700K / 4000K) pada anyaman bambu secara 360° interaktif.'}
+                ? 'Inspect 360° bamboo weave, test room ambiance & LED color temperatures (2200K / 2700K / 4000K), cord colors, and the knock-down packaging simulation.'
+                : 'Putar model 360°, uji latar ruang & suhu warna LED (2200K / 2700K / 4000K), warna kabel kain 1,5 m, serta simulasi kemasan knock-down.'}
             </p>
           </div>
 
-          <div className="mt-4 md:mt-0 flex items-center gap-2.5">
+          <div className="mt-4 md:mt-0 flex flex-wrap items-center gap-2.5">
             <a
-              href="prototype-3d.html"
+              href={externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-forest text-cream font-bold text-xs hover:bg-forestDark transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-forest text-cream font-bold text-xs hover:bg-forestDark transition-colors shadow-sm"
             >
               <Maximize2 className="w-3.5 h-3.5 text-amberBamboo" />
-              <span>{isEn ? 'Open Fullscreen Studio' : 'Buka Layar Penuh'}</span>
-              <ExternalLink className="w-3 h-3 opacity-60" />
+              <span>{isEn ? 'Open Fullscreen 3D (Google Sites)' : 'Buka Layar Penuh (Google Sites)'}</span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
             </a>
           </div>
         </div>
 
-        {/* 3D Studio Card Frame (Dribbble 16pixel Bento Aesthetic) */}
+        {/* 3D Studio Card Frame */}
         <div className="bg-[#FAF8F5] rounded-3xl border border-sand shadow-lg overflow-hidden flex flex-col">
           
           {/* Top Info Bar inside frame */}
@@ -47,7 +49,7 @@ export default function ThreeStudio({ lang }) {
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1.5 font-bold text-forest">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                WebGL / Three.js Engine
+                Prototipe Interaktif 3D
               </span>
               <span className="hidden sm:inline text-neutral-400">|</span>
               <span className="hidden sm:inline text-neutral-600 font-medium">
@@ -60,16 +62,17 @@ export default function ThreeStudio({ lang }) {
                 CCT: 2200K / 2700K / 4000K
               </span>
               <span className="px-2.5 py-1 rounded-full bg-white border border-sand text-[11px] font-bold text-amberBamboo">
-                Dimmer: 85% Rekomendasi
+                Dimmer &amp; Knock-Down 3D
               </span>
             </div>
           </div>
 
-          {/* Interactive WebGL Iframe Container */}
-          <div className="relative w-full h-[540px] sm:h-[620px] bg-[#FAF8F5]">
+          {/* Interactive WebGL Iframe Container (Mirrors Google Sites prototype without X-Frame-Options block) */}
+          <div className="relative w-full h-[580px] sm:h-[660px] bg-[#14171A]">
             <iframe
-              src="prototype-3d.html"
-              title="Prototipe 3D Interaktif Hampy Lumina"
+              key={lang}
+              src={`prototype-3d.html?lang=${lang}`}
+              title="Prototipe Interaktif 3D Hampy Lumina"
               className="w-full h-full border-0"
               loading="lazy"
               allow="accelerometer; gyroscope; autoplay"
@@ -80,19 +83,19 @@ export default function ThreeStudio({ lang }) {
           <div className="p-4 bg-white border-t border-sand grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-neutral-700">
             <div className="flex items-center gap-2 p-2 rounded-xl bg-sand/30">
               <Sun className="w-4 h-4 text-amberBamboo shrink-0" />
-              <span>{isEn ? 'Tri-CCT Lighting' : '3 Suhu Warna (CCT)'}</span>
+              <span>{isEn ? '4 Room Scenes & 3 CCTs' : '4 Latar Ruang & 3 Suhu Warna'}</span>
             </div>
             <div className="flex items-center gap-2 p-2 rounded-xl bg-sand/30">
-              <RotateCw className="w-4 h-4 text-amberBamboo shrink-0" />
-              <span>{isEn ? '360° Drag & Orbit' : 'Rotasi 360° Bebas'}</span>
+              <Package className="w-4 h-4 text-amberBamboo shrink-0" />
+              <span>{isEn ? 'Knock-Down Simulation' : 'Simulasi Kemasan Knock-Down'}</span>
             </div>
             <div className="flex items-center gap-2 p-2 rounded-xl bg-sand/30">
               <Layers className="w-4 h-4 text-amberBamboo shrink-0" />
-              <span>{isEn ? 'Natural Bamboo Finish' : '3 Opsi Finishing'}</span>
+              <span>{isEn ? 'Finishes & 1.5 m Cords' : 'Pilihan Finishing & Kabel 1,5 m'}</span>
             </div>
             <div className="flex items-center gap-2 p-2 rounded-xl bg-sand/30">
               <Ruler className="w-4 h-4 text-amberBamboo shrink-0" />
-              <span>{isEn ? 'Technical Blueprint Mode' : 'Mode Gambar Teknik'}</span>
+              <span>{isEn ? 'Dimensions & Hotspots' : 'Mode Dimensi & Titik Detail'}</span>
             </div>
           </div>
 

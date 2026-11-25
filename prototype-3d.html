@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototipe 3D Interaktif | Hampy Lumina — Hampycraft</title>
+    <title>Hampy Lumina 3D Interactive Prototype | HAMPYCRAFT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <!-- Three.js CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        cream: '#FAF8F5',
-                        sand: '#F1ECE4',
-                        forest: '#1E3F2B',
-                        forestDark: '#132A1C',
-                        amberBamboo: '#C88A4B',
-                        charcoal: '#242423'
+                        forest: '#1E3F20',
+                        forestDark: '#142B16',
+                        warmCream: '#F8F6F1',
+                        sandTone: '#EFECE6',
+                        bambooGold: '#C68B4B',
+                        inkDark: '#1F2421'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -31,8 +30,8 @@
     </script>
     <style>
         body {
-            background-color: #FAF8F5;
-            color: #242423;
+            background-color: #F8F6F1;
+            color: #1F2421;
             overflow-x: hidden;
             user-select: none;
         }
@@ -46,21 +45,19 @@
         #canvas-container:active {
             cursor: grabbing;
         }
-        /* Hotspot Pulsing Ring */
         @keyframes pulseRing {
-            0% { transform: scale(0.9); opacity: 0.9; }
-            70% { transform: scale(1.8); opacity: 0; }
-            100% { transform: scale(1.8); opacity: 0; }
+            0% { transform: scale(0.95); opacity: 0.9; }
+            75% { transform: scale(1.85); opacity: 0; }
+            100% { transform: scale(1.85); opacity: 0; }
         }
         .hotspot-pulse::before {
             content: '';
             position: absolute;
             inset: -4px;
             border-radius: 9999px;
-            border: 2px solid #C88A4B;
-            animation: pulseRing 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+            border: 2px solid #C68B4B;
+            animation: pulseRing 2.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
-        /* Custom Range Slider */
         input[type="range"] {
             -webkit-appearance: none;
             background: transparent;
@@ -74,9 +71,9 @@
             height: 18px;
             width: 18px;
             border-radius: 50%;
-            background: #1E3F2B;
-            border: 2px solid #FAF8F5;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            background: #1E3F20;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
             margin-top: -6px;
             cursor: pointer;
             transition: transform 0.15s ease;
@@ -84,19 +81,17 @@
         input[type="range"]::-webkit-slider-thumb:hover {
             transform: scale(1.15);
         }
-        /* Blueprint Grid Pattern */
         .blueprint-overlay {
             background-image: 
-                linear-gradient(to right, rgba(30, 63, 43, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 63, 43, 0.08) 1px, transparent 1px);
+                linear-gradient(to right, rgba(30, 63, 32, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 63, 32, 0.08) 1px, transparent 1px);
             background-size: 24px 24px;
         }
         .dark-mode .blueprint-overlay {
             background-image: 
-                linear-gradient(to right, rgba(200, 138, 75, 0.12) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(200, 138, 75, 0.12) 1px, transparent 1px);
+                linear-gradient(to right, rgba(198, 139, 75, 0.16) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(198, 139, 75, 0.16) 1px, transparent 1px);
         }
-        /* Custom Scrollbar for Control Panel */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -104,304 +99,351 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(30, 63, 43, 0.2);
+            background: rgba(30, 63, 32, 0.22);
             border-radius: 999px;
         }
     </style>
 </head>
 <body class="h-screen flex flex-col">
 
-    <!-- TOP HEADER BAR -->
-    <header class="h-14 sm:h-16 px-3 sm:px-6 bg-cream/95 backdrop-blur-md border-b border-sand flex items-center justify-between z-30 shrink-0">
-        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-            <!-- Hampycraft Official Logo -->
-            <img src="images/logo.jpg" alt="Hampy Craft" class="h-8 sm:h-9 w-auto object-contain rounded-md shrink-0 shadow-xs" />
-            <div class="min-w-0">
-                <div class="flex items-center gap-1.5 sm:gap-2">
-                    <span class="font-bold tracking-wider text-forest text-xs sm:text-base truncate">HAMPYCRAFT</span>
-                    <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest bg-amberBamboo/15 text-amberBamboo rounded-full">Prototipe 3D</span>
+    <!-- CLEAN WHITE HEADER WITH OFFICIAL HAMPYCRAFT LOGO & BILINGUAL SWITCHER -->
+    <header class="h-20 px-4 sm:px-6 bg-white border-b border-sandTone flex items-center justify-between z-30 shrink-0 shadow-xs">
+        <div class="flex items-center gap-3.5">
+            <!-- Official HAMPYCRAFT SVG Combination Mark -->
+            <div class="flex items-center gap-3">
+                <svg class="w-11 h-12 shrink-0 text-forest" viewBox="0 0 110 115" fill="currentColor" aria-label="HAMPYCRAFT Logo">
+                    <!-- Left Bamboo Stalk (2 Internodes) -->
+                    <path d="M35 46 C38 47 43 47 46 46 L45 73 C42 74 39 74 36 73 Z"/>
+                    <path d="M36 76 C39 77 42 77 45 76 L46 105 C42 105 38 105 35 105 Z"/>
+                    <!-- Small Leaf Sprout on Top of Left Stalk -->
+                    <path d="M44 42 C41 37 37 33 33 31 C38 30 43 34 45 41 Z"/>
+                    <!-- 3 Leaves on Left Stalk -->
+                    <path d="M36 65 C30 57 26 45 27 32 C32 41 35 53 36 63 Z"/>
+                    <path d="M35 66 C26 63 17 59 11 53 C19 52 28 56 35 64 Z"/>
+                    <path d="M35 68 C29 73 24 76 18 76 C22 70 28 67 35 67 Z"/>
+
+                    <!-- Taller Right Bamboo Stalk (3 Internodes) -->
+                    <path d="M51 11 C55 12 60 12 64 11 L63 44 C59 45 55 45 52 44 Z"/>
+                    <path d="M52 47 C55 48 59 48 63 47 L63 79 C59 80 55 80 52 79 Z"/>
+                    <path d="M52 82 C55 83 59 83 63 82 L64 105 C59 105 55 105 51 105 Z"/>
+
+                    <!-- 2 Upper Right Leaves -->
+                    <path d="M62 51 C68 38 77 27 91 23 C86 35 77 44 64 51 Z"/>
+                    <path d="M63 52 C74 47 86 46 96 50 C86 55 75 55 63 53 Z"/>
+
+                    <!-- 3 Lower Right Leaves -->
+                    <path d="M62 78 C69 65 77 55 87 49 C85 60 77 70 64 78 Z"/>
+                    <path d="M63 79 C75 72 88 67 101 66 C92 75 79 80 64 80 Z"/>
+                    <path d="M63 81 C73 84 82 91 87 99 C77 96 68 89 63 82 Z"/>
+                </svg>
+
+                <!-- 3 Stacked Uppercase Sans-Serif Lines -->
+                <div class="flex flex-col justify-center leading-tight text-forest select-none">
+                    <span class="font-extrabold tracking-[0.06em] text-sm sm:text-base">HAMPYCRAFT</span>
+                    <span class="font-bold tracking-[0.06em] text-[11px] sm:text-xs">INDONESIAN</span>
+                    <span class="font-bold tracking-[0.05em] text-[10px] sm:text-xs">HANDCRAFTED LIGHTING</span>
                 </div>
-                <p class="hidden sm:block text-[11px] text-neutral-500 tracking-wide truncate">Indonesian Handcrafted Lighting — <strong class="text-forest">Hampy Lumina</strong></p>
+            </div>
+
+            <div class="hidden xl:flex flex-col pl-4 border-l border-sandTone">
+                <span data-i18n="headerProductTitle" class="text-xs font-semibold text-forest">Prototipe 3D Hampy Lumina</span>
+                <span data-i18n="headerProductSub" class="text-[11px] text-neutral-500">Kode HS 9405.99.20 | Kap Lampu Anyaman Bambu</span>
             </div>
         </div>
 
-        <!-- Top Quick Controls -->
-        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <button id="btnToggleBlueprint" onclick="toggleBlueprint()" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold border border-forest/25 text-forest hover:bg-forest/5 transition-all flex items-center gap-1 sm:gap-2">
-                <i class="fa-solid fa-ruler-combined text-xs"></i>
-                <span class="hidden md:inline">Mode Blueprint / Dimensi</span>
-                <span class="md:hidden">Dimensi</span>
+        <!-- Top Controls & Bilingual Toggle (ID | EN) -->
+        <div class="flex items-center gap-2">
+            <!-- Language Toggle Pill -->
+            <div class="flex items-center bg-warmCream border border-forest/20 rounded-xl p-0.5 mr-1">
+                <button id="lang-id" onclick="setLanguage('id')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-forest text-white transition-all">ID</button>
+                <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-lg text-xs font-bold text-forest hover:bg-forest/10 transition-all">EN</button>
+            </div>
+
+            <button id="btnToggleKnockdown" onclick="toggleKnockdownMode()" class="px-3 py-2 rounded-xl text-xs font-semibold border border-forest/30 text-forest hover:bg-forest/5 transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-boxes-packing"></i>
+                <span data-i18n="btnKnockdown" class="hidden md:inline">Kemasan Knock-Down</span>
             </button>
-            <button id="btnToggleHotspots" onclick="toggleHotspots()" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold bg-forest text-cream hover:bg-forestDark transition-all flex items-center gap-1 sm:gap-2 shadow-sm">
-                <i class="fa-solid fa-circle-info text-xs"></i>
-                <span class="hidden sm:inline">Hotspot</span>
+            <button id="btnToggleBlueprint" onclick="toggleBlueprint()" class="px-3 py-2 rounded-xl text-xs font-semibold border border-forest/30 text-forest hover:bg-forest/5 transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span data-i18n="btnDimensions" class="hidden md:inline">Dimensi</span>
             </button>
-            <button onclick="resetCamera()" title="Reset Sudut Kamera" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-forest/20 text-forest hover:bg-sand flex items-center justify-center transition-all">
+            <button id="btnToggleHotspots" onclick="toggleHotspots()" class="px-3 py-2 rounded-xl text-xs font-semibold bg-forest text-white hover:bg-forestDark transition-all flex items-center gap-1.5 shadow-xs">
+                <i class="fa-solid fa-circle-info"></i>
+                <span data-i18n="btnHotspots" class="hidden sm:inline">Titik Detail</span>
+            </button>
+            <button onclick="resetCamera()" id="btnResetCam" title="Reset Camera" class="w-9 h-9 rounded-xl border border-forest/25 text-forest hover:bg-sandTone flex items-center justify-center transition-all">
                 <i class="fa-solid fa-rotate-right text-xs"></i>
             </button>
-            <a href="index.html#studio" class="px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-sand/80 text-forest hover:bg-sand border border-sand transition-all flex items-center gap-1">
-                <i class="fa-solid fa-arrow-left text-xs"></i>
-                <span class="hidden sm:inline">Kembali</span>
-            </a>
         </div>
     </header>
 
     <!-- MAIN WORKSPACE -->
     <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
         
-        <!-- LEFT / CENTER 3D INTERACTIVE VIEWPORT -->
-        <section id="viewportWrapper" class="relative w-full h-[46vh] sm:h-[50vh] lg:h-full transition-colors duration-700 bg-[#F4EFE6] overflow-hidden shrink-0">
+        <!-- 3D INTERACTIVE VIEWPORT -->
+        <section id="viewportWrapper" class="relative flex-1 h-[54vh] lg:h-full transition-colors duration-700 bg-[#14171A] overflow-hidden">
             
-            <!-- Subtle Environmental Backdrop Layer -->
+            <!-- Radial Glow Overlay -->
             <div id="envBackdrop" class="absolute inset-0 pointer-events-none transition-opacity duration-700"></div>
             
-            <!-- Blueprint Grid Layer (Hidden by default) -->
+            <!-- Blueprint Grid Overlay -->
             <div id="blueprintGrid" class="blueprint-overlay absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"></div>
 
-            <!-- Three.js 3D Canvas Container -->
+            <!-- Three.js Canvas -->
             <div id="canvas-container"></div>
 
-            <!-- Projected Hotspot Pins Overlay (Updated dynamically via 3D projection) -->
+            <!-- Active Room & Shadow Effect Status Pill (Top Left) -->
+            <div id="envStatusPill" class="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-forest/20 rounded-2xl px-3.5 py-2.5 shadow-md z-10 max-w-xs sm:max-w-sm pointer-events-none transition-all">
+                <div class="flex items-center gap-2">
+                    <span id="envDot" class="w-2.5 h-2.5 rounded-full bg-bambooGold animate-pulse"></span>
+                    <span id="envPillTitle" class="text-xs font-bold text-forest">Studio Gelap (Bayangan Maksimal)</span>
+                </div>
+                <p id="envPillDesc" class="text-[11px] text-neutral-600 mt-0.5 leading-snug">
+                    Kontras tinggi menampilkan proyeksi bayangan geometris anyaman bambu di seluruh dinding dan lantai.
+                </p>
+            </div>
+
+            <!-- 4 Interactive Component Hotspots -->
             <div id="hotspotsLayer" class="absolute inset-0 pointer-events-none z-10 transition-opacity duration-300">
-                <!-- Hotspot 1: Anyaman Silang -->
-                <button id="hs-weave" onclick="selectHotspot('weave')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-cream border-2 border-cream shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
+                <button id="hs-collar" onclick="selectHotspot('collar')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-white border-2 border-white shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
                     1
                 </button>
-                <!-- Hotspot 2: Leher Anyam -->
-                <button id="hs-collar" onclick="selectHotspot('collar')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-cream border-2 border-cream shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
+                <button id="hs-weave" onclick="selectHotspot('weave')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-white border-2 border-white shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
                     2
                 </button>
-                <!-- Hotspot 3: Bohlam Edison & Fitting E27 -->
-                <button id="hs-bulb" onclick="selectHotspot('bulb')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-amberBamboo text-cream border-2 border-cream shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
+                <button id="hs-bulb" onclick="selectHotspot('bulb')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-bambooGold text-white border-2 border-white shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
                     3
                 </button>
-                <!-- Hotspot 4: Kabel Kain Kepang -->
-                <button id="hs-cord" onclick="selectHotspot('cord')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-cream border-2 border-cream shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
+                <button id="hs-rim" onclick="selectHotspot('rim')" style="transform: translate(-50%, -50%);" class="hotspot-btn pointer-events-auto absolute w-7 h-7 rounded-full bg-forest text-white border-2 border-white shadow-lg flex items-center justify-center text-xs font-bold hotspot-pulse hover:scale-110 transition-transform">
                     4
                 </button>
             </div>
 
-            <!-- Blueprint Dimension Callout Overlay (Visible when Blueprint Mode active) -->
-            <div id="blueprintOverlayUI" class="hidden absolute inset-0 pointer-events-none z-10 p-4 sm:p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                    <div class="bg-cream/90 backdrop-blur-md border border-forest/20 rounded-2xl p-3.5 shadow-sm max-w-xs">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-amberBamboo block">Gambar Teknik • Skala 1:5</span>
-                        <h3 class="font-serif font-bold text-forest text-base">Hampy Lumina Dome</h3>
-                        <p class="text-[11px] text-neutral-600 mt-1">Konstruksi kubah bambu petung presisi dengan toleransi kerajinan tangan ±3 mm.</p>
-                    </div>
-                    <div class="hidden sm:block bg-forest text-cream rounded-2xl px-4 py-2.5 text-right shadow-md">
-                        <span class="text-[10px] uppercase tracking-widest text-amberBamboo block">Standar Ekspor</span>
-                        <span class="text-xs font-semibold">Zero-Plastic Packaging • 1,2 kg</span>
-                    </div>
+            <!-- Knock-Down Packaging Banner -->
+            <div id="knockdownBanner" class="hidden absolute top-24 left-4 right-4 sm:right-auto sm:max-w-md bg-white/95 backdrop-blur-md border border-forest/25 rounded-2xl p-4 shadow-md z-10">
+                <div class="flex items-center gap-2 text-forest font-bold text-xs uppercase tracking-wider mb-1">
+                    <i class="fa-solid fa-box-open text-bambooGold"></i>
+                    <span data-i18n="kdBannerTitle">Sistem Kemasan Knock-Down Bebas Plastik</span>
                 </div>
+                <p data-i18n="kdBannerDesc" class="text-xs text-neutral-600 leading-relaxed">
+                    Komponen dikemas terpisah dalam satu paket pengiriman ekspor: kap kubah bambu, kabel serat kain 1,5 m dengan fitting E27, dan bohlam LED Warm White di dalam sekat karton. Tidak dijual terpisah.
+                </p>
+            </div>
 
-                <!-- Technical Dimension Badges -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 max-w-3xl mx-auto w-full">
-                    <div class="bg-cream/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-sm">
-                        <span class="text-[10px] uppercase tracking-wider text-neutral-500 block">Diameter Kubah</span>
-                        <strong class="text-sm sm:text-base font-bold text-forest">Ø 35 cm</strong>
+            <!-- Dimension Blueprint Overlay -->
+            <div id="blueprintOverlayUI" class="hidden absolute inset-0 pointer-events-none z-10 p-4 sm:p-6 flex flex-col justify-end">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-3xl mx-auto w-full mb-10 sm:mb-8">
+                    <div class="bg-white/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-xs">
+                        <span data-i18n="dimBaseLabel" class="text-[10px] uppercase tracking-wider text-neutral-500 block">Diameter Dasar</span>
+                        <strong class="text-sm sm:text-base font-bold text-forest">35 cm</strong>
                     </div>
-                    <div class="bg-cream/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-sm">
-                        <span class="text-[10px] uppercase tracking-wider text-neutral-500 block">Tinggi Kap</span>
+                    <div class="bg-white/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-xs">
+                        <span data-i18n="dimHeightLabel" class="text-[10px] uppercase tracking-wider text-neutral-500 block">Tinggi Kubah</span>
                         <strong class="text-sm sm:text-base font-bold text-forest">40 cm</strong>
                     </div>
-                    <div class="bg-cream/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-sm">
-                        <span class="text-[10px] uppercase tracking-wider text-neutral-500 block">Kabel Kepang</span>
-                        <strong class="text-sm sm:text-base font-bold text-forest">1,5 meter</strong>
+                    <div class="bg-white/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-xs">
+                        <span data-i18n="dimCordLabel" class="text-[10px] uppercase tracking-wider text-neutral-500 block">Kabel Serat Kain</span>
+                        <strong class="text-sm sm:text-base font-bold text-forest">1.5 m</strong>
                     </div>
-                    <div class="bg-cream/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-sm">
-                        <span class="text-[10px] uppercase tracking-wider text-neutral-500 block">Fitting & Daya</span>
-                        <strong class="text-sm sm:text-base font-bold text-forest">E27 • 110–240V</strong>
+                    <div class="bg-white/95 backdrop-blur-md border border-forest/20 rounded-xl p-2.5 text-center shadow-xs">
+                        <span data-i18n="dimWeightLabel" class="text-[10px] uppercase tracking-wider text-neutral-500 block">Berat Bersih</span>
+                        <strong class="text-sm sm:text-base font-bold text-forest">1.2 kg</strong>
                     </div>
                 </div>
             </div>
 
-            <!-- Hotspot Detail Floating Card -->
-            <div id="hotspotCard" class="hidden absolute bottom-4 left-4 right-4 sm:right-auto sm:w-80 bg-cream/95 backdrop-blur-md border border-forest/20 rounded-2xl p-4 shadow-xl z-20 transition-all">
+            <!-- Hotspot Detail Card -->
+            <div id="hotspotCard" class="hidden absolute bottom-4 left-4 right-4 sm:right-auto sm:w-88 bg-white/95 backdrop-blur-md border border-forest/25 rounded-2xl p-4 shadow-xl z-20 transition-all">
                 <div class="flex items-start justify-between gap-2">
                     <div class="flex items-center gap-2">
-                        <span id="hcBadge" class="w-6 h-6 rounded-full bg-forest text-cream text-xs font-bold flex items-center justify-center">1</span>
-                        <h4 id="hcTitle" class="font-serif font-bold text-forest text-sm">Anyaman Silang Bambu</h4>
+                        <span id="hcBadge" class="w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                        <h4 id="hcTitle" class="font-serif font-bold text-forest text-sm"></h4>
                     </div>
-                    <button onclick="closeHotspotCard()" class="text-neutral-400 hover:text-charcoal p-1">
+                    <button onclick="closeHotspotCard()" class="text-neutral-400 hover:text-inkDark p-1">
                         <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <p id="hcDesc" class="text-xs text-neutral-600 leading-relaxed mt-2">
-                    Terbuat dari bilah bambu Petung (Dendrocalamus asper) pilihan yang dianyam silang secara manual untuk menghasilkan proyeksi bayangan geometris hangat.
-                </p>
-                <div id="hcMeta" class="mt-3 pt-2.5 border-t border-sand flex items-center justify-between text-[11px] font-medium text-forest">
-                    <span>Material: Bambu Petung</span>
-                    <span class="text-amberBamboo">Anti-Jamur</span>
-                </div>
+                <p id="hcDesc" class="text-xs text-neutral-600 leading-relaxed mt-2"></p>
+                <div id="hcMeta" class="mt-3 pt-2.5 border-t border-sandTone flex items-center justify-between text-[11px] font-semibold text-forest"></div>
             </div>
 
-            <!-- Interaction Gesture Helper Pill -->
-            <div id="gestureHint" class="absolute bottom-2 left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0 flex items-center gap-2 bg-charcoal/80 backdrop-blur-md text-cream text-[10px] sm:text-[11px] px-3 py-1.5 rounded-full pointer-events-none z-10 whitespace-nowrap shadow-sm">
-                <span><i class="fa-solid fa-hand-pointer mr-1 text-amberBamboo"></i> Geser untuk memutar 360°</span>
+            <!-- Camera Control Hint -->
+            <div class="absolute bottom-4 right-4 hidden sm:flex items-center gap-3 bg-inkDark/80 backdrop-blur-md text-white text-[11px] px-3.5 py-2 rounded-full pointer-events-none">
+                <span><i class="fa-solid fa-hand-pointer mr-1 text-bambooGold"></i> <span data-i18n="hintDrag">Geser untuk memutar 360°</span></span>
                 <span class="opacity-40">|</span>
-                <span><i class="fa-solid fa-magnifying-glass-plus mr-1 text-amberBamboo"></i> Scroll / Cubit untuk zoom</span>
+                <span><i class="fa-solid fa-magnifying-glass-plus mr-1 text-bambooGold"></i> <span data-i18n="hintZoom">Gulir untuk zoom</span></span>
             </div>
         </section>
 
-        <!-- RIGHT SIDEBAR: INTERACTIVE PROTOTYPE CONTROLS -->
-        <aside class="w-full lg:w-[400px] xl:w-[430px] flex-1 lg:h-full bg-cream border-t lg:border-t-0 lg:border-l border-sand flex flex-col z-20 overflow-hidden">
+        <!-- RIGHT CONTROL PANEL -->
+        <aside class="w-full lg:w-[420px] xl:w-[445px] h-[46vh] lg:h-full bg-white border-t lg:border-t-0 lg:border-l border-sandTone flex flex-col z-20 shrink-0">
             
-            <!-- Panel Navigation Tabs -->
-            <div class="grid grid-cols-3 border-b border-sand bg-sand/40 p-1 sm:p-1.5 gap-1 shrink-0">
-                <button onclick="switchControlTab('lighting')" id="tab-lighting" class="ctrl-tab py-2 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-semibold bg-forest text-cream shadow-sm transition-all flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-lightbulb text-xs"></i> <span class="hidden sm:inline">Pencahayaan</span><span class="sm:hidden">Cahaya</span>
+            <!-- Control Tabs -->
+            <div class="grid grid-cols-3 border-b border-sandTone bg-warmCream p-1.5 gap-1 shrink-0">
+                <button onclick="switchControlTab('lighting')" id="tab-lighting" class="ctrl-tab py-2 px-2 rounded-xl text-xs font-semibold bg-forest text-white shadow-xs transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-lightbulb"></i> <span data-i18n="tabLight">Ruang & Cahaya</span>
                 </button>
-                <button onclick="switchControlTab('material')" id="tab-material" class="ctrl-tab py-2 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-semibold text-neutral-600 hover:text-forest transition-all flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-swatchbook text-xs"></i> <span class="hidden sm:inline">Material & Warna</span><span class="sm:hidden">Material</span>
+                <button onclick="switchControlTab('material')" id="tab-material" class="ctrl-tab py-2 px-2 rounded-xl text-xs font-semibold text-neutral-600 hover:text-forest transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-layer-group"></i> <span data-i18n="tabMaterial">Material</span>
                 </button>
-                <button onclick="switchControlTab('specs')" id="tab-specs" class="ctrl-tab py-2 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-semibold text-neutral-600 hover:text-forest transition-all flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-clipboard-list text-xs"></i> <span class="hidden sm:inline">Spesifikasi</span><span class="sm:hidden">Spek</span>
+                <button onclick="switchControlTab('specs')" id="tab-specs" class="ctrl-tab py-2 px-2 rounded-xl text-xs font-semibold text-neutral-600 hover:text-forest transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-file-lines"></i> <span data-i18n="tabSpecs">Spesifikasi</span>
                 </button>
             </div>
 
-            <!-- Scrollable Controls Content -->
-            <div class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-4 sm:space-y-6" style="-webkit-overflow-scrolling: touch;">
+            <!-- Scrollable Tab Body -->
+            <div class="flex-1 overflow-y-auto p-5 space-y-5">
                 
-                <!-- TAB 1: LIGHTING & ENVIRONMENT -->
-                <div id="panel-lighting" class="space-y-6">
+                <!-- TAB 1: ROOM ENVIRONMENTS & LIGHTING -->
+                <div id="panel-lighting" class="space-y-5">
                     
-                    <!-- Master Power Switch -->
-                    <div class="bg-sand/60 p-4 rounded-2xl border border-sand flex items-center justify-between">
+                    <!-- Main Lamp Power Switch -->
+                    <div class="bg-warmCream p-4 rounded-2xl border border-sandTone flex items-center justify-between">
                         <div class="flex items-center gap-3">
-                            <div id="powerIconBox" class="w-10 h-10 rounded-xl bg-amberBamboo text-white flex items-center justify-center shadow-md transition-all">
+                            <div id="powerIconBox" class="w-10 h-10 rounded-xl bg-bambooGold text-white flex items-center justify-center shadow-xs transition-all">
                                 <i class="fa-solid fa-power-off"></i>
                             </div>
                             <div>
-                                <h3 class="text-sm font-bold text-forest">Saklar Lampu Utama</h3>
-                                <p id="powerStatusLabel" class="text-xs text-amberBamboo font-medium">Menyala • Bohlam Edison Aktif</p>
+                                <h3 data-i18n="powerTitle" class="text-sm font-bold text-forest">Saklar Lampu Utama</h3>
+                                <p id="powerStatusLabel" class="text-xs text-bambooGold font-medium">Menyala | Bohlam LED Termasuk Paket</p>
                             </div>
                         </div>
                         <button id="btnPowerToggle" onclick="toggleLampPower()" class="w-14 h-8 rounded-full bg-forest p-1 transition-colors relative cursor-pointer">
-                            <div id="powerKnob" class="w-6 h-6 rounded-full bg-cream shadow-md transform translate-x-6 transition-transform"></div>
+                            <div id="powerKnob" class="w-6 h-6 rounded-full bg-white shadow-md transform translate-x-6 transition-transform"></div>
                         </button>
                     </div>
 
-                    <!-- Dimmer Intensity Slider -->
-                    <div class="space-y-2.5">
-                        <div class="flex justify-between items-center">
-                            <label class="text-xs font-bold uppercase tracking-wider text-forest">Intensitas Redup (Dimmer)</label>
-                            <span id="dimmerValueText" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-forest/10 text-forest">85%</span>
+                    <!-- 4 Distinct Room Backgrounds & Shadow Effects -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label data-i18n="envSectionLabel" class="text-xs font-bold uppercase tracking-wider text-forest">Latar Ruangan dan Efek Bayangan</label>
+                            <span id="shadowLevelBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-bambooGold/15 text-bambooGold">Bayangan Tajam</span>
                         </div>
-                        <div class="bg-sand/60 p-3.5 rounded-2xl border border-sand flex items-center gap-3">
-                            <i class="fa-regular fa-sun text-xs text-neutral-400"></i>
-                            <input type="range" id="dimmerSlider" min="0" max="100" value="85" oninput="updateDimmer(this.value)" class="w-full accent-forest bg-forest/20 rounded-lg">
-                            <i class="fa-solid fa-sun text-sm text-amberBamboo"></i>
-                        </div>
-                    </div>
-
-                    <!-- Color Temperature Selector -->
-                    <div class="space-y-2.5">
-                        <label class="text-xs font-bold uppercase tracking-wider text-forest block">Temperatur Warna Cahaya</label>
-                        <div class="grid grid-cols-3 gap-2.5">
-                            <button onclick="setColorTemp(2200, this)" class="temp-btn p-3 rounded-2xl border border-sand bg-white hover:border-amberBamboo text-left transition-all">
-                                <span class="w-4 h-4 rounded-full bg-[#FF9329] block mb-2 shadow-inner"></span>
-                                <span class="text-xs font-bold text-charcoal block">2200K</span>
-                                <span class="text-[10px] text-neutral-500">Warm Amber</span>
-                            </button>
-                            <button onclick="setColorTemp(2700, this)" class="temp-btn active p-3 rounded-2xl border-2 border-forest bg-sand/70 text-left transition-all">
-                                <span class="w-4 h-4 rounded-full bg-[#FFC58F] block mb-2 shadow-inner"></span>
-                                <span class="text-xs font-bold text-forest block">2700K</span>
-                                <span class="text-[10px] text-neutral-600">Soft Warm</span>
-                            </button>
-                            <button onclick="setColorTemp(4000, this)" class="temp-btn p-3 rounded-2xl border border-sand bg-white hover:border-amberBamboo text-left transition-all">
-                                <span class="w-4 h-4 rounded-full bg-[#FFF4E6] border border-neutral-200 block mb-2"></span>
-                                <span class="text-xs font-bold text-charcoal block">4000K</span>
-                                <span class="text-[10px] text-neutral-500">Neutral Day</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Room Environment Backdrop Switcher -->
-                    <div class="space-y-2.5">
-                        <label class="text-xs font-bold uppercase tracking-wider text-forest block">Latar Ruangan & Simulasi Bayangan</label>
                         <div class="grid grid-cols-2 gap-2.5">
-                            <button onclick="setEnvironment('scandi', this)" class="env-btn active p-3 rounded-2xl border-2 border-forest bg-sand/70 text-left transition-all flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-xl bg-[#EAE3D5] border border-neutral-300 flex items-center justify-center text-forest shrink-0">
-                                    <i class="fa-solid fa-couch text-xs"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-bold text-forest block">Ruang Tamu</span>
-                                    <span class="text-[10px] text-neutral-500">Scandinavian</span>
-                                </div>
-                            </button>
-
-                            <button onclick="setEnvironment('dining', this)" class="env-btn p-3 rounded-2xl border border-sand bg-white hover:border-forest/40 text-left transition-all flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-xl bg-[#DFD5C5] border border-neutral-300 flex items-center justify-center text-forest shrink-0">
-                                    <i class="fa-solid fa-utensils text-xs"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-bold text-charcoal block">Meja Makan</span>
-                                    <span class="text-[10px] text-neutral-500">Minimalis Kayu</span>
-                                </div>
-                            </button>
-
-                            <button onclick="setEnvironment('cafe', this)" class="env-btn p-3 rounded-2xl border border-sand bg-white hover:border-forest/40 text-left transition-all flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-xl bg-[#D6CCB8] border border-neutral-300 flex items-center justify-center text-forest shrink-0">
-                                    <i class="fa-solid fa-mug-hot text-xs"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-bold text-charcoal block">Kafe & Resor</span>
-                                    <span class="text-[10px] text-neutral-500">Tropis Hangat</span>
-                                </div>
-                            </button>
-
-                            <button onclick="setEnvironment('studio', this)" class="env-btn p-3 rounded-2xl border border-sand bg-white hover:border-forest/40 text-left transition-all flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-xl bg-[#1A1C1E] text-amberBamboo flex items-center justify-center shrink-0">
+                            <button onclick="setEnvironment('studio', this)" class="env-btn active p-3 rounded-2xl border-2 border-forest bg-warmCream text-left transition-all flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-[#1A1D20] text-bambooGold flex items-center justify-center shrink-0 mt-0.5">
                                     <i class="fa-solid fa-moon text-xs"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-bold text-charcoal block">Studio Gelap</span>
-                                    <span class="text-[10px] text-amberBamboo font-medium">Inspeksi Bayangan</span>
+                                    <span data-i18n="envStudioName" class="text-xs font-bold text-forest block">Studio Gelap</span>
+                                    <span data-i18n="envStudioSub" class="text-[10px] text-bambooGold font-semibold block">Bayangan Kontras Tinggi</span>
+                                </div>
+                            </button>
+
+                            <button onclick="setEnvironment('dining', this)" class="env-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 text-left transition-all flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-[#EFE6D8] border border-neutral-300 flex items-center justify-center text-forest shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-utensils text-xs"></i>
+                                </div>
+                                <div>
+                                    <span data-i18n="envDiningName" class="text-xs font-bold text-inkDark block">Ruang Makan</span>
+                                    <span data-i18n="envDiningSub" class="text-[10px] text-neutral-500 block">Senja Hangat & Meja Kayu</span>
+                                </div>
+                            </button>
+
+                            <button onclick="setEnvironment('resort', this)" class="env-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 text-left transition-all flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-[#C87D55] text-white flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-umbrella-beach text-xs"></i>
+                                </div>
+                                <div>
+                                    <span data-i18n="envResortName" class="text-xs font-bold text-inkDark block">Kafe & Resor</span>
+                                    <span data-i18n="envResortSub" class="text-[10px] text-neutral-500 block">Dinding Terakota & Daun</span>
+                                </div>
+                            </button>
+
+                            <button onclick="setEnvironment('daylight', this)" class="env-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 text-left transition-all flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-[#F4F6F8] border border-neutral-300 flex items-center justify-center text-amber-500 shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-sun text-xs"></i>
+                                </div>
+                                <div>
+                                    <span data-i18n="envDaylightName" class="text-xs font-bold text-inkDark block">Siang Terang</span>
+                                    <span data-i18n="envDaylightSub" class="text-[10px] text-neutral-500 block">Tanpa Bayangan Gelap</span>
                                 </div>
                             </button>
                         </div>
                     </div>
+
+                    <!-- Brightness / Dimmer Control -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label data-i18n="dimmerLabel" class="text-xs font-bold uppercase tracking-wider text-forest">Intensitas Cahaya & Bayangan</label>
+                            <span id="dimmerValueText" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-forest/10 text-forest">90%</span>
+                        </div>
+                        <div class="bg-warmCream p-3.5 rounded-2xl border border-sandTone flex items-center gap-3">
+                            <i class="fa-regular fa-sun text-xs text-neutral-400"></i>
+                            <input type="range" id="dimmerSlider" min="0" max="100" value="90" oninput="updateDimmer(this.value)" class="w-full accent-forest bg-forest/20 rounded-lg">
+                            <i class="fa-solid fa-sun text-sm text-bambooGold"></i>
+                        </div>
+                    </div>
+
+                    <!-- Color Temperature Presets -->
+                    <div class="space-y-2">
+                        <label data-i18n="tempLabel" class="text-xs font-bold uppercase tracking-wider text-forest block">Suhu Warna Bohlam LED Warm White</label>
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <button onclick="setColorTemp(2200, this)" class="temp-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-bambooGold text-left transition-all">
+                                <span class="w-4 h-4 rounded-full bg-[#FF9329] block mb-2 shadow-inner"></span>
+                                <span class="text-xs font-bold text-inkDark block">2200K</span>
+                                <span data-i18n="temp2200" class="text-[10px] text-neutral-500">Hangat Amber</span>
+                            </button>
+                            <button onclick="setColorTemp(2700, this)" class="temp-btn active p-3 rounded-2xl border-2 border-forest bg-warmCream text-left transition-all">
+                                <span class="w-4 h-4 rounded-full bg-[#FFC58F] block mb-2 shadow-inner"></span>
+                                <span class="text-xs font-bold text-forest block">2700K</span>
+                                <span data-i18n="temp2700" class="text-[10px] text-neutral-600">Putih Hangat</span>
+                            </button>
+                            <button onclick="setColorTemp(4000, this)" class="temp-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-bambooGold text-left transition-all">
+                                <span class="w-4 h-4 rounded-full bg-[#FFE9C8] border border-neutral-200 block mb-2"></span>
+                                <span class="text-xs font-bold text-inkDark block">4000K</span>
+                                <span data-i18n="temp4000" class="text-[10px] text-neutral-500">Hangat Netral</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Included Bulb Notice Box -->
+                    <div class="bg-forest/5 border border-forest/20 rounded-2xl p-3.5 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-check text-forest mt-0.5 text-sm"></i>
+                        <p data-i18n="bulbNotice" class="text-[11px] text-inkDark leading-relaxed">
+                            <strong>Kelengkapan Paket:</strong> Bohlam LED Warm White sudah termasuk dalam paket unit dan tidak dijual terpisah.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- TAB 2: MATERIAL & FINISH CUSTOMIZER -->
-                <div id="panel-material" class="hidden space-y-6">
+                <!-- TAB 2: MATERIAL, FINISH & PACKAGING -->
+                <div id="panel-material" class="hidden space-y-5">
                     
-                    <!-- Bamboo Finish Selector -->
-                    <div class="space-y-3">
+                    <!-- Bamboo Finish Selection -->
+                    <div class="space-y-2.5">
                         <div class="flex justify-between items-center">
-                            <label class="text-xs font-bold uppercase tracking-wider text-forest">Finishing Bambu Petung</label>
-                            <span id="selectedFinishName" class="text-xs font-medium text-amberBamboo">Natural Bamboo</span>
+                            <label data-i18n="finishLabel" class="text-xs font-bold uppercase tracking-wider text-forest">Pilihan Finishing Bambu</label>
+                            <span id="selectedFinishName" class="text-xs font-medium text-bambooGold">Bambu Alami</span>
                         </div>
-                        <div class="space-y-2.5">
-                            <button onclick="setBambooFinish('natural', this)" class="finish-btn active w-full p-3.5 rounded-2xl border-2 border-forest bg-sand/70 flex items-center justify-between transition-all">
+                        <div class="space-y-2">
+                            <button onclick="setBambooFinish('natural', this)" class="finish-btn active w-full p-3 rounded-2xl border-2 border-forest bg-warmCream flex items-center justify-between transition-all">
                                 <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#DFB47C] to-[#B88346] border border-black/10 shadow-inner"></span>
+                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#DFB47C] to-[#B88346] border border-black/10"></span>
                                     <div class="text-left">
-                                        <span class="text-xs font-bold text-forest block">Natural Bamboo (Matte)</span>
-                                        <span class="text-[11px] text-neutral-500">Water-based eco-finish transparan alami</span>
+                                        <span data-i18n="finNaturalName" class="text-xs font-bold text-forest block">Bambu Alami (Standard Ekspor)</span>
+                                        <span data-i18n="finNaturalSub" class="text-[11px] text-neutral-500">Pernis berbasis air matte (water-based clear coating)</span>
                                     </div>
                                 </div>
                                 <i class="fa-solid fa-circle-check text-forest"></i>
                             </button>
 
-                            <button onclick="setBambooFinish('caramel', this)" class="finish-btn w-full p-3.5 rounded-2xl border border-sand bg-white hover:border-forest/40 flex items-center justify-between transition-all">
+                            <button onclick="setBambooFinish('caramel', this)" class="finish-btn w-full p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 flex items-center justify-between transition-all">
                                 <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#B66E36] to-[#87491D] border border-black/10 shadow-inner"></span>
+                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#B66E36] to-[#87491D] border border-black/10"></span>
                                     <div class="text-left">
-                                        <span class="text-xs font-bold text-charcoal block">Smoked / Caramel Bamboo</span>
-                                        <span class="text-[11px] text-neutral-500">Pengasapan alami untuk rona madu hangat</span>
+                                        <span data-i18n="finCaramelName" class="text-xs font-bold text-inkDark block">Bambu Karamel Pengasapan</span>
+                                        <span data-i18n="finCaramelSub" class="text-[11px] text-neutral-500">Pengawetan alami tahan kelembapan dan jamur</span>
                                     </div>
                                 </div>
                                 <i class="fa-regular fa-circle text-neutral-300"></i>
                             </button>
 
-                            <button onclick="setBambooFinish('walnut', this)" class="finish-btn w-full p-3.5 rounded-2xl border border-sand bg-white hover:border-forest/40 flex items-center justify-between transition-all">
+                            <button onclick="setBambooFinish('walnut', this)" class="finish-btn w-full p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 flex items-center justify-between transition-all">
                                 <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#5C3A21] to-[#362011] border border-black/10 shadow-inner"></span>
+                                    <span class="w-8 h-8 rounded-full bg-gradient-to-br from-[#6D472B] to-[#462B18] border border-black/10"></span>
                                     <div class="text-left">
-                                        <span class="text-xs font-bold text-charcoal block">Dark Walnut Stain</span>
-                                        <span class="text-[11px] text-neutral-500">Pewarna alami gelap untuk kontras Japandi</span>
+                                        <span data-i18n="finWalnutName" class="text-xs font-bold text-inkDark block">Dark Walnut Stain</span>
+                                        <span data-i18n="finWalnutSub" class="text-[11px] text-neutral-500">Nuansa kayu gelap elegan untuk interior modern</span>
                                     </div>
                                 </div>
                                 <i class="fa-regular fa-circle text-neutral-300"></i>
@@ -409,318 +451,634 @@
                         </div>
                     </div>
 
-                    <!-- Cord & Socket Fitting Selector -->
-                    <div class="space-y-3">
-                        <label class="text-xs font-bold uppercase tracking-wider text-forest block">Warna Kabel & Fitting E27</label>
+                    <!-- Fabric Cord Color -->
+                    <div class="space-y-2.5">
+                        <label data-i18n="cordSectionLabel" class="text-xs font-bold uppercase tracking-wider text-forest block">Warna Kabel Serat Kain (1.5 m)</label>
                         <div class="grid grid-cols-3 gap-2.5">
-                            <button onclick="setCordOption('black', this)" class="cord-btn active p-3 rounded-2xl border-2 border-forest bg-sand/70 text-center transition-all">
-                                <span class="w-6 h-6 rounded-full bg-[#222222] mx-auto block mb-2 border border-black/20"></span>
-                                <span class="text-xs font-bold text-forest block">Hitam</span>
-                                <span class="text-[10px] text-neutral-500">Matte Braided</span>
+                            <button onclick="setCordOption('black', this)" class="cord-btn active p-3 rounded-2xl border-2 border-forest bg-warmCream text-center transition-all">
+                                <span class="w-6 h-6 rounded-full bg-[#222222] mx-auto block mb-1.5 border border-black/20"></span>
+                                <span data-i18n="cordBlack" class="text-xs font-bold text-forest block">Hitam Matte</span>
+                                <span class="text-[10px] text-neutral-500">Fabric Cord</span>
                             </button>
-                            <button onclick="setCordOption('jute', this)" class="cord-btn p-3 rounded-2xl border border-sand bg-white hover:border-forest/40 text-center transition-all">
-                                <span class="w-6 h-6 rounded-full bg-[#C3A782] mx-auto block mb-2 border border-black/10"></span>
-                                <span class="text-xs font-bold text-charcoal block">Natural Jute</span>
-                                <span class="text-[10px] text-neutral-500">Serat Rami</span>
+                            <button onclick="setCordOption('jute', this)" class="cord-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 text-center transition-all">
+                                <span class="w-6 h-6 rounded-full bg-[#C3A782] mx-auto block mb-1.5 border border-black/10"></span>
+                                <span data-i18n="cordJute" class="text-xs font-bold text-inkDark block">Natural Jute</span>
+                                <span class="text-[10px] text-neutral-500">Braided</span>
                             </button>
-                            <button onclick="setCordOption('brass', this)" class="cord-btn p-3 rounded-2xl border border-sand bg-white hover:border-forest/40 text-center transition-all">
-                                <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-[#A67C37] to-[#E5C17B] mx-auto block mb-2 border border-black/10"></span>
-                                <span class="text-xs font-bold text-charcoal block">Brass Gold</span>
-                                <span class="text-[10px] text-neutral-500">Kuningan Antik</span>
+                            <button onclick="setCordOption('brass', this)" class="cord-btn p-3 rounded-2xl border border-sandTone bg-white hover:border-forest/40 text-center transition-all">
+                                <span class="w-6 h-6 rounded-full bg-[#B5893A] mx-auto block mb-1.5 border border-black/10"></span>
+                                <span data-i18n="cordBrass" class="text-xs font-bold text-inkDark block">Warm Brass</span>
+                                <span class="text-[10px] text-neutral-500">Woven Cord</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Auto-Rotation Toggle -->
-                    <div class="bg-sand/60 p-4 rounded-2xl border border-sand flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-forest">Rotasi Otomatis 360°</h4>
-                            <p class="text-[11px] text-neutral-500">Putar model perlahan untuk inspeksi anyaman</p>
+                    <!-- Zero-Plastic Export Packaging System -->
+                    <div class="bg-warmCream p-4 rounded-2xl border border-sandTone space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span data-i18n="packTitle" class="text-xs font-bold text-forest uppercase tracking-wider">Kemasan Ekspor Berlapis</span>
+                            <span data-i18n="packBadge" class="text-[10px] font-semibold px-2 py-0.5 bg-forest text-white rounded-md">Bebas Plastik</span>
                         </div>
-                        <button id="btnAutoRotate" onclick="toggleAutoRotate()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-forest text-cream transition-all">
+                        <ul id="packagingList" class="text-[11px] text-neutral-700 space-y-1.5 leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="font-bold text-forest">1.</span>
+                                <span><strong>Kantong Kain Katun Alami:</strong> Melindungi permukaan anyaman bambu dari debu dan goresan halus.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="font-bold text-forest">2.</span>
+                                <span><strong>Kertas Sarang Lebah (Honeycomb Wrap):</strong> Menyerap guncangan dan menjaga bentuk kubah simetris.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="font-bold text-forest">3.</span>
+                                <span><strong>Sekat Karton Bergelombang:</strong> Memisahkan ruang kap lampu, kabel serat kain, dan bohlam LED bawaan paket.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="font-bold text-forest">4.</span>
+                                <span><strong>Master Box Berlapis Ganda:</strong> Dilengkapi sertifikasi fumigasi dan fitosanitari untuk pengiriman internasional.</span>
+                            </li>
+                        </ul>
+                        <button onclick="toggleKnockdownMode()" data-i18n="btnSimKdPanel" class="w-full mt-1 py-2.5 rounded-xl bg-forest text-white text-xs font-semibold hover:bg-forestDark transition-all">
+                            Tampilkan Simulasi Knock-Down
+                        </button>
+                    </div>
+
+                    <!-- Auto Rotate Toggle -->
+                    <div class="bg-warmCream p-3.5 rounded-2xl border border-sandTone flex items-center justify-between">
+                        <div>
+                            <h4 data-i18n="autoRotTitle" class="text-xs font-bold text-forest">Rotasi Otomatis 360°</h4>
+                            <p data-i18n="autoRotSub" class="text-[11px] text-neutral-500">Putar model perlahan untuk melihat seluruh sisi anyaman</p>
+                        </div>
+                        <button id="btnAutoRotate" onclick="toggleAutoRotate()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-forest text-white transition-all">
                             Aktif
                         </button>
                     </div>
                 </div>
 
-                <!-- TAB 3: TECHNICAL SPECIFICATIONS & PACKAGING -->
-                <div id="panel-specs" class="hidden space-y-5">
-                    <div class="bg-sand/60 rounded-2xl p-4 border border-sand space-y-3">
-                        <div class="flex items-center justify-between border-b border-sand pb-2.5">
-                            <span class="text-xs font-bold text-forest uppercase tracking-wider">Lembar Data Teknis</span>
-                            <span class="text-[10px] font-semibold px-2 py-0.5 bg-forest text-cream rounded-md">SNI & Export</span>
+                <!-- TAB 3: TECHNICAL SPECIFICATIONS -->
+                <div id="panel-specs" class="hidden space-y-4">
+                    <div class="bg-warmCream rounded-2xl p-4 border border-sandTone space-y-3">
+                        <div class="flex items-center justify-between border-b border-sandTone pb-2.5">
+                            <span data-i18n="specSheetHeader" class="text-xs font-bold text-forest uppercase tracking-wider">Spesifikasi Teknis Produk</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 bg-forest text-white rounded-md">HS 9405.99.20</span>
                         </div>
-                        <dl class="space-y-2.5 text-xs">
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Nama Produk</dt>
-                                <dd class="font-semibold text-charcoal">Hampy Lumina Pendant Lamp</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Spesies Bambu</dt>
-                                <dd class="font-semibold text-charcoal">Dendrocalamus asper (Petung)</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Diameter Kubah</dt>
-                                <dd class="font-semibold text-forest">35 cm (350 mm)</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Tinggi Kap Lampu</dt>
-                                <dd class="font-semibold text-forest">40 cm (400 mm)</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Berat Bersih</dt>
-                                <dd class="font-semibold text-charcoal">1,2 kg</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Panjang Kabel</dt>
-                                <dd class="font-semibold text-charcoal">1,5 m (Fabric-Braided)</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Fitting & Tegangan</dt>
-                                <dd class="font-semibold text-charcoal">Universal E27 (110V – 240V)</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt class="text-neutral-500">Asal Produksi</dt>
-                                <dd class="font-semibold text-charcoal">Sleman, Yogyakarta, Indonesia</dd>
-                            </div>
-                        </dl>
+                        <dl id="specsTableBody" class="space-y-2.5 text-xs"></dl>
                     </div>
 
-                    <!-- Export Zero-Plastic Packaging Info -->
-                    <div class="bg-forest text-cream p-4 rounded-2xl space-y-2 shadow-sm">
-                        <div class="flex items-center gap-2 text-amberBamboo">
-                            <i class="fa-solid fa-box-open"></i>
-                            <h4 class="text-xs font-bold uppercase tracking-wider">Kemasan Standar Ekspor</h4>
-                        </div>
-                        <p class="text-[11px] text-cream/85 leading-relaxed">
-                            Dikemas menggunakan kardus kraft <i>double-wall</i> bersertifikat FSC dengan bantalan kertas <i>honeycomb</i> dan sabut alami — <strong>100% Bebas Plastik (Zero-Plastic Packaging)</strong>.
+                    <!-- Brand Philosophy Summary -->
+                    <div class="bg-forest text-white p-4 rounded-2xl space-y-1.5 shadow-xs">
+                        <span data-i18n="brandTag" class="text-[10px] font-bold uppercase tracking-wider text-bambooGold block">Indonesian Handcrafted Lighting</span>
+                        <h4 data-i18n="brandTitle" class="text-xs font-bold">Keindahan Kriya Bambu Berkelanjutan</h4>
+                        <p data-i18n="brandDesc" class="text-[11px] text-white/85 leading-relaxed">
+                            Dianyam secara manual oleh pengrajin lokal Indonesia menggunakan bambu pilihan dengan lapisan pernis berbasis air untuk hunian, kafe, restoran, dan resor modern.
                         </p>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Bottom Sticky Action Footer -->
-            <div class="p-4 bg-cream border-t border-sand flex items-center gap-2.5 shrink-0">
-                <button onclick="downloadSpecSheet()" class="flex-1 py-3 px-3 rounded-xl border border-forest/30 text-forest hover:bg-sand text-xs font-semibold transition-all flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-file-arrow-down"></i> Unduh Spek
+            <!-- Panel Footer Action Buttons -->
+            <div class="p-4 bg-white border-t border-sandTone flex items-center gap-2.5 shrink-0">
+                <button onclick="downloadSpecSheet()" class="flex-1 py-3 px-3 rounded-xl border border-forest/30 text-forest hover:bg-warmCream text-xs font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="btnDownload">Unduh Spesifikasi</span>
                 </button>
-                <button onclick="openInquiryModal()" class="flex-[1.4] py-3 px-4 rounded-xl bg-forest hover:bg-forestDark text-cream text-xs font-semibold shadow-md transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> Ajukan Sampel / B2B
+                <button onclick="openInquiryModal()" class="flex-[1.4] py-3 px-4 rounded-xl bg-forest hover:bg-forestDark text-white text-xs font-semibold shadow-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> <span data-i18n="btnOrder">Pemesanan B2B & B2C</span>
                 </button>
             </div>
         </aside>
 
     </main>
 
-    <!-- CUSTOM INQUIRY / SAMPLE MODAL (No alert/confirm used) -->
-    <div id="inquiryModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-cream border border-sand rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+    <!-- INQUIRY MODAL -->
+    <div id="inquiryModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white border border-sandTone rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-amberBamboo">Hampycraft B2B & Retail</span>
-                    <h3 class="font-serif text-xl font-bold text-forest">Permintaan Sampel Prototipe</h3>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-bambooGold">HAMPYCRAFT INDONESIAN HANDCRAFTED LIGHTING</span>
+                    <h3 data-i18n="modalTitle" class="font-serif text-xl font-bold text-forest">Permintaan Penawaran Produk</h3>
                 </div>
-                <button onclick="closeInquiryModal()" class="w-8 h-8 rounded-full bg-sand text-charcoal hover:bg-forest hover:text-cream flex items-center justify-center transition-colors">
+                <button onclick="closeInquiryModal()" class="w-8 h-8 rounded-full bg-warmCream text-inkDark hover:bg-forest hover:text-white flex items-center justify-center transition-colors">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
-            <p class="text-xs text-neutral-600 leading-relaxed">
-                Konfigurasi prototipe pilihan Anda siap dikirimkan ke tim pengrajin kami di Sleman, Yogyakarta:
+            <p data-i18n="modalIntro" class="text-xs text-neutral-600 leading-relaxed">
+                Ringkasan konfigurasi produk Hampy Lumina Pendant Lamp yang Anda pilih:
             </p>
-            <div id="configSummaryBox" class="bg-sand/70 p-3.5 rounded-2xl text-xs space-y-1.5 border border-sand font-medium text-forest">
-                <!-- Populated dynamically -->
-            </div>
+            <div id="configSummaryBox" class="bg-warmCream p-3.5 rounded-2xl text-xs space-y-1.5 border border-sandTone font-medium text-forest"></div>
             <div class="flex gap-2.5 pt-2">
-                <button onclick="closeInquiryModal()" class="flex-1 py-2.5 rounded-xl border border-forest/20 text-xs font-semibold text-neutral-600 hover:bg-sand">
+                <button onclick="closeInquiryModal()" data-i18n="btnCloseModal" class="flex-1 py-2.5 rounded-xl border border-forest/20 text-xs font-semibold text-neutral-600 hover:bg-warmCream">
                     Tutup
                 </button>
-                <a id="waDirectLink" href="#" target="_blank" class="flex-[1.5] py-2.5 rounded-xl bg-forest hover:bg-forestDark text-cream text-xs font-semibold text-center flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp"></i> Lanjut ke WhatsApp
+                <a id="waDirectLink" href="#" target="_blank" class="flex-[1.5] py-2.5 rounded-xl bg-forest hover:bg-forestDark text-white text-xs font-semibold text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="btnSendWa">Hubungi Tim Penjualan</span>
                 </a>
             </div>
         </div>
     </div>
 
     <!-- TOAST NOTIFICATION -->
-    <div id="toastMsg" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-forest text-cream text-xs font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 flex items-center gap-2">
-        <i class="fa-solid fa-circle-check text-amberBamboo"></i>
-        <span id="toastText">Lembar spesifikasi berhasil diunduh</span>
+    <div id="toastMsg" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-forest text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-bambooGold"></i>
+        <span id="toastText"></span>
     </div>
 
     <script>
         // ==========================================
-        // 1. STATE & CONFIGURATION DATA
+        // 1. BILINGUAL DICTIONARY (ID & EN)
+        // ==========================================
+        const i18n = {
+            id: {
+                headerProductTitle: 'Prototipe 3D Hampy Lumina',
+                headerProductSub: 'Kode HS 9405.99.20 | Kap Lampu Anyaman Bambu',
+                btnKnockdown: 'Kemasan Knock-Down',
+                btnDimensions: 'Dimensi',
+                btnHotspots: 'Titik Detail',
+                btnResetTitle: 'Kembalikan Sudut Kamera',
+                tabLight: 'Ruang & Cahaya',
+                tabMaterial: 'Material',
+                tabSpecs: 'Spesifikasi',
+                powerTitle: 'Saklar Lampu Utama',
+                powerOn: 'Menyala | Bohlam LED Termasuk Paket',
+                powerOff: 'Padam | Inspeksi Tekstur Anyaman',
+                envSectionLabel: 'Latar Ruangan dan Efek Bayangan',
+                envStudioName: 'Studio Gelap',
+                envStudioSub: 'Bayangan Kontras Tinggi',
+                envDiningName: 'Ruang Makan',
+                envDiningSub: 'Senja Hangat & Meja Kayu',
+                envResortName: 'Kafe & Resor',
+                envResortSub: 'Dinding Terakota & Daun',
+                envDaylightName: 'Siang Terang',
+                envDaylightSub: 'Tanpa Bayangan Gelap',
+                dimmerLabel: 'Intensitas Cahaya & Bayangan',
+                tempLabel: 'Suhu Warna Bohlam LED Warm White',
+                temp2200: 'Hangat Amber',
+                temp2700: 'Putih Hangat',
+                temp4000: 'Hangat Netral',
+                bulbNotice: '<strong>Kelengkapan Paket:</strong> Bohlam LED Warm White sudah termasuk dalam paket unit dan tidak dijual terpisah.',
+                finishLabel: 'Pilihan Finishing Bambu',
+                finNaturalName: 'Bambu Alami (Standard Ekspor)',
+                finNaturalSub: 'Pernis berbasis air matte (water-based clear coating)',
+                finCaramelName: 'Bambu Karamel Pengasapan',
+                finCaramelSub: 'Pengawetan alami tahan kelembapan dan jamur',
+                finWalnutName: 'Dark Walnut Stain',
+                finWalnutSub: 'Nuansa kayu gelap elegan untuk interior modern',
+                cordSectionLabel: 'Warna Kabel Serat Kain (1.5 m)',
+                cordBlack: 'Hitam Matte',
+                cordJute: 'Natural Jute',
+                cordBrass: 'Warm Brass',
+                packTitle: 'Kemasan Ekspor Berlapis',
+                packBadge: 'Bebas Plastik',
+                btnSimKdPanel: 'Tampilkan Simulasi Knock-Down',
+                btnSimKdPanelActive: 'Kembali ke Bentuk Terpasang',
+                autoRotTitle: 'Rotasi Otomatis 360°',
+                autoRotSub: 'Putar model perlahan untuk melihat seluruh sisi anyaman',
+                activeText: 'Aktif',
+                inactiveText: 'Nonaktif',
+                specSheetHeader: 'Spesifikasi Teknis Produk',
+                brandTag: 'Indonesian Handcrafted Lighting',
+                brandTitle: 'Keindahan Kriya Bambu Berkelanjutan',
+                brandDesc: 'Dianyam secara manual oleh pengrajin lokal Indonesia menggunakan bambu pilihan dengan lapisan pernis berbasis air untuk hunian, kafe, restoran, dan resor modern.',
+                btnDownload: 'Unduh Spesifikasi',
+                btnOrder: 'Pemesanan B2B & B2C',
+                modalTitle: 'Permintaan Penawaran Produk',
+                modalIntro: 'Ringkasan konfigurasi produk Hampy Lumina Pendant Lamp yang Anda pilih:',
+                btnCloseModal: 'Tutup',
+                btnSendWa: 'Hubungi Tim Penjualan',
+                kdBannerTitle: 'Sistem Kemasan Knock-Down Bebas Plastik',
+                kdBannerDesc: 'Komponen dikemas terpisah dalam satu paket pengiriman ekspor: kap kubah bambu, kabel serat kain 1,5 m dengan fitting E27, dan bohlam LED Warm White di dalam sekat karton. Tidak dijual terpisah.',
+                dimBaseLabel: 'Diameter Dasar',
+                dimHeightLabel: 'Tinggi Kubah',
+                dimCordLabel: 'Kabel Serat Kain',
+                dimWeightLabel: 'Berat Bersih',
+                hintDrag: 'Geser untuk memutar 360°',
+                hintZoom: 'Gulir untuk zoom',
+                toastReset: 'Sudut kamera dikembalikan ke posisi awal',
+                toastKdOn: 'Menampilkan simulasi komponen kemasan knock-down',
+                toastDownload: 'Lembar spesifikasi teknis berhasil diunduh',
+                environments: {
+                    studio: {
+                        pillTitle: 'Studio Gelap | Bayangan Geometris Tajam',
+                        pillDesc: 'Pencahayaan sekitar rendah menonjolkan proyeksi bayangan anyaman bambu secara jelas di seluruh dinding dan lantai.',
+                        shadowBadge: 'Bayangan Tajam'
+                    },
+                    dining: {
+                        pillTitle: 'Ruang Makan Japandi | Suasana Senja Hangat',
+                        pillDesc: 'Dinding krem hangat dengan permukaan meja kayu oak di bawah lampu menciptakan pendaran makan malam yang akrab dan lembut.',
+                        shadowBadge: 'Bayangan Lembut'
+                    },
+                    resort: {
+                        pillTitle: 'Kafe & Resor Tropis | Dinding Terakota',
+                        pillDesc: 'Latar dinding batu pasir terakota hangat dengan bayangan tanaman tropis dan pendaran anyaman silang khas hospitality.',
+                        shadowBadge: 'Bayangan Artistik'
+                    },
+                    daylight: {
+                        pillTitle: 'Showroom Siang Terang | Inspeksi Tekstur Alami',
+                        pillDesc: 'Cahaya matahari alami penuh menerangi detail serat bambu, warna pernis matte, dan kerapian anyaman tanpa bayangan gelap.',
+                        shadowBadge: 'Cahaya Alami'
+                    }
+                },
+                hotspots: {
+                    collar: {
+                        num: '1',
+                        title: 'Leher Anyam & Kabel Serat Kain',
+                        desc: 'Leher silindris anyam rapat sebagai dudukan penguat atas yang terhubung dengan kabel gantung serat kain sepanjang 1,5 meter dan fitting E27 standar internasional.',
+                        leftMeta: 'Kabel Serat Kain: 1,5 m',
+                        rightMeta: 'Tegangan 110V - 240V'
+                    },
+                    weave: {
+                        num: '2',
+                        title: 'Kubah Anyaman Silang Bambu',
+                        desc: 'Bilah bambu pilihan dianyam manual membentuk kisi diagonal simetris dengan lapisan pernis berbasis air matte (water-based).',
+                        leftMeta: 'Anyaman Tangan Presisi',
+                        rightMeta: 'Pernis Berbasis Air'
+                    },
+                    bulb: {
+                        num: '3',
+                        title: 'Bohlam LED Warm White Termasuk Paket',
+                        desc: 'Bohlam LED Warm White sudah termasuk dalam paket unit Hampy Lumina dan tidak dijual terpisah. Dikemas pada sekat pelindung khusus di dalam boks.',
+                        leftMeta: 'Termasuk Paket Unit',
+                        rightMeta: 'Tidak Dijual Terpisah'
+                    },
+                    rim: {
+                        num: '4',
+                        title: 'Cincin Rangka Bawah Bambu Laminasi',
+                        desc: 'Rangka melingkar kokoh di bagian dasar menjaga bentuk kubah berdiameter 35 cm dan tinggi 40 cm tetap presisi dengan bobot ringan 1,2 kg.',
+                        leftMeta: 'Ø 35 cm x T 40 cm',
+                        rightMeta: 'Berat Bersih 1,2 kg'
+                    }
+                },
+                packagingItems: [
+                    '<strong>Kantong Kain Katun Alami:</strong> Melindungi permukaan anyaman bambu dari debu dan goresan halus.',
+                    '<strong>Kertas Sarang Lebah (Honeycomb Wrap):</strong> Menyerap guncangan dan menjaga bentuk kubah simetris.',
+                    '<strong>Sekat Karton Bergelombang:</strong> Memisahkan ruang kap lampu, kabel serat kain, dan bohlam LED bawaan paket.',
+                    '<strong>Master Box Berlapis Ganda:</strong> Dilengkapi sertifikasi fumigasi dan fitosanitari untuk pengiriman internasional.'
+                ],
+                specsRows: [
+                    ['Nama Produk', 'Hampy Lumina Pendant Lamp'],
+                    ['Kode HS Ekspor', '9405.99.20'],
+                    ['Material Utama', 'Bambu Pilihan & Rangka Bambu Laminasi'],
+                    ['Pelapis Akhir', 'Pernis Berbasis Air Matte (Water-Based)'],
+                    ['Dimensi Kap', 'Diameter Dasar 35 cm, Tinggi Kubah 40 cm'],
+                    ['Berat Bersih', '1,2 kg'],
+                    ['Fitting & Kabel', 'E27 Universal 110V-240V, Kabel Serat Kain 1,5 m'],
+                    ['Sumber Cahaya', 'Bohlam LED Warm White sudah termasuk dalam paket unit dan tidak dijual terpisah'],
+                    ['Kemasan Ekspor', 'Multi-layer Zero-Plastic Knock-Down Packaging'],
+                    ['Pemesanan B2B', 'Minimum 50 unit, estimasi produksi 30 - 45 hari']
+                ]
+            },
+            en: {
+                headerProductTitle: 'Hampy Lumina 3D Prototype',
+                headerProductSub: 'HS Code 9405.99.20 | Handwoven Bamboo Pendant Lamp',
+                btnKnockdown: 'Knock-Down Pack',
+                btnDimensions: 'Dimensions',
+                btnHotspots: 'Hotspots',
+                btnResetTitle: 'Reset Camera Angle',
+                tabLight: 'Room & Light',
+                tabMaterial: 'Materials',
+                tabSpecs: 'Specifications',
+                powerTitle: 'Main Lamp Switch',
+                powerOn: 'ON | LED Bulb Included in Package',
+                powerOff: 'OFF | Natural Weave Inspection',
+                envSectionLabel: 'Room Environment & Shadow Effect',
+                envStudioName: 'Dark Studio',
+                envStudioSub: 'Maximum Shadow Contrast',
+                envDiningName: 'Japandi Dining',
+                envDiningSub: 'Warm Dusk & Oak Table',
+                envResortName: 'Tropical Resort',
+                envResortSub: 'Terracotta Wall & Palms',
+                envDaylightName: 'Bright Daylight',
+                envDaylightSub: 'No Dark Shadows',
+                dimmerLabel: 'Light & Shadow Intensity',
+                tempLabel: 'Warm White LED Color Temperature',
+                temp2200: 'Warm Amber',
+                temp2700: 'Soft Warm',
+                temp4000: 'Neutral Warm',
+                bulbNotice: '<strong>Package Inclusion:</strong> Warm White LED bulb is included in the unit package and is not sold separately.',
+                finishLabel: 'Bamboo Finish Options',
+                finNaturalName: 'Natural Bamboo (Export Standard)',
+                finNaturalSub: 'Eco-friendly water-based clear matte coating',
+                finCaramelName: 'Caramel Smoked Bamboo',
+                finCaramelSub: 'Natural preservation resistant to moisture and mold',
+                finWalnutName: 'Dark Walnut Stain',
+                finWalnutSub: 'Rich dark wood tone for contemporary interiors',
+                cordSectionLabel: 'Fabric-Braided Cord Color (1.5 m)',
+                cordBlack: 'Matte Black',
+                cordJute: 'Natural Jute',
+                cordBrass: 'Warm Brass',
+                packTitle: 'Multi-Layer Export Packaging',
+                packBadge: 'Zero-Plastic',
+                btnSimKdPanel: 'Preview Knock-Down Packaging',
+                btnSimKdPanelActive: 'Return to Assembled View',
+                autoRotTitle: '360° Auto-Rotation',
+                autoRotSub: 'Slowly rotate the shade to inspect the woven craftsmanship',
+                activeText: 'Active',
+                inactiveText: 'Paused',
+                specSheetHeader: 'Technical Specifications',
+                brandTag: 'Indonesian Handcrafted Lighting',
+                brandTitle: 'Sustainable Artisanal Bamboo Craftsmanship',
+                brandDesc: 'Handwoven by skilled Indonesian artisans using sustainably harvested bamboo with non-toxic finishes for modern homes, cafes, restaurants, and resorts.',
+                btnDownload: 'Download Specs',
+                btnOrder: 'B2B & B2C Inquiry',
+                modalTitle: 'Product Quotation Inquiry',
+                modalIntro: 'Summary of your selected Hampy Lumina Pendant Lamp configuration:',
+                btnCloseModal: 'Close',
+                btnSendWa: 'Contact Sales Team',
+                kdBannerTitle: 'Zero-Plastic Knock-Down Packaging System',
+                kdBannerDesc: 'Components are separated inside one export shipping box: woven bamboo dome shade, 1.5 m fabric-braided cord with E27 socket, and the included Warm White LED bulb in a corrugated divider. Not sold separately.',
+                dimBaseLabel: 'Base Diameter',
+                dimHeightLabel: 'Shade Height',
+                dimCordLabel: 'Fabric Cord',
+                dimWeightLabel: 'Net Weight',
+                hintDrag: 'Drag to rotate 360°',
+                hintZoom: 'Scroll to zoom',
+                toastReset: 'Camera angle reset to default view',
+                toastKdOn: 'Showing knock-down export packaging components',
+                toastDownload: 'Technical specification sheet downloaded',
+                environments: {
+                    studio: {
+                        pillTitle: 'Dark Shadow Studio | Crisp Geometric Lattice',
+                        pillDesc: 'Low ambient light highlights razor-sharp bamboo weave shadows projected across all surrounding walls and floor.',
+                        shadowBadge: 'Crisp Shadows'
+                    },
+                    dining: {
+                        pillTitle: 'Japandi Dining Room | Warm Dusk Ambiance',
+                        pillDesc: 'Warm cream plaster walls with an oak dining table surface below showcase an intimate golden evening dining glow.',
+                        shadowBadge: 'Soft Glow'
+                    },
+                    resort: {
+                        pillTitle: 'Tropical Resort & Cafe | Terracotta Sandstone',
+                        pillDesc: 'Warm terracotta wall texture with tropical foliage silhouettes and dramatic cross-hatched hospitality lighting.',
+                        shadowBadge: 'Artistic Shadows'
+                    },
+                    daylight: {
+                        pillTitle: 'Bright Daylight Showroom | Natural Texture View',
+                        pillDesc: 'Full natural sunlight illuminates raw bamboo fibers, matte coating quality, and weave symmetry without dark shadows.',
+                        shadowBadge: 'Natural Daylight'
+                    }
+                },
+                hotspots: {
+                    collar: {
+                        num: '1',
+                        title: 'Woven Neck & Fabric-Braided Cord',
+                        desc: 'Tightly woven cylindrical top collar reinforces the suspension point, paired with a 1.5 m fabric-braided cord and universal E27 socket.',
+                        leftMeta: 'Fabric Cord: 1.5 m',
+                        rightMeta: 'Universal 110V - 240V'
+                    },
+                    weave: {
+                        num: '2',
+                        title: 'Handwoven Bamboo Lattice Dome',
+                        desc: 'Selected bamboo strips are handwoven into a symmetrical diagonal diamond lattice sealed with eco-friendly water-based matte coating.',
+                        leftMeta: 'Artisanal Handwoven',
+                        rightMeta: 'Water-Based Finish'
+                    },
+                    bulb: {
+                        num: '3',
+                        title: 'Included Warm White LED Bulb',
+                        desc: 'The Warm White LED bulb is included in the unit package and is not sold separately. Packed inside a protective corrugated divider insert.',
+                        leftMeta: 'Included in Package',
+                        rightMeta: 'Not Sold Separately'
+                    },
+                    rim: {
+                        num: '4',
+                        title: 'Laminated Bamboo Base Rim Ring',
+                        desc: 'Sturdy circular laminated bamboo rim locks the 35 cm diameter and 40 cm height dome structure at a lightweight 1.2 kg net weight.',
+                        leftMeta: 'Ø 35 cm x H 40 cm',
+                        rightMeta: 'Net Weight 1.2 kg'
+                    }
+                },
+                packagingItems: [
+                    '<strong>Natural Cotton Dust Bag:</strong> Primary soft wrap protecting the handwoven bamboo from dust and micro-scratches.',
+                    '<strong>Honeycomb Paper Wrap:</strong> Cushioning cellular kraft wrap absorbs impact and preserves dome symmetry.',
+                    '<strong>Corrugated Divider Insert:</strong> Separates the bamboo shade, fabric cord, and included LED bulb inside the box.',
+                    '<strong>Double-Wall Master Box:</strong> Accompanied by Fumigation and Phytosanitary certificates for global export.'
+                ],
+                specsRows: [
+                    ['Product Name', 'Hampy Lumina Pendant Lamp'],
+                    ['Export HS Code', '9405.99.20'],
+                    ['Primary Material', 'Selected Natural Bamboo & Laminated Bamboo Frame'],
+                    ['Surface Finish', 'Eco-Friendly Water-Based Clear Matte Coating'],
+                    ['Dimensions', 'Base Diameter 35 cm, Shade Height 40 cm'],
+                    ['Net Weight', '1.2 kg'],
+                    ['Socket & Cord', 'Universal E27 (110V-240V), 1.5 m Fabric-Braided Cord'],
+                    ['Light Source', 'Warm White LED bulb is included in the unit package and is not sold separately'],
+                    ['Export Packaging', 'Multi-Layer Zero-Plastic Knock-Down Packaging'],
+                    ['B2B Order Terms', 'MOQ 50 pcs, Estimated Lead Time 30 - 45 Days']
+                ]
+            }
+        };
+
+        // ==========================================
+        // 2. APPLICATION STATE
         // ==========================================
         const state = {
+            lang: 'id',
             lampOn: true,
-            dimmer: 0.85,
+            dimmer: 0.90,
             colorTemp: 2700,
-            environment: 'scandi',
+            environment: 'studio',
             finish: 'natural',
             cord: 'black',
             blueprint: false,
+            knockdown: false,
             hotspotsVisible: true,
-            autoRotate: true
+            autoRotate: true,
+            activeHotspot: null
         };
 
         const finishConfigs = {
             natural: {
-                name: 'Natural Bamboo',
-                primary: 0xd4a36a,
+                idName: 'Bambu Alami',
+                enName: 'Natural Bamboo',
+                primary: 0xd8a86e,
                 secondary: 0xc28d52,
-                rim: 0xb57d42,
-                roughness: 0.58
+                rim: 0xb0783e,
+                roughness: 0.56
             },
             caramel: {
-                name: 'Smoked / Caramel Bamboo',
+                idName: 'Bambu Karamel Pengasapan',
+                enName: 'Caramel Smoked Bamboo',
                 primary: 0xa66332,
                 secondary: 0x8f5024,
                 rim: 0x7a4119,
-                roughness: 0.52
+                roughness: 0.50
             },
             walnut: {
-                name: 'Dark Walnut Stain',
-                primary: 0x4d311d,
-                secondary: 0x3b2414,
-                rim: 0x2e1b0e,
+                idName: 'Dark Walnut Stain',
+                enName: 'Dark Walnut Stain',
+                primary: 0x69452a,
+                secondary: 0x543620,
+                rim: 0x422917,
                 roughness: 0.48
             }
         };
 
         const cordConfigs = {
-            black: { name: 'Hitam Matte', color: 0x1e1e1e, metalness: 0.2, roughness: 0.7 },
-            jute: { name: 'Natural Jute', color: 0xc2a883, metalness: 0.05, roughness: 0.85 },
-            brass: { name: 'Brass Gold', color: 0xc99e48, metalness: 0.75, roughness: 0.3 }
+            black: { idName: 'Hitam Matte', enName: 'Matte Black', color: 0x1f1f1f, metalness: 0.15, roughness: 0.72 },
+            jute: { idName: 'Natural Jute', enName: 'Natural Jute', color: 0xc2a883, metalness: 0.05, roughness: 0.85 },
+            brass: { idName: 'Warm Brass', enName: 'Warm Brass', color: 0xb5893a, metalness: 0.55, roughness: 0.35 }
         };
 
         const tempColors = {
-            2200: { hex: 0xff8c24, css: '#FF8C24', glow: 'rgba(255, 140, 36, 0.35)' },
-            2700: { hex: 0xffbe73, css: '#FFBE73', glow: 'rgba(255, 190, 115, 0.32)' },
-            4000: { hex: 0xfff1dc, css: '#FFF1DC', glow: 'rgba(255, 241, 220, 0.28)' }
-        };
-
-        const hotspotDetails = {
-            weave: {
-                num: '1',
-                title: 'Anyaman Silang Bambu Petung',
-                desc: 'Dianyam secara presisi dari bilah bambu Petung (Dendrocalamus asper) pilihan. Struktur kisi diagonal menciptakan pencahayaan 360° dan proyeksi bayangan geometris yang artistik pada dinding.',
-                leftMeta: 'Material: Bambu Petung',
-                rightMeta: 'Water-based Matte'
-            },
-            collar: {
-                num: '2',
-                title: 'Leher Anyam & Mahkota Kubah',
-                desc: 'Bagian leher silindris dianyam rapat secara melingkar untuk menopang beban kap lampu (1,2 kg) secara seimbang serta menyembunyikan dudukan fitting dengan rapi.',
-                leftMeta: 'Diameter Kubah: 35 cm',
-                rightMeta: 'Tinggi Total: 40 cm'
-            },
-            bulb: {
-                num: '3',
-                title: 'Bohlam Filamen & Fitting E27',
-                desc: 'Menggunakan soket universal E27 berstandar internasional (110V–240V) yang kompatibel dengan bohlam LED Edison hangat untuk menciptakan atmosfer Japandi & Tropis.',
-                leftMeta: 'Soket: Universal E27',
-                rightMeta: '110V – 240V'
-            },
-            cord: {
-                num: '4',
-                title: 'Kabel Kepang Kain (Fabric-Braided)',
-                desc: 'Dilengkapi kabel gantung berlapis anyaman tekstil sepanjang 1,5 meter yang kuat, fleksibel, dan mudah disesuaikan dengan ketinggian plafon ruangan.',
-                leftMeta: 'Panjang: 1,5 Meter',
-                rightMeta: 'Kemasan Honeycomb & Katun'
-            }
+            2200: { hex: 0xff8c24, glow: 'rgba(255, 140, 36, 0.36)' },
+            2700: { hex: 0xffbe73, glow: 'rgba(255, 190, 115, 0.30)' },
+            4000: { hex: 0xffe4bd, glow: 'rgba(255, 228, 189, 0.25)' }
         };
 
         // ==========================================
-        // 2. THREE.JS 3D ENGINE & PROCEDURAL LAMP
+        // 3. THREE.JS 3D ENGINE & WOVEN SHADOW PROJECTOR
         // ==========================================
         let scene, camera, renderer;
-        let lampGroup, domeGroup, collarGroup, cordMesh, socketMesh, bulbGlassMesh, filamentMesh;
+        let lampGroup, domeGroup, collarGroup, electricalGroup, cordMesh, socketMesh, bulbGlassMesh, filamentMesh;
+        let knockdownBoxGroup;
+        let studioBackdropMesh, floorShadowCatcher;
         let bambooMaterials = [];
-        let bambooWireframeLines = [];
-        let bulbPointLight, ambientLight, keyLight, wallBackdropMesh;
+        let blueprintLines = [];
+        let bulbPointLight, weaveShadowSpotLight, ambientLight, keyLight, fillLight;
         let hotspotAnchors = {};
 
-        // Orbit / Drag Control Variables
         let isDragging = false;
         let prevMouse = { x: 0, y: 0 };
-        let targetRotation = { x: 0.14, y: 0.4 };
-        let currentRotation = { x: 0.14, y: 0.4 };
-        let targetZoom = 6.2;
-        let currentZoom = 6.2;
+        let targetRotation = { x: 0.16, y: 0.44 };
+        let currentRotation = { x: 0.16, y: 0.44 };
+        let targetZoom = 6.6;
+        let currentZoom = 6.6;
+        let knockdownProgress = 0;
+
+        /**
+         * Creates a clean diamond lattice projection texture so the SpotLight projects
+         * crisp, unobstructed geometric bamboo weave shadows onto the minimalist backdrop and floor.
+         */
+        function createWeaveProjectionTexture() {
+            const size = 1024;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, size, size);
+
+            const radGrad = ctx.createRadialGradient(size / 2, size / 2, size * 0.08, size / 2, size / 2, size * 0.49);
+            radGrad.addColorStop(0, 'rgba(255,255,255,1)');
+            radGrad.addColorStop(0.75, 'rgba(255,255,255,0.92)');
+            radGrad.addColorStop(1, 'rgba(0,0,0,1)');
+
+            ctx.strokeStyle = '#18130E';
+            ctx.lineWidth = 11;
+            const step = 44;
+
+            ctx.save();
+            ctx.translate(size / 2, size / 2);
+            ctx.rotate(Math.PI / 4);
+            for (let x = -size; x <= size; x += step) {
+                ctx.beginPath();
+                ctx.moveTo(x, -size);
+                ctx.lineTo(x, size);
+                ctx.stroke();
+            }
+            ctx.rotate(Math.PI / 2);
+            for (let x = -size; x <= size; x += step) {
+                ctx.beginPath();
+                ctx.moveTo(x, -size);
+                ctx.lineTo(x, size);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            ctx.globalCompositeOperation = 'multiply';
+            ctx.fillStyle = radGrad;
+            ctx.fillRect(0, 0, size, size);
+
+            const tex = new THREE.CanvasTexture(canvas);
+            tex.needsUpdate = true;
+            return tex;
+        }
 
         function initThreeJS() {
             const container = document.getElementById('canvas-container');
             const width = container.clientWidth;
             const height = container.clientHeight;
 
-            // Scene
             scene = new THREE.Scene();
 
-            // Camera
             camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-            camera.position.set(0, 0.2, currentZoom);
+            camera.position.set(0, 0.1, currentZoom);
 
-            // Renderer with high-precision shadow & tone mapping
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
             renderer.setSize(width, height);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.1;
+            renderer.toneMappingExposure = 1.08;
             container.appendChild(renderer.domElement);
 
-            // Lighting Setup
-            ambientLight = new THREE.AmbientLight(0xfff8ef, 0.65);
+            // Base Studio Lights
+            ambientLight = new THREE.AmbientLight(0xfff9f0, 0.25);
             scene.add(ambientLight);
 
-            keyLight = new THREE.DirectionalLight(0xfffaf0, 0.75);
+            keyLight = new THREE.DirectionalLight(0xfffaf2, 0.42);
             keyLight.position.set(4, 6, 5);
             scene.add(keyLight);
 
-            const rimFillLight = new THREE.DirectionalLight(0xe6dfd3, 0.35);
-            rimFillLight.position.set(-5, -2, 3);
-            scene.add(rimFillLight);
+            fillLight = new THREE.DirectionalLight(0xe8e2d7, 0.20);
+            fillLight.position.set(-5, -1, 4);
+            scene.add(fillLight);
 
-            // Internal Bulb Point Light (Casts Geometric Bamboo Shadows onto Backdrop Wall)
-            bulbPointLight = new THREE.PointLight(tempColors[2700].hex, 3.2, 16, 1.5);
-            bulbPointLight.position.set(0, -0.35, 0);
-            bulbPointLight.castShadow = true;
-            bulbPointLight.shadow.mapSize.width = 1024;
-            bulbPointLight.shadow.mapSize.height = 1024;
-            bulbPointLight.shadow.bias = -0.002;
+            // Inner Bulb PointLight (illuminates bamboo strips from inside)
+            bulbPointLight = new THREE.PointLight(tempColors[2700].hex, 3.6, 14, 1.4);
+            bulbPointLight.position.set(0, -0.34, 0);
             scene.add(bulbPointLight);
 
-            // Backdrop Wall Plane behind the lamp to receive realistic woven bamboo light & shadow patterns
-            const wallGeo = new THREE.PlaneGeometry(24, 18);
-            const wallMat = new THREE.MeshStandardMaterial({
-                color: 0xf2ece1,
-                roughness: 0.92,
-                metalness: 0.0
-            });
-            wallBackdropMesh = new THREE.Mesh(wallGeo, wallMat);
-            wallBackdropMesh.position.set(0, 0, -2.6);
-            wallBackdropMesh.receiveShadow = true;
-            scene.add(wallBackdropMesh);
+            // Patterned SpotLight projecting clean geometric bamboo weave shadows onto minimalist backdrop & floor
+            const weaveTex = createWeaveProjectionTexture();
+            weaveShadowSpotLight = new THREE.SpotLight(tempColors[2700].hex, 4.4, 20, Math.PI * 0.45, 0.38, 1.05);
+            weaveShadowSpotLight.position.set(0, -0.25, 0.45);
+            weaveShadowSpotLight.target.position.set(0, -0.65, -3.2);
+            weaveShadowSpotLight.map = weaveTex;
+            weaveShadowSpotLight.castShadow = true;
+            weaveShadowSpotLight.shadow.mapSize.width = 1024;
+            weaveShadowSpotLight.shadow.mapSize.height = 1024;
+            scene.add(weaveShadowSpotLight);
+            scene.add(weaveShadowSpotLight.target);
 
-            // Build Procedural Hampy Lumina 3D Model
+            buildMinimalistStudioEnvironment();
             buildHampyLuminaModel();
-
-            // Setup Mouse & Touch Interactions
             setupInteractions(container);
-
-            // Handle Window Resize
             window.addEventListener('resize', onWindowResize);
-
-            // Apply initial environment
-            updateLightingVisuals();
+            setEnvironment('studio', document.querySelector('.env-btn.active'));
         }
 
-        // Helper: Dome profile curve matching the reference Hampy Lumina silhouette
+        /**
+         * Builds a clean, minimalist studio backdrop and floor plane without bulky furniture or corner walls,
+         * allowing the woven bamboo light and shadow projection to stand out cleanly around the pendant lamp.
+         */
+        function buildMinimalistStudioEnvironment() {
+            const backdropGeo = new THREE.PlaneGeometry(24, 16);
+            const backdropMat = new THREE.MeshStandardMaterial({
+                color: 0x1e2226,
+                roughness: 0.94,
+                metalness: 0.02
+            });
+            studioBackdropMesh = new THREE.Mesh(backdropGeo, backdropMat);
+            studioBackdropMesh.position.set(0, 0.2, -3.4);
+            studioBackdropMesh.receiveShadow = true;
+            scene.add(studioBackdropMesh);
+
+            const floorGeo = new THREE.PlaneGeometry(24, 24);
+            const floorMat = new THREE.MeshStandardMaterial({
+                color: 0x171a1d,
+                roughness: 0.88,
+                metalness: 0.03
+            });
+            floorShadowCatcher = new THREE.Mesh(floorGeo, floorMat);
+            floorShadowCatcher.rotation.x = -Math.PI / 2;
+            floorShadowCatcher.position.set(0, -2.05, 0);
+            floorShadowCatcher.receiveShadow = true;
+            scene.add(floorShadowCatcher);
+        }
+
         function getDomeRadiusAtT(t) {
-            // t = 0 is top of dome shoulder (neck base), t = 1 is bottom rim opening
-            // Sculpted organic rounded dome curve
             const minR = 0.42;
             const maxR = 1.58;
             const bottomR = 1.32;
@@ -734,18 +1092,14 @@
         }
 
         function getDomeYAtT(t) {
-            // Dome height spans from y = 0.42 down to y = -0.78
             return 0.42 - t * 1.20;
         }
 
         function buildHampyLuminaModel() {
             lampGroup = new THREE.Group();
-            // Scale to match authentic Ø35 x H40 cm proportions (Height is ~1.14x Diameter)
-            lampGroup.scale.set(0.63, 1.40, 0.63);
             scene.add(lampGroup);
 
             const cfg = finishConfigs[state.finish];
-
             const matPrimary = new THREE.MeshStandardMaterial({
                 color: cfg.primary,
                 roughness: cfg.roughness,
@@ -763,24 +1117,53 @@
             });
             bambooMaterials = [matPrimary, matSecondary, matRim];
 
-            // 1. Fabric-Braided Suspension Cord (1.5m represented upward)
-            const cordGeo = new THREE.CylinderGeometry(0.022, 0.022, 3.2, 16);
             const cordMat = new THREE.MeshStandardMaterial({
                 color: cordConfigs[state.cord].color,
                 roughness: cordConfigs[state.cord].roughness,
                 metalness: cordConfigs[state.cord].metalness
             });
+
+            // Electrical Group: Fabric-Braided Cord + E27 Socket + Included Warm White LED Bulb
+            electricalGroup = new THREE.Group();
+            lampGroup.add(electricalGroup);
+
+            const cordGeo = new THREE.CylinderGeometry(0.022, 0.022, 3.2, 16);
             cordMesh = new THREE.Mesh(cordGeo, cordMat);
             cordMesh.position.y = 2.25;
-            lampGroup.add(cordMesh);
+            electricalGroup.add(cordMesh);
 
-            // Top Cord Grip Cap
             const capGeo = new THREE.CylinderGeometry(0.05, 0.075, 0.14, 20);
             const capMesh = new THREE.Mesh(capGeo, cordMat);
             capMesh.position.y = 0.86;
-            lampGroup.add(capMesh);
+            electricalGroup.add(capMesh);
 
-            // 2. Woven Cylindrical Neck Collar (Leher Anyam Rapat)
+            const socketGeo = new THREE.CylinderGeometry(0.11, 0.12, 0.28, 24);
+            socketMesh = new THREE.Mesh(socketGeo, cordMat);
+            socketMesh.position.y = 0.05;
+            electricalGroup.add(socketMesh);
+
+            const bulbGeo = new THREE.SphereGeometry(0.24, 32, 32);
+            bulbGeo.scale(0.92, 1.25, 0.92);
+            const bulbGlassMat = new THREE.MeshPhysicalMaterial({
+                color: 0xfff5e4,
+                emissive: tempColors[2700].hex,
+                emissiveIntensity: 1.1,
+                roughness: 0.15,
+                metalness: 0.0,
+                transparent: true,
+                opacity: 0.9
+            });
+            bulbGlassMesh = new THREE.Mesh(bulbGeo, bulbGlassMat);
+            bulbGlassMesh.position.y = -0.34;
+            electricalGroup.add(bulbGlassMesh);
+
+            const filGeo = new THREE.CylinderGeometry(0.035, 0.035, 0.22, 12);
+            const filMat = new THREE.MeshBasicMaterial({ color: 0xfff6d6 });
+            filamentMesh = new THREE.Mesh(filGeo, filMat);
+            filamentMesh.position.y = -0.34;
+            electricalGroup.add(filamentMesh);
+
+            // Cylindrical Woven Neck Collar
             collarGroup = new THREE.Group();
             const collarRings = 16;
             for (let i = 0; i < collarRings; i++) {
@@ -794,7 +1177,6 @@
                 ringMesh.castShadow = true;
                 collarGroup.add(ringMesh);
             }
-            // Vertical ribs inside neck collar
             const collarRibCount = 28;
             for (let j = 0; j < collarRibCount; j++) {
                 const angle = (j / collarRibCount) * Math.PI * 2;
@@ -805,13 +1187,12 @@
             }
             lampGroup.add(collarGroup);
 
-            // 3. Handwoven Crisscross Bamboo Dome Shade
+            // Handwoven Bamboo Lattice Dome & Circular Base Rim
             domeGroup = new THREE.Group();
-            const strandCount = 34; // Number of diagonal strips in each spiral direction
-            const twistAngle = Math.PI * 0.68; // Crisscross lattice angle
+            const strandCount = 34;
+            const twistAngle = Math.PI * 0.68;
             const curveSteps = 32;
 
-            // Create Clockwise & Counter-Clockwise Helical Bamboo Strips
             for (let dir of [-1, 1]) {
                 for (let i = 0; i < strandCount; i++) {
                     const baseAngle = (i / strandCount) * Math.PI * 2;
@@ -819,7 +1200,6 @@
 
                     for (let s = 0; s <= curveSteps; s++) {
                         const t = s / curveSteps;
-                        // Subtle radial weaving wave (over-under lattice depth)
                         const weaveWave = Math.sin(t * strandCount * 0.55 + i * Math.PI) * 0.009 * dir;
                         const r = getDomeRadiusAtT(t) + weaveWave;
                         const y = getDomeYAtT(t);
@@ -841,7 +1221,7 @@
                 }
             }
 
-            // Reinforced Woven Bottom Rim (Cincin Bawah Tebal)
+            // Thick Circular Wrapped Bamboo Rim Ring
             const rimMainGeo = new THREE.TorusGeometry(1.32, 0.042, 14, 72);
             rimMainGeo.rotateX(Math.PI / 2);
             const rimMainMesh = new THREE.Mesh(rimMainGeo, matRim);
@@ -849,7 +1229,6 @@
             rimMainMesh.castShadow = true;
             domeGroup.add(rimMainMesh);
 
-            // Fine binding wraps around bottom rim
             const wrapCount = 64;
             for (let w = 0; w < wrapCount; w++) {
                 const a = (w / wrapCount) * Math.PI * 2;
@@ -861,7 +1240,6 @@
                 domeGroup.add(wrapMesh);
             }
 
-            // Inner Horizontal Structural Hoop
             const innerHoopGeo = new THREE.TorusGeometry(1.30, 0.018, 10, 64);
             innerHoopGeo.rotateX(Math.PI / 2);
             const innerHoop = new THREE.Mesh(innerHoopGeo, matSecondary);
@@ -870,88 +1248,70 @@
 
             lampGroup.add(domeGroup);
 
-            // 4. Universal E27 Socket & Warm Edison Filament Bulb Inside
-            const socketGeo = new THREE.CylinderGeometry(0.11, 0.12, 0.28, 24);
-            socketMesh = new THREE.Mesh(socketGeo, cordMat);
-            socketMesh.position.y = 0.05;
-            lampGroup.add(socketMesh);
-
-            // Edison Bulb Glass Envelope
-            const bulbGeo = new THREE.SphereGeometry(0.24, 32, 32);
-            bulbGeo.scale(0.92, 1.25, 0.92);
-            const bulbGlassMat = new THREE.MeshPhysicalMaterial({
-                color: 0xfff5e4,
-                emissive: tempColors[2700].hex,
-                emissiveIntensity: 0.95,
-                roughness: 0.15,
-                metalness: 0.0,
+            // Knock-Down Divider Box Wireframe (shown during Knock-Down Mode)
+            knockdownBoxGroup = new THREE.Group();
+            const boxWireGeo = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.95, 0.72, 0.95));
+            const boxWireMat = new THREE.LineBasicMaterial({ color: 0xc68b4b });
+            const boxWire = new THREE.LineSegments(boxWireGeo, boxWireMat);
+            const boxFillGeo = new THREE.BoxGeometry(0.95, 0.72, 0.95);
+            const boxFillMat = new THREE.MeshStandardMaterial({
+                color: 0xc9a87c,
                 transparent: true,
-                opacity: 0.88
+                opacity: 0.24,
+                roughness: 0.9
             });
-            bulbGlassMesh = new THREE.Mesh(bulbGeo, bulbGlassMat);
-            bulbGlassMesh.position.y = -0.34;
-            lampGroup.add(bulbGlassMesh);
+            const boxFill = new THREE.Mesh(boxFillGeo, boxFillMat);
+            knockdownBoxGroup.add(boxWire);
+            knockdownBoxGroup.add(boxFill);
+            knockdownBoxGroup.position.set(1.45, -0.45, 0.2);
+            knockdownBoxGroup.visible = false;
+            lampGroup.add(knockdownBoxGroup);
 
-            // Glowing Inner Filament Core
-            const filGeo = new THREE.CylinderGeometry(0.035, 0.035, 0.22, 12);
-            const filMat = new THREE.MeshBasicMaterial({
-                color: 0xfff6d6
-            });
-            filamentMesh = new THREE.Mesh(filGeo, filMat);
-            filamentMesh.position.y = -0.34;
-            lampGroup.add(filamentMesh);
-
-            // 5. Blueprint Dimension Lines (3D Wireframe Rings & Axis Guides)
             createBlueprintGuides();
 
-            // 6. Invisible 3D Anchor Points for Projected HTML Hotspots
-            const createAnchor = (x, y, z) => {
+            const createAnchor = (parent, x, y, z) => {
                 const obj = new THREE.Object3D();
                 obj.position.set(x, y, z);
-                lampGroup.add(obj);
+                parent.add(obj);
                 return obj;
             };
             hotspotAnchors = {
-                weave: createAnchor(1.18, -0.22, 0.85),
-                collar: createAnchor(-0.36, 0.62, 0.25),
-                bulb: createAnchor(0.0, -0.35, 0.25),
-                cord: createAnchor(0.0, 1.25, 0.0)
+                collar: createAnchor(collarGroup, -0.36, 0.64, 0.24),
+                weave: createAnchor(domeGroup, 1.18, -0.18, 0.85),
+                bulb: createAnchor(electricalGroup, 0.0, -0.34, 0.25),
+                rim: createAnchor(domeGroup, 0.85, -0.78, 1.02)
             };
         }
 
         function createBlueprintGuides() {
             const lineMat = new THREE.LineBasicMaterial({
-                color: 0x1e3f2b,
+                color: 0xc68b4b,
                 transparent: true,
-                opacity: 0.55
+                opacity: 0.75
             });
 
-            // Diameter Circle Guide at bottom rim (35 cm)
             const circlePts = [];
             for (let i = 0; i <= 64; i++) {
                 const a = (i / 64) * Math.PI * 2;
                 circlePts.push(new THREE.Vector3(Math.cos(a) * 1.68, -0.78, Math.sin(a) * 1.68));
             }
-            const circleGeo = new THREE.BufferGeometry().setFromPoints(circlePts);
-            const circleLine = new THREE.Line(circleGeo, lineMat);
+            const circleLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(circlePts), lineMat);
             circleLine.visible = false;
             lampGroup.add(circleLine);
-            bambooWireframeLines.push(circleLine);
+            blueprintLines.push(circleLine);
 
-            // Height Axis Line (40 cm shade height)
             const heightPts = [
                 new THREE.Vector3(1.82, 0.80, 0),
                 new THREE.Vector3(1.82, -0.78, 0)
             ];
-            const heightGeo = new THREE.BufferGeometry().setFromPoints(heightPts);
-            const heightLine = new THREE.Line(heightGeo, lineMat);
+            const heightLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(heightPts), lineMat);
             heightLine.visible = false;
             lampGroup.add(heightLine);
-            bambooWireframeLines.push(heightLine);
+            blueprintLines.push(heightLine);
         }
 
         // ==========================================
-        // 3. MOUSE & TOUCH ORBIT / ZOOM CONTROLS
+        // 4. CAMERA INTERACTION & ANIMATION LOOP
         // ==========================================
         function setupInteractions(domElem) {
             domElem.addEventListener('mousedown', (e) => {
@@ -964,7 +1324,7 @@
                 const dx = e.clientX - prevMouse.x;
                 const dy = e.clientY - prevMouse.y;
                 targetRotation.y += dx * 0.008;
-                targetRotation.x = Math.max(-0.55, Math.min(0.85, targetRotation.x + dy * 0.006));
+                targetRotation.x = Math.max(-0.52, Math.min(0.82, targetRotation.x + dy * 0.006));
                 prevMouse = { x: e.clientX, y: e.clientY };
             });
 
@@ -974,10 +1334,9 @@
 
             domElem.addEventListener('wheel', (e) => {
                 e.preventDefault();
-                targetZoom = Math.max(3.6, Math.min(8.8, targetZoom + e.deltaY * 0.004));
+                targetZoom = Math.max(3.8, Math.min(9.0, targetZoom + e.deltaY * 0.004));
             }, { passive: false });
 
-            // Touch support (1-finger rotate, 2-finger pinch zoom)
             let initialPinchDist = null;
             domElem.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 1) {
@@ -985,9 +1344,10 @@
                     prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                 } else if (e.touches.length === 2) {
                     isDragging = false;
-                    const dx = e.touches[0].clientX - e.touches[1].clientX;
-                    const dy = e.touches[0].clientY - e.touches[1].clientY;
-                    initialPinchDist = Math.hypot(dx, dy);
+                    initialPinchDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
                 }
             }, { passive: true });
 
@@ -996,14 +1356,14 @@
                     const dx = e.touches[0].clientX - prevMouse.x;
                     const dy = e.touches[0].clientY - prevMouse.y;
                     targetRotation.y += dx * 0.01;
-                    targetRotation.x = Math.max(-0.55, Math.min(0.85, targetRotation.x + dy * 0.008));
+                    targetRotation.x = Math.max(-0.52, Math.min(0.82, targetRotation.x + dy * 0.008));
                     prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                 } else if (e.touches.length === 2 && initialPinchDist) {
-                    const dx = e.touches[0].clientX - e.touches[1].clientX;
-                    const dy = e.touches[0].clientY - e.touches[1].clientY;
-                    const dist = Math.hypot(dx, dy);
-                    const delta = initialPinchDist - dist;
-                    targetZoom = Math.max(3.6, Math.min(8.8, targetZoom + delta * 0.015));
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    targetZoom = Math.max(3.8, Math.min(9.0, targetZoom + (initialPinchDist - dist) * 0.015));
                     initialPinchDist = dist;
                 }
             }, { passive: true });
@@ -1017,14 +1377,11 @@
         function onWindowResize() {
             const container = document.getElementById('canvas-container');
             if (!container || !renderer) return;
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            camera.aspect = width / height;
+            camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
+            renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
-        // Update 2D screen positions of 3D Hotspot Pins
         function updateHotspotPositions() {
             if (!state.hotspotsVisible) return;
             const container = document.getElementById('canvas-container');
@@ -1032,10 +1389,10 @@
             const height = container.clientHeight;
 
             const map = {
-                weave: document.getElementById('hs-weave'),
                 collar: document.getElementById('hs-collar'),
+                weave: document.getElementById('hs-weave'),
                 bulb: document.getElementById('hs-bulb'),
-                cord: document.getElementById('hs-cord')
+                rim: document.getElementById('hs-rim')
             };
 
             const tempV = new THREE.Vector3();
@@ -1047,10 +1404,8 @@
                 anchor.getWorldPosition(tempV);
                 tempV.project(camera);
 
-                const x = (tempV.x * 0.5 + 0.5) * width;
-                const y = (-(tempV.y * 0.5) + 0.5) * height;
-                el.style.left = `${x}px`;
-                el.style.top = `${y}px`;
+                el.style.left = `${(tempV.x * 0.5 + 0.5) * width}px`;
+                el.style.top = `${(-(tempV.y * 0.5) + 0.5) * height}px`;
             }
         }
 
@@ -1058,17 +1413,30 @@
             requestAnimationFrame(animate);
 
             if (state.autoRotate && !isDragging) {
-                targetRotation.y += 0.0035;
+                targetRotation.y += 0.0032;
             }
 
-            // Smooth damping
             currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
             currentRotation.y += (targetRotation.y - currentRotation.y) * 0.08;
             currentZoom += (targetZoom - currentZoom) * 0.08;
 
+            const targetKd = state.knockdown ? 1 : 0;
+            knockdownProgress += (targetKd - knockdownProgress) * 0.08;
+
+            if (electricalGroup && domeGroup && collarGroup) {
+                electricalGroup.position.set(knockdownProgress * 1.45, knockdownProgress * -0.15, knockdownProgress * 0.2);
+                domeGroup.position.set(knockdownProgress * -0.55, 0, 0);
+                collarGroup.position.set(knockdownProgress * -0.55, 0, 0);
+                bulbPointLight.position.set(knockdownProgress * 1.45, -0.34 + knockdownProgress * -0.15, knockdownProgress * 0.2);
+            }
+
             if (lampGroup) {
                 lampGroup.rotation.x = currentRotation.x;
                 lampGroup.rotation.y = currentRotation.y;
+                // Slightly sway shadow projection target with gentle rotation for living shadow dynamics
+                if (weaveShadowSpotLight) {
+                    weaveShadowSpotLight.target.position.x = Math.sin(currentRotation.y) * 0.85;
+                }
             }
             if (camera) {
                 camera.position.z = currentZoom;
@@ -1079,24 +1447,93 @@
         }
 
         // ==========================================
-        // 4. INTERACTIVE UI & PROTOTYPE CONTROLS
+        // 5. BILINGUAL & UI CONTROLS
         // ==========================================
+        function setLanguage(lang) {
+            state.lang = lang;
+            const dict = i18n[lang];
+
+            // Update toggle buttons
+            const btnId = document.getElementById('lang-id');
+            const btnEn = document.getElementById('lang-en');
+            if (lang === 'id') {
+                btnId.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-forest text-white transition-all';
+                btnEn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold text-forest hover:bg-forest/10 transition-all';
+            } else {
+                btnEn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-forest text-white transition-all';
+                btnId.className = 'px-2.5 py-1 rounded-lg text-xs font-bold text-forest hover:bg-forest/10 transition-all';
+            }
+
+            // Translate all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // Update dynamic labels
+            document.getElementById('btnResetCam').title = dict.btnResetTitle;
+            document.getElementById('selectedFinishName').innerText = lang === 'id'
+                ? finishConfigs[state.finish].idName
+                : finishConfigs[state.finish].enName;
+
+            document.getElementById('btnAutoRotate').innerText = state.autoRotate ? dict.activeText : dict.inactiveText;
+            document.querySelector('[data-i18n="btnSimKdPanel"]').innerText = state.knockdown
+                ? dict.btnSimKdPanelActive
+                : dict.btnSimKdPanel;
+
+            // Update Power Label
+            const powerLabel = document.getElementById('powerStatusLabel');
+            powerLabel.innerText = state.lampOn ? dict.powerOn : dict.powerOff;
+
+            // Update Environment Pill
+            const envInfo = dict.environments[state.environment];
+            document.getElementById('envPillTitle').innerText = envInfo.pillTitle;
+            document.getElementById('envPillDesc').innerText = envInfo.pillDesc;
+            document.getElementById('shadowLevelBadge').innerText = envInfo.shadowBadge;
+
+            // Update Packaging List
+            const packList = document.getElementById('packagingList');
+            packList.innerHTML = dict.packagingItems.map((item, idx) => `
+                <li class="flex items-start gap-2">
+                    <span class="font-bold text-forest">${idx + 1}.</span>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            // Update Technical Specs Table
+            const specsBody = document.getElementById('specsTableBody');
+            specsBody.innerHTML = dict.specsRows.map(([k, v]) => `
+                <div class="flex justify-between gap-4">
+                    <dt class="text-neutral-500 shrink-0">${k}</dt>
+                    <dd class="font-semibold text-inkDark text-right">${v}</dd>
+                </div>
+            `).join('');
+
+            // Refresh open hotspot card if active
+            if (state.activeHotspot) {
+                selectHotspot(state.activeHotspot);
+            }
+        }
+
         function switchControlTab(tabName) {
             ['lighting', 'material', 'specs'].forEach(t => {
                 document.getElementById(`panel-${t}`).classList.add('hidden');
                 const btn = document.getElementById(`tab-${t}`);
-                btn.classList.remove('bg-forest', 'text-cream', 'shadow-sm');
+                btn.classList.remove('bg-forest', 'text-white', 'shadow-xs');
                 btn.classList.add('text-neutral-600');
             });
 
             document.getElementById(`panel-${tabName}`).classList.remove('hidden');
             const activeBtn = document.getElementById(`tab-${tabName}`);
-            activeBtn.classList.add('bg-forest', 'text-cream', 'shadow-sm');
+            activeBtn.classList.add('bg-forest', 'text-white', 'shadow-xs');
             activeBtn.classList.remove('text-neutral-600');
         }
 
         function toggleLampPower() {
             state.lampOn = !state.lampOn;
+            const dict = i18n[state.lang];
             const knob = document.getElementById('powerKnob');
             const btn = document.getElementById('btnPowerToggle');
             const iconBox = document.getElementById('powerIconBox');
@@ -1105,15 +1542,15 @@
             if (state.lampOn) {
                 knob.classList.add('translate-x-6');
                 btn.classList.replace('bg-neutral-300', 'bg-forest');
-                iconBox.classList.replace('bg-neutral-300', 'bg-amberBamboo');
-                label.innerText = 'Menyala • Bohlam Edison Aktif';
-                label.classList.replace('text-neutral-500', 'text-amberBamboo');
+                iconBox.classList.replace('bg-neutral-300', 'bg-bambooGold');
+                label.innerText = dict.powerOn;
+                label.classList.replace('text-neutral-500', 'text-bambooGold');
             } else {
                 knob.classList.remove('translate-x-6');
                 btn.classList.replace('bg-forest', 'bg-neutral-300');
-                iconBox.classList.replace('bg-amberBamboo', 'bg-neutral-300');
-                label.innerText = 'Mati • Mode Inspeksi Struktur';
-                label.classList.replace('text-amberBamboo', 'text-neutral-500');
+                iconBox.classList.replace('bg-bambooGold', 'bg-neutral-300');
+                label.innerText = dict.powerOff;
+                label.classList.replace('text-bambooGold', 'text-neutral-500');
             }
             updateLightingVisuals();
         }
@@ -1131,39 +1568,57 @@
         function setColorTemp(kelvin, btnElem) {
             state.colorTemp = kelvin;
             document.querySelectorAll('.temp-btn').forEach(b => {
-                b.classList.remove('border-2', 'border-forest', 'bg-sand/70');
-                b.classList.add('border', 'border-sand', 'bg-white');
+                b.classList.remove('border-2', 'border-forest', 'bg-warmCream');
+                b.classList.add('border', 'border-sandTone', 'bg-white');
             });
-            btnElem.classList.remove('border', 'border-sand', 'bg-white');
-            btnElem.classList.add('border-2', 'border-forest', 'bg-sand/70');
+            btnElem.classList.remove('border', 'border-sandTone', 'bg-white');
+            btnElem.classList.add('border-2', 'border-forest', 'bg-warmCream');
             updateLightingVisuals();
         }
 
+        /**
+         * Updates minimalist studio backdrop colors, ambient contrast, and patterned bamboo weave shadow intensity.
+         */
         function updateLightingVisuals() {
             const effectivePower = state.lampOn ? state.dimmer : 0;
             const tempObj = tempColors[state.colorTemp];
 
-            // Update 3D Point Light & Bulb Emissive Glow
             bulbPointLight.color.setHex(tempObj.hex);
-            bulbPointLight.intensity = effectivePower * 4.4;
+            bulbPointLight.intensity = effectivePower * 4.5;
 
             if (bulbGlassMesh) {
                 bulbGlassMesh.material.emissive.setHex(tempObj.hex);
-                bulbGlassMesh.material.emissiveIntensity = effectivePower * 1.4;
+                bulbGlassMesh.material.emissiveIntensity = effectivePower * 1.45;
             }
             if (filamentMesh) {
                 filamentMesh.visible = effectivePower > 0.05;
             }
 
-            // Adjust ambient light depending on studio dark mode vs daytime rooms
-            const isDarkStudio = state.environment === 'studio';
-            ambientLight.intensity = isDarkStudio ? (0.14 + effectivePower * 0.15) : (0.58 + effectivePower * 0.25);
-            keyLight.intensity = isDarkStudio ? 0.18 : 0.75;
+            const env = state.environment;
+            if (env === 'studio') {
+                ambientLight.intensity = 0.14 + effectivePower * 0.08;
+                keyLight.intensity = 0.24;
+                weaveShadowSpotLight.color.setHex(tempObj.hex);
+                weaveShadowSpotLight.intensity = effectivePower * 6.2;
+            } else if (env === 'dining') {
+                ambientLight.intensity = 0.36 + effectivePower * 0.14;
+                keyLight.intensity = 0.45;
+                weaveShadowSpotLight.color.setHex(tempObj.hex);
+                weaveShadowSpotLight.intensity = effectivePower * 3.6;
+            } else if (env === 'resort') {
+                ambientLight.intensity = 0.28 + effectivePower * 0.12;
+                keyLight.intensity = 0.38;
+                weaveShadowSpotLight.color.setHex(tempObj.hex);
+                weaveShadowSpotLight.intensity = effectivePower * 4.8;
+            } else if (env === 'daylight') {
+                ambientLight.intensity = 0.90;
+                keyLight.intensity = 1.05;
+                weaveShadowSpotLight.intensity = effectivePower * 0.40;
+            }
 
-            // Update CSS radial glow backdrop behind lamp
             const envBackdrop = document.getElementById('envBackdrop');
-            if (effectivePower > 0.02) {
-                envBackdrop.style.background = `radial-gradient(circle at 50% 48%, ${tempObj.glow} 0%, transparent 65%)`;
+            if (effectivePower > 0.02 && env !== 'daylight') {
+                envBackdrop.style.background = `radial-gradient(circle at 50% 48%, ${tempObj.glow} 0%, transparent 66%)`;
                 envBackdrop.style.opacity = Math.min(1, effectivePower * 1.15);
             } else {
                 envBackdrop.style.opacity = '0';
@@ -1172,30 +1627,46 @@
 
         function setEnvironment(envKey, btnElem) {
             state.environment = envKey;
+            const dict = i18n[state.lang];
+
             document.querySelectorAll('.env-btn').forEach(b => {
-                b.classList.remove('border-2', 'border-forest', 'bg-sand/70');
-                b.classList.add('border', 'border-sand', 'bg-white');
+                b.classList.remove('border-2', 'border-forest', 'bg-warmCream');
+                b.classList.add('border', 'border-sandTone', 'bg-white');
             });
-            btnElem.classList.remove('border', 'border-sand', 'bg-white');
-            btnElem.classList.add('border-2', 'border-forest', 'bg-sand/70');
+            if (btnElem) {
+                btnElem.classList.remove('border', 'border-sandTone', 'bg-white');
+                btnElem.classList.add('border-2', 'border-forest', 'bg-warmCream');
+            }
 
             const wrapper = document.getElementById('viewportWrapper');
             wrapper.classList.remove('dark-mode');
 
-            if (envKey === 'scandi') {
-                wrapper.style.backgroundColor = '#F4EFE6';
-                wallBackdropMesh.material.color.setHex(0xf2ece1);
-            } else if (envKey === 'dining') {
-                wrapper.style.backgroundColor = '#EAE1D3';
-                wallBackdropMesh.material.color.setHex(0xe5dac9);
-            } else if (envKey === 'cafe') {
-                wrapper.style.backgroundColor = '#DFD5C4';
-                wallBackdropMesh.material.color.setHex(0xd8ccb8);
-            } else if (envKey === 'studio') {
-                wrapper.style.backgroundColor = '#141618';
+            if (envKey === 'studio') {
+                wrapper.style.backgroundColor = '#14171A';
                 wrapper.classList.add('dark-mode');
-                wallBackdropMesh.material.color.setHex(0x1b1e21);
+                studioBackdropMesh.material.color.setHex(0x1E2226);
+                floorShadowCatcher.material.color.setHex(0x171A1D);
+                if (!state.lampOn) toggleLampPower();
+            } else if (envKey === 'dining') {
+                wrapper.style.backgroundColor = '#EAE2D3';
+                studioBackdropMesh.material.color.setHex(0xDDD2C0);
+                floorShadowCatcher.material.color.setHex(0xB8A68E);
+                if (!state.lampOn) toggleLampPower();
+            } else if (envKey === 'resort') {
+                wrapper.style.backgroundColor = '#C98663';
+                studioBackdropMesh.material.color.setHex(0xB56E4A);
+                floorShadowCatcher.material.color.setHex(0x8C583E);
+                if (!state.lampOn) toggleLampPower();
+            } else if (envKey === 'daylight') {
+                wrapper.style.backgroundColor = '#F4F6F8';
+                studioBackdropMesh.material.color.setHex(0xF3F5F7);
+                floorShadowCatcher.material.color.setHex(0xE3DDD3);
             }
+
+            const envInfo = dict.environments[envKey];
+            document.getElementById('envPillTitle').innerText = envInfo.pillTitle;
+            document.getElementById('envPillDesc').innerText = envInfo.pillDesc;
+            document.getElementById('shadowLevelBadge').innerText = envInfo.shadowBadge;
 
             updateLightingVisuals();
         }
@@ -1203,16 +1674,15 @@
         function setBambooFinish(finishKey, btnElem) {
             state.finish = finishKey;
             const cfg = finishConfigs[finishKey];
-            document.getElementById('selectedFinishName').innerText = cfg.name;
+            document.getElementById('selectedFinishName').innerText = state.lang === 'id' ? cfg.idName : cfg.enName;
 
             document.querySelectorAll('.finish-btn').forEach(b => {
-                b.classList.remove('border-2', 'border-forest', 'bg-sand/70');
-                b.classList.add('border', 'border-sand', 'bg-white');
-                const icon = b.querySelector('i');
-                icon.className = 'fa-regular fa-circle text-neutral-300';
+                b.classList.remove('border-2', 'border-forest', 'bg-warmCream');
+                b.classList.add('border', 'border-sandTone', 'bg-white');
+                b.querySelector('i').className = 'fa-regular fa-circle text-neutral-300';
             });
-            btnElem.classList.remove('border', 'border-sand', 'bg-white');
-            btnElem.classList.add('border-2', 'border-forest', 'bg-sand/70');
+            btnElem.classList.remove('border', 'border-sandTone', 'bg-white');
+            btnElem.classList.add('border-2', 'border-forest', 'bg-warmCream');
             btnElem.querySelector('i').className = 'fa-solid fa-circle-check text-forest';
 
             if (bambooMaterials.length === 3) {
@@ -1229,16 +1699,39 @@
             const cfg = cordConfigs[cordKey];
 
             document.querySelectorAll('.cord-btn').forEach(b => {
-                b.classList.remove('border-2', 'border-forest', 'bg-sand/70');
-                b.classList.add('border', 'border-sand', 'bg-white');
+                b.classList.remove('border-2', 'border-forest', 'bg-warmCream');
+                b.classList.add('border', 'border-sandTone', 'bg-white');
             });
-            btnElem.classList.remove('border', 'border-sand', 'bg-white');
-            btnElem.classList.add('border-2', 'border-forest', 'bg-sand/70');
+            btnElem.classList.remove('border', 'border-sandTone', 'bg-white');
+            btnElem.classList.add('border-2', 'border-forest', 'bg-warmCream');
 
             if (cordMesh) {
                 cordMesh.material.color.setHex(cfg.color);
                 cordMesh.material.roughness = cfg.roughness;
                 cordMesh.material.metalness = cfg.metalness;
+            }
+        }
+
+        function toggleKnockdownMode() {
+            state.knockdown = !state.knockdown;
+            const dict = i18n[state.lang];
+            const btn = document.getElementById('btnToggleKnockdown');
+            const banner = document.getElementById('knockdownBanner');
+            const panelBtn = document.querySelector('[data-i18n="btnSimKdPanel"]');
+
+            if (state.knockdown) {
+                btn.classList.add('bg-forest', 'text-white');
+                banner.classList.remove('hidden');
+                if (panelBtn) panelBtn.innerText = dict.btnSimKdPanelActive;
+                if (knockdownBoxGroup) knockdownBoxGroup.visible = true;
+                targetZoom = 7.6;
+                showToast(dict.toastKdOn);
+            } else {
+                btn.classList.remove('bg-forest', 'text-white');
+                banner.classList.add('hidden');
+                if (panelBtn) panelBtn.innerText = dict.btnSimKdPanel;
+                if (knockdownBoxGroup) knockdownBoxGroup.visible = false;
+                targetZoom = 6.6;
             }
         }
 
@@ -1251,13 +1744,13 @@
             if (state.blueprint) {
                 grid.classList.remove('opacity-0');
                 overlayUI.classList.remove('hidden');
-                btn.classList.add('bg-forest', 'text-cream');
-                bambooWireframeLines.forEach(l => l.visible = true);
+                btn.classList.add('bg-forest', 'text-white');
+                blueprintLines.forEach(l => l.visible = true);
             } else {
                 grid.classList.add('opacity-0');
                 overlayUI.classList.add('hidden');
-                btn.classList.remove('bg-forest', 'text-cream');
-                bambooWireframeLines.forEach(l => l.visible = false);
+                btn.classList.remove('bg-forest', 'text-white');
+                blueprintLines.forEach(l => l.visible = false);
             }
         }
 
@@ -1268,49 +1761,52 @@
 
             if (state.hotspotsVisible) {
                 layer.classList.remove('opacity-0', 'pointer-events-none');
-                btn.classList.add('bg-forest', 'text-cream');
-                btn.classList.remove('border', 'border-forest/25', 'text-forest');
+                btn.classList.add('bg-forest', 'text-white');
+                btn.classList.remove('border', 'border-forest/30', 'text-forest');
             } else {
                 layer.classList.add('opacity-0', 'pointer-events-none');
                 closeHotspotCard();
-                btn.classList.remove('bg-forest', 'text-cream');
-                btn.classList.add('border', 'border-forest/25', 'text-forest');
+                btn.classList.remove('bg-forest', 'text-white');
+                btn.classList.add('border', 'border-forest/30', 'text-forest');
             }
         }
 
         function selectHotspot(key) {
-            const data = hotspotDetails[key];
+            state.activeHotspot = key;
+            const data = i18n[state.lang].hotspots[key];
             if (!data) return;
 
             document.getElementById('hcBadge').innerText = data.num;
             document.getElementById('hcTitle').innerText = data.title;
             document.getElementById('hcDesc').innerText = data.desc;
-            document.getElementById('hcMeta').innerHTML = `<span>${data.leftMeta}</span><span class="text-amberBamboo">${data.rightMeta}</span>`;
+            document.getElementById('hcMeta').innerHTML = `<span>${data.leftMeta}</span><span class="text-bambooGold">${data.rightMeta}</span>`;
             document.getElementById('hotspotCard').classList.remove('hidden');
         }
 
         function closeHotspotCard() {
+            state.activeHotspot = null;
             document.getElementById('hotspotCard').classList.add('hidden');
         }
 
         function toggleAutoRotate() {
             state.autoRotate = !state.autoRotate;
+            const dict = i18n[state.lang];
             const btn = document.getElementById('btnAutoRotate');
             if (state.autoRotate) {
-                btn.innerText = 'Aktif';
-                btn.classList.add('bg-forest', 'text-cream');
-                btn.classList.remove('bg-white', 'text-charcoal', 'border', 'border-sand');
+                btn.innerText = dict.activeText;
+                btn.classList.add('bg-forest', 'text-white');
+                btn.classList.remove('bg-white', 'text-inkDark', 'border', 'border-sandTone');
             } else {
-                btn.innerText = 'Nonaktif';
-                btn.classList.remove('bg-forest', 'text-cream');
-                btn.classList.add('bg-white', 'text-charcoal', 'border', 'border-sand');
+                btn.innerText = dict.inactiveText;
+                btn.classList.remove('bg-forest', 'text-white');
+                btn.classList.add('bg-white', 'text-inkDark', 'border', 'border-sandTone');
             }
         }
 
         function resetCamera() {
-            targetRotation = { x: 0.14, y: 0.4 };
-            targetZoom = 6.2;
-            showToast('Sudut pandang 3D dikembalikan ke posisi awal');
+            targetRotation = { x: 0.16, y: 0.44 };
+            targetZoom = state.knockdown ? 7.6 : 6.6;
+            showToast(i18n[state.lang].toastReset);
         }
 
         function showToast(msg) {
@@ -1321,57 +1817,57 @@
         }
 
         function downloadSpecSheet() {
-            const content = [
-                '==========================================================',
-                'HAMPYCRAFT — INDONESIAN HANDCRAFTED LIGHTING',
-                'LEMBAR SPESIFIKASI PROTOTIPE: HAMPY LUMINA PENDANT LAMP',
-                '==========================================================',
-                `Konfigurasi Dipilih : ${finishConfigs[state.finish].name} | Kabel ${cordConfigs[state.cord].name}`,
-                `Temperatur Cahaya   : ${state.colorTemp}K (Dimmer ${Math.round(state.dimmer * 100)}%)`,
-                '----------------------------------------------------------',
-                'Material Utama      : Bambu Petung (Dendrocalamus asper)',
-                'Finishing           : Water-based matte eco-finish (Anti-Jamur)',
-                'Diameter Kubah      : 35 cm (350 mm)',
-                'Tinggi Kap Lampu    : 40 cm (400 mm)',
-                'Berat Bersih        : 1,2 kg',
-                'Panjang Kabel       : 1,5 meter (Fabric-Braided Cable)',
-                'Fitting & Tegangan  : Universal E27 (110V - 240V)',
-                'Kemasan             : Eco-Friendly Double Corrugated & Honeycomb Packaging',
-                'Produksi            : Sleman, DI Yogyakarta, Indonesia',
-                '=========================================================='
-            ].join('\n');
+            const dict = i18n[state.lang];
+            const finishName = state.lang === 'id' ? finishConfigs[state.finish].idName : finishConfigs[state.finish].enName;
+            const cordName = state.lang === 'id' ? cordConfigs[state.cord].idName : cordConfigs[state.cord].enName;
 
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const lines = [
+                'HAMPYCRAFT INDONESIAN HANDCRAFTED LIGHTING',
+                dict.specSheetHeader.toUpperCase() + ': HAMPY LUMINA PENDANT LAMP',
+                '------------------------------------------------------------------',
+                `Finish & Cord : ${finishName} | ${cordName}`,
+                `Light Mode    : ${state.colorTemp}K (${Math.round(state.dimmer * 100)}%)`,
+                '------------------------------------------------------------------',
+                ...dict.specsRows.map(([k, v]) => `${k.padEnd(18, ' ')}: ${v}`)
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Spesifikasi_Hampy_Lumina_${state.finish}.txt`;
+            a.download = `Hampy_Lumina_Specs_${state.lang.toUpperCase()}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showToast('Lembar spesifikasi teknis berhasil diunduh');
+            showToast(dict.toastDownload);
         }
 
         function openInquiryModal() {
-            const finishName = finishConfigs[state.finish].name;
-            const cordName = cordConfigs[state.cord].name;
-            const summaryHtml = `
-                <div class="flex justify-between"><span>Produk:</span><strong>Hampy Lumina (Ø 35 × 40 cm)</strong></div>
+            const isId = state.lang === 'id';
+            const finishName = isId ? finishConfigs[state.finish].idName : finishConfigs[state.finish].enName;
+            const cordName = isId ? cordConfigs[state.cord].idName : cordConfigs[state.cord].enName;
+
+            const summaryHtml = isId ? `
+                <div class="flex justify-between"><span>Produk:</span><strong>Hampy Lumina (Ø 35 cm x T 40 cm)</strong></div>
+                <div class="flex justify-between"><span>Kode HS Ekspor:</span><strong>9405.99.20</strong></div>
                 <div class="flex justify-between"><span>Finishing Bambu:</span><strong>${finishName}</strong></div>
-                <div class="flex justify-between"><span>Kabel & Fitting:</span><strong>${cordName} (E27, 1,5m)</strong></div>
-                <div class="flex justify-between"><span>Kemasan:</span><strong>Export Zero-Plastic</strong></div>
+                <div class="flex justify-between"><span>Kabel Serat Kain:</span><strong>${cordName} (E27, 1.5 m)</strong></div>
+                <div class="flex justify-between"><span>Sumber Cahaya:</span><strong>Bohlam LED Warm White Termasuk Paket</strong></div>
+                <div class="flex justify-between"><span>Pesanan Minimum:</span><strong>50 unit (30 - 45 hari)</strong></div>
+            ` : `
+                <div class="flex justify-between"><span>Product:</span><strong>Hampy Lumina (Ø 35 cm x H 40 cm)</strong></div>
+                <div class="flex justify-between"><span>Export HS Code:</span><strong>9405.99.20</strong></div>
+                <div class="flex justify-between"><span>Bamboo Finish:</span><strong>${finishName}</strong></div>
+                <div class="flex justify-between"><span>Fabric Cord:</span><strong>${cordName} (E27, 1.5 m)</strong></div>
+                <div class="flex justify-between"><span>Light Source:</span><strong>Warm White LED Bulb Included in Package</strong></div>
+                <div class="flex justify-between"><span>B2B Order Terms:</span><strong>MOQ 50 pcs (30 - 45 Days)</strong></div>
             `;
             document.getElementById('configSummaryBox').innerHTML = summaryHtml;
 
-            const waText = encodeURIComponent(
-                `Halo Hampycraft, saya tertarik memesan sampel prototipe *Hampy Lumina Pendant Lamp* dengan konfigurasi:
-` +
-                `- Finishing: ${finishName}
-` +
-                `- Kabel: ${cordName} (1,5m E27)
-` +
-                `Mohon informasi ketersediaan dan katalog B2B.`
+            const waText = encodeURIComponent(isId
+                ? `Halo Hampycraft, saya tertarik dengan Hampy Lumina Pendant Lamp (HS 9405.99.20):\n- Finishing: ${finishName}\n- Kabel Serat Kain: ${cordName} (1,5 m, E27)\n- Paket Lengkap termasuk Bohlam LED Warm White`
+                : `Hello Hampycraft, I am interested in Hampy Lumina Pendant Lamp (HS 9405.99.20):\n- Bamboo Finish: ${finishName}\n- Fabric Cord: ${cordName} (1.5 m, E27)\n- Complete Unit Package including Warm White LED Bulb`
             );
             document.getElementById('waDirectLink').href = `https://wa.me/62888899988?text=${waText}`;
             document.getElementById('inquiryModal').classList.remove('hidden');
@@ -1381,9 +1877,9 @@
             document.getElementById('inquiryModal').classList.add('hidden');
         }
 
-        // Start animation loop strictly on window load
         window.onload = function () {
             initThreeJS();
+            const urlLang = new URLSearchParams(window.location.search).get('lang'); setLanguage(urlLang === 'en' ? 'en' : 'id');
             animate();
         };
     </script>

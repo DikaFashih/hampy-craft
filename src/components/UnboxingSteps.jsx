@@ -9,22 +9,22 @@ export default function UnboxingSteps({ lang }) {
       num: '01',
       title: isEn ? 'Open 5-Ply Master Carton' : 'Buka Master Karton 5-Ply',
       desc: isEn
-        ? 'Kraft paper tape is unsealed to reveal 10 lampshades nested safely with honeycomb paper shock absorption between each rim.'
+        ? 'Kraft paper tape is unsealed to reveal 10 lampshades packed with honeycomb paper cushioning between each rim.'
         : 'Segel pita kertas kraft dibuka, memperlihatkan 10 kap lampu yang tersusun rapi dengan bantalan honeycomb paper peredam guncangan.'
     },
     {
       num: '02',
-      title: isEn ? 'Remove Reusable Cotton Bags' : 'Lepas Kantong Katun Alami',
+      title: isEn ? 'Remove Natural Cotton Bags' : 'Lepas Kantong Katun Alami',
       desc: isEn
-        ? 'Each shade is sleeved inside a breathable, unbleached cotton bag preventing friction abrasions during container handling.'
-        : 'Setiap kap dilindungi kantong katun unbleached yang dapat digunakan kembali, mencegah gesekan antar anyaman bambu selama pelayaran.'
+        ? 'Each shade is sleeved inside a breathable natural cotton bag preventing friction abrasions during container handling.'
+        : 'Setiap kap dilindungi kantong katun alami yang dapat digunakan kembali, mencegah gesekan antar anyaman bambu selama pelayaran.'
     },
     {
       num: '03',
-      title: isEn ? 'Quick Assembly & Electrical Lock' : 'Pemasangan Komponen Elektrikal',
+      title: isEn ? 'Assemble Electrical Components' : 'Pemasangan Komponen Elektrikal',
       desc: isEn
-        ? 'Universal E27 socket and 1.5m fabric cable mount effortlessly onto the upper neck collar with a heavy-duty locking ring.'
-        : 'Fitting E27 dan kabel kain 1,5 meter dipasang pada collar leher atas dengan cincin pengunci kokoh tanpa memerlukan peralatan khusus.'
+        ? 'The E27 fitting, 1.5 m fabric-braided cord, and warm white LED bulb (all included in the separate partition) assemble cleanly onto the upper collar.'
+        : 'Fitting E27, kabel kain 1,5 meter, dan bohlam LED warm white (dikemas terpisah dalam satu paket) dipasang pada leher kubah tanpa alat khusus.'
     }
   ];
 
@@ -38,12 +38,12 @@ export default function UnboxingSteps({ lang }) {
             <span>{isEn ? 'UNBOXING EXPERIENCE' : 'PENGALAMAN UNBOXING'}</span>
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
-            {isEn ? 'Effortless Unboxing & Fast Commercial Setup' : 'Momen Unboxing & Perakitan Cepat di Lokasi Proyek'}
+            {isEn ? 'Practical Unboxing & Knock-Down Assembly' : 'Tahapan Unboxing & Perakitan Knock-Down'}
           </h3>
           <p className="text-neutral-600 text-sm mt-2">
             {isEn
-              ? 'Engineered for smooth unpacking by hotel contractors or retail staff with zero plastic disposal waste in the packaging.'
-              : 'Dirancang agar mudah dibuka oleh kontraktor hotel atau tim ritel furnitur dengan kemasan yang sepenuhnya bebas plastik.'}
+              ? 'Designed for straightforward unpacking by retail teams and hospitality contractors using paper-based packaging without single-use plastic.'
+              : 'Dirancang agar praktis dibuka oleh tim ritel maupun kontraktor proyek dengan kemasan berbasis kertas tanpa plastik sekali pakai.'}
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function UnboxingSteps({ lang }) {
 
               <div className="mt-5 pt-3 border-t border-sand/70 flex items-center gap-2 text-[11px] font-bold text-forest">
                 <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{isEn ? 'Plastic-Free Packaging' : 'Kemasan Bebas Plastik'}</span>
+                <span>{isEn ? 'No Single-Use Plastic Packaging' : 'Tanpa Plastik Sekali Pakai'}</span>
               </div>
             </div>
           ))}

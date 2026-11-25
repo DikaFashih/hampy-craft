@@ -12,8 +12,8 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'Sleman Workshop Crafting' : 'Produksi & Anyaman Sleman',
       loc: 'Sleman, DI Yogyakarta',
       desc: isEn 
-        ? 'Selected Petung & Apus bamboo treated in eco-friendly anti-borer bath (non-arsenic) and handwoven into symmetrical Ø35×40 cm domes.'
-        : 'Bambu Petung & Apus pilihan direndam larutan ramah lingkungan bebas arsenik & kreosot, dianyam tangan menjadi kubah Ø35×40 cm.',
+        ? 'Selected bamboo preserved without arsenic or creosote, finished with water-based matte coating, and handwoven into symmetrical Ø35×40 cm domes.'
+        : 'Bambu pilihan diawetkan tanpa arsenik & kreosot, dilapisi pernis berbasis air, dan dianyam tangan menjadi kubah simetris Ø35×40 cm.',
       tag: 'Kadar Air < 12%'
     },
     {
@@ -22,9 +22,9 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'Knock-Down 10-Pack Packing' : 'Kemasan Knock-Down 10-Pack',
       loc: 'Packaging Facility Sleman',
       desc: isEn
-        ? '10 lampshades nested safely with honeycomb paper shock absorption & cotton bags. 5-Ply carton (50×50×45 cm, 13.5 kg netto / 14.75 kg palletized).'
-        : '10 kap lampu ditumpuk bersusun dengan bantalan honeycomb paper dan kantong katun. Karton 5-ply (50×50×45 cm, 13,5 kg netto / 14,75 kg kargo berpalet).',
-      tag: 'Bebas Plastik'
+        ? '10 lampshades packed with honeycomb paper & cotton bags inside a 5-ply carton (50×50×45 cm; 12 kg product net / 13.5 kg carton gross).'
+        : '10 kap lampu dikemas dengan bantalan honeycomb paper & kantong katun dalam karton 5-ply (50×50×45 cm; 12 kg bersih / 13,5 kg berat kotor karton).',
+      tag: isEn ? 'Paper-Based' : 'Tanpa Plastik'
     },
     {
       num: '03',
@@ -32,8 +32,8 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'Inland Trucking & FOB Priok' : 'Angkutan Darat & FOB Priok',
       loc: 'Port of Tanjung Priok (IDTPP)',
       desc: isEn
-        ? 'Overland trucking from Sleman to Tanjung Priok Port (Jakarta). Customs clearance (PPJK) and Bill of Lading documentation.'
-        : 'Pengangkutan darat dari Sleman ke Pelabuhan Tanjung Priok (Jakarta). Proses kepabeanan PPJK dan penerbitan Bill of Lading.',
+        ? 'Overland trucking from Sleman to Tanjung Priok Port (Jakarta, 1–2 days). Customs clearance (PPJK), fumigation/ISPM 15 pallets, and Bill of Lading.'
+        : 'Pengangkutan darat dari Sleman ke Pelabuhan Tanjung Priok (1–2 hari). Proses PEB/PPJK, palet ISPM 15, dan penerbitan Bill of Lading.',
       tag: 'FOB Tanjung Priok'
     },
     {
@@ -44,7 +44,7 @@ export default function LogisticsFlow({ lang }) {
       desc: isEn
         ? 'Container ocean transit route Tanjung Priok to Rotterdam (±8,500 nautical miles) with 30–40 sea transit days (total 36–50 days to warehouse).'
         : 'Pelayaran kontainer via jalur laut Tanjung Priok ke Rotterdam menempuh ±8.500 mil laut dengan estimasi 30–40 hari laut (total 36–50 hari sampai gudang Eropa).',
-      tag: '30–40 Hari Laut'
+      tag: isEn ? '30–40 Sea Days' : '30–40 Hari Laut'
     },
     {
       num: '05',
@@ -52,9 +52,9 @@ export default function LogisticsFlow({ lang }) {
       title: isEn ? 'European Distribution' : 'Distribusi Pasar Eropa',
       loc: 'Rotterdam, Netherlands & EU',
       desc: isEn
-        ? 'Unloaded at Port of Rotterdam for inland European distribution managed by the buyer/importer (FOB responsibility ends at Tanjung Priok).'
-        : 'Bongkar kargo di Rotterdam untuk distribusi darat di Eropa oleh pihak importir/pembeli (tanggung jawab FOB berakhir di Pelabuhan Tanjung Priok).',
-      tag: 'Oleh Importir'
+        ? 'Unloaded at Port of Rotterdam for inland European distribution managed by the buyer/importer (FOB responsibility ends on board at Tanjung Priok).'
+        : 'Bongkar kargo di Rotterdam untuk distribusi darat ke gudang pembeli di Amsterdam/Eropa oleh importir (tanggung jawab FOB berakhir di atas kapal Tanjung Priok).',
+      tag: isEn ? 'By Importer' : 'Oleh Importir'
     }
   ];
 
@@ -70,12 +70,12 @@ export default function LogisticsFlow({ lang }) {
               <span>{isEn ? 'STANDARDIZED EXPORT LOGISTICS' : 'RANTAI PASOK & LOGISTIK EKSPOR'}</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest">
-              {isEn ? 'Seamless Transport from Sleman to Rotterdam' : 'Alur Ekspor Terstandarisasi: Sleman ke Rotterdam'}
+              {isEn ? 'Structured Export Flow from Sleman to Rotterdam' : 'Alur Ekspor Terstandarisasi: Sleman ke Rotterdam'}
             </h2>
             <p className="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
               {isEn 
-                ? 'End-to-end logistics workflow ensuring zero damage, strict customs compliance, and predictable ocean freight schedules.'
-                : 'Alur logistik ujung-ke-ujung yang dirancang menekan risiko kerusakan kargo, mematuhi dokumen kepabeanan, dan jadwal kapal terprediksi.'}
+                ? 'End-to-end logistics workflow designed to reduce cargo transit risk, align customs documentation, and maintain predictable ocean freight schedules.'
+                : 'Alur logistik ujung-ke-ujung yang dirancang menekan risiko kerusakan kargo, menyelaraskan dokumen kepabeanan, dan menjaga jadwal kapal terprediksi.'}
             </p>
           </div>
 
@@ -129,7 +129,7 @@ export default function LogisticsFlow({ lang }) {
 
                 {/* Bottom line connector */}
                 <div className="mt-5 pt-3 border-t border-sand/60 flex items-center justify-between text-[11px] font-bold text-forest">
-                  <span>Tahap {step.num}</span>
+                  <span>{isEn ? `Stage ${step.num}` : `Tahap ${step.num}`}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-amberBamboo group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function LogisticsFlow({ lang }) {
           })}
         </div>
 
-        {/* Ocean Route Fact Banner */}
+        {/* Ocean Route Fact Banner — Payment terms aligned with Bab IV & V */}
         <div className="mt-8 p-6 rounded-3xl bg-forest text-cream flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-amberBamboo/20 border border-amberBamboo/40 flex items-center justify-center text-amberBamboo shrink-0">
@@ -145,20 +145,22 @@ export default function LogisticsFlow({ lang }) {
             </div>
             <div>
               <h4 className="font-bold text-sm sm:text-base text-cream">
-                {isEn ? 'Official Freight Shipping Channel (Tanjung Priok ➔ Rotterdam)' : 'Rute Pengapalan Resmi (Pelabuhan Tanjung Priok ➔ Rotterdam)'}
+                {isEn ? 'Export Shipping Channel (Tanjung Priok ➔ Rotterdam)' : 'Rute Pengapalan Ekspor (Pelabuhan Tanjung Priok ➔ Rotterdam)'}
               </h4>
               <p className="text-xs text-sand/80 mt-0.5">
                 {isEn 
-                  ? 'FCL 20ft (34.09% capacity) or 40ft HC with verified bill of lading & phytosanitary certificates.'
-                  : 'Pilihan FCL 20ft (34,09% muatan kargo) atau 40ft HC dilengkapi sertifikat fumigasi, phytosanitary, dan B/L.'}
+                  ? 'FCL 20ft (34% volume, 7 ISPM 15 pallets, 1,475 kg gross) with fumigation, phytosanitary & B/L documentation.'
+                  : 'Kontainer FCL 20ft (34% muatan, 7 palet ISPM 15, 1.475 kg berat kotor) dengan dokumen fumigasi, fitosanitari & B/L.'}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="text-xs font-semibold text-sand/90">Syarat Pembayaran:</span>
-            <span className="px-3 py-1.5 rounded-xl bg-white/10 text-cream text-xs font-bold border border-white/15">
-              T/T (30% DP, 70% Salinan B/L)
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 shrink-0">
+            <span className="text-xs font-semibold text-sand/90">
+              {isEn ? 'Payment Terms:' : 'Syarat Pembayaran:'}
+            </span>
+            <span className="px-3.5 py-2 rounded-xl bg-white/10 text-cream text-xs font-bold border border-white/15">
+              {isEn ? SPECS.product.commercial.paymentTermsShortEn : SPECS.product.commercial.paymentTermsShortId}
             </span>
           </div>
         </div>
